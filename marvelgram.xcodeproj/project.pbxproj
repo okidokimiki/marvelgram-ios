@@ -13,6 +13,7 @@
 		04C5C1A3284FDA630096D272 /* GalleryViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1A2284FDA630096D272 /* GalleryViewProtocol.swift */; };
 		04C5C1A5284FDD890096D272 /* HeroesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1A4284FDD890096D272 /* HeroesCollectionView.swift */; };
 		04C5C1A7284FDDCA0096D272 /* HeroCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1A6284FDDCA0096D272 /* HeroCollectionViewCell.swift */; };
+		04C5C1AB284FEC7A0096D272 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1AA284FEC7A0096D272 /* NetworkManager.swift */; };
 		04C5C1AE284FED200096D272 /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1AD284FED200096D272 /* Hero.swift */; };
 		04FE0A1D284FC90A00839CBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FE0A1C284FC90A00839CBF /* AppDelegate.swift */; };
 		04FE0A1F284FC90A00839CBF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FE0A1E284FC90A00839CBF /* SceneDelegate.swift */; };
@@ -32,6 +33,7 @@
 		04C5C1A2284FDA630096D272 /* GalleryViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewProtocol.swift; sourceTree = "<group>"; };
 		04C5C1A4284FDD890096D272 /* HeroesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesCollectionView.swift; sourceTree = "<group>"; };
 		04C5C1A6284FDDCA0096D272 /* HeroCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroCollectionViewCell.swift; sourceTree = "<group>"; };
+		04C5C1AA284FEC7A0096D272 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		04C5C1AD284FED200096D272 /* Hero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
 		04FE0A19284FC90A00839CBF /* marvelgram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = marvelgram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04FE0A1C284FC90A00839CBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				04FE0A40284FCAF100839CBF /* Protocols */,
+				04C5C1AC284FED180096D272 /* Entity */,
 				04FE0A3B284FCA2A00839CBF /* Assembly */,
 				04C5C19D284FDA220096D272 /* Presenters */,
 				04FE0A3A284FCA2200839CBF /* Views */,
@@ -82,6 +85,15 @@
 				04C5C1A6284FDDCA0096D272 /* HeroCollectionViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		04C5C1A9284FEC540096D272 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				04C5C1AA284FEC7A0096D272 /* NetworkManager.swift */,
+				04C5C1B2284FF12D0096D272 /* ImageCache.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		04C5C1AC284FED180096D272 /* Entity */ = {
@@ -112,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				04FE0A34284FC9C700839CBF /* App */,
+				04C5C1A9284FEC540096D272 /* Services */,
 				04FE0A39284FCA1B00839CBF /* Modules */,
 				04FE0A25284FC90B00839CBF /* Assets.xcassets */,
 				04FE0A42284FCCFE00839CBF /* Supporting Files */,
@@ -265,6 +278,7 @@
 				04FE0A36284FC9D600839CBF /* UIColor + Extension.swift in Sources */,
 				04FE0A1F284FC90A00839CBF /* SceneDelegate.swift in Sources */,
 				04FE0A3D284FCAAD00839CBF /* GalleryView.swift in Sources */,
+				04C5C1AB284FEC7A0096D272 /* NetworkManager.swift in Sources */,
 				04C5C1A1284FDA5D0096D272 /* GalleryPresenterProtocol.swift in Sources */,
 				04C5C19F284FDA3D0096D272 /* GalleryPresenter.swift in Sources */,
 				04FE0A31284FC98600839CBF /* ModuleBuilder.swift in Sources */,
