@@ -7,17 +7,19 @@
 
 import UIKit
 
-protocol HeroCollectionViewActionsDelegate: AnyObject {
+protocol HeroesCollectionViewActionsDelegate: AnyObject {
 }
 
-protocol HeroCollectionViewDataSourceDelegate: AnyObject {
+protocol HeroesCollectionViewDataSourceDelegate: AnyObject {
+    func heroesCollectionView(_ heroesCollectionView: HeroesCollectionView, getHeroViewModelWithIndex index: Int) -> HeroViewModel?
+    func heroesCollectionViewCellsCount(_ heroesCollectionView: HeroesCollectionView) -> Int?
 }
 
 class HeroesCollectionView: UICollectionView {
     // MARK: - Public Properties
     
-    weak var dataSourceDelegate: HeroCollectionViewDataSourceDelegate?
-    weak var actionsDelegate: HeroCollectionViewActionsDelegate?
+    weak var actionsDelegate: HeroesCollectionViewActionsDelegate?
+    weak var dataSourceDelegate: HeroesCollectionViewDataSourceDelegate?
     
     // MARK: - Private Properties
     
@@ -58,6 +60,15 @@ class HeroesCollectionView: UICollectionView {
 // MARK: - UICollectionViewDelegate
 
 extension HeroesCollectionView: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard
+            let heroCell = cell as? HeroCollectionViewCell,
+            let viewModel = dataSourceDelegate?.heroesCollectionView(self, getHeroViewModelWithIndex: indexPath.row)
+        else { return }
+        
+        heroCell.configurePerCellWith(viewModel)
+    }
+    
 }
 
 // MARK: - UICollectionViewDataSource
@@ -65,7 +76,7 @@ extension HeroesCollectionView: UICollectionViewDelegate {
 extension HeroesCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        let cellsCount = 50
+        guard let cellsCount = dataSourceDelegate?.heroesCollectionViewCellsCount(self) else { return 0 }
         
         return cellsCount
     }

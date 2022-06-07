@@ -8,4 +8,6 @@
 import Foundation
 
 protocol GalleryViewProtocol: AnyObject {
+    func reloadHeroesCollectionView()
+    func showActivityIndicator(_ show: Bool)
 }

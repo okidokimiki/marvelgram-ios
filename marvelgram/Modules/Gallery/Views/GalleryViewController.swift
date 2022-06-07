@@ -23,14 +23,37 @@ class GalleryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        presenter?.handleDidAppearingView()
+    }
 }
 
 // MARK: - GalleryViewUiDelegate
 
 extension GalleryViewController: GalleryViewUiDelegate {
+    func galleryView(_ galleryView: GalleryView, getHeroViewModelWithIndex index: Int) -> HeroViewModel? {
+        return presenter?.getHeroViewModel(with: index)
+    }
+    
+    func galleryViewCellsCount(_ galleryView: GalleryView) -> Int? {
+        return presenter?.getHeroViewModelsCount()
+    }
+    
 }
 
 // MARK: - GalleryViewProtocol
 
 extension GalleryViewController: GalleryViewProtocol {
+    func reloadHeroesCollectionView() {
+        guard let galleryView = view as? GalleryView else { return }
+        galleryView.reloadHeroesCollectionView()
+    }
+    
+    func showActivityIndicator(_ show: Bool) {
+        guard let galleryView = view as? GalleryView else { return }
+        galleryView.showActivityIndicator(show)
+    }
 }

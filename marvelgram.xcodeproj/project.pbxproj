@@ -17,6 +17,7 @@
 		04C5C1AE284FED200096D272 /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1AD284FED200096D272 /* Hero.swift */; };
 		04C5C1B1284FEE090096D272 /* HeroViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1B0284FEE090096D272 /* HeroViewModel.swift */; };
 		04C5C1B3284FF12D0096D272 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1B2284FF12D0096D272 /* ImageCache.swift */; };
+		04C5C1B5284FF16F0096D272 /* HeroImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1B4284FF16F0096D272 /* HeroImageView.swift */; };
 		04C5C1B8284FF77B0096D272 /* GalleryDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1B7284FF77B0096D272 /* GalleryDataSource.swift */; };
 		04FE0A1D284FC90A00839CBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FE0A1C284FC90A00839CBF /* AppDelegate.swift */; };
 		04FE0A1F284FC90A00839CBF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FE0A1E284FC90A00839CBF /* SceneDelegate.swift */; };
@@ -40,6 +41,7 @@
 		04C5C1AD284FED200096D272 /* Hero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
 		04C5C1B0284FEE090096D272 /* HeroViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroViewModel.swift; sourceTree = "<group>"; };
 		04C5C1B2284FF12D0096D272 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		04C5C1B4284FF16F0096D272 /* HeroImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroImageView.swift; sourceTree = "<group>"; };
 		04C5C1B7284FF77B0096D272 /* GalleryDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryDataSource.swift; sourceTree = "<group>"; };
 		04FE0A19284FC90A00839CBF /* marvelgram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = marvelgram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04FE0A1C284FC90A00839CBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				04C5C1A6284FDDCA0096D272 /* HeroCollectionViewCell.swift */,
+				04C5C1B4284FF16F0096D272 /* HeroImageView.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 				04C5C1A3284FDA630096D272 /* GalleryViewProtocol.swift in Sources */,
 				04C5C1AE284FED200096D272 /* Hero.swift in Sources */,
 				04C5C1A7284FDDCA0096D272 /* HeroCollectionViewCell.swift in Sources */,
+				04C5C1B5284FF16F0096D272 /* HeroImageView.swift in Sources */,
 				04968561284FD96E00C1F9A8 /* GalleryViewUiDelegate.swift in Sources */,
 				04C5C1B8284FF77B0096D272 /* GalleryDataSource.swift in Sources */,
 				04C5C1B1284FEE090096D272 /* HeroViewModel.swift in Sources */,
