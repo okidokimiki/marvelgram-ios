@@ -12,10 +12,20 @@ class GalleryPresenter {
     
     weak var view: GalleryViewProtocol?
     
+    // MARK: - Private Properties
+    
+    private let networkManager = NetworkManager.shared
+    private var galleryDataSource: GalleryDataSource
+    
     // MARK: - Initilization
     
-    required init(view: GalleryViewProtocol) {
+    required init(
+        view: GalleryViewProtocol,
+        galleryDataSource: GalleryDataSource
+    ) {
         self.view = view
+        self.galleryDataSource = galleryDataSource
+    }
     }
 }
 

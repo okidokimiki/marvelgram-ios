@@ -15,7 +15,9 @@
 		04C5C1A7284FDDCA0096D272 /* HeroCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1A6284FDDCA0096D272 /* HeroCollectionViewCell.swift */; };
 		04C5C1AB284FEC7A0096D272 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1AA284FEC7A0096D272 /* NetworkManager.swift */; };
 		04C5C1AE284FED200096D272 /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1AD284FED200096D272 /* Hero.swift */; };
+		04C5C1B1284FEE090096D272 /* HeroViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1B0284FEE090096D272 /* HeroViewModel.swift */; };
 		04C5C1B3284FF12D0096D272 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1B2284FF12D0096D272 /* ImageCache.swift */; };
+		04C5C1B8284FF77B0096D272 /* GalleryDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1B7284FF77B0096D272 /* GalleryDataSource.swift */; };
 		04FE0A1D284FC90A00839CBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FE0A1C284FC90A00839CBF /* AppDelegate.swift */; };
 		04FE0A1F284FC90A00839CBF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FE0A1E284FC90A00839CBF /* SceneDelegate.swift */; };
 		04FE0A21284FC90A00839CBF /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FE0A20284FC90A00839CBF /* GalleryViewController.swift */; };
@@ -36,7 +38,9 @@
 		04C5C1A6284FDDCA0096D272 /* HeroCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroCollectionViewCell.swift; sourceTree = "<group>"; };
 		04C5C1AA284FEC7A0096D272 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		04C5C1AD284FED200096D272 /* Hero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
+		04C5C1B0284FEE090096D272 /* HeroViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroViewModel.swift; sourceTree = "<group>"; };
 		04C5C1B2284FF12D0096D272 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		04C5C1B7284FF77B0096D272 /* GalleryDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryDataSource.swift; sourceTree = "<group>"; };
 		04FE0A19284FC90A00839CBF /* marvelgram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = marvelgram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04FE0A1C284FC90A00839CBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04FE0A1E284FC90A00839CBF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +70,8 @@
 			children = (
 				04FE0A40284FCAF100839CBF /* Protocols */,
 				04C5C1AC284FED180096D272 /* Entity */,
+				04C5C1AF284FEDD90096D272 /* Models */,
+				04C5C1B6284FF7430096D272 /* DataSource */,
 				04FE0A3B284FCA2A00839CBF /* Assembly */,
 				04C5C19D284FDA220096D272 /* Presenters */,
 				04FE0A3A284FCA2200839CBF /* Views */,
@@ -104,6 +110,22 @@
 				04C5C1AD284FED200096D272 /* Hero.swift */,
 			);
 			path = Entity;
+			sourceTree = "<group>";
+		};
+		04C5C1AF284FEDD90096D272 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				04C5C1B0284FEE090096D272 /* HeroViewModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		04C5C1B6284FF7430096D272 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				04C5C1B7284FF77B0096D272 /* GalleryDataSource.swift */,
+			);
+			path = DataSource;
 			sourceTree = "<group>";
 		};
 		04FE0A10284FC90A00839CBF = {
@@ -278,6 +300,8 @@
 				04C5C1AE284FED200096D272 /* Hero.swift in Sources */,
 				04C5C1A7284FDDCA0096D272 /* HeroCollectionViewCell.swift in Sources */,
 				04968561284FD96E00C1F9A8 /* GalleryViewUiDelegate.swift in Sources */,
+				04C5C1B8284FF77B0096D272 /* GalleryDataSource.swift in Sources */,
+				04C5C1B1284FEE090096D272 /* HeroViewModel.swift in Sources */,
 				04FE0A36284FC9D600839CBF /* UIColor + Extension.swift in Sources */,
 				04FE0A1F284FC90A00839CBF /* SceneDelegate.swift in Sources */,
 				04FE0A3D284FCAAD00839CBF /* GalleryView.swift in Sources */,
