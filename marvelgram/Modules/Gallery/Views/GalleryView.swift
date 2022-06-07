@@ -18,6 +18,10 @@ class GalleryView: UIView {
         return GalleryView.makeHeroesCollectionView(self, self)
     }()
     
+    private lazy var activityIndicatorView: UIActivityIndicatorView = {
+        return GalleryView.makeActivityIndicatorView()
+    }()
+    
     // MARK: - Initilization
     
     override init(frame: CGRect) {
@@ -31,6 +35,20 @@ class GalleryView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Public Methods
+    
+    func reloadHeroesCollectionView() {
+        heroesCollectionView.reloadData()
+    }
+    
+    func showActivityIndicator(_ show: Bool) {
+        if show {
+            activityIndicatorView.startAnimating()
+        } else {
+            activityIndicatorView.stopAnimating()
+        }
+    }
+    
     // MARK: - Private Methods
     
     private func configureView() {
@@ -40,11 +58,14 @@ class GalleryView: UIView {
     private func addSubviews() {
         addSubview(heroesCollectionView)
         activateHeroesCollectionViewConstraints()
+        
+        addSubview(activityIndicatorView)
+        activatedActivityIndicatorViewConstraint()
     }
     
     // MARK: - Creating Subviews
 
-    static func makeHeroesCollectionView(_ actionsDelegate: HeroCollectionViewActionsDelegate, _ dataSourceDelegate: HeroCollectionViewDataSourceDelegate) -> HeroesCollectionView {
+    static func makeHeroesCollectionView(_ actionsDelegate: HeroesCollectionViewActionsDelegate, _ dataSourceDelegate: HeroesCollectionViewDataSourceDelegate) -> HeroesCollectionView {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         
@@ -53,6 +74,13 @@ class GalleryView: UIView {
         collectionView.dataSourceDelegate = dataSourceDelegate
 
         return collectionView
+    }
+    
+    static func makeActivityIndicatorView() -> UIActivityIndicatorView {
+        let loader = UIActivityIndicatorView()
+        loader.translatesAutoresizingMaskIntoConstraints = false
+        
+        return loader
     }
     
     // MARK: - Layout
@@ -65,14 +93,28 @@ class GalleryView: UIView {
             heroesCollectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
         ])
     }
+    
+    private func activatedActivityIndicatorViewConstraint() {
+        NSLayoutConstraint.activate([
+            activityIndicatorView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            activityIndicatorView.centerYAnchor.constraint(equalTo: centerYAnchor)
+        ])
+    }
 }
 
-// MARK: - HeroCollectionViewActionsDelegate
+// MARK: - HeroesCollectionViewActionsDelegate
 
-extension GalleryView: HeroCollectionViewActionsDelegate {
+extension GalleryView: HeroesCollectionViewActionsDelegate {
 }
 
-// MARK: - HeroCollectionViewDataSourceDelegate
+// MARK: - HeroesCollectionViewDataSourceDelegate
 
-extension GalleryView: HeroCollectionViewDataSourceDelegate {
+extension GalleryView: HeroesCollectionViewDataSourceDelegate {
+    func heroesCollectionView(_ heroesCollectionView: HeroesCollectionView, getHeroViewModelWithIndex index: Int) -> HeroViewModel? {
+        return uiDelegate?.galleryView(self, getHeroViewModelWithIndex: index)
+    }
+    
+    func heroesCollectionViewCellsCount(_ heroesCollectionView: HeroesCollectionView) -> Int? {
+        return uiDelegate?.galleryViewCellsCount(self)
+    }
 }

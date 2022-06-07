@@ -14,8 +14,8 @@ class HeroCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Private Properties
     
-    private lazy var heroImageView: UIImageView = {
-        return HeroCollectionViewCell.makeHeroImageView()
+    private lazy var heroImageView: HeroImageView = {
+        return HeroImageView(frame: .zero)
     }()
     
     // MARK: - Initilization
@@ -24,6 +24,7 @@ class HeroCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         
         addSubviews()
+        configureCollectionViewCell()
     }
     
     required init?(coder: NSCoder) {
@@ -37,14 +38,14 @@ class HeroCollectionViewCell: UICollectionViewCell {
         activateHeroImageViewConstraints()
     }
     
-    // MARK: - Creating Subviews
+    private func configureCollectionViewCell() {
+        backgroundColor = UIColor(color: .cellBackground)
+    }
     
-    static func makeHeroImageView() -> UIImageView {
-        let imageView = UIImageView()
-        imageView.backgroundColor = .systemPink
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        
-        return imageView
+    // MARK: - Public Methods
+    
+    func configurePerCellWith(_ viewModel: HeroViewModel) {
+        heroImageView.loadImageWith(urlString: viewModel.url)
     }
     
     // MARK: - Layout

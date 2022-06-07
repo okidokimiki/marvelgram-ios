@@ -12,14 +12,50 @@ class GalleryPresenter {
     
     weak var view: GalleryViewProtocol?
     
+    // MARK: - Private Properties
+    
+    private let heroesRepository = HeroesRepository.shared
+    private var galleryDataSource: GalleryDataSource
+    
     // MARK: - Initilization
     
-    required init(view: GalleryViewProtocol) {
+    required init(
+        view: GalleryViewProtocol,
+        galleryDataSource: GalleryDataSource
+    ) {
         self.view = view
+        self.galleryDataSource = galleryDataSource
+    }
+    
+    // MARK: - Private Methods
+    
+    private func fetchHeroesAndReloadCollectionView() {
+        view?.showActivityIndicator(true)
+        
+        heroesRepository.getHeroes { heroes in
+            let viewModels = heroes.map { HeroViewModel(hero: $0) }
+            self.galleryDataSource.heroViewModel = viewModels
+            
+            DispatchQueue.main.async {
+                self.view?.showActivityIndicator(false)
+                self.view?.reloadHeroesCollectionView()
+            }
+        }
     }
 }
 
 // MARK: - GalleryPresenterProtocol
 
 extension GalleryPresenter: GalleryPresenterProtocol {
+    func handleDidAppearingView() {
+        fetchHeroesAndReloadCollectionView()
+    }
+    
+    func getHeroViewModelsCount() -> Int? {
+        return galleryDataSource.heroViewModel.count
+    }
+    
+    func getHeroViewModel(with index: Int) -> HeroViewModel {
+        return galleryDataSource.heroViewModel[index]
+    }
 }

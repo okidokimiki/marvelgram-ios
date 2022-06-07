@@ -8,4 +8,10 @@
 import Foundation
 
 protocol GalleryPresenterProtocol {
+    init(view: GalleryViewProtocol, galleryDataSource: GalleryDataSource)
+    
+    func handleDidAppearingView()
+    
+    func getHeroViewModelsCount() -> Int?
+    func getHeroViewModel(with index: Int) -> HeroViewModel
 }

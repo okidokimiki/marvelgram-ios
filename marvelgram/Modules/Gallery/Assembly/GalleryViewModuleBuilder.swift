@@ -10,7 +10,9 @@ import UIKit
 class GalleryViewModuleBuilder: ModuleBuilder {
     static func createModule() -> UIViewController {
         let viewController = GalleryViewController()
-        let presenter = GalleryPresenter(view: viewController)
+        let galleryDataSource = GalleryDataSource()
+        let presenter = GalleryPresenter(view: viewController,
+                                         galleryDataSource: galleryDataSource)
         viewController.presenter = presenter
         
         return viewController
