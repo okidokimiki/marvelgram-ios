@@ -28,14 +28,33 @@ class NetworkManager {
     }
     
     // MARK: - Public Methods
-    
-    func fetchHeroes(completion: @escaping (Result<[Hero], NetworkError>) -> Void) {
-        guard let url = URL(string: Constants.heroesUrlString) else {
+        
+    func fetchHeroesConfig(completion: @escaping (Result<URL, NetworkError>) -> Void) {
+        guard let heroesURL = URL(string: Constants.heroesUrlString) else {
             completion(.failure(.invalidURL))
             return
         }
         
-        let task = session.dataTask(with: url) { data, _, error in
+        let downloadTask = session.downloadTask(with: heroesURL) { urlFile, _, _ in
+            guard let urlFile = urlFile else {
+                print("failure: couldn't download file by url: \(heroesURL.path)")
+                completion(.failure(.noData))
+                return
+            }
+            
+            completion(.success(urlFile))
+        }
+        
+        downloadTask.resume()
+    }
+    
+    func fetchHeroes(completion: @escaping (Result<[Hero], NetworkError>) -> Void) {
+        guard let heroesURL = URL(string: Constants.heroesUrlString) else {
+            completion(.failure(.invalidURL))
+            return
+        }
+        
+        let task = session.dataTask(with: heroesURL) { data, _, error in
             guard let parseredData = data else {
                 completion(.failure(.noData))
                 return

@@ -14,7 +14,7 @@ class GalleryPresenter {
     
     // MARK: - Private Properties
     
-    private let networkManager = NetworkManager.shared
+    private let heroesRepository = HeroesRepository.shared
     private var galleryDataSource: GalleryDataSource
     
     // MARK: - Initilization
@@ -32,18 +32,13 @@ class GalleryPresenter {
     private func fetchHeroesAndReloadCollectionView() {
         view?.showActivityIndicator(true)
         
-        networkManager.fetchHeroes { result in
-            switch result {
-            case .success(let heroesData):
-                let viewModels = heroesData.map { HeroViewModel(hero: $0) }
-                self.galleryDataSource.heroViewModel = viewModels
-                
-                DispatchQueue.main.async {
-                    self.view?.showActivityIndicator(false)
-                    self.view?.reloadHeroesCollectionView()
-                }
-            case .failure(let error):
-                print(error.localizedDescription)
+        heroesRepository.getHeroes { heroes in
+            let viewModels = heroes.map { HeroViewModel(hero: $0) }
+            self.galleryDataSource.heroViewModel = viewModels
+            
+            DispatchQueue.main.async {
+                self.view?.showActivityIndicator(false)
+                self.view?.reloadHeroesCollectionView()
             }
         }
     }
