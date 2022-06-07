@@ -11,6 +11,8 @@
 		04C5C19F284FDA3D0096D272 /* GalleryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C19E284FDA3D0096D272 /* GalleryPresenter.swift */; };
 		04C5C1A1284FDA5D0096D272 /* GalleryPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1A0284FDA5D0096D272 /* GalleryPresenterProtocol.swift */; };
 		04C5C1A3284FDA630096D272 /* GalleryViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1A2284FDA630096D272 /* GalleryViewProtocol.swift */; };
+		04C5C1A5284FDD890096D272 /* HeroesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1A4284FDD890096D272 /* HeroesCollectionView.swift */; };
+		04C5C1A7284FDDCA0096D272 /* HeroCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1A6284FDDCA0096D272 /* HeroCollectionViewCell.swift */; };
 		04FE0A1D284FC90A00839CBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FE0A1C284FC90A00839CBF /* AppDelegate.swift */; };
 		04FE0A1F284FC90A00839CBF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FE0A1E284FC90A00839CBF /* SceneDelegate.swift */; };
 		04FE0A21284FC90A00839CBF /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FE0A20284FC90A00839CBF /* GalleryViewController.swift */; };
@@ -27,6 +29,8 @@
 		04C5C19E284FDA3D0096D272 /* GalleryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryPresenter.swift; sourceTree = "<group>"; };
 		04C5C1A0284FDA5D0096D272 /* GalleryPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryPresenterProtocol.swift; sourceTree = "<group>"; };
 		04C5C1A2284FDA630096D272 /* GalleryViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewProtocol.swift; sourceTree = "<group>"; };
+		04C5C1A4284FDD890096D272 /* HeroesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesCollectionView.swift; sourceTree = "<group>"; };
+		04C5C1A6284FDDCA0096D272 /* HeroCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroCollectionViewCell.swift; sourceTree = "<group>"; };
 		04FE0A19284FC90A00839CBF /* marvelgram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = marvelgram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04FE0A1C284FC90A00839CBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04FE0A1E284FC90A00839CBF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +72,14 @@
 				04C5C19E284FDA3D0096D272 /* GalleryPresenter.swift */,
 			);
 			path = Presenters;
+			sourceTree = "<group>";
+		};
+		04C5C1A8284FDDCD0096D272 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				04C5C1A6284FDDCA0096D272 /* HeroCollectionViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		04FE0A10284FC90A00839CBF = {
@@ -127,6 +139,8 @@
 			children = (
 				04FE0A20284FC90A00839CBF /* GalleryViewController.swift */,
 				04FE0A3C284FCAAD00839CBF /* GalleryView.swift */,
+				04C5C1A4284FDD890096D272 /* HeroesCollectionView.swift */,
+				04C5C1A8284FDDCD0096D272 /* Cell */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -230,10 +244,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04C5C1A5284FDD890096D272 /* HeroesCollectionView.swift in Sources */,
 				04FE0A33284FC99F00839CBF /* GalleryViewModuleBuilder.swift in Sources */,
 				04FE0A21284FC90A00839CBF /* GalleryViewController.swift in Sources */,
 				04FE0A1D284FC90A00839CBF /* AppDelegate.swift in Sources */,
 				04C5C1A3284FDA630096D272 /* GalleryViewProtocol.swift in Sources */,
+				04C5C1A7284FDDCA0096D272 /* HeroCollectionViewCell.swift in Sources */,
 				04968561284FD96E00C1F9A8 /* GalleryViewUiDelegate.swift in Sources */,
 				04FE0A36284FC9D600839CBF /* UIColor + Extension.swift in Sources */,
 				04FE0A1F284FC90A00839CBF /* SceneDelegate.swift in Sources */,
