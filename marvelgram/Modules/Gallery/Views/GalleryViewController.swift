@@ -41,7 +41,6 @@ extension GalleryViewController: GalleryViewUiDelegate {
     func galleryViewCellsCount(_ galleryView: GalleryView) -> Int? {
         return presenter?.getHeroViewModelsCount()
     }
-    
 }
 
 // MARK: - GalleryViewProtocol

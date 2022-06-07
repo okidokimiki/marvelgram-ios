@@ -68,7 +68,6 @@ extension HeroesCollectionView: UICollectionViewDelegate {
         
         heroCell.configurePerCellWith(viewModel)
     }
-    
 }
 
 // MARK: - UICollectionViewDataSource
