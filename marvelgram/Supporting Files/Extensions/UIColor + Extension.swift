@@ -18,5 +18,6 @@ extension UIColor {
     
     enum Color: String, CaseIterable {
         case background
+        case cellBackground
     }
 }

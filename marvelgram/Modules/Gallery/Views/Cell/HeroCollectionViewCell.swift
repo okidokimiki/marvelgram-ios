@@ -38,6 +38,9 @@ class HeroCollectionViewCell: UICollectionViewCell {
     }
     
     // MARK: - Creating Subviews
+    private func configureCollectionViewCell() {
+        backgroundColor = UIColor(color: .cellBackground)
+    }
     
     static func makeHeroImageView() -> UIImageView {
         let imageView = UIImageView()
