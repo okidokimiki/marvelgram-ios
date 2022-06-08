@@ -39,7 +39,7 @@ class HeroCollectionViewCell: UICollectionViewCell {
     }
     
     private func configureCollectionViewCell() {
-        backgroundColor = UIColor(color: .cellBackground)
+        backgroundColor = UIColor(color: .accent1)
     }
     
     // MARK: - Public Methods
