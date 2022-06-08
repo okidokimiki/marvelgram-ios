@@ -5,10 +5,6 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>SF-Pro.ttf</string>
-		<string>Marvel-Bold.ttf</string>
-		<string>Marvel-BoldItalic.ttf</string>
-		<string>Marvel-Italic.ttf</string>
-		<string>Marvel-Regular.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
