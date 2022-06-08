@@ -26,7 +26,7 @@ class HeroImageView: UIImageView {
     }
     
     // MARK: - Public Methods
-        
+    
     func loadImageWith(urlString: String) {
         image = nil
         imageURLString = urlString
@@ -59,7 +59,7 @@ class HeroImageView: UIImageView {
     
     private func makeAndResumeDataTaskWith(urlString: String, completion: @escaping (Result<UIImage, Error>) -> Void) {
         guard let url = URL(string: urlString) else { return }
-
+        
         let task = URLSession.shared.dataTask(with: url) { data, _, _ in
             guard
                 let taskImageData = data,
@@ -68,11 +68,11 @@ class HeroImageView: UIImageView {
                 print("\(String(describing: HeroImageView.self)) failed to load image from \(url)")
                 return
             }
-
+            
             self.imageCache.setObject(taskImage, forKey: urlString as NSString)
             completion(.success(taskImage))
         }
-
+        
         task.resume()
     }
 }

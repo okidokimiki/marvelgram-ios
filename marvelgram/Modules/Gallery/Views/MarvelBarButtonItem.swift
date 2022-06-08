@@ -8,12 +8,6 @@
 import UIKit
 
 class MarvelBarButtonItem: UIBarButtonItem {
-    // MARK: - Private Properties
-    
-    private enum Constants {
-        static let buttonTitle = "MARVEL"
-    }
-    
     // MARK: - Initilization
     
     override init() {
@@ -37,8 +31,8 @@ class MarvelBarButtonItem: UIBarButtonItem {
     }
     
     // MARK: - Actions
-
+    
     @objc private func didTapMarvelButton(sender: UIBarButtonItem) {
-        print("say hello")
+        print("didTapMarvelButton")
     }
 }

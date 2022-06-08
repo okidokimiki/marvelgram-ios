@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: - Hero
+
 struct Hero: Codable, Equatable {
     var id: Int
     let name: String

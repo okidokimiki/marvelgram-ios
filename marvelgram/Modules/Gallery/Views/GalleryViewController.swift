@@ -15,7 +15,7 @@ class GalleryViewController: UIViewController {
     // MARK: - Private Properties
     
     private lazy var marvelButton = MarvelBarButtonItem()
-
+    
     // MARK: - UIViewController Lifecycle
     
     override func loadView() {

@@ -13,7 +13,7 @@ class GalleryView: UIView {
     weak var uiDelegate: GalleryViewUiDelegate?
     
     // MARK: - Private Properties
-
+    
     private lazy var heroesCollectionView: HeroesCollectionView = {
         return GalleryView.makeHeroesCollectionView(self, self)
     }()
@@ -64,7 +64,7 @@ class GalleryView: UIView {
     }
     
     // MARK: - Creating Subviews
-
+    
     static func makeHeroesCollectionView(_ actionsDelegate: HeroesCollectionViewActionsDelegate, _ dataSourceDelegate: HeroesCollectionViewDataSourceDelegate) -> HeroesCollectionView {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -72,7 +72,7 @@ class GalleryView: UIView {
         let collectionView = HeroesCollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.actionsDelegate = actionsDelegate
         collectionView.dataSourceDelegate = dataSourceDelegate
-
+        
         return collectionView
     }
     

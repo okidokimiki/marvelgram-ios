@@ -28,7 +28,7 @@ class NetworkManager {
     }
     
     // MARK: - Public Methods
-        
+    
     func fetchHeroesConfig(completion: @escaping (Result<URL, NetworkError>) -> Void) {
         guard let heroesURL = URL(string: Constants.heroesUrlString) else {
             completion(.failure(.invalidURL))

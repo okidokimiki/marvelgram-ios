@@ -52,7 +52,7 @@ extension TextStyle {
         else {
             return UIFont.preferredFont(forTextStyle: fontDescription.style)
         }
-
+        
         return UIFontMetrics(forTextStyle: fontDescription.style).scaledFont(for: font)
     }
 }
