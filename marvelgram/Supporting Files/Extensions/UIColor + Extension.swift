@@ -17,7 +17,8 @@ extension UIColor {
     // MARK: - Assets Color
     
     enum Color: String, CaseIterable {
+        case accent1
         case background
-        case cellBackground
+        case title1
     }
 }

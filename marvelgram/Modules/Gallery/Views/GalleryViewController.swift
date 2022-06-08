@@ -11,7 +11,11 @@ class GalleryViewController: UIViewController {
     // MARK: - Public Properties
     
     var presenter: GalleryPresenterProtocol?
-
+    
+    // MARK: - Private Properties
+    
+    private lazy var marvelButton = MarvelBarButtonItem()
+    
     // MARK: - UIViewController Lifecycle
     
     override func loadView() {
@@ -22,12 +26,20 @@ class GalleryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        configureNavigationBar()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         presenter?.handleDidAppearingView()
+    }
+    
+    // MARK: - Private Methods
+    
+    private func configureNavigationBar() {
+        navigationItem.leftBarButtonItem = marvelButton
     }
 }
 
@@ -41,7 +53,6 @@ extension GalleryViewController: GalleryViewUiDelegate {
     func galleryViewCellsCount(_ galleryView: GalleryView) -> Int? {
         return presenter?.getHeroViewModelsCount()
     }
-    
 }
 
 // MARK: - GalleryViewProtocol

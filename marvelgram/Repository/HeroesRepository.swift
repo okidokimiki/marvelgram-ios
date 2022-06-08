@@ -39,10 +39,10 @@ class HeroesRepository {
         networkManager.fetchHeroesConfig { result in
             switch result {
             case .success(let urlFile):
-                self.saveFile(from: urlFile, to: Constants.folderName)
                 let newHeroesConfig = self.makeHeroesFromConfig(at: urlFile)
                 
                 if newHeroesConfig != self.heroes {
+                    self.saveFile(from: urlFile, to: Constants.folderName)
                     self.heroes = newHeroesConfig
                 }
             case .failure(let error):

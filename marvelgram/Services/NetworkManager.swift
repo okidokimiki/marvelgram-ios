@@ -28,7 +28,7 @@ class NetworkManager {
     }
     
     // MARK: - Public Methods
-        
+    
     func fetchHeroesConfig(completion: @escaping (Result<URL, NetworkError>) -> Void) {
         guard let heroesURL = URL(string: Constants.heroesUrlString) else {
             completion(.failure(.invalidURL))
@@ -54,8 +54,9 @@ class NetworkManager {
             return
         }
         
-        let task = session.dataTask(with: heroesURL) { data, _, error in
+        let task = session.dataTask(with: heroesURL) { data, _, _ in
             guard let parseredData = data else {
+                print("failure: couldn't get data by url: \(heroesURL.path)")
                 completion(.failure(.noData))
                 return
             }
@@ -64,7 +65,6 @@ class NetworkManager {
                 let decodedData = try self.decoder.decode([Hero].self, from: parseredData)
                 completion(.success(decodedData))
             } catch {
-                print(error.localizedDescription)
                 completion(.failure(.decodingError))
             }
         }
