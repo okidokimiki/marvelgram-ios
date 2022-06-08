@@ -11,6 +11,10 @@ class GalleryViewController: UIViewController {
     // MARK: - Public Properties
     
     var presenter: GalleryPresenterProtocol?
+    
+    // MARK: - Private Properties
+    
+    private lazy var marvelButton = MarvelBarButtonItem()
 
     // MARK: - UIViewController Lifecycle
     
@@ -22,12 +26,20 @@ class GalleryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        configureNavigationBar()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         presenter?.handleDidAppearingView()
+    }
+    
+    // MARK: - Private Methods
+    
+    private func configureNavigationBar() {
+        navigationItem.leftBarButtonItem = marvelButton
     }
 }
 

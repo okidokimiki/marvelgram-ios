@@ -20,6 +20,7 @@
 		04C5C1B5284FF16F0096D272 /* HeroImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1B4284FF16F0096D272 /* HeroImageView.swift */; };
 		04C5C1B8284FF77B0096D272 /* GalleryDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1B7284FF77B0096D272 /* GalleryDataSource.swift */; };
 		04C5C1BB28500F5F0096D272 /* HeroesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1BA28500F5F0096D272 /* HeroesRepository.swift */; };
+		04C5C1BF285019980096D272 /* MarvelBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1BE285019980096D272 /* MarvelBarButtonItem.swift */; };
 		04C5C1CA28514E470096D272 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1C928514E470096D272 /* Font.swift */; };
 		04C5C1CC285150AB0096D272 /* SF-Pro.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04C5C1CB285150AB0096D272 /* SF-Pro.ttf */; };
 		04C5C1CE285152630096D272 /* UIImage + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1CD285152630096D272 /* UIImage + Extension.swift */; };
@@ -48,6 +49,7 @@
 		04C5C1B4284FF16F0096D272 /* HeroImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroImageView.swift; sourceTree = "<group>"; };
 		04C5C1B7284FF77B0096D272 /* GalleryDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryDataSource.swift; sourceTree = "<group>"; };
 		04C5C1BA28500F5F0096D272 /* HeroesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesRepository.swift; sourceTree = "<group>"; };
+		04C5C1BE285019980096D272 /* MarvelBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelBarButtonItem.swift; sourceTree = "<group>"; };
 		04C5C1C928514E470096D272 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		04C5C1CB285150AB0096D272 /* SF-Pro.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro.ttf"; sourceTree = "<group>"; };
 		04C5C1CD285152630096D272 /* UIImage + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Extension.swift"; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 			children = (
 				04FE0A20284FC90A00839CBF /* GalleryViewController.swift */,
 				04FE0A3C284FCAAD00839CBF /* GalleryView.swift */,
+				04C5C1BE285019980096D272 /* MarvelBarButtonItem.swift */,
 				04C5C1A4284FDD890096D272 /* HeroesCollectionView.swift */,
 				04C5C1A8284FDDCD0096D272 /* Cell */,
 			);
@@ -357,6 +360,7 @@
 				04C5C1B5284FF16F0096D272 /* HeroImageView.swift in Sources */,
 				04968561284FD96E00C1F9A8 /* GalleryViewUiDelegate.swift in Sources */,
 				04C5C1B8284FF77B0096D272 /* GalleryDataSource.swift in Sources */,
+				04C5C1BF285019980096D272 /* MarvelBarButtonItem.swift in Sources */,
 				04C5C1B1284FEE090096D272 /* HeroViewModel.swift in Sources */,
 				04FE0A36284FC9D600839CBF /* UIColor + Extension.swift in Sources */,
 				04C5C1CE285152630096D272 /* UIImage + Extension.swift in Sources */,
