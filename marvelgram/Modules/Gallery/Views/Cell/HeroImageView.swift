@@ -13,12 +13,15 @@ class HeroImageView: UIImageView {
     private var imageCache = ImageCache.shared
     private var lastImageURLStringUsedToLoadImage: String?
     
+    let activityIndicatorView = HeroImageView.makeActivityIndicatorView()
+    
     // MARK: - Initialization
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         configureImageView()
+        addSubviews()
     }
     
     required init?(coder: NSCoder) {
@@ -36,12 +39,18 @@ class HeroImageView: UIImageView {
             return
         }
         
-        makeAndResumeDataTaskWith(urlString: urlString) { [weak self] result in
+        activityIndicatorView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        activityIndicatorView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        
+        guard let url = URL(string: urlString) else { return }
+        
+        makeAndResumeDataTaskWith(url: url) { [unowned self] result in
             switch result {
             case .success(let image):
                 DispatchQueue.main.async {
-                    if self?.lastImageURLStringUsedToLoadImage == urlString {
-                        self?.image = image
+                    if self.lastImageURLStringUsedToLoadImage == urlString {
+                        self.image = image
+                        self.activityIndicatorView.stopAnimating()
                     }
                 }
             case .failure(let error):
@@ -57,12 +66,16 @@ class HeroImageView: UIImageView {
         translatesAutoresizingMaskIntoConstraints = false
     }
     
-    private func makeAndResumeDataTaskWith(urlString: String, completion: @escaping (Result<UIImage, Error>) -> Void) {
-        guard let url = URL(string: urlString) else { return }
+    private func addSubviews() {
+        addSubview(activityIndicatorView)
+    }
+
+    private func makeAndResumeDataTaskWith(url: URL, completion: @escaping (Result<UIImage, Error>) -> Void) {
+        activityIndicatorView.startAnimating()
         
         let task = URLSession.shared.dataTask(with: url) { resumeDataOrNil, _, errorOrNil in
             if let error = errorOrNil {
-                print("Failed to load image with error: \(error.localizedDescription)")
+                print("failed to load image with error: \(error.localizedDescription)")
             }
             
             guard
@@ -73,10 +86,20 @@ class HeroImageView: UIImageView {
                 return
             }
             
-            self.imageCache.setObject(taskImage, forKey: urlString as NSString)
+            self.imageCache.setObject(taskImage, forKey: url.path as NSString)
             completion(.success(taskImage))
         }
         
         task.resume()
+    }
+    
+    // MARK: - Creating Subviews
+    
+    static func makeActivityIndicatorView() -> UIActivityIndicatorView {
+        let loader = UIActivityIndicatorView(style: .large)
+        loader.color = .red
+        loader.translatesAutoresizingMaskIntoConstraints = false
+        
+        return loader
     }
 }
