@@ -11,7 +11,7 @@ class HeroImageView: UIImageView {
     // MARK: - Private Properties
     
     private var imageCache = ImageCache.shared
-    private var imageURLString: String?
+    private var lastImageURLStringUsedToLoadImage: String?
     
     // MARK: - Initialization
     
@@ -29,7 +29,7 @@ class HeroImageView: UIImageView {
     
     func loadImageWith(urlString: String) {
         image = nil
-        imageURLString = urlString
+        lastImageURLStringUsedToLoadImage = urlString
         let imageFromCache = imageCache.object(forKey: urlString as NSString)
         guard imageFromCache == nil else {
             image = imageFromCache
@@ -40,7 +40,7 @@ class HeroImageView: UIImageView {
             switch result {
             case .success(let image):
                 DispatchQueue.main.async {
-                    if self?.imageURLString == urlString {
+                    if self?.lastImageURLStringUsedToLoadImage == urlString {
                         self?.image = image
                     }
                 }
