@@ -60,9 +60,9 @@ class HeroImageView: UIImageView {
     private func makeAndResumeDataTaskWith(urlString: String, completion: @escaping (Result<UIImage, Error>) -> Void) {
         guard let url = URL(string: urlString) else { return }
         
-        let task = URLSession.shared.dataTask(with: url) { data, _, _ in
+        let task = URLSession.shared.dataTask(with: url) { resumeDataOrNil, _, _ in
             guard
-                let taskImageData = data,
+                let taskImageData = resumeDataOrNil,
                 let taskImage = UIImage(data: taskImageData)
             else {
                 print("\(String(describing: HeroImageView.self)) failed to load image from \(url)")
