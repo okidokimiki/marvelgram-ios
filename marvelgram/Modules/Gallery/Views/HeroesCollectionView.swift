@@ -11,7 +11,7 @@ protocol HeroesCollectionViewActionsDelegate: AnyObject {
 }
 
 protocol HeroesCollectionViewDataSourceDelegate: AnyObject {
-    func heroesCollectionView(_ heroesCollectionView: HeroesCollectionView, getHeroViewModelWithIndex index: Int) -> HeroViewModel?
+    func heroesCollectionView(_ heroesCollectionView: HeroesCollectionView, getHeroModelWithIndex index: Int) -> HeroModel?
     func heroesCollectionViewCellsCount(_ heroesCollectionView: HeroesCollectionView) -> Int?
 }
 
@@ -63,10 +63,10 @@ extension HeroesCollectionView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         guard
             let heroCell = cell as? HeroCollectionViewCell,
-            let viewModel = dataSourceDelegate?.heroesCollectionView(self, getHeroViewModelWithIndex: indexPath.row)
+            let model = dataSourceDelegate?.heroesCollectionView(self, getHeroModelWithIndex: indexPath.row)
         else { return }
         
-        heroCell.configurePerCellWith(viewModel)
+        heroCell.configurePerCellWith(model)
     }
 }
 
