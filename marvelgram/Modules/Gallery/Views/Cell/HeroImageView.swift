@@ -97,7 +97,6 @@ class HeroImageView: UIImageView {
     
     static func makeActivityIndicatorView() -> UIActivityIndicatorView {
         let loader = UIActivityIndicatorView(style: .large)
-        loader.color = .red
         loader.translatesAutoresizingMaskIntoConstraints = false
         
         return loader
