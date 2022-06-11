@@ -32,7 +32,7 @@ class GalleryPresenter {
     private func fetchHeroesAndReloadCollectionView() {
         view?.showActivityIndicator(true)
         
-        heroesRepository.getHeroes { heroes in
+        heroesRepository.getHeroes { [unowned self] heroes in
             let viewModels = heroes.map { HeroViewModel(hero: $0) }
             self.galleryDataSource.heroViewModel = viewModels
             
