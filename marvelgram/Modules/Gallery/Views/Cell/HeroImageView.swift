@@ -60,7 +60,11 @@ class HeroImageView: UIImageView {
     private func makeAndResumeDataTaskWith(urlString: String, completion: @escaping (Result<UIImage, Error>) -> Void) {
         guard let url = URL(string: urlString) else { return }
         
-        let task = URLSession.shared.dataTask(with: url) { resumeDataOrNil, _, _ in
+        let task = URLSession.shared.dataTask(with: url) { resumeDataOrNil, _, errorOrNil in
+            if let error = errorOrNil {
+                print("Failed to load image with error: \(error.localizedDescription)")
+            }
+            
             guard
                 let taskImageData = resumeDataOrNil,
                 let taskImage = UIImage(data: taskImageData)
