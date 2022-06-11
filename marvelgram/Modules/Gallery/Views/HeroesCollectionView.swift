@@ -66,7 +66,7 @@ extension HeroesCollectionView: UICollectionViewDelegate {
             let model = dataSourceDelegate?.heroesCollectionView(self, getHeroModelWithIndex: indexPath.row)
         else { return }
         
-        heroCell.configurePerCellWith(model)
+        heroCell.configureCellWith(model)
     }
 }
 

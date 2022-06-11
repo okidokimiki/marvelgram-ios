@@ -33,8 +33,8 @@ class GalleryPresenter {
         view?.showActivityIndicator(true)
         
         heroesRepository.getHeroes { [unowned self] heroes in
-            let viewModels = heroes.map { HeroModel(hero: $0) }
-            self.galleryDataSource.heroModels = viewModels
+            let models = heroes.map { HeroModel(hero: $0) }
+            self.galleryDataSource.heroModels = models
             
             DispatchQueue.main.async {
                 self.view?.showActivityIndicator(false)
