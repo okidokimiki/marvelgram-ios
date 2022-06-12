@@ -38,11 +38,11 @@ class HeroesRepository {
     func getHeroes(completion: @escaping ([Hero]) -> Void) {
         networkManager.fetchHeroesConfig { [unowned self] result in
             switch result {
-            case .success(let fileUrl):
-                let newHeroesConfig = self.makeHeroesFromConfig(at: fileUrl)
+            case .success(let configUrl):
+                let newHeroesConfig = self.makeHeroesFromConfig(at: configUrl)
                 
                 if newHeroesConfig != self.heroes {
-                    self.saveFile(from: fileUrl, to: Constants.folderName)
+                    self.saveFile(from: configUrl, to: Constants.folderName)
                     self.heroes = newHeroesConfig
                 }
             case .failure(let error):

@@ -30,19 +30,19 @@ class NetworkManager {
     // MARK: - Public Methods
     
     func fetchHeroesConfig(completion: @escaping (Result<URL, NetworkError>) -> Void) {
-        guard let heroesURL = URL(string: Constants.heroesUrlString) else {
+        guard let heroesUrl = URL(string: Constants.heroesUrlString) else {
             completion(.failure(.invalidURL))
             return
         }
         
-        let downloadTask = session.downloadTask(with: heroesURL) { urlOrNil, _, _ in
-            guard let fileURL = urlOrNil else {
-                print("failure: couldn't download file by url: \(heroesURL.path)")
+        let downloadTask = session.downloadTask(with: heroesUrl) { urlOrNil, _, _ in
+            guard let fetchedConfigUrl = urlOrNil else {
+                print("failure: couldn't download file by url: \(heroesUrl.path)")
                 completion(.failure(.noData))
                 return
             }
             
-            completion(.success(fileURL))
+            completion(.success(fetchedConfigUrl))
         }
         
         downloadTask.resume()
