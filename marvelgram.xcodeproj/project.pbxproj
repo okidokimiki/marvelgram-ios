@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		04968561284FD96E00C1F9A8 /* GalleryViewUiDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04968560284FD96E00C1F9A8 /* GalleryViewUiDelegate.swift */; };
 		04BE3FF62856228500462AE0 /* UIFont + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BE3FF52856228500462AE0 /* UIFont + Extension.swift */; };
+		04BE3FF928563B4200462AE0 /* FontName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BE3FF828563B4200462AE0 /* FontName.swift */; };
+		04BE3FFB28563B6200462AE0 /* FontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BE3FFA28563B6200462AE0 /* FontSize.swift */; };
 		04C5C19F284FDA3D0096D272 /* GalleryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C19E284FDA3D0096D272 /* GalleryPresenter.swift */; };
 		04C5C1A1284FDA5D0096D272 /* GalleryPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1A0284FDA5D0096D272 /* GalleryPresenterProtocol.swift */; };
 		04C5C1A3284FDA630096D272 /* GalleryViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1A2284FDA630096D272 /* GalleryViewProtocol.swift */; };
@@ -22,7 +24,7 @@
 		04C5C1B8284FF77B0096D272 /* GalleryDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1B7284FF77B0096D272 /* GalleryDataSource.swift */; };
 		04C5C1BB28500F5F0096D272 /* HeroesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1BA28500F5F0096D272 /* HeroesRepository.swift */; };
 		04C5C1BF285019980096D272 /* MarvelBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1BE285019980096D272 /* MarvelBarButtonItem.swift */; };
-		04C5C1CA28514E470096D272 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1C928514E470096D272 /* Font.swift */; };
+		04C5C1CA28514E470096D272 /* Typography.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1C928514E470096D272 /* Typography.swift */; };
 		04C5C1CC285150AB0096D272 /* SF-Pro.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04C5C1CB285150AB0096D272 /* SF-Pro.ttf */; };
 		04C5C1CE285152630096D272 /* UIImage + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1CD285152630096D272 /* UIImage + Extension.swift */; };
 		04C5C1D1285168FA0096D272 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1D0285168FA0096D272 /* ProfileViewController.swift */; };
@@ -46,6 +48,8 @@
 /* Begin PBXFileReference section */
 		04968560284FD96E00C1F9A8 /* GalleryViewUiDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewUiDelegate.swift; sourceTree = "<group>"; };
 		04BE3FF52856228500462AE0 /* UIFont + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + Extension.swift"; sourceTree = "<group>"; };
+		04BE3FF828563B4200462AE0 /* FontName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontName.swift; sourceTree = "<group>"; };
+		04BE3FFA28563B6200462AE0 /* FontSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSize.swift; sourceTree = "<group>"; };
 		04C5C19E284FDA3D0096D272 /* GalleryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryPresenter.swift; sourceTree = "<group>"; };
 		04C5C1A0284FDA5D0096D272 /* GalleryPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryPresenterProtocol.swift; sourceTree = "<group>"; };
 		04C5C1A2284FDA630096D272 /* GalleryViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewProtocol.swift; sourceTree = "<group>"; };
@@ -59,7 +63,7 @@
 		04C5C1B7284FF77B0096D272 /* GalleryDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryDataSource.swift; sourceTree = "<group>"; };
 		04C5C1BA28500F5F0096D272 /* HeroesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesRepository.swift; sourceTree = "<group>"; };
 		04C5C1BE285019980096D272 /* MarvelBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelBarButtonItem.swift; sourceTree = "<group>"; };
-		04C5C1C928514E470096D272 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		04C5C1C928514E470096D272 /* Typography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typography.swift; sourceTree = "<group>"; };
 		04C5C1CB285150AB0096D272 /* SF-Pro.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro.ttf"; sourceTree = "<group>"; };
 		04C5C1CD285152630096D272 /* UIImage + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Extension.swift"; sourceTree = "<group>"; };
 		04C5C1D0285168FA0096D272 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -93,6 +97,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04BE3FF728563B0500462AE0 /* Font Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				04BE3FF828563B4200462AE0 /* FontName.swift */,
+				04BE3FFA28563B6200462AE0 /* FontSize.swift */,
+			);
+			path = "Font Configuration";
+			sourceTree = "<group>";
+		};
+		04BE3FFC28563B9600462AE0 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				04C5C1CB285150AB0096D272 /* SF-Pro.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		04C5C19C284FD9E80096D272 /* Gallery */ = {
 			isa = PBXGroup;
 			children = (
@@ -164,13 +185,14 @@
 			path = Repository;
 			sourceTree = "<group>";
 		};
-		04C5C1C828514ABD0096D272 /* Font */ = {
+		04C5C1C828514ABD0096D272 /* Typography */ = {
 			isa = PBXGroup;
 			children = (
-				04C5C1C928514E470096D272 /* Font.swift */,
-				04C5C1CB285150AB0096D272 /* SF-Pro.ttf */,
+				04C5C1C928514E470096D272 /* Typography.swift */,
+				04BE3FF728563B0500462AE0 /* Font Configuration */,
+				04BE3FFC28563B9600462AE0 /* Fonts */,
 			);
-			path = Font;
+			path = Typography;
 			sourceTree = "<group>";
 		};
 		04C5C1CF2851688D0096D272 /* Profile */ = {
@@ -311,7 +333,7 @@
 			isa = PBXGroup;
 			children = (
 				04FE0A37284FC9F500839CBF /* Extensions */,
-				04C5C1C828514ABD0096D272 /* Font */,
+				04C5C1C828514ABD0096D272 /* Typography */,
 				04FE0A30284FC98600839CBF /* ModuleBuilder.swift */,
 				04FE0A27284FC90B00839CBF /* LaunchScreen.storyboard */,
 				04FE0A2A284FC90B00839CBF /* Info.plist */,
@@ -413,7 +435,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04C5C1E128516C810096D272 /* ProfileViewModuleBuilder.swift in Sources */,
-				04C5C1CA28514E470096D272 /* Font.swift in Sources */,
+				04C5C1CA28514E470096D272 /* Typography.swift in Sources */,
 				04C5C1A5284FDD890096D272 /* HeroesCollectionView.swift in Sources */,
 				04BE3FF62856228500462AE0 /* UIFont + Extension.swift in Sources */,
 				04FE0A33284FC99F00839CBF /* GalleryViewModuleBuilder.swift in Sources */,
@@ -428,6 +450,7 @@
 				04C5C1A7284FDDCA0096D272 /* HeroCollectionViewCell.swift in Sources */,
 				04C5C1B5284FF16F0096D272 /* HeroImageView.swift in Sources */,
 				04968561284FD96E00C1F9A8 /* GalleryViewUiDelegate.swift in Sources */,
+				04BE3FFB28563B6200462AE0 /* FontSize.swift in Sources */,
 				04C5C1B8284FF77B0096D272 /* GalleryDataSource.swift in Sources */,
 				04C5C1BF285019980096D272 /* MarvelBarButtonItem.swift in Sources */,
 				04C5C1DC28516B750096D272 /* ProfilePresenterProtocol.swift in Sources */,
@@ -440,6 +463,7 @@
 				04C5C1BB28500F5F0096D272 /* HeroesRepository.swift in Sources */,
 				04C5C1AB284FEC7A0096D272 /* NetworkManager.swift in Sources */,
 				04C5C1DA28516B390096D272 /* ProfilePresenter.swift in Sources */,
+				04BE3FF928563B4200462AE0 /* FontName.swift in Sources */,
 				04C5C1A1284FDA5D0096D272 /* GalleryPresenterProtocol.swift in Sources */,
 				04C5C19F284FDA3D0096D272 /* GalleryPresenter.swift in Sources */,
 				04FE0A31284FC98600839CBF /* ModuleBuilder.swift in Sources */,

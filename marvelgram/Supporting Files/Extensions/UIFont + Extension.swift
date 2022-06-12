@@ -10,7 +10,7 @@ import UIKit
 extension UIFont {
     // MARK: - Public Methods
     
-    static func makeFontWith(title: FontTitle, size: FontSize) -> UIFont? {
-        return UIFont(name: title.name, size: size.value)
+    static func makeFontWith(name: FontName, size: FontSize) -> UIFont? {
+        return UIFont(name: name.value, size: size.value)
     }
 }
