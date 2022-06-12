@@ -29,8 +29,8 @@ class HeroesCollectionView: UICollectionView {
     
     private enum LayoutConstants {
         static let minimumSectionSpacing: CGFloat = 1
-        static let minimumItemSpacing: CGFloat = 1
-        static let numberOfItemsPerRow: CGFloat = 3
+        static let minimumCellSpacing: CGFloat = 1
+        static let numberOfCellsPerRow: CGFloat = 3
     }
     
     // MARK: - Initilization
@@ -75,16 +75,16 @@ extension HeroesCollectionView: UICollectionViewDelegate {
 extension HeroesCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        guard let cellsCount = dataSourceDelegate?.heroesCollectionViewCellsCount(self) else { return 0 }
+        guard let heroCellsCount = dataSourceDelegate?.heroesCollectionViewCellsCount(self) else { return 0 }
         
-        return cellsCount
+        return heroCellsCount
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReuseId.heroCell, for: indexPath)
+        let heroCell = collectionView.dequeueReusableCell(withReuseIdentifier: ReuseId.heroCell, for: indexPath)
         
-        return cell
+        return heroCell
     }
 }
 
@@ -94,12 +94,12 @@ extension HeroesCollectionView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let paddingSpace = LayoutConstants.minimumItemSpacing * (LayoutConstants.numberOfItemsPerRow - 1)
+        let paddingSpace = LayoutConstants.minimumCellSpacing * (LayoutConstants.numberOfCellsPerRow - 1)
         let availableWidth = collectionView.bounds.width - paddingSpace
-        let widthPerItem = availableWidth / LayoutConstants.numberOfItemsPerRow
-        let itemSize = CGSize(width: widthPerItem, height: widthPerItem)
+        let widthPerCell = availableWidth / LayoutConstants.numberOfCellsPerRow
+        let cellSize = CGSize(width: widthPerCell, height: widthPerCell)
         
-        return itemSize
+        return cellSize
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -113,8 +113,8 @@ extension HeroesCollectionView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        let itemSpacing = LayoutConstants.minimumItemSpacing
+        let cellSpacing = LayoutConstants.minimumCellSpacing
         
-        return itemSpacing
+        return cellSpacing
     }
 }
