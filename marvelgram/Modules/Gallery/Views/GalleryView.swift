@@ -110,8 +110,8 @@ extension GalleryView: HeroesCollectionViewActionsDelegate {
 // MARK: - HeroesCollectionViewDataSourceDelegate
 
 extension GalleryView: HeroesCollectionViewDataSourceDelegate {
-    func heroesCollectionView(_ heroesCollectionView: HeroesCollectionView, getHeroModelWithIndex index: Int) -> HeroModel? {
-        return uiDelegate?.galleryView(self, getHeroModelWithIndex: index)
+    func heroesCollectionView(_ heroesCollectionView: HeroesCollectionView, getHeroCellModelWithIndex index: Int) -> HeroCellModel? {
+        return uiDelegate?.galleryView(self, getHeroCellModelWithIndex: index)
     }
     
     func heroesCollectionViewCellsCount(_ heroesCollectionView: HeroesCollectionView) -> Int? {

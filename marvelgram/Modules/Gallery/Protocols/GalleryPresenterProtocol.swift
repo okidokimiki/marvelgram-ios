@@ -12,6 +12,6 @@ protocol GalleryPresenterProtocol {
     
     func handleDidAppearingView()
     
-    func getHeroModelsCount() -> Int?
-    func getHeroModel(with index: Int) -> HeroModel
+    func getHeroCellModelsCount() -> Int?
+    func getHeroCellModel(with index: Int) -> HeroCellModel
 }

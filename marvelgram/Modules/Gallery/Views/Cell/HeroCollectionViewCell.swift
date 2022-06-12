@@ -44,7 +44,7 @@ class HeroCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Public Methods
     
-    func configureCellWith(_ model: HeroModel) {
+    func configureCellWith(_ model: HeroCellModel) {
         heroImageView.loadImageWith(urlString: model.url)
     }
     
