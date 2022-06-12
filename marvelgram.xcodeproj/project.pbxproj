@@ -97,8 +97,6 @@
 				04FE0A40284FCAF100839CBF /* Protocols */,
 				04FE0A3B284FCA2A00839CBF /* Assembly */,
 				04C5C1B6284FF7430096D272 /* DataSource */,
-				04C5C1AF284FEDD90096D272 /* Models */,
-				04C5C1AC284FED180096D272 /* Entity */,
 				04C5C19D284FDA220096D272 /* Presenters */,
 				04FE0A3A284FCA2200839CBF /* Views */,
 			);
@@ -151,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				04C5C1B7284FF77B0096D272 /* GalleryDataSource.swift */,
+				04C5C1AF284FEDD90096D272 /* Models */,
 			);
 			path = DataSource;
 			sourceTree = "<group>";
@@ -238,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				04FE0A34284FC9C700839CBF /* App */,
+				04C5C1AC284FED180096D272 /* Entity */,
 				04C5C1A9284FEC540096D272 /* Services */,
 				04C5C1B928500EE70096D272 /* Repository */,
 				04FE0A39284FCA1B00839CBF /* Modules */,
