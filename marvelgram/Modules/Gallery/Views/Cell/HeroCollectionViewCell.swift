@@ -23,8 +23,8 @@ class HeroCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        addSubviews()
         configureCollectionViewCell()
+        addSubviews()
     }
     
     required init?(coder: NSCoder) {
@@ -33,13 +33,13 @@ class HeroCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Private Methods
     
+    private func configureCollectionViewCell() {
+        backgroundColor = UIColor(color: .accent1)
+    }
+    
     private func addSubviews() {
         addSubview(heroImageView)
         activateHeroImageViewConstraints()
-    }
-    
-    private func configureCollectionViewCell() {
-        backgroundColor = UIColor(color: .accent1)
     }
     
     // MARK: - Public Methods
