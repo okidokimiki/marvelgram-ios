@@ -35,14 +35,14 @@ class NetworkManager {
             return
         }
         
-        let downloadTask = session.downloadTask(with: heroesURL) { urlFile, _, _ in
-            guard let urlFile = urlFile else {
+        let downloadTask = session.downloadTask(with: heroesURL) { urlOrNil, _, _ in
+            guard let fileURL = urlOrNil else {
                 print("failure: couldn't download file by url: \(heroesURL.path)")
                 completion(.failure(.noData))
                 return
             }
             
-            completion(.success(urlFile))
+            completion(.success(fileURL))
         }
         
         downloadTask.resume()
