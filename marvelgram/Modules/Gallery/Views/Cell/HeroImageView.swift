@@ -13,7 +13,9 @@ class HeroImageView: UIImageView {
     private var imageCache = ImageCache.shared
     private var lastImageURLStringUsedToLoadImage: String?
     
-    let activityIndicatorView = HeroImageView.makeActivityIndicatorView()
+    private lazy var activityIndicatorView: UIActivityIndicatorView = {
+        return HeroImageView.makeActivityIndicatorView()
+    }()
     
     // MARK: - Initialization
     
@@ -46,8 +48,8 @@ class HeroImageView: UIImageView {
             case .success(let image):
                 DispatchQueue.main.async {
                     if self.lastImageURLStringUsedToLoadImage == urlString {
-                        self.image = image
                         self.activityIndicatorView.stopAnimating()
+                        self.image = image
                     }
                 }
             case .failure(let error):
@@ -69,8 +71,6 @@ class HeroImageView: UIImageView {
     }
 
     private func makeAndResumeDataTaskWith(url: URL, completion: @escaping (Result<UIImage, Error>) -> Void) {
-        activityIndicatorView.startAnimating()
-        
         let task = URLSession.shared.dataTask(with: url) { resumeDataOrNil, _, errorOrNil in
             if let error = errorOrNil {
                 print("failed to load image with error: \(error.localizedDescription)")
@@ -95,6 +95,7 @@ class HeroImageView: UIImageView {
     
     static func makeActivityIndicatorView() -> UIActivityIndicatorView {
         let loader = UIActivityIndicatorView(style: .large)
+        loader.startAnimating()
         loader.translatesAutoresizingMaskIntoConstraints = false
         
         return loader
