@@ -10,6 +10,7 @@ import UIKit
 class HeroImageView: UIImageView {
     // MARK: - Private Properties
     
+    private let session = URLSession.shared
     private var imageCache = ImageCache.shared
     private var lastImageURLStringUsedToLoadImage: String?
     
@@ -71,7 +72,7 @@ class HeroImageView: UIImageView {
     }
 
     private func makeAndResumeDataTaskWith(url: URL, completion: @escaping (Result<UIImage, Error>) -> Void) {
-        let task = URLSession.shared.dataTask(with: url) { resumeDataOrNil, _, errorOrNil in
+        let task = session.dataTask(with: url) { resumeDataOrNil, _, errorOrNil in
             if let error = errorOrNil {
                 print("failed to load image with error: \(error.localizedDescription)")
             }
