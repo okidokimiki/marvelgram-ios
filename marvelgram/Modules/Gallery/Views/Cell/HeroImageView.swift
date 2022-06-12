@@ -39,9 +39,6 @@ class HeroImageView: UIImageView {
             return
         }
         
-        activityIndicatorView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        activityIndicatorView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        
         guard let url = URL(string: urlString) else { return }
         
         makeAndResumeDataTaskWith(url: url) { [unowned self] result in
@@ -68,6 +65,7 @@ class HeroImageView: UIImageView {
     
     private func addSubviews() {
         addSubview(activityIndicatorView)
+        activateActivityIndicatorViewConstraints()
     }
 
     private func makeAndResumeDataTaskWith(url: URL, completion: @escaping (Result<UIImage, Error>) -> Void) {
@@ -100,5 +98,14 @@ class HeroImageView: UIImageView {
         loader.translatesAutoresizingMaskIntoConstraints = false
         
         return loader
+    }
+    
+    // MARK: - Layout
+    
+    private func activateActivityIndicatorViewConstraints() {
+        NSLayoutConstraint.activate([
+            activityIndicatorView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            activityIndicatorView.centerYAnchor.constraint(equalTo: centerYAnchor)
+        ])
     }
 }
