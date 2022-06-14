@@ -23,14 +23,14 @@ class NetworkManager {
     private let session = URLSession.shared
     private let decoder = JSONDecoder()
     
-    private enum Constants {
-        static let heroesUrlString = "https://static.upstarts.work/tests/marvelgram/klsZdDg50j2.json"
+    private enum JsonUrlStrings {
+        static let upstartsMarvelgram = "https://static.upstarts.work/tests/marvelgram/klsZdDg50j2.json"
     }
     
     // MARK: - Public Methods
     
     func fetchHeroesConfig(completion: @escaping (Result<URL, NetworkError>) -> Void) {
-        guard let heroesUrl = URL(string: Constants.heroesUrlString) else {
+        guard let heroesUrl = URL(string: JsonUrlStrings.upstartsMarvelgram) else {
             completion(.failure(.invalidURL))
             return
         }
@@ -49,7 +49,7 @@ class NetworkManager {
     }
     
     func fetchHeroes(completion: @escaping (Result<[Hero], NetworkError>) -> Void) {
-        guard let heroesURL = URL(string: Constants.heroesUrlString) else {
+        guard let heroesURL = URL(string: JsonUrlStrings.upstartsMarvelgram) else {
             completion(.failure(.invalidURL))
             return
         }
