@@ -8,7 +8,7 @@
 import Foundation
 
 enum FontName: String {
-    case sfPro = "SF-Pro"
+    case sfProRegular = "SFPro-Regular"
 
     var value: String {
         return self.rawValue

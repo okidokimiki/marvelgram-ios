@@ -8,21 +8,21 @@
 import UIKit
 
 enum Typography {
-    /// pt34, sfPro
+    /// pt34, sfProRegular
     case display1
-    /// pt17, sfPro
+    /// pt17, sfProRegular
     case display2
-    /// pt14, sfPro
+    /// pt14, sfProRegular
     case paragraph
     
     var value: UIFont? {
         switch self {
         case .display1:
-            return UIFont.makeFontWith(name: .sfPro, size: .pt34)
+            return UIFont.makeFontWith(name: .sfProRegular, size: .pt34)
         case .display2:
-            return UIFont.makeFontWith(name: .sfPro, size: .pt17)
+            return UIFont.makeFontWith(name: .sfProRegular, size: .pt17)
         case .paragraph:
-            return UIFont.makeFontWith(name: .sfPro, size: .pt14)
+            return UIFont.makeFontWith(name: .sfProRegular, size: .pt14)
         }
     }
 }

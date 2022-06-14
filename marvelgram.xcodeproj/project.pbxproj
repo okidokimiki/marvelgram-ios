@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04060FCA2859077C00DF93F6 /* SF-Pro.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04060FC92859077C00DF93F6 /* SF-Pro.ttf */; };
 		04968561284FD96E00C1F9A8 /* GalleryViewUiDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04968560284FD96E00C1F9A8 /* GalleryViewUiDelegate.swift */; };
 		04BE3FF62856228500462AE0 /* UIFont + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BE3FF52856228500462AE0 /* UIFont + Extension.swift */; };
 		04BE3FF928563B4200462AE0 /* FontName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BE3FF828563B4200462AE0 /* FontName.swift */; };
@@ -25,7 +26,6 @@
 		04C5C1BB28500F5F0096D272 /* HeroesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1BA28500F5F0096D272 /* HeroesRepository.swift */; };
 		04C5C1BF285019980096D272 /* MarvelBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1BE285019980096D272 /* MarvelBarButtonItem.swift */; };
 		04C5C1CA28514E470096D272 /* Typography.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1C928514E470096D272 /* Typography.swift */; };
-		04C5C1CC285150AB0096D272 /* SF-Pro.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04C5C1CB285150AB0096D272 /* SF-Pro.ttf */; };
 		04C5C1CE285152630096D272 /* UIImage + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1CD285152630096D272 /* UIImage + Extension.swift */; };
 		04C5C1D1285168FA0096D272 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1D0285168FA0096D272 /* ProfileViewController.swift */; };
 		04C5C1D3285169490096D272 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1D2285169490096D272 /* ProfileView.swift */; };
@@ -46,6 +46,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04060FC92859077C00DF93F6 /* SF-Pro.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro.ttf"; sourceTree = "<group>"; };
 		04968560284FD96E00C1F9A8 /* GalleryViewUiDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewUiDelegate.swift; sourceTree = "<group>"; };
 		04BE3FF52856228500462AE0 /* UIFont + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + Extension.swift"; sourceTree = "<group>"; };
 		04BE3FF828563B4200462AE0 /* FontName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontName.swift; sourceTree = "<group>"; };
@@ -64,7 +65,6 @@
 		04C5C1BA28500F5F0096D272 /* HeroesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesRepository.swift; sourceTree = "<group>"; };
 		04C5C1BE285019980096D272 /* MarvelBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelBarButtonItem.swift; sourceTree = "<group>"; };
 		04C5C1C928514E470096D272 /* Typography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typography.swift; sourceTree = "<group>"; };
-		04C5C1CB285150AB0096D272 /* SF-Pro.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro.ttf"; sourceTree = "<group>"; };
 		04C5C1CD285152630096D272 /* UIImage + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Extension.swift"; sourceTree = "<group>"; };
 		04C5C1D0285168FA0096D272 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		04C5C1D2285169490096D272 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -109,7 +109,7 @@
 		04BE3FFC28563B9600462AE0 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				04C5C1CB285150AB0096D272 /* SF-Pro.ttf */,
+				04060FC92859077C00DF93F6 /* SF-Pro.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -400,7 +400,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04C5C1CC285150AB0096D272 /* SF-Pro.ttf in Resources */,
+				04060FCA2859077C00DF93F6 /* SF-Pro.ttf in Resources */,
 				04FE0A29284FC90B00839CBF /* LaunchScreen.storyboard in Resources */,
 				04FE0A26284FC90B00839CBF /* Assets.xcassets in Resources */,
 			);
