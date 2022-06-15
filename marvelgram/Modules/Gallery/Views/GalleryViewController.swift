@@ -46,12 +46,12 @@ class GalleryViewController: UIViewController {
 // MARK: - GalleryViewUiDelegate
 
 extension GalleryViewController: GalleryViewUiDelegate {
-    func galleryView(_ galleryView: GalleryView, getHeroViewModelWithIndex index: Int) -> HeroViewModel? {
-        return presenter?.getHeroViewModel(with: index)
+    func galleryView(_ galleryView: GalleryView, getHeroCellModelWithIndex index: Int) -> HeroCellModel? {
+        return presenter?.getHeroCellModel(with: index)
     }
     
     func galleryViewCellsCount(_ galleryView: GalleryView) -> Int? {
-        return presenter?.getHeroViewModelsCount()
+        return presenter?.getHeroCellModelsCount()
     }
 }
 

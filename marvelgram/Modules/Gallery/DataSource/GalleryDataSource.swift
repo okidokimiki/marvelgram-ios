@@ -8,5 +8,5 @@
 import Foundation
 
 struct GalleryDataSource {
-    var heroViewModel: [HeroViewModel] = []
+    var heroCellModels: [HeroCellModel] = []
 }

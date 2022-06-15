@@ -11,7 +11,7 @@ protocol HeroesCollectionViewActionsDelegate: AnyObject {
 }
 
 protocol HeroesCollectionViewDataSourceDelegate: AnyObject {
-    func heroesCollectionView(_ heroesCollectionView: HeroesCollectionView, getHeroViewModelWithIndex index: Int) -> HeroViewModel?
+    func heroesCollectionView(_ heroesCollectionView: HeroesCollectionView, getHeroCellModelWithIndex index: Int) -> HeroCellModel?
     func heroesCollectionViewCellsCount(_ heroesCollectionView: HeroesCollectionView) -> Int?
 }
 
@@ -29,8 +29,8 @@ class HeroesCollectionView: UICollectionView {
     
     private enum LayoutConstants {
         static let minimumSectionSpacing: CGFloat = 1
-        static let minimumItemSpacing: CGFloat = 1
-        static let numberOfItemsPerRow: CGFloat = 3
+        static let minimumCellSpacing: CGFloat = 1
+        static let numberOfCellsPerRow: Int = 3
     }
     
     // MARK: - Initilization
@@ -63,10 +63,10 @@ extension HeroesCollectionView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         guard
             let heroCell = cell as? HeroCollectionViewCell,
-            let viewModel = dataSourceDelegate?.heroesCollectionView(self, getHeroViewModelWithIndex: indexPath.row)
+            let heroModel = dataSourceDelegate?.heroesCollectionView(self, getHeroCellModelWithIndex: indexPath.row)
         else { return }
         
-        heroCell.configurePerCellWith(viewModel)
+        heroCell.configureCellWith(heroModel)
     }
 }
 
@@ -75,16 +75,16 @@ extension HeroesCollectionView: UICollectionViewDelegate {
 extension HeroesCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        guard let cellsCount = dataSourceDelegate?.heroesCollectionViewCellsCount(self) else { return 0 }
+        guard let heroCellsCount = dataSourceDelegate?.heroesCollectionViewCellsCount(self) else { return 0 }
         
-        return cellsCount
+        return heroCellsCount
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReuseId.heroCell, for: indexPath)
+        let heroCell = collectionView.dequeueReusableCell(withReuseIdentifier: ReuseId.heroCell, for: indexPath)
         
-        return cell
+        return heroCell
     }
 }
 
@@ -94,12 +94,12 @@ extension HeroesCollectionView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let paddingSpace = LayoutConstants.minimumItemSpacing * (LayoutConstants.numberOfItemsPerRow - 1)
+        let paddingSpace = LayoutConstants.minimumCellSpacing * CGFloat(LayoutConstants.numberOfCellsPerRow - 1)
         let availableWidth = collectionView.bounds.width - paddingSpace
-        let widthPerItem = availableWidth / LayoutConstants.numberOfItemsPerRow
-        let itemSize = CGSize(width: widthPerItem, height: widthPerItem)
+        let widthPerCell = availableWidth / CGFloat(LayoutConstants.numberOfCellsPerRow)
+        let cellSize = CGSize(width: widthPerCell, height: widthPerCell)
         
-        return itemSize
+        return cellSize
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -113,8 +113,8 @@ extension HeroesCollectionView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        let itemSpacing = LayoutConstants.minimumItemSpacing
+        let cellSpacing = LayoutConstants.minimumCellSpacing
         
-        return itemSpacing
+        return cellSpacing
     }
 }

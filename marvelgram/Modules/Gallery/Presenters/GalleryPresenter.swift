@@ -32,9 +32,9 @@ class GalleryPresenter {
     private func fetchHeroesAndReloadCollectionView() {
         view?.showActivityIndicator(true)
         
-        heroesRepository.getHeroes { heroes in
-            let viewModels = heroes.map { HeroViewModel(hero: $0) }
-            self.galleryDataSource.heroViewModel = viewModels
+        heroesRepository.getHeroes { [unowned self] heroes in
+            let models = heroes.map { HeroCellModel(hero: $0) }
+            self.galleryDataSource.heroCellModels = models
             
             DispatchQueue.main.async {
                 self.view?.showActivityIndicator(false)
@@ -51,11 +51,11 @@ extension GalleryPresenter: GalleryPresenterProtocol {
         fetchHeroesAndReloadCollectionView()
     }
     
-    func getHeroViewModelsCount() -> Int? {
-        return galleryDataSource.heroViewModel.count
+    func getHeroCellModelsCount() -> Int? {
+        return galleryDataSource.heroCellModels.count
     }
     
-    func getHeroViewModel(with index: Int) -> HeroViewModel {
-        return galleryDataSource.heroViewModel[index]
+    func getHeroCellModel(with index: Int) -> HeroCellModel {
+        return galleryDataSource.heroCellModels[index]
     }
 }
