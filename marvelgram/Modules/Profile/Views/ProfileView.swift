@@ -149,7 +149,6 @@ class ProfileView: UIView {
             explMoreCollectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor,
                                                              constant: -LayoutConstants.padding),
             explMoreCollectionView.heightAnchor.constraint(equalToConstant: LayoutConstants.collectionViewHeightAnchor)
-//            explMoreCollectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
         ])
     }
 }
