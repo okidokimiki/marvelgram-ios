@@ -1,5 +1,5 @@
 //
-//  ProfileViewController.swift
+//  DetailsViewController.swift
 //  marvelgram
 //
 //  Created by Mikhail Chaus on 09.06.2022.
@@ -7,15 +7,15 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+class DetailsViewController: UIViewController {
     // MARK: - Public Properties
     
-    var presenter: ProfilePresenterProtocol?
+    var presenter: DetailsPresenterProtocol?
     
     // MARK: - UIViewController Lifecycle
     
     override func loadView() {
-        let view = ProfileView()
+        let view = DetailsView()
         view.uiDelegate = self
         self.view = view
     }
@@ -25,12 +25,12 @@ class ProfileViewController: UIViewController {
     }
 }
 
-// MARK: - ProfileViewUiDelegate
+// MARK: - DetailsViewUiDelegate
 
-extension ProfileViewController: ProfileViewUiDelegate {
+extension DetailsViewController: DetailsViewUiDelegate {
 }
 
-// MARK: - ProfileViewProtocol
+// MARK: - DetailsViewProtocol
 
-extension ProfileViewController: ProfileViewProtocol {
+extension DetailsViewController: DetailsViewProtocol {
 }

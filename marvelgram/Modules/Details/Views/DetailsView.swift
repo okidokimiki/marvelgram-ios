@@ -1,5 +1,5 @@
 //
-//  ProfileView.swift
+//  DetailsView.swift
 //  marvelgram
 //
 //  Created by Mikhail Chaus on 09.06.2022.
@@ -7,10 +7,10 @@
 
 import UIKit
 
-class ProfileView: UIView {
+class DetailsView: UIView {
     // MARK: - Public Properties
     
-    weak var uiDelegate: ProfileViewUiDelegate?
+    weak var uiDelegate: DetailsViewUiDelegate?
     
     // MARK: - Private Properties
     
@@ -27,15 +27,15 @@ class ProfileView: UIView {
     }()
     
     private lazy var heroDescrpLabel: UILabel = {
-        return ProfileView.makeHeroDescrpLabel()
+        return DetailsView.makeHeroDescrpLabel()
     }()
     
     private lazy var explMoreLabel: UILabel = {
-        return ProfileView.makeExplMoreLabel()
+        return DetailsView.makeExplMoreLabel()
     }()
     
     private lazy var explMoreCollectionView: ExploreMoreCollectionView = {
-        return ProfileView.makeExplMoreCollectionView(self, self)
+        return DetailsView.makeExplMoreCollectionView(self, self)
     }()
     
     // MARK: - Initilization
@@ -155,10 +155,10 @@ class ProfileView: UIView {
 
 // MARK: - ExploreMoreCollectionViewActionsDelegate
 
-extension ProfileView: ExploreMoreCollectionViewActionsDelegate {
+extension DetailsView: ExploreMoreCollectionViewActionsDelegate {
 }
 
 // MARK: - ExploreMoreCollectionViewDataSourceDelegate
 
-extension ProfileView: ExploreMoreCollectionViewDataSourceDelegate {
+extension DetailsView: ExploreMoreCollectionViewDataSourceDelegate {
 }
