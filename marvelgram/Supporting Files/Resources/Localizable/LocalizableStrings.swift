@@ -9,6 +9,7 @@ import Foundation
 
 enum LocalizableStrings: String {
     case exploreMoreTitle = "exploreMore.title"
+    case spideySubtitle = "spidey.subtitle"
     
     // MARK: - localizedString
     

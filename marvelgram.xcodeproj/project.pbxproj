@@ -10,6 +10,8 @@
 		04060FCA2859077C00DF93F6 /* SF-Pro.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04060FC92859077C00DF93F6 /* SF-Pro.ttf */; };
 		04060FD12859343C00DF93F6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 04060FD32859343C00DF93F6 /* Localizable.strings */; };
 		04060FD52859345300DF93F6 /* LocalizableStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04060FD42859345300DF93F6 /* LocalizableStrings.swift */; };
+		04060FD928593BBD00DF93F6 /* ExploreMoreCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04060FD828593BBD00DF93F6 /* ExploreMoreCollectionView.swift */; };
+		04060FDB28593BEC00DF93F6 /* ExploreMoreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04060FDA28593BEC00DF93F6 /* ExploreMoreCollectionViewCell.swift */; };
 		04968561284FD96E00C1F9A8 /* GalleryViewUiDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04968560284FD96E00C1F9A8 /* GalleryViewUiDelegate.swift */; };
 		04BE3FF62856228500462AE0 /* UIFont + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BE3FF52856228500462AE0 /* UIFont + Extension.swift */; };
 		04BE3FF928563B4200462AE0 /* FontName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BE3FF828563B4200462AE0 /* FontName.swift */; };
@@ -51,6 +53,8 @@
 		04060FC92859077C00DF93F6 /* SF-Pro.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro.ttf"; sourceTree = "<group>"; };
 		04060FD22859343C00DF93F6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		04060FD42859345300DF93F6 /* LocalizableStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableStrings.swift; sourceTree = "<group>"; };
+		04060FD828593BBD00DF93F6 /* ExploreMoreCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreMoreCollectionView.swift; sourceTree = "<group>"; };
+		04060FDA28593BEC00DF93F6 /* ExploreMoreCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreMoreCollectionViewCell.swift; sourceTree = "<group>"; };
 		04968560284FD96E00C1F9A8 /* GalleryViewUiDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewUiDelegate.swift; sourceTree = "<group>"; };
 		04BE3FF52856228500462AE0 /* UIFont + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + Extension.swift"; sourceTree = "<group>"; };
 		04BE3FF828563B4200462AE0 /* FontName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontName.swift; sourceTree = "<group>"; };
@@ -104,10 +108,19 @@
 		04060FD02859342900DF93F6 /* Localizable */ = {
 			isa = PBXGroup;
 			children = (
-				04060FD32859343C00DF93F6 /* Localizable.strings */,
 				04060FD42859345300DF93F6 /* LocalizableStrings.swift */,
+				04060FD32859343C00DF93F6 /* Localizable.strings */,
 			);
 			path = Localizable;
+			sourceTree = "<group>";
+		};
+		04060FD62859352D00DF93F6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				04C5C1C828514ABD0096D272 /* Typography */,
+				04060FD02859342900DF93F6 /* Localizable */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		04BE3FF728563B0500462AE0 /* Font Configuration */ = {
@@ -234,6 +247,8 @@
 			children = (
 				04C5C1D0285168FA0096D272 /* ProfileViewController.swift */,
 				04C5C1D2285169490096D272 /* ProfileView.swift */,
+				04060FD828593BBD00DF93F6 /* ExploreMoreCollectionView.swift */,
+				04060FDA28593BEC00DF93F6 /* ExploreMoreCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -346,8 +361,7 @@
 			isa = PBXGroup;
 			children = (
 				04FE0A37284FC9F500839CBF /* Extensions */,
-				04C5C1C828514ABD0096D272 /* Typography */,
-				04060FD02859342900DF93F6 /* Localizable */,
+				04060FD62859352D00DF93F6 /* Resources */,
 				04FE0A30284FC98600839CBF /* ModuleBuilder.swift */,
 				04FE0A27284FC90B00839CBF /* LaunchScreen.storyboard */,
 				04FE0A2A284FC90B00839CBF /* Info.plist */,
@@ -480,6 +494,8 @@
 				04C5C1AB284FEC7A0096D272 /* NetworkManager.swift in Sources */,
 				04C5C1DA28516B390096D272 /* ProfilePresenter.swift in Sources */,
 				04BE3FF928563B4200462AE0 /* FontName.swift in Sources */,
+				04060FDB28593BEC00DF93F6 /* ExploreMoreCollectionViewCell.swift in Sources */,
+				04060FD928593BBD00DF93F6 /* ExploreMoreCollectionView.swift in Sources */,
 				04C5C1A1284FDA5D0096D272 /* GalleryPresenterProtocol.swift in Sources */,
 				04C5C19F284FDA3D0096D272 /* GalleryPresenter.swift in Sources */,
 				04FE0A31284FC98600839CBF /* ModuleBuilder.swift in Sources */,

@@ -1,0 +1,32 @@
+//
+//  ExploreMoreCollectionViewCell.swift
+//  marvelgram
+//
+//  Created by Mikhail Chaus on 14.06.2022.
+//
+
+import UIKit
+
+class ExploreMoreCollectionViewCell: UICollectionViewCell {
+    // MARK: - Public Properties
+    
+    static let cellID = String(describing: ExploreMoreCollectionViewCell.self)
+    
+    // MARK: - Initilization
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        configureCollectionViewCell()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Private Methods
+    
+    private func configureCollectionViewCell() {
+        backgroundColor = .white
+    }
+}
