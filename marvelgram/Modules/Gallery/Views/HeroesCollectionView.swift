@@ -30,7 +30,7 @@ class HeroesCollectionView: UICollectionView {
     private enum LayoutConstants {
         static let minimumSectionSpacing: CGFloat = 1
         static let minimumCellSpacing: CGFloat = 1
-        static let numberOfCellsPerRow: CGFloat = 3
+        static let numberOfCellsPerRow: Int = 3
     }
     
     // MARK: - Initilization
@@ -94,9 +94,9 @@ extension HeroesCollectionView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let paddingSpace = LayoutConstants.minimumCellSpacing * (LayoutConstants.numberOfCellsPerRow - 1)
+        let paddingSpace = LayoutConstants.minimumCellSpacing * CGFloat(LayoutConstants.numberOfCellsPerRow - 1)
         let availableWidth = collectionView.bounds.width - paddingSpace
-        let widthPerCell = availableWidth / LayoutConstants.numberOfCellsPerRow
+        let widthPerCell = availableWidth / CGFloat(LayoutConstants.numberOfCellsPerRow)
         let cellSize = CGSize(width: widthPerCell, height: widthPerCell)
         
         return cellSize
