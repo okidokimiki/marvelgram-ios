@@ -14,7 +14,7 @@ class HeroCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Private Properties
     
-    private lazy var heroImageView: CharacterImageView = {
+    private lazy var characterImageView: CharacterImageView = {
         return CharacterImageView(frame: .zero)
     }()
     
@@ -38,13 +38,13 @@ class HeroCollectionViewCell: UICollectionViewCell {
     }
     
     private func setupViews() {
-        setupView(heroImageView)
+        setupView(characterImageView)
     }
     
     // MARK: - Public Methods
     
     func configure(with model: HeroCellModel) {
-        heroImageView.loadImageWith(urlString: model.url)
+        characterImageView.loadImageWith(urlString: model.url)
     }
     
     // MARK: - Layout
@@ -57,10 +57,10 @@ class HeroCollectionViewCell: UICollectionViewCell {
     
     private func activateHeroImageViewConstraints() {
         NSLayoutConstraint.activate([
-            heroImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            heroImageView.topAnchor.constraint(equalTo: topAnchor),
-            heroImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            heroImageView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            characterImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            characterImageView.topAnchor.constraint(equalTo: topAnchor),
+            characterImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            characterImageView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 }

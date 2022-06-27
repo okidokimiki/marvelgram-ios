@@ -19,7 +19,7 @@ class GalleryView: UIView {
     }()
     
     private lazy var activityIndicatorView: UIActivityIndicatorView = {
-        return GalleryView.makeActivityIndicatorView()
+        return UIActivityIndicatorView()
     }()
     
     // MARK: - Initilization
@@ -71,12 +71,6 @@ class GalleryView: UIView {
         collectionView.dataSourceDelegate = dataSourceDelegate
         
         return collectionView
-    }
-    
-    static func makeActivityIndicatorView() -> UIActivityIndicatorView {
-        let loader = UIActivityIndicatorView()
-        
-        return loader
     }
     
     // MARK: - Layout

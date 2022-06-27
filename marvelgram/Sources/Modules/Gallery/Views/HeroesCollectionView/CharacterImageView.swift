@@ -1,5 +1,5 @@
 //
-//  HeroImageView.swift
+//  CharacterImageView.swift
 //  marvelgram
 //
 //  Created by Mikhail Chaus on 07.06.2022.
@@ -43,7 +43,9 @@ class CharacterImageView: UIImageView {
         
         guard let url = URL(string: urlString) else { return }
         
-        makeAndResumeDataTaskWith(url: url) { [unowned self] result in
+        makeAndResumeDataTaskWith(url: url) { [weak self] result in
+            guard let self = self else { return }
+            
             switch result {
             case .success(let image):
                 DispatchQueue.main.async {
