@@ -16,7 +16,7 @@ extension UIImage {
     
     // MARK: - Assets Image
     
-    enum Icon: String, CaseIterable {
+    enum Icon: String {
         case marvellogo = "marvel-logo"
     }
 }

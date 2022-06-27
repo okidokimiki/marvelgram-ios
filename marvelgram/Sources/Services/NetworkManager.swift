@@ -7,7 +7,14 @@
 
 import Foundation
 
-class NetworkManager {
+typealias JSONResponseHandler = ((JSONResponse) -> Void)
+
+protocol Networkable {
+    func fetchHeroes(completion: @escaping JSONResponseHandler)
+    func fetchHeroesConfig(completion: @escaping JSONResponseHandler)
+}
+
+class NetworkManager: Networkable {
     // MARK: - Public Properties
     
     static let shared = NetworkManager()
@@ -19,7 +26,7 @@ class NetworkManager {
     
     // MARK: - Public Methods
     
-    func fetchHeroesConfig(completion: @escaping ((JSONResponse) -> Void)) {
+    func fetchHeroesConfig(completion: @escaping JSONResponseHandler) {
         guard let heroesUrl = URL(string: Constants.JsonUrlStrings.upstartsMarvelgram) else {
             completion(.error(.invalidURL))
             return
@@ -39,15 +46,15 @@ class NetworkManager {
     }
     
     // Not used, but stored for my "tests"
-    func fetchHeroes(completion: @escaping ((JSONResponse) -> Void)) {
-        guard let heroesURL = URL(string: Constants.JsonUrlStrings.upstartsMarvelgram) else {
+    func fetchHeroes(completion: @escaping JSONResponseHandler) {
+        guard let heroesUrl = URL(string: Constants.JsonUrlStrings.upstartsMarvelgram) else {
             completion(.error(.invalidURL))
             return
         }
 
-        let task = session.dataTask(with: heroesURL) { dataOrNil, _, _ in
+        let task = session.dataTask(with: heroesUrl) { dataOrNil, _, _ in
             guard let fetchedData = dataOrNil else {
-                print("failure: couldn't get data by url: \(heroesURL.path)")
+                print("failure: couldn't get data by url: \(heroesUrl.path)")
                 completion(.error(.noData))
                 return
             }

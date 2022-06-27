@@ -62,7 +62,7 @@ class DetailView: UIView {
         let label = UILabel()
         label.font = FontLibrary.SFPro.regular14
         label.text = Localization.spideySubtitle.localizedString
-        label.textColor = UIColor(assets: .title1)
+        label.textColor = UIColor(assets: .title)
         label.numberOfLines = Constants.descrpNumberOfLines
         
         return label
@@ -70,7 +70,7 @@ class DetailView: UIView {
     
     static func makeExplMoreLabel() -> UILabel {
         let label = UILabel()
-        label.textColor = UIColor(assets: .title1)
+        label.textColor = UIColor(assets: .title)
         label.font = FontLibrary.SFPro.regular34
         label.text = Localization.exploreMoreTitle.localizedString
         

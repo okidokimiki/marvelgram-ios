@@ -12,7 +12,7 @@ class DetailViewController: UIViewController {
     
     var presenter: DetailViewOutput?
     
-    // MARK: - UIViewController Lifecycle
+    // MARK: - Lifecycle
     
     override func loadView() {
         let view = DetailView()
@@ -25,12 +25,12 @@ class DetailViewController: UIViewController {
     }
 }
 
-// MARK: - DetailsViewUiDelegate
+// MARK: - DetailViewUiDelegate
 
 extension DetailViewController: DetailViewUiDelegate {
 }
 
-// MARK: - DetailsViewProtocol
+// MARK: - DetailViewInput
 
 extension DetailViewController: DetailViewInput {
 }
