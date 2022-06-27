@@ -71,7 +71,7 @@ class DetailView: UIView {
     static func makeExplMoreLabel() -> UILabel {
         let label = UILabel()
         label.textColor = UIColor(assets: .title)
-        label.font = FontLibrary.SFPro.regular34
+        label.font = FontLibrary.SFPro.bold34
         label.text = Localization.exploreMoreTitle.localizedString
         
         return label
