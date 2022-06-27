@@ -31,17 +31,17 @@ class NetworkManager: Networkable {
             completion(.error(.invalidURL))
             return
         }
-
+        
         let downloadTask = session.downloadTask(with: heroesUrl) { urlOrNil, _, _ in
             guard let fetchedConfigUrl = urlOrNil else {
                 print("failure: couldn't download file by url: \(heroesUrl.path)")
                 completion(.error(.noData))
                 return
             }
-
+            
             completion(.success(fetchedConfigUrl))
         }
-
+        
         downloadTask.resume()
     }
     
@@ -51,14 +51,14 @@ class NetworkManager: Networkable {
             completion(.error(.invalidURL))
             return
         }
-
+        
         let task = session.dataTask(with: heroesUrl) { dataOrNil, _, _ in
             guard let fetchedData = dataOrNil else {
                 print("failure: couldn't get data by url: \(heroesUrl.path)")
                 completion(.error(.noData))
                 return
             }
-
+            
             do {
                 let decodedData = try self.decoder.decode([Hero].self, from: fetchedData)
                 completion(.success(decodedData))
@@ -66,7 +66,7 @@ class NetworkManager: Networkable {
                 completion(.error(.decodingError))
             }
         }
-
+        
         task.resume()
     }
 }
