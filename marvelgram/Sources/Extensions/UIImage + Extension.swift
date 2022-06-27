@@ -14,7 +14,7 @@ extension UIImage {
         self.init(named: assets.rawValue)
     }
     
-    // MARK: - Assets Image
+    // MARK: - ImageAssets
     
     enum Icon: String {
         case marvellogo = "marvel-logo"
