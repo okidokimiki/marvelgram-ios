@@ -14,20 +14,12 @@ class DetailView: UIView {
     
     // MARK: - Private Properties
     
-    private enum LayoutConstants {
-        static let padding: CGFloat = 15
-        static let spacing: CGFloat = 18
-        static let maxCountOfLines: Int = 0
-        
-        static let collectionViewHeightAnchor: CGFloat = 120
-    }
-    
-    private lazy var heroImageView: HeroImageView = {
-        return HeroImageView(frame: .zero)
+    private lazy var characterImageView: CharacterImageView = {
+        return CharacterImageView(frame: .zero)
     }()
     
-    private lazy var heroDescrpLabel: UILabel = {
-        return DetailView.makeHeroDescrpLabel()
+    private lazy var descrpLabel: UILabel = {
+        return DetailView.makeDescrpLabel()
     }()
     
     private lazy var explMoreLabel: UILabel = {
@@ -58,20 +50,20 @@ class DetailView: UIView {
     }
     
     private func setupViews() {
-        setupView(heroImageView)
-        setupView(heroDescrpLabel)
+        setupView(characterImageView)
+        setupView(descrpLabel)
         setupView(explMoreLabel)
         setupView(explMoreCollectionView)
     }
     
     // MARK: - Creating Subviews
     
-    static func makeHeroDescrpLabel() -> UILabel {
+    static func makeDescrpLabel() -> UILabel {
         let label = UILabel()
         label.font = FontLibrary.SFPro.regular14
         label.text = Localization.spideySubtitle.localizedString
         label.textColor = UIColor(assets: .title1)
-        label.numberOfLines = LayoutConstants.maxCountOfLines
+        label.numberOfLines = Constants.descrpNumberOfLines
         
         return label
     }
@@ -101,52 +93,56 @@ class DetailView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        activateHeroImageViewConstraints()
-        activateHeroDescrpLabelConstraints()
+        activateCharacterImageViewConstraints()
+        
+        activateDescrpLabelConstraints()
+        _ = descrpLabel.sizeThatFits(bounds.size).height
+        
         activateExploreMoreLabelConstraints()
+        
         activateExploreMoreCollectionViewConstraints()
     }
     
-    private func activateHeroImageViewConstraints() {
+    private func activateCharacterImageViewConstraints() {
         NSLayoutConstraint.activate([
-            heroImageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-            heroImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            heroImageView.heightAnchor.constraint(equalToConstant: bounds.width),
-            heroImageView.widthAnchor.constraint(equalToConstant: bounds.width)
+            characterImageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            characterImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            characterImageView.heightAnchor.constraint(equalToConstant: bounds.width),
+            characterImageView.widthAnchor.constraint(equalToConstant: bounds.width)
         ])
     }
     
-    private func activateHeroDescrpLabelConstraints() {
+    private func activateDescrpLabelConstraints() {
         NSLayoutConstraint.activate([
-            heroDescrpLabel.leadingAnchor.constraint(equalTo: leadingAnchor,
-                                                     constant: LayoutConstants.padding),
-            heroDescrpLabel.topAnchor.constraint(equalTo: heroImageView.bottomAnchor,
-                                                 constant: LayoutConstants.padding),
-            heroDescrpLabel.trailingAnchor.constraint(equalTo: trailingAnchor,
-                                                      constant: -LayoutConstants.padding)
+            descrpLabel.leadingAnchor.constraint(equalTo: leadingAnchor,
+                                                 constant: Constants.AutoLayout.baseOffset),
+            descrpLabel.topAnchor.constraint(equalTo: characterImageView.bottomAnchor,
+                                             constant: Constants.AutoLayout.baseOffset),
+            descrpLabel.trailingAnchor.constraint(equalTo: trailingAnchor,
+                                                  constant: -Constants.AutoLayout.baseOffset)
         ])
-        
-        _ = heroDescrpLabel.sizeThatFits(bounds.size).height
     }
     
     private func activateExploreMoreLabelConstraints() {
         NSLayoutConstraint.activate([
             explMoreLabel.leadingAnchor.constraint(equalTo: leadingAnchor,
-                                                   constant: LayoutConstants.padding),
-            explMoreLabel.topAnchor.constraint(equalTo: heroDescrpLabel.bottomAnchor,
-                                               constant: LayoutConstants.spacing)
+                                                   constant: Constants.AutoLayout.baseOffset),
+            explMoreLabel.topAnchor.constraint(equalTo: descrpLabel.bottomAnchor,
+                                               constant: Constants.AutoLayout.explMoreLabelTopOffset)
         ])
     }
     
     private func activateExploreMoreCollectionViewConstraints() {
+        let collectionView = explMoreCollectionView
         NSLayoutConstraint.activate([
-            explMoreCollectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor,
-                                                            constant: LayoutConstants.padding),
-            explMoreCollectionView.topAnchor.constraint(equalTo: explMoreLabel.bottomAnchor,
-                                                        constant: LayoutConstants.spacing),
-            explMoreCollectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor,
-                                                             constant: -LayoutConstants.padding),
-            explMoreCollectionView.heightAnchor.constraint(equalToConstant: LayoutConstants.collectionViewHeightAnchor)
+            collectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor,
+                                                    constant: Constants.AutoLayout.baseOffset),
+            collectionView.topAnchor.constraint(equalTo: explMoreLabel.bottomAnchor,
+                                                constant: Constants.AutoLayout.explMoreCollectionTopOffset),
+            collectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor,
+                                                     constant: -Constants.AutoLayout.baseOffset),
+            collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor,
+                                                   constant: -Constants.AutoLayout.explMoreCollectionBottomOffset)
         ])
     }
 }
@@ -159,4 +155,21 @@ extension DetailView: ExploreMoreCollectionViewActionsDelegate {
 // MARK: - ExploreMoreCollectionViewDataSourceDelegate
 
 extension DetailView: ExploreMoreCollectionViewDataSourceDelegate {
+}
+
+// MARK: - Constants
+
+private extension DetailView {
+    enum Constants {
+        static let descrpNumberOfLines = 0
+        
+        enum AutoLayout {
+            static let baseOffset: CGFloat = 16
+            
+            static let explMoreLabelTopOffset: CGFloat = 30
+            
+            static let explMoreCollectionTopOffset: CGFloat = 18
+            static let explMoreCollectionBottomOffset: CGFloat = 10
+        }
+    }
 }

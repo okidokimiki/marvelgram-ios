@@ -14,8 +14,8 @@ class HeroCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Private Properties
     
-    private lazy var heroImageView: HeroImageView = {
-        return HeroImageView(frame: .zero)
+    private lazy var heroImageView: CharacterImageView = {
+        return CharacterImageView(frame: .zero)
     }()
     
     // MARK: - Initilization

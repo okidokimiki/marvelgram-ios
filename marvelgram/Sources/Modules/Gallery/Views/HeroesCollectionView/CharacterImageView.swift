@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HeroImageView: UIImageView {
+class CharacterImageView: UIImageView {
     // MARK: - Private Properties
     
     private let session = URLSession.shared
@@ -15,7 +15,7 @@ class HeroImageView: UIImageView {
     private var lastImageURLStringUsedToLoadImage: String?
     
     private lazy var activityIndicatorView: UIActivityIndicatorView = {
-        return HeroImageView.makeActivityIndicatorView()
+        return CharacterImageView.makeActivityIndicatorView()
     }()
     
     // MARK: - Initialization
@@ -74,7 +74,7 @@ class HeroImageView: UIImageView {
                 let taskImageData = resumeDataOrNil,
                 let taskImage = UIImage(data: taskImageData)
             else {
-                print("\(String(describing: HeroImageView.self)) failed to load image from \(url)")
+                print("\(String(describing: CharacterImageView.self)) failed to load image from \(url)")
                 return
             }
             

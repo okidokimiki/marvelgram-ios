@@ -19,16 +19,6 @@ class ExploreMoreCollectionView: UICollectionView {
     weak var actionsDelegate: ExploreMoreCollectionViewActionsDelegate?
     weak var dataSourceDelegate: ExploreMoreCollectionViewDataSourceDelegate?
     
-    // MARK: - Private Properties
-    
-    private enum ReuseId {
-        static let explMoreCell = ExploreMoreCollectionViewCell.cellID
-    }
-    
-    private enum LayoutConstants {
-        static let numberOfCellsPerRow: Int = 10
-        static let padding: CGFloat = 15
-    }
     // MARK: - Initilization
     
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
@@ -46,7 +36,7 @@ class ExploreMoreCollectionView: UICollectionView {
         dataSource = self
         backgroundColor = .none
         showsHorizontalScrollIndicator = false
-        register(ExploreMoreCollectionViewCell.self, forCellWithReuseIdentifier: ReuseId.explMoreCell)
+        register(ExploreMoreCollectionViewCell.self, forCellWithReuseIdentifier: Constants.ReuseId.explMoreCell)
     }
 }
 
@@ -60,14 +50,15 @@ extension ExploreMoreCollectionView: UICollectionViewDelegate {
 extension ExploreMoreCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        let explMoreCellsCount = LayoutConstants.numberOfCellsPerRow
+        let cellsCount = Constants.countOfCellsInSection
         
-        return explMoreCellsCount
+        return cellsCount
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReuseId.explMoreCell, for: indexPath)
+        let reuseIdentifier = Constants.ReuseId.explMoreCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
         
         return cell
     }
@@ -87,8 +78,24 @@ extension ExploreMoreCollectionView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        let cellSpacing = LayoutConstants.padding
+        let cellSpacing = Constants.FlowLayout.spacing
         
         return cellSpacing
+    }
+}
+
+// MARK: - Constants
+
+private extension ExploreMoreCollectionView {
+    enum Constants {
+        static let countOfCellsInSection = 10
+        
+        enum ReuseId {
+            static let explMoreCell = ExploreMoreCollectionViewCell.cellID
+        }
+        
+        enum FlowLayout {
+            static let spacing: CGFloat = 15
+        }
     }
 }

@@ -21,18 +21,6 @@ class HeroesCollectionView: UICollectionView {
     weak var actionsDelegate: HeroesCollectionViewActionsDelegate?
     weak var dataSourceDelegate: HeroesCollectionViewDataSourceDelegate?
     
-    // MARK: - Private Properties
-    
-    private enum ReuseId {
-        static let heroCell = HeroCollectionViewCell.cellID
-    }
-    
-    private enum LayoutConstants {
-        static let minimumSectionSpacing: CGFloat = 1
-        static let minimumCellSpacing: CGFloat = 1
-        static let numberOfCellsPerRow: Int = 3
-    }
-    
     // MARK: - Initilization
     
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
@@ -52,7 +40,7 @@ class HeroesCollectionView: UICollectionView {
         dataSource = self
         showsVerticalScrollIndicator = false
         showsHorizontalScrollIndicator = false
-        register(HeroCollectionViewCell.self, forCellWithReuseIdentifier: ReuseId.heroCell)
+        register(HeroCollectionViewCell.self, forCellWithReuseIdentifier: Constants.ReuseId.heroCell)
     }
 }
 
@@ -62,10 +50,10 @@ extension HeroesCollectionView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         guard
             let heroCell = cell as? HeroCollectionViewCell,
-            let heroModel = dataSourceDelegate?.heroesCollectionView(self, getHeroCellModelWithIndex: indexPath.row)
+            let model = dataSourceDelegate?.heroesCollectionView(self, getHeroCellModelWithIndex: indexPath.row)
         else { return }
         
-        heroCell.configure(with: heroModel)
+        heroCell.configure(with: model)
     }
 }
 
@@ -74,16 +62,17 @@ extension HeroesCollectionView: UICollectionViewDelegate {
 extension HeroesCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        guard let heroCellsCount = dataSourceDelegate?.heroesCollectionViewCellsCount(self) else { return 0 }
+        guard let cellsCount = dataSourceDelegate?.heroesCollectionViewCellsCount(self) else { return 0 }
         
-        return heroCellsCount
+        return cellsCount
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let heroCell = collectionView.dequeueReusableCell(withReuseIdentifier: ReuseId.heroCell, for: indexPath)
+        let reuseIdentifier = Constants.ReuseId.heroCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
         
-        return heroCell
+        return cell
     }
 }
 
@@ -93,9 +82,9 @@ extension HeroesCollectionView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let paddingSpace = LayoutConstants.minimumCellSpacing * CGFloat(LayoutConstants.numberOfCellsPerRow - 1)
+        let paddingSpace = Constants.FlowLayout.minimumCellSpacing * CGFloat(Constants.countOfCellsPerRow - 1)
         let availableWidth = collectionView.bounds.width - paddingSpace
-        let widthPerCell = availableWidth / CGFloat(LayoutConstants.numberOfCellsPerRow)
+        let widthPerCell = availableWidth / CGFloat(Constants.countOfCellsPerRow)
         let cellSize = CGSize(width: widthPerCell, height: widthPerCell)
         
         return cellSize
@@ -104,7 +93,7 @@ extension HeroesCollectionView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        let sectionSpacing = LayoutConstants.minimumSectionSpacing
+        let sectionSpacing = Constants.FlowLayout.minimumSectionSpacing
         
         return sectionSpacing
     }
@@ -112,8 +101,25 @@ extension HeroesCollectionView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        let cellSpacing = LayoutConstants.minimumCellSpacing
+        let cellSpacing = Constants.FlowLayout.minimumCellSpacing
         
         return cellSpacing
+    }
+}
+
+// MARK: - Constants
+
+private extension HeroesCollectionView {
+    enum Constants {
+        static let countOfCellsPerRow = 3
+        
+        enum ReuseId {
+            static let heroCell = HeroCollectionViewCell.cellID
+        }
+        
+        enum FlowLayout {
+            static let minimumSectionSpacing: CGFloat = 1
+            static let minimumCellSpacing: CGFloat = 1
+        }
     }
 }
