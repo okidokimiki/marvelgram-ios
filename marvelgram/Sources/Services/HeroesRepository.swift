@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HeroesRepository {
+final class HeroesRepository {
     // MARK: - Public Properties
     
     static let shared = HeroesRepository()

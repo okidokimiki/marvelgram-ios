@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GalleryViewController: UIViewController {
+final class GalleryViewController: UIViewController {
     // MARK: - Public Properties
     
     var presenter: GalleryViewOutput?

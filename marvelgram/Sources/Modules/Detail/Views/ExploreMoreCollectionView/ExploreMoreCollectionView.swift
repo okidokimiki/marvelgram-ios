@@ -13,7 +13,7 @@ protocol ExploreMoreCollectionViewActionsDelegate: AnyObject {
 protocol ExploreMoreCollectionViewDataSourceDelegate: AnyObject {
 }
 
-class ExploreMoreCollectionView: UICollectionView {
+final class ExploreMoreCollectionView: UICollectionView {
     // MARK: - Public Properties
     
     weak var actionsDelegate: ExploreMoreCollectionViewActionsDelegate?

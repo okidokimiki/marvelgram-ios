@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CharacterImageView: UIImageView {
+final class CharacterImageView: UIImageView {
     // MARK: - Private Properties
     
     private let session = URLSession.shared

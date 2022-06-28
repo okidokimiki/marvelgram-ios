@@ -14,7 +14,7 @@ protocol Networkable {
     func fetchHeroesConfig(completion: @escaping JSONResponseHandler)
 }
 
-class NetworkManager: Networkable {
+final class NetworkManager: Networkable {
     // MARK: - Public Properties
     
     static let shared = NetworkManager()

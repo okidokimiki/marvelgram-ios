@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GalleryView: UIView {
+final class GalleryView: UIView {
     // MARK: - Public Properties
     
     weak var uiDelegate: GalleryViewUiDelegate?

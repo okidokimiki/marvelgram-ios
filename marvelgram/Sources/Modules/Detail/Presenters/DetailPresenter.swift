@@ -7,7 +7,7 @@
 
 import Foundation
 
-class DetailPresenter {
+final class DetailPresenter {
     // MARK: - Public Properties
     
     weak var view: DetailViewInput?

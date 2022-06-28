@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HeroCollectionViewCell: UICollectionViewCell {
+final class HeroCollectionViewCell: UICollectionViewCell {
     // MARK: - Public Properties
     
     static let cellID = String(describing: HeroCollectionViewCell.self)
