@@ -7,7 +7,7 @@
 
 import Foundation
 
-class GalleryPresenter {
+final class GalleryPresenter {
     // MARK: - Public Properties
     
     weak var view: GalleryViewInput?

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ExploreMoreCollectionViewCell: UICollectionViewCell {
+final class ExploreMoreCollectionViewCell: UICollectionViewCell {
     // MARK: - Public Properties
     
     static let cellID = String(describing: ExploreMoreCollectionViewCell.self)

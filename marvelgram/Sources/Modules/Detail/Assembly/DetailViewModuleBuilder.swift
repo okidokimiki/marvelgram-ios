@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DetailViewModuleBuilder: ModuleBuilder {
+final class DetailViewModuleBuilder: ModuleBuilder {
     static func createModule() -> UIViewController {
         let viewController = DetailViewController()
         let presenter = DetailPresenter(view: viewController)

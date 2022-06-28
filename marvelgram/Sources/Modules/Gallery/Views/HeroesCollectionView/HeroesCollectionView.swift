@@ -15,7 +15,7 @@ protocol HeroesCollectionViewDataSourceDelegate: AnyObject {
     func heroesCollectionViewCellsCount(_ heroesCollectionView: HeroesCollectionView) -> Int?
 }
 
-class HeroesCollectionView: UICollectionView {
+final class HeroesCollectionView: UICollectionView {
     // MARK: - Public Properties
     
     weak var actionsDelegate: HeroesCollectionViewActionsDelegate?

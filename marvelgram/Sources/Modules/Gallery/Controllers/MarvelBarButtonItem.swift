@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MarvelBarButtonItem: UIBarButtonItem {
+final class MarvelBarButtonItem: UIBarButtonItem {
     // MARK: - Initilization
     
     override init() {

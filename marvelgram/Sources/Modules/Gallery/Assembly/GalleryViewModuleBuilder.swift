@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GalleryViewModuleBuilder: ModuleBuilder {
+final class GalleryViewModuleBuilder: ModuleBuilder {
     static func createModule() -> UIViewController {
         let viewController = GalleryViewController()
         let galleryDataSource = GalleryDataSource()
