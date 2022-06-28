@@ -7,13 +7,7 @@
 
 import UIKit
 
-typealias HeroConfigResponseHandler = (([Hero]) -> Void)
-
-protocol HeroesRepositorieble {
-    func getHeroes(completion: @escaping HeroConfigResponseHandler)
-}
-
-final class HeroesRepository: HeroesRepositorieble {
+final class HeroesRepository {
     // MARK: - Public Properties
     
     static let shared = HeroesRepository()
@@ -31,30 +25,7 @@ final class HeroesRepository: HeroesRepositorieble {
         let destURL = getHeroesConfigDestURL()
         heroes = makeHeroesFromConfig(at: destURL)
     }
-    
-    // MARK: - Public Methods
-    
-    func getHeroes(completion: @escaping HeroConfigResponseHandler) {
-        networkService.fetchHeroesConfig { [weak self] result in
-            guard let self = self else { return }
-            
-            switch result {
-            case .success(let config):
-                guard let configUrl = config as? URL else { return }
-                let newHeroesConfig = self.makeHeroesFromConfig(at: configUrl)
-                
-                if newHeroesConfig != self.heroes {
-                    self.saveFile(from: configUrl, to: Constants.folderName)
-                    self.heroes = newHeroesConfig
-                }
-            case .error(let netError):
-                print(netError.localizedDescription)
-            }
-            
-            completion(self.heroes)
-        }
-    }
-    
+        
     // MARK: - Private Methods
     
     private func getHeroesConfigDestURL() -> URL? {
@@ -110,6 +81,31 @@ final class HeroesRepository: HeroesRepositorieble {
             try fileManager.createDirectory(at: folderURL, withIntermediateDirectories: true)
         } catch {
             print(error.localizedDescription)
+        }
+    }
+}
+
+// MARK: - HeroesRepositorieble
+
+extension HeroesRepository: HeroesRepositorieble {
+    func getHeroes(completion: @escaping HeroConfigResponseHandler) {
+        networkService.fetchHeroesConfig { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let config):
+                guard let configUrl = config as? URL else { return }
+                let newHeroesConfig = self.makeHeroesFromConfig(at: configUrl)
+                
+                if newHeroesConfig != self.heroes {
+                    self.saveFile(from: configUrl, to: Constants.folderName)
+                    self.heroes = newHeroesConfig
+                }
+            case .error(let netError):
+                print(netError.localizedDescription)
+            }
+            
+            completion(self.heroes)
         }
     }
 }

@@ -7,14 +7,7 @@
 
 import Foundation
 
-typealias JSONResponseHandler = ((JSONResponse) -> Void)
-
-protocol Networkable {
-    func fetchHeroes(completion: @escaping JSONResponseHandler)
-    func fetchHeroesConfig(completion: @escaping JSONResponseHandler)
-}
-
-final class NetworkService: Networkable {
+final class NetworkService {
     // MARK: - Public Properties
     
     static let shared = NetworkService()
@@ -23,9 +16,11 @@ final class NetworkService: Networkable {
     
     private let session = URLSession.shared
     private let decoder = JSONDecoder()
-    
-    // MARK: - Public Methods
-    
+}
+
+// MARK: - HeroesNetworkable
+
+extension NetworkService: HeroesNetworkable {
     func fetchHeroesConfig(completion: @escaping JSONResponseHandler) {
         guard let heroesUrl = URL(string: Constants.JsonUrlStrings.upstartsMarvelgram) else {
             completion(.error(.invalidURL))

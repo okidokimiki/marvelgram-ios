@@ -14,7 +14,7 @@ final class MainPresenter {
     
     // MARK: - Private Properties
     
-    private let repository = HeroesRepository.shared // Точно ли HeroesRepository?
+    private let repository = HeroesRepository.shared
     private var dataSource: MainDataSource
     
     // MARK: - Initilization
