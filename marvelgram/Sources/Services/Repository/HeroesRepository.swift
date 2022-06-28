@@ -14,9 +14,11 @@ final class HeroesRepository {
     
     // MARK: - Private Properties
     
-    private let networkService = NetworkService.shared
+    private let fileManagerDirUrls = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)
     private let fileManager = FileManager.default
     private let decoder = JSONDecoder()
+    
+    private let networkService = NetworkService.shared
     private var heroes: [Hero] = []
     
     // MARK: - Initilization
@@ -29,7 +31,7 @@ final class HeroesRepository {
     // MARK: - Private Methods
     
     private func getHeroesConfigDestURL() -> URL? {
-        let appSupportDirURL = fileManager.urls(for: .applicationSupportDirectory, in: .userDomainMask).last
+        let appSupportDirURL = fileManagerDirUrls.last
         let folderURL = appSupportDirURL?.appendingPathComponent(Constants.folderName, isDirectory: true)
         let fullFileName = Constants.fileName + "." + Constants.fileExtension
         let destURL = folderURL?.appendingPathComponent(fullFileName)
@@ -53,7 +55,7 @@ final class HeroesRepository {
     }
     
     private func saveFile(from srcURL: URL, to folder: String) {
-        createApplicationSupportDirectoryWithFolderIfNeeded(folder)
+        createApplicationSupportDirectoryIfNeeded(with: folder)
         guard let destURL = getHeroesConfigDestURL() else { return }
         print(destURL.path)
         if fileManager.fileExists(atPath: destURL.path) {
@@ -71,10 +73,8 @@ final class HeroesRepository {
         }
     }
     
-    private func createApplicationSupportDirectoryWithFolderIfNeeded(_ folder: String) {
-        guard
-            let appSupportDirURL = fileManager.urls(for: .applicationSupportDirectory, in: .userDomainMask).last
-        else { return }
+    private func createApplicationSupportDirectoryIfNeeded(with folder: String) {
+        guard let appSupportDirURL = fileManagerDirUrls.last else { return }
         let folderURL = appSupportDirURL.appendingPathComponent(folder)
         guard !fileManager.fileExists(atPath: folderURL.path) else { return }
         do {
