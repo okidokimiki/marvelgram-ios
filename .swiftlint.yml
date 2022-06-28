@@ -12,7 +12,12 @@ disabled_rules:
 
 opt_in_rules:
   - array_init
-  - attributes
+  - attributes:
+    always_on_same_line:
+      - "@IBSegueAction"
+      - "@IBAction"
+      - "@NSManaged"
+      - "@objc"
   - closure_end_indentation
   - closure_spacing
   - collection_alignment
@@ -25,12 +30,15 @@ opt_in_rules:
   - enum_case_associated_values_count
   - fatal_error_message
   - first_where
-  - force_unwrapping
+  - force_unwrapping:
+    excluded: FontLibrary.swift
   - implicitly_unwrapped_optional
   - last_where
   - legacy_random
   - literal_expression_end_indentation
-  - multiline_arguments
+  - mmultiline_arguments:
+    first_argument_location: same_line
+    only_enforce_after_first_closure_on_first_line: true
   - multiline_function_chains
   - multiline_literal_brackets
   - multiline_parameters
@@ -57,14 +65,6 @@ custom_rules:
     message: "Use explicit type annotation when initializing empty arrays and dictionaries"
     severity: warning
 
-
-attributes:
-  always_on_same_line:
-    - "@IBSegueAction"
-    - "@IBAction"
-    - "@NSManaged"
-    - "@objc"
-
 force_cast: warning
 force_try: warning
 function_body_length:
@@ -84,10 +84,6 @@ line_length:
   ignores_urls: true
   ignores_function_declarations: true
   ignores_comments: true
-
-multiline_arguments:
-  first_argument_location: same_line
-  only_enforce_after_first_closure_on_first_line: true
 
 private_over_fileprivate:
   validate_extensions: true
