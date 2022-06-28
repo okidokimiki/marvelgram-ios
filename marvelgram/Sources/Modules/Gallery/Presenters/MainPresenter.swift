@@ -1,5 +1,5 @@
 //
-//  GalleryPresenter.swift
+//  MainPresenter.swift
 //  marvelgram
 //
 //  Created by Mikhail Chaus on 07.06.2022.
@@ -7,37 +7,37 @@
 
 import Foundation
 
-final class GalleryPresenter {
+final class MainPresenter {
     // MARK: - Public Properties
     
-    weak var view: GalleryViewInput?
+    weak var view: MainViewInput?
     
     // MARK: - Private Properties
     
-    private let heroesRepository = HeroesRepository.shared
-    private var galleryDataSource: GalleryDataSource
+    private let repository = HeroesRepository.shared // Точно ли HeroesRepository?
+    private var dataSource: MainDataSource
     
     // MARK: - Initilization
     
     required init(
-        view: GalleryViewInput,
-        galleryDataSource: GalleryDataSource
+        view: MainViewInput,
+        dataSource: MainDataSource
     ) {
         self.view = view
-        self.galleryDataSource = galleryDataSource
+        self.dataSource = dataSource
     }
     
     // MARK: - Private Methods
     
     private func fetchHeroesAndReloadCollectionView() {
         view?.showActivityIndicator(true)
-
-        heroesRepository.getHeroes { [weak self] heroes in
+        
+        repository.getHeroes { [weak self] heroes in
             guard let self = self else { return }
-
+            
             let models = heroes.map { HeroCellModel(hero: $0) }
-            self.galleryDataSource.heroCellModels = models
-
+            self.dataSource.heroCellModels = models
+            
             DispatchQueue.main.async {
                 self.view?.showActivityIndicator(false)
                 self.view?.reloadHeroesCollectionView()
@@ -46,18 +46,18 @@ final class GalleryPresenter {
     }
 }
 
-// MARK: - GalleryViewOutput
+// MARK: - MainViewOutput
 
-extension GalleryPresenter: GalleryViewOutput {
+extension MainPresenter: MainViewOutput {
     func handleDidAppearingView() {
         fetchHeroesAndReloadCollectionView()
     }
     
     func getHeroCellModelsCount() -> Int? {
-        return galleryDataSource.heroCellModels.count
+        return dataSource.heroCellModels.count
     }
     
     func getHeroCellModel(with index: Int) -> HeroCellModel {
-        return galleryDataSource.heroCellModels[index]
+        return dataSource.heroCellModels[index]
     }
 }

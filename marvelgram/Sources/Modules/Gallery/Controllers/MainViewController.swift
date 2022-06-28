@@ -1,5 +1,5 @@
 //
-//  GalleryViewController.swift
+//  MainViewController.swift
 //  marvelgram
 //
 //  Created by Mikhail Chaus on 07.06.2022.
@@ -7,10 +7,10 @@
 
 import UIKit
 
-final class GalleryViewController: UIViewController {
+final class MainViewController: UIViewController {
     // MARK: - Public Properties
     
-    var presenter: GalleryViewOutput?
+    var presenter: MainViewOutput?
     
     // MARK: - Private Properties
     
@@ -19,7 +19,7 @@ final class GalleryViewController: UIViewController {
     // MARK: - UIViewController Lifecycle
     
     override func loadView() {
-        let view = GalleryView()
+        let view = MainView()
         view.uiDelegate = self
         self.view = view
     }
@@ -43,28 +43,28 @@ final class GalleryViewController: UIViewController {
     }
 }
 
-// MARK: - GalleryViewUiDelegate
+// MARK: - MainViewUiDelegate
 
-extension GalleryViewController: GalleryViewUiDelegate {
-    func galleryView(_ galleryView: GalleryView, getHeroCellModelWithIndex index: Int) -> HeroCellModel? {
+extension MainViewController: MainViewUiDelegate {
+    func mainView(_ mainView: MainView, getHeroCellModelWithIndex index: Int) -> HeroCellModel? {
         return presenter?.getHeroCellModel(with: index)
     }
     
-    func galleryViewCellsCount(_ galleryView: GalleryView) -> Int? {
+    func mainViewCellsCount(_ mainView: MainView) -> Int? {
         return presenter?.getHeroCellModelsCount()
     }
 }
 
-// MARK: - GalleryViewInput
+// MARK: - MainViewInput
 
-extension GalleryViewController: GalleryViewInput {
+extension MainViewController: MainViewInput {
     func reloadHeroesCollectionView() {
-        guard let galleryView = view as? GalleryView else { return }
-        galleryView.reloadHeroesCollectionView()
+        guard let mainView = view as? MainView else { return }
+        mainView.reloadHeroesCollectionView()
     }
     
     func showActivityIndicator(_ show: Bool) {
-        guard let galleryView = view as? GalleryView else { return }
-        galleryView.showActivityIndicator(show)
+        guard let mainView = view as? MainView else { return }
+        mainView.showActivityIndicator(show)
     }
 }

@@ -1,5 +1,5 @@
 //
-//  GalleryView.swift
+//  MainView.swift
 //  marvelgram
 //
 //  Created by Mikhail Chaus on 07.06.2022.
@@ -7,15 +7,15 @@
 
 import UIKit
 
-final class GalleryView: UIView {
+final class MainView: UIView {
     // MARK: - Public Properties
     
-    weak var uiDelegate: GalleryViewUiDelegate?
+    weak var uiDelegate: MainViewUiDelegate?
     
     // MARK: - Private Properties
     
     private lazy var heroesCollectionView: HeroesCollectionView = {
-        return GalleryView.makeHeroesCollectionView(self, self)
+        return MainView.makeHeroesCollectionView(self, self)
     }()
     
     private lazy var activityIndicatorView: UIActivityIndicatorView = {
@@ -101,17 +101,17 @@ final class GalleryView: UIView {
 
 // MARK: - HeroesCollectionViewActionsDelegate
 
-extension GalleryView: HeroesCollectionViewActionsDelegate {
+extension MainView: HeroesCollectionViewActionsDelegate {
 }
 
 // MARK: - HeroesCollectionViewDataSourceDelegate
 
-extension GalleryView: HeroesCollectionViewDataSourceDelegate {
+extension MainView: HeroesCollectionViewDataSourceDelegate {
     func heroesCollectionView(_ heroesCollectionView: HeroesCollectionView, getHeroCellModelWithIndex index: Int) -> HeroCellModel? {
-        return uiDelegate?.galleryView(self, getHeroCellModelWithIndex: index)
+        return uiDelegate?.mainView(self, getHeroCellModelWithIndex: index)
     }
     
     func heroesCollectionViewCellsCount(_ heroesCollectionView: HeroesCollectionView) -> Int? {
-        return uiDelegate?.galleryViewCellsCount(self)
+        return uiDelegate?.mainViewCellsCount(self)
     }
 }
