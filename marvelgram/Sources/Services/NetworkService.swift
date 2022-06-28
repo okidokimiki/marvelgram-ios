@@ -1,5 +1,5 @@
 //
-//  NetworkManager.swift
+//  NetworkService.swift
 //  marvelgram
 //
 //  Created by Mikhail Chaus on 07.06.2022.
@@ -14,10 +14,10 @@ protocol Networkable {
     func fetchHeroesConfig(completion: @escaping JSONResponseHandler)
 }
 
-final class NetworkManager: Networkable {
+final class NetworkService: Networkable {
     // MARK: - Public Properties
     
-    static let shared = NetworkManager()
+    static let shared = NetworkService()
     
     // MARK: - Private Properties
     
@@ -73,7 +73,7 @@ final class NetworkManager: Networkable {
 
 // MARK: - Constants
 
-private extension NetworkManager {
+private extension NetworkService {
     enum Constants {
         
         enum JsonUrlStrings {

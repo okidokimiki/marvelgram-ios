@@ -7,14 +7,20 @@
 
 import UIKit
 
-final class HeroesRepository {
+typealias HeroConfigResponseHandler = (([Hero]) -> Void)
+
+protocol HeroesRepositorieble {
+    func getHeroes(completion: @escaping HeroConfigResponseHandler)
+}
+
+final class HeroesRepository: HeroesRepositorieble {
     // MARK: - Public Properties
     
     static let shared = HeroesRepository()
     
     // MARK: - Private Properties
     
-    private let networkManager = NetworkManager.shared
+    private let networkService = NetworkService.shared
     private let fileManager = FileManager.default
     private let decoder = JSONDecoder()
     private var heroes: [Hero] = []
@@ -28,8 +34,8 @@ final class HeroesRepository {
     
     // MARK: - Public Methods
     
-    func getHeroes(completion: @escaping ([Hero]) -> Void) {
-        networkManager.fetchHeroesConfig { [weak self] result in
+    func getHeroes(completion: @escaping HeroConfigResponseHandler) {
+        networkService.fetchHeroesConfig { [weak self] result in
             guard let self = self else { return }
             
             switch result {
