@@ -1,5 +1,5 @@
 //
-//  DetailsPresenter.swift
+//  DetailPresenter.swift
 //  marvelgram
 //
 //  Created by Mikhail Chaus on 09.06.2022.
@@ -19,7 +19,7 @@ class DetailPresenter {
     }
 }
 
-// MARK: - DetailsPresenterProtocol
+// MARK: - DetailViewOutput
 
 extension DetailPresenter: DetailViewOutput {
 }
