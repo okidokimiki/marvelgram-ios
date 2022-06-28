@@ -14,7 +14,7 @@ final class HeroesRepository {
     
     // MARK: - Private Properties
     
-    private let fileManagerDirUrls = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)
+    private let fileManagerDirURLs = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)
     private let fileManager = FileManager.default
     private let decoder = JSONDecoder()
     
@@ -31,7 +31,7 @@ final class HeroesRepository {
     // MARK: - Private Methods
     
     private func getHeroesConfigDestURL() -> URL? {
-        let appSupportDirURL = fileManagerDirUrls.last
+        let appSupportDirURL = fileManagerDirURLs.last
         let folderURL = appSupportDirURL?.appendingPathComponent(Constants.folderName, isDirectory: true)
         let fullFileName = Constants.fileName + "." + Constants.fileExtension
         let destURL = folderURL?.appendingPathComponent(fullFileName)
@@ -74,7 +74,7 @@ final class HeroesRepository {
     }
     
     private func createApplicationSupportDirectoryIfNeeded(with folder: String) {
-        guard let appSupportDirURL = fileManagerDirUrls.last else { return }
+        guard let appSupportDirURL = fileManagerDirURLs.last else { return }
         let folderURL = appSupportDirURL.appendingPathComponent(folder)
         guard !fileManager.fileExists(atPath: folderURL.path) else { return }
         do {
