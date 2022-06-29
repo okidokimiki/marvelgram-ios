@@ -14,7 +14,7 @@ extension UIColor {
         self.init(named: assets.rawValue)
     }
     
-    // MARK: - ColorAssets
+    // MARK: - Assets
     
     enum Color: String {
         case background
