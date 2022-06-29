@@ -8,6 +8,7 @@
 import UIKit
 
 protocol HeroesCollectionViewActionsDelegate: AnyObject {
+    func heroesCollectionView(_ heroesCollectionView: HeroesCollectionView, didSelectHeroWithIndex index: IndexPath)
 }
 
 protocol HeroesCollectionViewDataSourceDelegate: AnyObject {
@@ -47,6 +48,10 @@ final class HeroesCollectionView: UICollectionView {
 // MARK: - UICollectionViewDelegate
 
 extension HeroesCollectionView: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        actionsDelegate?.heroesCollectionView(self, didSelectHeroWithIndex: indexPath)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         guard
             let heroCell = cell as? HeroCollectionViewCell,

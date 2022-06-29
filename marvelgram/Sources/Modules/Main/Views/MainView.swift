@@ -102,6 +102,9 @@ final class MainView: UIView {
 // MARK: - HeroesCollectionViewActionsDelegate
 
 extension MainView: HeroesCollectionViewActionsDelegate {
+    func heroesCollectionView(_ heroesCollectionView: HeroesCollectionView, didSelectHeroWithIndex index: IndexPath) {
+        uiDelegate?.mainView(self, didSelectHeroWithIndex: index)
+    }
 }
 
 // MARK: - HeroesCollectionViewDataSourceDelegate

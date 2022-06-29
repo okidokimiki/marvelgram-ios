@@ -11,6 +11,7 @@ protocol MainViewOutput {
     init(view: MainViewInput, dataSource: MainDataSource)
     
     func handleDidAppearingView()
+    func handleSelectingHeroCell(with index: Int)
     
     func getHeroCellModelsCount() -> Int?
     func getHeroCellModel(with index: Int) -> HeroCellModel

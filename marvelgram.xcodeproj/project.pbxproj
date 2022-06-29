@@ -17,7 +17,6 @@
 		04B430562869EB9700BD4904 /* JSONResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B430552869EB9700BD4904 /* JSONResponse.swift */; };
 		04B430592869F93400BD4904 /* UIView + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B430582869F93400BD4904 /* UIView + ext.swift */; };
 		04B4305F286A34EC00BD4904 /* ColorAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04B4305E286A34EC00BD4904 /* ColorAssets.xcassets */; };
-		04B43067286B592D00BD4904 /* Routable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B43066286B592D00BD4904 /* Routable.swift */; };
 		04B4306D286B818900BD4904 /* HeroesNetworkable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B4306C286B818900BD4904 /* HeroesNetworkable.swift */; };
 		04B43070286B81AE00BD4904 /* HeroesRepositorieble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B4306F286B81AE00BD4904 /* HeroesRepositorieble.swift */; };
 		04C5C19F284FDA3D0096D272 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C19E284FDA3D0096D272 /* MainPresenter.swift */; };
@@ -160,7 +159,6 @@
 			children = (
 				04C5C1A0284FDA5D0096D272 /* MainViewOutput.swift */,
 				04FE0A20284FC90A00839CBF /* MainViewController.swift */,
-				04C5C1BE285019980096D272 /* MarvelBarButtonItem.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -366,6 +364,7 @@
 			children = (
 				04968560284FD96E00C1F9A8 /* MainViewUiDelegate.swift */,
 				04FE0A3C284FCAAD00839CBF /* MainView.swift */,
+				04C5C1BE285019980096D272 /* MarvelBarButtonItem.swift */,
 				04B4305D2869FF6100BD4904 /* HeroesCollectionView */,
 			);
 			path = Views;

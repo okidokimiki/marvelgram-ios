@@ -53,6 +53,10 @@ extension MainPresenter: MainViewOutput {
         fetchHeroesAndReloadCollectionView()
     }
     
+    func handleSelectingHeroCell(with index: Int) {
+        print("Selected heroCell with index \(index)")
+    }
+    
     func getHeroCellModelsCount() -> Int? {
         return dataSource.heroCellModels.count
     }

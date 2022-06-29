@@ -53,6 +53,10 @@ extension MainViewController: MainViewUiDelegate {
     func mainViewCellsCount(_ mainView: MainView) -> Int? {
         return presenter?.getHeroCellModelsCount()
     }
+    
+    func mainView(_ mainView: MainView, didSelectHeroWithIndex index: IndexPath) {
+        presenter?.handleSelectingHeroCell(with: index.row)
+    }
 }
 
 // MARK: - MainViewInput
