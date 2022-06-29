@@ -23,14 +23,12 @@ final class NetworkService {
 extension NetworkService: HeroesNetworkable {
     func fetchHeroesConfig(completion: @escaping JSONResponseHandler) {
         guard let heroesUrl = URL(string: Constants.JsonUrlStrings.upstartsMarvelgram) else {
-            print("!__failure: couldn't assemble path by url - \(Constants.JsonUrlStrings.upstartsMarvelgram)")
             completion(.error(.invalidURL))
             return
         }
         
         let downloadTask = session.downloadTask(with: heroesUrl) { urlOrNil, _, _ in
             guard let fetchedConfigUrl = urlOrNil else {
-                print("!__failure: couldn't get data by path - \(heroesUrl.path)")
                 completion(.error(.noData))
                 return
             }
@@ -44,14 +42,12 @@ extension NetworkService: HeroesNetworkable {
     // Not used, but stored for my "tests"
     func fetchHeroes(completion: @escaping JSONResponseHandler) {
         guard let heroesUrl = URL(string: Constants.JsonUrlStrings.upstartsMarvelgram) else {
-            print("!__failure: couldn't assemble path by url - \(Constants.JsonUrlStrings.upstartsMarvelgram)")
             completion(.error(.invalidURL))
             return
         }
         
         let task = session.dataTask(with: heroesUrl) { dataOrNil, _, _ in
             guard let fetchedData = dataOrNil else {
-                print("!__failure: couldn't get data by path - \(heroesUrl.path)")
                 completion(.error(.noData))
                 return
             }
@@ -60,7 +56,6 @@ extension NetworkService: HeroesNetworkable {
                 let decodedData = try self.decoder.decode([Hero].self, from: fetchedData)
                 completion(.success(decodedData))
             } catch {
-                print("!__failure: couldn't decoding data by path - \(heroesUrl.path)")
                 completion(.error(.decodingError))
             }
         }

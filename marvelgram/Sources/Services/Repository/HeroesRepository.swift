@@ -47,7 +47,7 @@ final class HeroesRepository {
                 let decodedData = try decoder.decode([Hero].self, from: data)
                 return decodedData
             } catch {
-                print("!__failure: \(error.localizedDescription)")
+                print(error.localizedDescription)
             }
         }
         
@@ -61,14 +61,14 @@ final class HeroesRepository {
             do {
                 try fileManager.removeItem(at: destURL)
             } catch {
-                print("!__failure: \(error.localizedDescription)")
+                print(error.localizedDescription)
             }
         }
         
         do {
             try fileManager.copyItem(atPath: srcURL.path, toPath: destURL.path)
         } catch {
-            print("!__failure: \(error.localizedDescription)")
+            print(error.localizedDescription)
         }
     }
     
@@ -79,7 +79,7 @@ final class HeroesRepository {
         do {
             try fileManager.createDirectory(at: folderURL, withIntermediateDirectories: true)
         } catch {
-            print("!__failure: \(error.localizedDescription)")
+            print(error.localizedDescription)
         }
     }
 }
@@ -101,7 +101,7 @@ extension HeroesRepository: HeroesRepositorieble {
                     self.heroes = newHeroes
                 }
             case .error(let netError):
-                print("!__failure: \(netError.localizedDescription)")
+                print(netError.localizedDescription)
             }
             
             completion(self.heroes)
