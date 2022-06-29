@@ -41,6 +41,7 @@ final class HeroesCollectionView: UICollectionView {
         dataSource = self
         showsVerticalScrollIndicator = false
         showsHorizontalScrollIndicator = false
+        backgroundColor = UIColor(assets: .background)
         register(HeroCollectionViewCell.self, forCellWithReuseIdentifier: Constants.ReuseId.heroCell)
     }
 }

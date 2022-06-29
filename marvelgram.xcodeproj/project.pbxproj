@@ -109,6 +109,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		045C44AF286C9B290016084B /* Assembler */ = {
+			isa = PBXGroup;
+			children = (
+				04FE0A30284FC98600839CBF /* ModuleBuilder.swift */,
+			);
+			path = Assembler;
+			sourceTree = "<group>";
+		};
 		046E6CF02864EA490015CE31 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +134,7 @@
 			children = (
 				04FE0A34284FC9C700839CBF /* App */,
 				04CFB6B82864EDE400A2FED7 /* Services */,
+				045C44AF286C9B290016084B /* Assembler */,
 				04FE0A39284FCA1B00839CBF /* Modules */,
 				04B430502869E74500BD4904 /* Enums */,
 				04FE0A37284FC9F500839CBF /* Extensions */,
@@ -349,7 +358,6 @@
 		04FE0A39284FCA1B00839CBF /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				04FE0A30284FC98600839CBF /* ModuleBuilder.swift */,
 				04C5C19C284FD9E80096D272 /* Main */,
 				04C5C1CF2851688D0096D272 /* Detail */,
 			);

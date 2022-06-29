@@ -84,10 +84,10 @@ final class MainView: UIView {
     
     private func activateHeroesCollectionViewConstraints() {
         NSLayoutConstraint.activate([
-            heroesCollectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            heroesCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             heroesCollectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            heroesCollectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-            heroesCollectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
+            heroesCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            heroesCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
     
