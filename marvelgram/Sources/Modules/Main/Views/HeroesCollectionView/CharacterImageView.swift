@@ -14,16 +14,10 @@ final class CharacterImageView: UIImageView {
     private var imageCache = ImageCache.shared
     private var lastImageURLStringUsedToLoadImage: String?
     
-    private lazy var activityIndicatorView: UIActivityIndicatorView = {
-        return CharacterImageView.makeActivityIndicatorView()
-    }()
-    
     // MARK: - Initialization
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        setupViews()
     }
     
     required init?(coder: NSCoder) {
@@ -50,7 +44,6 @@ final class CharacterImageView: UIImageView {
             case .success(let image):
                 DispatchQueue.main.async {
                     if self.lastImageURLStringUsedToLoadImage == urlString {
-                        self.activityIndicatorView.stopAnimating()
                         self.image = image
                     }
                 }
@@ -61,10 +54,6 @@ final class CharacterImageView: UIImageView {
     }
     
     // MARK: - Private Methods
-    
-    private func setupViews() {
-        setupView(activityIndicatorView)
-    }
 
     private func makeAndResumeDataTaskWith(url: URL, completion: @escaping (Result<UIImage, Error>) -> Void) {
         let task = session.dataTask(with: url) { resumeDataOrNil, _, errorOrNil in
@@ -85,29 +74,5 @@ final class CharacterImageView: UIImageView {
         }
         
         task.resume()
-    }
-    
-    // MARK: - Creating Subviews
-    
-    static func makeActivityIndicatorView() -> UIActivityIndicatorView {
-        let loader = UIActivityIndicatorView(style: .large)
-        loader.startAnimating()
-        
-        return loader
-    }
-    
-    // MARK: - Layout
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        activateActivityIndicatorViewConstraints()
-    }
-    
-    private func activateActivityIndicatorViewConstraints() {
-        NSLayoutConstraint.activate([
-            activityIndicatorView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            activityIndicatorView.centerYAnchor.constraint(equalTo: centerYAnchor)
-        ])
     }
 }
