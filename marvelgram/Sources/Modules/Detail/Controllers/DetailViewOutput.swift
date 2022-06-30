@@ -8,5 +8,5 @@
 import Foundation
 
 protocol DetailViewOutput {
-    init(view: DetailViewInput)
+    init(view: DetailViewInput, dataSource: DetailDataSource)
 }

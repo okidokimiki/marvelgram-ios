@@ -14,7 +14,7 @@ final class MainView: UIView {
     
     // MARK: - Private Properties
     
-    private lazy var heroesCollectionView: HeroesCollectionView = {
+    private lazy var heroesCollectionView: HeroesSeleсtingCollectionView = {
         return MainView.makeHeroesCollectionView(self, self)
     }()
     
@@ -62,13 +62,13 @@ final class MainView: UIView {
     
     // MARK: - Creating Subviews
     
-    static func makeHeroesCollectionView(_ actionsDelegate: HeroesCollectionViewActionsDelegate, _ dataSourceDelegate: HeroesCollectionViewDataSourceDelegate) -> HeroesCollectionView {
+    static func makeHeroesCollectionView(_ actionsDelegate: HeroesSeleсtingCollectionViewActionsDelegate, _ dataSourceDelegate: HeroesSeleсtingCollectionViewDataSourceDelegate) -> HeroesSeleсtingCollectionView {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         
-        let collectionView = HeroesCollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.actionsDelegate = actionsDelegate
-        collectionView.dataSourceDelegate = dataSourceDelegate
+        let collectionView = HeroesSeleсtingCollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.actionDelegate = actionsDelegate
+        collectionView.dataDelegate = dataSourceDelegate
         
         return collectionView
     }
@@ -99,22 +99,22 @@ final class MainView: UIView {
     }
 }
 
-// MARK: - HeroesCollectionViewActionsDelegate
+// MARK: - HeroesSeleсtingCollectionViewActionsDelegate
 
-extension MainView: HeroesCollectionViewActionsDelegate {
-    func heroesCollectionView(_ heroesCollectionView: HeroesCollectionView, didSelectHeroWithIndex index: IndexPath) {
+extension MainView: HeroesSeleсtingCollectionViewActionsDelegate {
+    func heroesSeleсtingCollectionView(_ heroesCollectionView: HeroesSeleсtingCollectionView, didSelectHeroWithIndex index: IndexPath) {
         uiDelegate?.mainView(self, didSelectHeroWithIndex: index)
     }
 }
 
-// MARK: - HeroesCollectionViewDataSourceDelegate
+// MARK: - HeroesSeleсtingCollectionViewDataSourceDelegate
 
-extension MainView: HeroesCollectionViewDataSourceDelegate {
-    func heroesCollectionView(_ heroesCollectionView: HeroesCollectionView, getHeroCellModelWithIndex index: Int) -> HeroCellModel? {
+extension MainView: HeroesSeleсtingCollectionViewDataSourceDelegate {
+    func heroesSeleсtingCollectionView(_ heroesCollectionView: HeroesSeleсtingCollectionView, getHeroCellModelWithIndex index: Int) -> HeroSeleсtingCellModel? {
         return uiDelegate?.mainView(self, getHeroCellModelWithIndex: index)
     }
     
-    func heroesCollectionViewCellsCount(_ heroesCollectionView: HeroesCollectionView) -> Int? {
+    func heroesSeleсtingCollectionViewCellsCount(_ heroesCollectionView: HeroesSeleсtingCollectionView) -> Int? {
         return uiDelegate?.mainViewCellsCount(self)
     }
 }

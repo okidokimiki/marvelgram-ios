@@ -16,8 +16,8 @@ protocol ExploreMoreCollectionViewDataSourceDelegate: AnyObject {
 final class ExploreMoreCollectionView: UICollectionView {
     // MARK: - Public Properties
     
-    weak var actionsDelegate: ExploreMoreCollectionViewActionsDelegate?
-    weak var dataSourceDelegate: ExploreMoreCollectionViewDataSourceDelegate?
+    weak var actionDelegate: ExploreMoreCollectionViewActionsDelegate?
+    weak var dataDelegate: ExploreMoreCollectionViewDataSourceDelegate?
     
     // MARK: - Initilization
     

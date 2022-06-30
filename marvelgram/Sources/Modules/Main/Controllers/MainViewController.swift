@@ -27,7 +27,7 @@ final class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configure()
+        setupNavController()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -38,7 +38,7 @@ final class MainViewController: UIViewController {
     
     // MARK: - Private Methods
     
-    private func configure() {
+    private func setupNavController() {
         navigationItem.leftBarButtonItem = marvelButton
     }
 }
@@ -46,7 +46,7 @@ final class MainViewController: UIViewController {
 // MARK: - MainViewUiDelegate
 
 extension MainViewController: MainViewUiDelegate {
-    func mainView(_ mainView: MainView, getHeroCellModelWithIndex index: Int) -> HeroCellModel? {
+    func mainView(_ mainView: MainView, getHeroCellModelWithIndex index: Int) -> HeroSeleсtingCellModel? {
         return presenter?.getHeroCellModel(with: index)
     }
     

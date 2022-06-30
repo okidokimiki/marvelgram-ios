@@ -1,5 +1,5 @@
 //
-//  HeroCollectionViewCell.swift
+//  HeroSeleсtingCollectionViewCell.swift
 //  marvelgram
 //
 //  Created by Mikhail Chaus on 07.06.2022.
@@ -7,10 +7,10 @@
 
 import UIKit
 
-final class HeroCollectionViewCell: UICollectionViewCell {
+final class HeroSeleсtingCollectionViewCell: UICollectionViewCell {
     // MARK: - Public Properties
     
-    static let cellID = String(describing: HeroCollectionViewCell.self)
+    static let cellID = String(describing: HeroSeleсtingCollectionViewCell.self)
     
     // MARK: - Private Properties
     
@@ -43,7 +43,7 @@ final class HeroCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Public Methods
     
-    func configure(with model: HeroCellModel) {
+    func configure(with model: HeroSeleсtingCellModel) {
         characterImageView.loadImageWith(urlString: model.url)
     }
     

@@ -12,10 +12,18 @@ final class DetailPresenter {
     
     weak var view: DetailViewInput?
     
+    // MARK: - Private Properties
+    
+    private var dataSource: DetailDataSource
+    
     // MARK: - Initilization
     
-    required init(view: DetailViewInput) {
+    required init(
+        view: DetailViewInput,
+        dataSource: DetailDataSource
+    ) {
         self.view = view
+        self.dataSource = dataSource
     }
 }
 

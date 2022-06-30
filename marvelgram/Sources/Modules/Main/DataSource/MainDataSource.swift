@@ -8,5 +8,5 @@
 import Foundation
 
 struct MainDataSource {
-    var heroCellModels: [HeroCellModel] = []
+    var heroSeleсtingCellModels: [HeroSeleсtingCellModel] = []
 }

@@ -14,5 +14,5 @@ protocol MainViewOutput {
     func handleSelectingHeroCell(with index: Int)
     
     func getHeroCellModelsCount() -> Int?
-    func getHeroCellModel(with index: Int) -> HeroCellModel
+    func getHeroCellModel(with index: Int) -> HeroSeleсtingCellModel
 }

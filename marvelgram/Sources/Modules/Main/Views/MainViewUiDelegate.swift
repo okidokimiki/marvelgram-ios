@@ -9,7 +9,7 @@ import UIKit
 
 protocol MainViewUiDelegate: AnyObject {
     // DataSource
-    func mainView(_ mainView: MainView, getHeroCellModelWithIndex index: Int) -> HeroCellModel?
+    func mainView(_ mainView: MainView, getHeroCellModelWithIndex index: Int) -> HeroSeleсtingCellModel?
     func mainViewCellsCount(_ mainView: MainView) -> Int?
     
     // Actions

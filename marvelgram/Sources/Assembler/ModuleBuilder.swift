@@ -8,5 +8,5 @@
 import UIKit
 
 protocol ModuleBuilder {
-    static func createModule() -> UIViewController
+    static func createModule(with type: ModuleType, _ coordinator: Coordinator) -> UIViewController
 }

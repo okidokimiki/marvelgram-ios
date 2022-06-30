@@ -8,7 +8,7 @@
 import UIKit
 
 final class MainViewModuleBuilder: ModuleBuilder {
-    static func createModule() -> UIViewController {
+    static func createModule(with type: ModuleType, _ coordinator: Coordinator) -> UIViewController {
         let viewController = MainViewController()
         let dataSource = MainDataSource()
         let presenter = MainPresenter(view: viewController,

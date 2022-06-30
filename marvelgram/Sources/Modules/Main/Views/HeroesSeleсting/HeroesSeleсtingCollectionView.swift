@@ -1,5 +1,5 @@
 //
-//  HeroesCollectionView.swift
+//  HeroesSeleсtingCollectionView.swift
 //  marvelgram
 //
 //  Created by Mikhail Chaus on 07.06.2022.
@@ -7,20 +7,20 @@
 
 import UIKit
 
-protocol HeroesCollectionViewActionsDelegate: AnyObject {
-    func heroesCollectionView(_ heroesCollectionView: HeroesCollectionView, didSelectHeroWithIndex index: IndexPath)
+protocol HeroesSeleсtingCollectionViewActionsDelegate: AnyObject {
+    func heroesSeleсtingCollectionView(_ heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView, didSelectHeroWithIndex index: IndexPath)
 }
 
-protocol HeroesCollectionViewDataSourceDelegate: AnyObject {
-    func heroesCollectionView(_ heroesCollectionView: HeroesCollectionView, getHeroCellModelWithIndex index: Int) -> HeroCellModel?
-    func heroesCollectionViewCellsCount(_ heroesCollectionView: HeroesCollectionView) -> Int?
+protocol HeroesSeleсtingCollectionViewDataSourceDelegate: AnyObject {
+    func heroesSeleсtingCollectionView(_ heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView, getHeroCellModelWithIndex index: Int) -> HeroSeleсtingCellModel?
+    func heroesSeleсtingCollectionViewCellsCount(_ heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView) -> Int?
 }
 
-final class HeroesCollectionView: UICollectionView {
+final class HeroesSeleсtingCollectionView: UICollectionView {
     // MARK: - Public Properties
     
-    weak var actionsDelegate: HeroesCollectionViewActionsDelegate?
-    weak var dataSourceDelegate: HeroesCollectionViewDataSourceDelegate?
+    weak var actionDelegate: HeroesSeleсtingCollectionViewActionsDelegate?
+    weak var dataDelegate: HeroesSeleсtingCollectionViewDataSourceDelegate?
     
     // MARK: - Initilization
     
@@ -42,21 +42,21 @@ final class HeroesCollectionView: UICollectionView {
         showsVerticalScrollIndicator = false
         showsHorizontalScrollIndicator = false
         backgroundColor = UIColor(assets: .background)
-        register(HeroCollectionViewCell.self, forCellWithReuseIdentifier: Constants.ReuseId.heroCell)
+        register(HeroSeleсtingCollectionViewCell.self, forCellWithReuseIdentifier: Constants.ReuseId.heroCell)
     }
 }
 
 // MARK: - UICollectionViewDelegate
 
-extension HeroesCollectionView: UICollectionViewDelegate {
+extension HeroesSeleсtingCollectionView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        actionsDelegate?.heroesCollectionView(self, didSelectHeroWithIndex: indexPath)
+        actionDelegate?.heroesSeleсtingCollectionView(self, didSelectHeroWithIndex: indexPath)
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         guard
-            let heroCell = cell as? HeroCollectionViewCell,
-            let model = dataSourceDelegate?.heroesCollectionView(self, getHeroCellModelWithIndex: indexPath.row)
+            let heroCell = cell as? HeroSeleсtingCollectionViewCell,
+            let model = dataDelegate?.heroesSeleсtingCollectionView(self, getHeroCellModelWithIndex: indexPath.row)
         else { return }
         
         heroCell.configure(with: model)
@@ -65,10 +65,10 @@ extension HeroesCollectionView: UICollectionViewDelegate {
 
 // MARK: - UICollectionViewDataSource
 
-extension HeroesCollectionView: UICollectionViewDataSource {
+extension HeroesSeleсtingCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        guard let cellsCount = dataSourceDelegate?.heroesCollectionViewCellsCount(self) else { return 0 }
+        guard let cellsCount = dataDelegate?.heroesSeleсtingCollectionViewCellsCount(self) else { return 0 }
         
         return cellsCount
     }
@@ -84,7 +84,7 @@ extension HeroesCollectionView: UICollectionViewDataSource {
 
 // MARK: - UICollectionViewDelegateFlowLayout
 
-extension HeroesCollectionView: UICollectionViewDelegateFlowLayout {
+extension HeroesSeleсtingCollectionView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -115,12 +115,12 @@ extension HeroesCollectionView: UICollectionViewDelegateFlowLayout {
 
 // MARK: - Constants
 
-private extension HeroesCollectionView {
+private extension HeroesSeleсtingCollectionView {
     enum Constants {
         static let countOfCellsPerRow = 3
         
         enum ReuseId {
-            static let heroCell = HeroCollectionViewCell.cellID
+            static let heroCell = HeroSeleсtingCollectionViewCell.cellID
         }
         
         enum FlowLayout {

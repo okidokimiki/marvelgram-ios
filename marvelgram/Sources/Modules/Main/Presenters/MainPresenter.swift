@@ -35,8 +35,8 @@ final class MainPresenter {
         repository.getHeroes { [weak self] heroes in
             guard let self = self else { return }
             
-            let models = heroes.map { HeroCellModel(hero: $0) }
-            self.dataSource.heroCellModels = models
+            let models = heroes.map { HeroSeleсtingCellModel(hero: $0) }
+            self.dataSource.heroSeleсtingCellModels = models
             
             DispatchQueue.main.async {
                 self.view?.showActivityIndicator(false)
@@ -58,10 +58,10 @@ extension MainPresenter: MainViewOutput {
     }
     
     func getHeroCellModelsCount() -> Int? {
-        return dataSource.heroCellModels.count
+        return dataSource.heroSeleсtingCellModels.count
     }
     
-    func getHeroCellModel(with index: Int) -> HeroCellModel {
-        return dataSource.heroCellModels[index]
+    func getHeroCellModel(with index: Int) -> HeroSeleсtingCellModel {
+        return dataSource.heroSeleсtingCellModels[index]
     }
 }

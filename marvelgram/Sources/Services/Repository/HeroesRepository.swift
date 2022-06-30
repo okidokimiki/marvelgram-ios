@@ -25,7 +25,7 @@ final class HeroesRepository {
     
     private init() {
         let destURL = getHeroesConfigDestURL()
-        heroes = makeHeroesFromConfig(with: destURL)
+        heroes = makeHeroes(from: destURL)
     }
         
     // MARK: - Private Methods
@@ -39,7 +39,7 @@ final class HeroesRepository {
         return destURL
     }
     
-    private func makeHeroesFromConfig(with url: URL?) -> [Hero] {
+    private func makeHeroes(from url: URL?) -> [Hero] {
         guard let destURL = url else { return heroes }
         if fileManager.fileExists(atPath: destURL.path) {
             do {
@@ -94,7 +94,7 @@ extension HeroesRepository: HeroesRepositorieble {
             switch result {
             case .success(let config):
                 guard let configUrl = config as? URL else { return }
-                let newHeroes = self.makeHeroesFromConfig(with: configUrl)
+                let newHeroes = self.makeHeroes(from: configUrl)
                 
                 if newHeroes != self.heroes {
                     self.saveFile(from: configUrl, to: Constants.folderName)

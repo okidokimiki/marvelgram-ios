@@ -82,8 +82,8 @@ final class DetailView: UIView {
         layout.scrollDirection = .horizontal
         
         let collectionView = ExploreMoreCollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.actionsDelegate = actionsDelegate
-        collectionView.dataSourceDelegate = dataSourceDelegate
+        collectionView.actionDelegate = actionsDelegate
+        collectionView.dataDelegate = dataSourceDelegate
         
         return collectionView
     }

@@ -8,9 +8,11 @@
 import UIKit
 
 final class DetailViewModuleBuilder: ModuleBuilder {
-    static func createModule() -> UIViewController {
+    static func createModule(with type: ModuleType, _ coordinator: Coordinator) -> UIViewController {
         let viewController = DetailViewController()
-        let presenter = DetailPresenter(view: viewController)
+        let dataSource = DetailDataSource()
+        let presenter = DetailPresenter(view: viewController,
+                                        dataSource: dataSource)
         viewController.presenter = presenter
         
         return viewController
