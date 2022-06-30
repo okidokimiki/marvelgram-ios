@@ -114,35 +114,43 @@ final class DetailView: UIView {
     
     private func activateDescrpLabelConstraints() {
         NSLayoutConstraint.activate([
-            descrpLabel.leadingAnchor.constraint(equalTo: leadingAnchor,
-                                                 constant: Constants.AutoLayout.baseOffset),
-            descrpLabel.topAnchor.constraint(equalTo: characterImageView.bottomAnchor,
-                                             constant: Constants.AutoLayout.baseOffset),
-            descrpLabel.trailingAnchor.constraint(equalTo: trailingAnchor,
-                                                  constant: -Constants.AutoLayout.baseOffset)
+            descrpLabel.leadingAnchor.constraint(
+                equalTo: leadingAnchor,
+                constant: Constants.AutoLayout.baseOffset),
+            descrpLabel.topAnchor.constraint(
+                equalTo: characterImageView.bottomAnchor,
+                constant: Constants.AutoLayout.baseOffset),
+            descrpLabel.trailingAnchor.constraint(
+                equalTo: trailingAnchor,
+                constant: -Constants.AutoLayout.baseOffset)
         ])
     }
     
     private func activateExploreMoreLabelConstraints() {
         NSLayoutConstraint.activate([
-            explMoreLabel.leadingAnchor.constraint(equalTo: leadingAnchor,
-                                                   constant: Constants.AutoLayout.baseOffset),
-            explMoreLabel.topAnchor.constraint(equalTo: descrpLabel.bottomAnchor,
-                                               constant: Constants.AutoLayout.explMoreLabelTopOffset)
+            explMoreLabel.leadingAnchor.constraint(
+                equalTo: leadingAnchor,
+                constant: Constants.AutoLayout.baseOffset),
+            explMoreLabel.topAnchor.constraint(
+                equalTo: descrpLabel.bottomAnchor,
+                constant: Constants.AutoLayout.explMoreLabelTopOffset)
         ])
     }
     
     private func activateExploreMoreCollectionViewConstraints() {
-        let collectionView = explMoreCollectionView
         NSLayoutConstraint.activate([
-            collectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor,
-                                                    constant: Constants.AutoLayout.baseOffset),
-            collectionView.topAnchor.constraint(equalTo: explMoreLabel.bottomAnchor,
-                                                constant: Constants.AutoLayout.explMoreCollectionTopOffset),
-            collectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor,
-                                                     constant: -Constants.AutoLayout.baseOffset),
-            collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor,
-                                                   constant: -Constants.AutoLayout.explMoreCollectionBottomOffset)
+            explMoreCollectionView.leadingAnchor.constraint(
+                equalTo: safeAreaLayoutGuide.leadingAnchor,
+                constant: Constants.AutoLayout.baseOffset),
+            explMoreCollectionView.topAnchor.constraint(
+                equalTo: explMoreLabel.bottomAnchor,
+                constant: Constants.AutoLayout.explMoreCollectionTopOffset),
+            explMoreCollectionView.trailingAnchor.constraint(
+                equalTo: safeAreaLayoutGuide.trailingAnchor,
+                constant: -Constants.AutoLayout.baseOffset),
+            explMoreCollectionView.bottomAnchor.constraint(
+                equalTo: safeAreaLayoutGuide.bottomAnchor,
+                constant: -Constants.AutoLayout.explMoreCollectionBottomOffset)
         ])
     }
 }
