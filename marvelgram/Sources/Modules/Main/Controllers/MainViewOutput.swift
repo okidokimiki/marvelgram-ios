@@ -10,9 +10,11 @@ import Foundation
 protocol MainViewOutput {
     init(view: MainViewInput, dataSource: MainDataSource)
     
+    // Actions
     func handleDidAppearingView()
     func handleSelectingHeroCell(with index: Int)
     
+    // DataSource
     func getHeroCellModelsCount() -> Int?
     func getHeroCellModel(with index: Int) -> HeroSeleсtingCellModel
 }

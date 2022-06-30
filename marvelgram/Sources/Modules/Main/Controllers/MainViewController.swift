@@ -46,16 +46,18 @@ final class MainViewController: UIViewController {
 // MARK: - MainViewUiDelegate
 
 extension MainViewController: MainViewUiDelegate {
+    // Actions
+    func mainView(_ mainView: MainView, didSelectHeroWithIndex index: IndexPath) {
+        presenter?.handleSelectingHeroCell(with: index.row)
+    }
+    
+    // DataSource
     func mainView(_ mainView: MainView, getHeroCellModelWithIndex index: Int) -> HeroSeleсtingCellModel? {
         return presenter?.getHeroCellModel(with: index)
     }
     
     func mainViewCellsCount(_ mainView: MainView) -> Int? {
         return presenter?.getHeroCellModelsCount()
-    }
-    
-    func mainView(_ mainView: MainView, didSelectHeroWithIndex index: IndexPath) {
-        presenter?.handleSelectingHeroCell(with: index.row)
     }
 }
 
