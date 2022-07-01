@@ -8,6 +8,6 @@
 import Foundation
 
 struct HeroDetailsDataSource {
-    var heroDetailsViewModel: HeroDetailsViewModel?
+    var heroSeleсtingCellModel: HeroSeleсtingCellModel?
     var explMoreCellModels: [ExploreMoreCellModel] = []
 }

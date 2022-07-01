@@ -13,6 +13,7 @@ enum Palette {
         static let searchBackgroundLight = UIColor(hex: "#8B8B8B")
         static let searchBackground = UIColor(hex: "#8E8E93")
         static let backgroundPrimary = UIColor(hex: "#1D1D1D")
+        static let cellBackground = UIColor(hex: "#8B8B8B")
         static let fontPrimary = UIColor(hex: "#FEFEFE")
     }
 }
