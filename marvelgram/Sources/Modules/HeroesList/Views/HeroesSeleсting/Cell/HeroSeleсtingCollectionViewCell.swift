@@ -34,7 +34,7 @@ final class HeroSeleсtingCollectionViewCell: UICollectionViewCell {
     // MARK: - Private Methods
     
     private func configure() {
-        backgroundColor = UIColor(assets: .accent)
+        backgroundColor = Palette.GlobalColor.fontPrimary // delete
     }
     
     private func setupViews() {

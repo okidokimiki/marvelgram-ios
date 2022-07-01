@@ -46,7 +46,7 @@ final class HeroDetailsView: UIView {
     // MARK: - Private Methods
     
     private func configure() {
-        backgroundColor = UIColor(assets: .background)
+        backgroundColor = Palette.GlobalColor.backgroundPrimary
     }
     
     private func setupViews() {
@@ -62,7 +62,7 @@ final class HeroDetailsView: UIView {
         let label = UILabel()
         label.font = FontLibrary.SFPro.regular14
         label.text = Localization.spideySubtitle.localizedString
-        label.textColor = UIColor(assets: .title)
+        label.textColor = Palette.GlobalColor.fontPrimary
         label.numberOfLines = Constants.descrpNumberOfLines
         
         return label
@@ -70,9 +70,9 @@ final class HeroDetailsView: UIView {
     
     static func makeExplMoreLabel() -> UILabel {
         let label = UILabel()
-        label.textColor = UIColor(assets: .title)
         label.font = FontLibrary.SFPro.bold34
         label.text = Localization.exploreMoreTitle.localizedString
+        label.textColor = Palette.GlobalColor.fontPrimary
         
         return label
     }

@@ -10,13 +10,13 @@ import UIKit
 extension UIImage {
     // MARK: - Initilization
     
-    convenience init?(assets: Icon) {
+    convenience init?(assets: Images) {
         self.init(named: assets.rawValue)
     }
     
     // MARK: - Assets
     
-    enum Icon: String {
+    enum Images: String {
         case marvellogo = "marvel-logo"
     }
 }

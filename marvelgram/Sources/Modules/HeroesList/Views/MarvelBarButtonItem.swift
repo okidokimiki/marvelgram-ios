@@ -24,7 +24,7 @@ final class MarvelBarButtonItem: UIBarButtonItem {
     
     private func configure() {
         image = UIImage(assets: .marvellogo)
-        tintColor = UIColor(assets: .title)
+        tintColor = Palette.GlobalColor.fontPrimary
         style = .plain
         target = self
         action = #selector(didTapMarvelButton(sender:))

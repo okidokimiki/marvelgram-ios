@@ -41,7 +41,7 @@ final class HeroesSeleсtingCollectionView: UICollectionView {
         dataSource = self
         showsVerticalScrollIndicator = false
         showsHorizontalScrollIndicator = false
-        backgroundColor = UIColor(assets: .background)
+        backgroundColor = Palette.GlobalColor.backgroundPrimary
         register(HeroSeleсtingCollectionViewCell.self, forCellWithReuseIdentifier: Constants.ReuseId.heroCell)
     }
 }
