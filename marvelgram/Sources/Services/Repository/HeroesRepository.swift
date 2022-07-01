@@ -41,10 +41,12 @@ final class HeroesRepository {
     
     private func makeHeroes(from url: URL?) -> [Hero] {
         guard let destURL = url else { return heroes }
+        
         if fileManager.fileExists(atPath: destURL.path) {
             do {
                 let data = try Data(contentsOf: destURL, options: .mappedIfSafe)
                 let decodedData = try decoder.decode([Hero].self, from: data)
+                
                 return decodedData
             } catch {
                 print(error.localizedDescription)
@@ -55,8 +57,9 @@ final class HeroesRepository {
     }
     
     private func saveFile(from srcURL: URL, to folder: String) {
-        createApplicationSupportDirectoryIfNeeded(with: folder)
         guard let destURL = getHeroesConfigDestURL() else { return }
+        
+        createApplicationSupportDirectoryIfNeeded(with: folder)
         if fileManager.fileExists(atPath: destURL.path) {
             do {
                 try fileManager.removeItem(at: destURL)
@@ -74,8 +77,10 @@ final class HeroesRepository {
     
     private func createApplicationSupportDirectoryIfNeeded(with folder: String) {
         guard let appSupportDirURL = fileManagerDirURLs.last else { return }
+        
         let folderURL = appSupportDirURL.appendingPathComponent(folder)
         guard !fileManager.fileExists(atPath: folderURL.path) else { return }
+        
         do {
             try fileManager.createDirectory(at: folderURL, withIntermediateDirectories: true)
         } catch {

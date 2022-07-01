@@ -52,7 +52,7 @@ final class HeroesListPresenter {
 // MARK: - MainViewOutput
 
 extension HeroesListPresenter: HeroesListViewOutput {
-    // actions
+    // Actions
     func handleDidAppearingView() {
         fetchHeroesAndReloadCollectionView()
     }
@@ -63,7 +63,7 @@ extension HeroesListPresenter: HeroesListViewOutput {
         // coordinator?.startHeroDetailsEvent(with: <#T##HeroDetailsDataSource#>)
     }
     
-    // dataSource
+    // DataSource
     func getHeroCellModelsCount() -> Int? {
         return dataSource.heroSeleсtingCellModels.count
     }
