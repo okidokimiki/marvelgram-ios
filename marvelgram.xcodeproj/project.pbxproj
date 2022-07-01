@@ -136,8 +136,8 @@
 		044018A9286F0BF500844035 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				044018AA286F0BF500844035 /* ModuleBuilder.swift */,
 				044018AB286F0BF500844035 /* Coordinator.swift */,
+				044018AA286F0BF500844035 /* ModuleBuilder.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
