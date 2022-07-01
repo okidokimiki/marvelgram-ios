@@ -305,7 +305,7 @@
 			path = DataSource;
 			sourceTree = "<group>";
 		};
-		04C5C1CF2851688D0096D272 /* Detail */ = {
+		04C5C1CF2851688D0096D272 /* HeroDetails */ = {
 			isa = PBXGroup;
 			children = (
 				04C5C1DF28516C6A0096D272 /* Assembly */,
@@ -315,7 +315,7 @@
 				04B4305B2869FCAA00BD4904 /* Controllers */,
 				04C5C1D7285169E10096D272 /* Views */,
 			);
-			path = Detail;
+			path = HeroDetails;
 			sourceTree = "<group>";
 		};
 		04C5C1D7285169E10096D272 /* Views */ = {
@@ -424,7 +424,7 @@
 			isa = PBXGroup;
 			children = (
 				04C5C19C284FD9E80096D272 /* HeroesList */,
-				04C5C1CF2851688D0096D272 /* Detail */,
+				04C5C1CF2851688D0096D272 /* HeroDetails */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
