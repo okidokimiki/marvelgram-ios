@@ -11,11 +11,11 @@ final class HeroDetailsPresenter {
     // MARK: - Public Properties
     
     weak var view: HeroDetailsViewInput?
-    var coordinator: HeroDetailsCoordinator?
     
     // MARK: - Private Properties
     
     private var dataSource: HeroDetailsDataSource?
+    private var coordinator: HeroDetailsCoordinator?
     
     // MARK: - Initilization
     

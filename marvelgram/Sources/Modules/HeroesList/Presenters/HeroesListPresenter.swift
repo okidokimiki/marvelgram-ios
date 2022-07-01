@@ -11,12 +11,12 @@ final class HeroesListPresenter {
     // MARK: - Public Properties
     
     weak var view: HeroesListViewInput?
-    var coordinator: HeroesListCoordinator?
     
     // MARK: - Private Properties
     
     private let repository = HeroesRepository.shared
     private var dataSource: HeroesListDataSource
+    private var coordinator: HeroesListCoordinator?
     
     // MARK: - Initilization
     
