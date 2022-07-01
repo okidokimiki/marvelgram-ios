@@ -1,5 +1,5 @@
 //
-//  UIView + ext.swift
+//  UIView + tamic.swift
 //  marvelgram
 //
 //  Created by Mikhail Chaus on 27.06.2022.

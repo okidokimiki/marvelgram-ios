@@ -1,5 +1,5 @@
 //
-//  UIImage + ext.swift
+//  UIImage + assets.swift
 //  marvelgram
 //
 //  Created by Mikhail Chaus on 08.06.2022.
