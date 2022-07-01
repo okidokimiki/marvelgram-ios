@@ -59,8 +59,8 @@ extension HeroesListPresenter: HeroesListViewOutput {
     
     func handleSelectingHeroCell(with index: Int) {
         print("Selected heroCell with index \(index)")
-        // собери DetailDataSource
-        // coordinator?.startDetailEvent(with: <#T##DetailDataSource#>)
+        // собери HeroDetailsDataSource
+        // coordinator?.startHeroDetailsEvent(with: <#T##HeroDetailsDataSource#>)
     }
     
     // dataSource

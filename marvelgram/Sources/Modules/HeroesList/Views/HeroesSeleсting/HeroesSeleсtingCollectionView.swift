@@ -19,7 +19,7 @@ protocol HeroesSeleсtingCollectionViewDataSourceDelegate: AnyObject {
 final class HeroesSeleсtingCollectionView: UICollectionView {
     // MARK: - Public Properties
     
-    weak var actionDelegate: HeroesSeleсtingCollectionViewActionsDelegate?
+    weak var actionsDelegate: HeroesSeleсtingCollectionViewActionsDelegate?
     weak var dataDelegate: HeroesSeleсtingCollectionViewDataSourceDelegate?
     
     // MARK: - Initilization
@@ -50,7 +50,7 @@ final class HeroesSeleсtingCollectionView: UICollectionView {
 
 extension HeroesSeleсtingCollectionView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        actionDelegate?.heroesSeleсtingCollectionView(self, didSelectHeroWithIndex: indexPath)
+        actionsDelegate?.heroesSeleсtingCollectionView(self, didSelectHeroWithIndex: indexPath)
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {

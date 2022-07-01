@@ -7,29 +7,29 @@
 
 import Foundation
 
-final class DetailPresenter {
+final class HeroDetailsPresenter {
     // MARK: - Public Properties
     
-    weak var view: DetailViewInput?
+    weak var view: HeroDetailsViewInput?
     
     // MARK: - Private Properties
     
-    private var dataSource: DetailDataSource?
+    private var dataSource: HeroDetailsDataSource?
     
     // MARK: - Initilization
     
-    required init(view: DetailViewInput) {
+    required init(view: HeroDetailsViewInput) {
         self.view = view
     }
     
     // MARK: - Public Methods
     
-    func fillDataSource(with data: DetailDataSource?) {
+    func fillDataSource(with data: HeroDetailsDataSource?) {
         dataSource = data
     }
 }
 
 // MARK: - DetailViewOutput
 
-extension DetailPresenter: DetailViewOutput {
+extension HeroDetailsPresenter: HeroDetailsViewOutput {
 }

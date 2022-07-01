@@ -1,5 +1,5 @@
 //
-//  DetailView.swift
+//  HeroDetailsView.swift
 //  marvelgram
 //
 //  Created by Mikhail Chaus on 09.06.2022.
@@ -7,10 +7,10 @@
 
 import UIKit
 
-final class DetailView: UIView {
+final class HeroDetailsView: UIView {
     // MARK: - Public Properties
     
-    weak var uiDelegate: DetailViewUiDelegate?
+    weak var uiDelegate: HeroDetailsViewUiDelegate?
     
     // MARK: - Private Properties
     
@@ -19,15 +19,15 @@ final class DetailView: UIView {
     }()
     
     private lazy var descrpLabel: UILabel = {
-        return DetailView.makeDescrpLabel()
+        return HeroDetailsView.makeDescrpLabel()
     }()
     
     private lazy var explMoreLabel: UILabel = {
-        return DetailView.makeExplMoreLabel()
+        return HeroDetailsView.makeExplMoreLabel()
     }()
     
     private lazy var explMoreCollectionView: ExploreMoreCollectionView = {
-        return DetailView.makeExplMoreCollectionView(self, self)
+        return HeroDetailsView.makeExplMoreCollectionView(self, self)
     }()
     
     // MARK: - Initilization
@@ -157,17 +157,17 @@ final class DetailView: UIView {
 
 // MARK: - ExploreMoreCollectionViewActionsDelegate
 
-extension DetailView: ExploreMoreCollectionViewActionsDelegate {
+extension HeroDetailsView: ExploreMoreCollectionViewActionsDelegate {
 }
 
 // MARK: - ExploreMoreCollectionViewDataSourceDelegate
 
-extension DetailView: ExploreMoreCollectionViewDataSourceDelegate {
+extension HeroDetailsView: ExploreMoreCollectionViewDataSourceDelegate {
 }
 
 // MARK: - Constants
 
-private extension DetailView {
+private extension HeroDetailsView {
     enum Constants {
         static let descrpNumberOfLines = 0
         

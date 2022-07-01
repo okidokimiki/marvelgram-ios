@@ -1,5 +1,5 @@
 //
-//  DetailViewInput.swift
+//  HeroDetailsViewUiDelegate.swift
 //  marvelgram
 //
 //  Created by Mikhail Chaus on 09.06.2022.
@@ -7,5 +7,5 @@
 
 import Foundation
 
-protocol DetailViewInput: AnyObject {
+protocol HeroDetailsViewUiDelegate: AnyObject {
 }

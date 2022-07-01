@@ -26,10 +26,11 @@ final class HeroesListCoordinator: Coordinator {
         navigationController.setViewControllers([heroesListVC], animated: true)
     }
     
-    func startDetailEvent(with dataSource: DetailDataSource) {
-        let detailCoordinator = DetailCoordinator(navigationController: navigationController, dataSource: dataSource)
-        detailCoordinator.start()
+    func startHeroDetailsEvent(with dataSource: HeroDetailsDataSource) {
+        let heroDetailsCoordinator = HeroDetailsCoordinator(navigationController: navigationController,
+                                                            dataSource: dataSource)
+        heroDetailsCoordinator.start()
         
-        childCoordinators.append(detailCoordinator)
+        childCoordinators.append(heroDetailsCoordinator)
     }
 }

@@ -67,7 +67,7 @@ final class HeroesListView: UIView {
         layout.scrollDirection = .vertical
         
         let collectionView = HeroesSeleсtingCollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.actionDelegate = actionsDelegate
+        collectionView.actionsDelegate = actionsDelegate
         collectionView.dataDelegate = dataSourceDelegate
         
         return collectionView

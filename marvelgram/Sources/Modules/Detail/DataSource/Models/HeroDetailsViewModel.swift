@@ -1,5 +1,5 @@
 //
-//  DetailViewModel.swift
+//  HeroDetailsViewModel.swift
 //  marvelgram
 //
 //  Created by Mikhail Chaus on 29.06.2022.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DetailViewModel {
+struct HeroDetailsViewModel {
     let id: Int
     let name: String
     let description: String

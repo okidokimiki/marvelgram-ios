@@ -1,5 +1,5 @@
 //
-//  DetailCoordinator.swift
+//  HeroDetailsCoordinator.swift
 //  marvelgram
 //
 //  Created by Mikhail Chaus on 01.07.2022.
@@ -7,8 +7,8 @@
 
 import UIKit
 
-final class DetailCoordinator: Coordinator {
-    let dataSource: DetailDataSource?
+final class HeroDetailsCoordinator: Coordinator {
+    let dataSource: HeroDetailsDataSource?
     
     // MARK: - Private Properties
     
@@ -17,7 +17,7 @@ final class DetailCoordinator: Coordinator {
     
     // MARK: - Initilization
     
-    init(navigationController: UINavigationController, dataSource: DetailDataSource?) {
+    init(navigationController: UINavigationController, dataSource: HeroDetailsDataSource?) {
         self.navigationController = navigationController
         self.dataSource = dataSource
     }
@@ -25,7 +25,7 @@ final class DetailCoordinator: Coordinator {
     // MARK: - Public Methods
     
     func start() {
-        let detailVC = DetailViewModuleBuilder.createModule(with: .detail(dataSource), coordinator: self)
-        navigationController.pushViewController(detailVC, animated: true)
+        let heroDetailsVC = HeroDetailsViewModuleBuilder.createModule(with: .detail(dataSource), coordinator: self)
+        navigationController.pushViewController(heroDetailsVC, animated: true)
     }
 }

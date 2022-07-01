@@ -7,15 +7,15 @@
 
 import UIKit
 
-final class DetailViewController: UIViewController {
+final class HeroDetailsViewController: UIViewController {
     // MARK: - Public Properties
     
-    var presenter: DetailViewOutput?
+    var presenter: HeroDetailsViewOutput?
     
     // MARK: - Lifecycle
     
     override func loadView() {
-        let view = DetailView()
+        let view = HeroDetailsView()
         view.uiDelegate = self
         self.view = view
     }
@@ -27,10 +27,10 @@ final class DetailViewController: UIViewController {
 
 // MARK: - DetailViewUiDelegate
 
-extension DetailViewController: DetailViewUiDelegate {
+extension HeroDetailsViewController: HeroDetailsViewUiDelegate {
 }
 
 // MARK: - DetailViewInput
 
-extension DetailViewController: DetailViewInput {
+extension HeroDetailsViewController: HeroDetailsViewInput {
 }
