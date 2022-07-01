@@ -14,16 +14,18 @@ final class DetailPresenter {
     
     // MARK: - Private Properties
     
-    private var dataSource: DetailDataSource
+    private var dataSource: DetailDataSource?
     
     // MARK: - Initilization
     
-    required init(
-        view: DetailViewInput,
-        dataSource: DetailDataSource
-    ) {
+    required init(view: DetailViewInput) {
         self.view = view
-        self.dataSource = dataSource
+    }
+    
+    // MARK: - Public Methods
+    
+    func fillDataSource(with data: DetailDataSource?) {
+        dataSource = data
     }
 }
 

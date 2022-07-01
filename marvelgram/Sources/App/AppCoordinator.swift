@@ -7,29 +7,34 @@
 
 import UIKit
 
-final class AppCoordinator {
-    // MARK: - Public Properties
-    
-    var parent: Coordinator?
-    var childCoordinators: [Coordinator] = []
-    
+final class AppCoordinator: Coordinator {
     // MARK: - Private Properties
     
+    private let window: UIWindow?
     private var navigationController: UINavigationController
+    private(set) var childCoordinators: [Coordinator] = []
     
     // MARK: - Initilization
     
-    init(navigationController: UINavigationController) {
-        self.navigationController = navigationController
+    init(window: UIWindow?) {
+        self.window = window
+        self.navigationController = UINavigationController()
     }
-}
-
-// MARK: - Coordinatable
-
-extension AppCoordinator: Coordinator {
+    
+    // MARK: - Public Methods
+    
     func start() {
-        let coordinator = MainCoordinator(navigationController: navigationController, parent: self)
-        coordinator.start()
-        childCoordinators.append(coordinator)
+        showHeroesListViewController()
+        window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()
+    }
+    
+    // MARK: - Private Methods
+    
+    private func showHeroesListViewController() {
+        let heroesListCoordinator = HeroesListCoordinator(navigationController: navigationController)
+        heroesListCoordinator.start()
+        
+        childCoordinators.append(heroesListCoordinator)
     }
 }
