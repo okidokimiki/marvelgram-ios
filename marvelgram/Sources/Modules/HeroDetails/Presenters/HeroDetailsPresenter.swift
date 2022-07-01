@@ -11,6 +11,7 @@ final class HeroDetailsPresenter {
     // MARK: - Public Properties
     
     weak var view: HeroDetailsViewInput?
+    var coordinator: HeroDetailsCoordinator?
     
     // MARK: - Private Properties
     
@@ -18,8 +19,9 @@ final class HeroDetailsPresenter {
     
     // MARK: - Initilization
     
-    required init(view: HeroDetailsViewInput) {
+    required init(view: HeroDetailsViewInput, coordinator: HeroDetailsCoordinator) {
         self.view = view
+        self.coordinator = coordinator
     }
     
     // MARK: - Public Methods

@@ -8,5 +8,5 @@
 import Foundation
 
 protocol HeroDetailsViewOutput {
-    init(view: HeroDetailsViewInput)
+    init(view: HeroDetailsViewInput, coordinator: HeroDetailsCoordinator)
 }
