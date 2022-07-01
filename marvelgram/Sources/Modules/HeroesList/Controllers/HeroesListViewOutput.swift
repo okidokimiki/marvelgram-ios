@@ -8,6 +8,7 @@
 import Foundation
 
 protocol HeroesListViewOutput {
+    // Initilization
     init(view: HeroesListViewInput, dataSource: HeroesListDataSource, coordinator: HeroesListCoordinator)
     
     // Actions
