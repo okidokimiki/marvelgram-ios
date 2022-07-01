@@ -54,7 +54,7 @@ final class CharacterImageView: UIImageView {
     }
     
     // MARK: - Private Methods
-
+    
     private func makeAndResumeDataTaskWith(url: URL, completion: @escaping (Result<UIImage, Error>) -> Void) {
         let task = session.dataTask(with: url) { resumeDataOrNil, _, errorOrNil in
             if let error = errorOrNil {

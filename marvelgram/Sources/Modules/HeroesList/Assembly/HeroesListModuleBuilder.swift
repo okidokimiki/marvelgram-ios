@@ -13,8 +13,8 @@ final class HeroesListModuleBuilder: ModuleBuilder {
         let viewController = HeroesListViewController()
         let dataSource = HeroesListDataSource()
         let presenter = HeroesListPresenter(view: viewController,
-                                      dataSource: dataSource,
-                                      coordinator: coordinator)
+                                            dataSource: dataSource,
+                                            coordinator: coordinator)
         viewController.presenter = presenter
         
         return viewController
