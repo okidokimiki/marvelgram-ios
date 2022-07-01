@@ -1,5 +1,5 @@
 //
-//  MainPresenter.swift
+//  HeroesListPresenter.swift
 //  marvelgram
 //
 //  Created by Mikhail Chaus on 07.06.2022.
@@ -7,22 +7,22 @@
 
 import Foundation
 
-final class MainPresenter {
+final class HeroesListPresenter {
     // MARK: - Public Properties
     
-    weak var view: MainViewInput?
+    weak var view: HeroesListViewInput?
     var coordinator: HeroesListCoordinator?
     
     // MARK: - Private Properties
     
     private let repository = HeroesRepository.shared
-    private var dataSource: MainDataSource
+    private var dataSource: HeroesListDataSource
     
     // MARK: - Initilization
     
     required init(
-        view: MainViewInput,
-        dataSource: MainDataSource,
+        view: HeroesListViewInput,
+        dataSource: HeroesListDataSource,
         coordinator: HeroesListCoordinator
     ) {
         self.view = view
@@ -51,7 +51,7 @@ final class MainPresenter {
 
 // MARK: - MainViewOutput
 
-extension MainPresenter: MainViewOutput {
+extension HeroesListPresenter: HeroesListViewOutput {
     // actions
     func handleDidAppearingView() {
         fetchHeroesAndReloadCollectionView()

@@ -1,5 +1,5 @@
 //
-//  MainViewController.swift
+//  HeroesListViewController.swift
 //  marvelgram
 //
 //  Created by Mikhail Chaus on 07.06.2022.
@@ -7,19 +7,19 @@
 
 import UIKit
 
-final class MainViewController: UIViewController {
+final class HeroesListViewController: UIViewController {
     // MARK: - Public Properties
     
-    var presenter: MainViewOutput?
+    var presenter: HeroesListViewOutput?
     
     // MARK: - Private Properties
     
     private lazy var marvelButton = MarvelBarButtonItem()
     
-    // MARK: - UIViewController Lifecycle
+    // MARK: - Lifecycle
     
     override func loadView() {
-        let view = MainView()
+        let view = HeroesListView()
         view.uiDelegate = self
         self.view = view
     }
@@ -43,34 +43,34 @@ final class MainViewController: UIViewController {
     }
 }
 
-// MARK: - MainViewUiDelegate
+// MARK: - UiDelegate
 
-extension MainViewController: MainViewUiDelegate {
+extension HeroesListViewController: HeroesListViewUiDelegate {
     // Actions
-    func mainView(_ mainView: MainView, didSelectHeroWithIndex index: IndexPath) {
+    func heroesListView(_ heroesListView: HeroesListView, didSelectHeroWithIndex index: IndexPath) {
         presenter?.handleSelectingHeroCell(with: index.row)
     }
     
     // DataSource
-    func mainView(_ mainView: MainView, getHeroCellModelWithIndex index: Int) -> HeroSeleсtingCellModel? {
+    func heroesListView(_ heroesListView: HeroesListView, getHeroCellModelWithIndex index: Int) -> HeroSeleсtingCellModel? {
         return presenter?.getHeroCellModel(with: index)
     }
     
-    func mainViewCellsCount(_ mainView: MainView) -> Int? {
+    func heroesListViewCellsCount(_ heroesListView: HeroesListView) -> Int? {
         return presenter?.getHeroCellModelsCount()
     }
 }
 
-// MARK: - MainViewInput
+// MARK: - ViewInput
 
-extension MainViewController: MainViewInput {
+extension HeroesListViewController: HeroesListViewInput {
     func reloadHeroesCollectionView() {
-        guard let mainView = view as? MainView else { return }
-        mainView.reloadHeroesCollectionView()
+        guard let heroesListView = view as? HeroesListView else { return }
+        heroesListView.reloadHeroesCollectionView()
     }
     
     func showActivityIndicator(_ show: Bool) {
-        guard let mainView = view as? MainView else { return }
-        mainView.showActivityIndicator(show)
+        guard let heroesListView = view as? HeroesListView else { return }
+        heroesListView.showActivityIndicator(show)
     }
 }

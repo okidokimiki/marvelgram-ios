@@ -22,8 +22,8 @@ final class HeroesListCoordinator: Coordinator {
     // MARK: - Public Methods
     
     func start() {
-        let mainVC = MainViewModuleBuilder.createModule(with: .default, coordinator: self)
-        navigationController.setViewControllers([mainVC], animated: true)
+        let heroesListVC = HeroesListModuleBuilder.createModule(with: .default, coordinator: self)
+        navigationController.setViewControllers([heroesListVC], animated: true)
     }
     
     func startDetailEvent(with dataSource: DetailDataSource) {
