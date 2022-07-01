@@ -25,7 +25,7 @@ final class HeroDetailsCoordinator: Coordinator {
     // MARK: - Public Methods
     
     func start() {
-        let heroDetailsVC = HeroDetailsViewModuleBuilder.createModule(with: .detail(dataSource), coordinator: self)
+        let heroDetailsVC = HeroDetailsViewModuleBuilder.createModule(with: .heroDetails(dataSource), coordinator: self)
         navigationController.pushViewController(heroDetailsVC, animated: true)
     }
 }

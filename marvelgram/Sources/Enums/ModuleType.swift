@@ -8,6 +8,6 @@
 import Foundation
 
 enum ModuleType {
-    case detail(HeroDetailsDataSource?)
+    case heroDetails(HeroDetailsDataSource?)
     case `default`
 }

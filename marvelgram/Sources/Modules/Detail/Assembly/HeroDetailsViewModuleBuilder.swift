@@ -11,7 +11,7 @@ final class HeroDetailsViewModuleBuilder: ModuleBuilder {
     static func createModule(with type: ModuleType, coordinator: Coordinator) -> UIViewController {
         let viewController = HeroDetailsViewController()
         let presenter = HeroDetailsPresenter(view: viewController)
-        if case let .detail(data) = type {
+        if case let .heroDetails(data) = type {
             presenter.fillDataSource(with: data)
         }
         viewController.presenter = presenter
