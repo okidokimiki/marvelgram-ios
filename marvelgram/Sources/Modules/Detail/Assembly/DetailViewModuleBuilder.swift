@@ -8,11 +8,12 @@
 import UIKit
 
 final class DetailViewModuleBuilder: ModuleBuilder {
-    static func createModule(with type: ModuleType, _ coordinator: Coordinator) -> UIViewController {
+    static func createModule(with type: ModuleType, coordinator: Coordinator) -> UIViewController {
         let viewController = DetailViewController()
-        let dataSource = DetailDataSource()
-        let presenter = DetailPresenter(view: viewController,
-                                        dataSource: dataSource)
+        let presenter = DetailPresenter(view: viewController)
+        if case let .detail(data) = type {
+            presenter.fillDataSource(with: data)
+        }
         viewController.presenter = presenter
         
         return viewController

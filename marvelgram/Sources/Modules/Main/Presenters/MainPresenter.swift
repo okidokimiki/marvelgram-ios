@@ -11,6 +11,7 @@ final class MainPresenter {
     // MARK: - Public Properties
     
     weak var view: MainViewInput?
+    var coordinator: HeroesListCoordinator?
     
     // MARK: - Private Properties
     
@@ -21,10 +22,12 @@ final class MainPresenter {
     
     required init(
         view: MainViewInput,
-        dataSource: MainDataSource
+        dataSource: MainDataSource,
+        coordinator: HeroesListCoordinator
     ) {
         self.view = view
         self.dataSource = dataSource
+        self.coordinator = coordinator
     }
     
     // MARK: - Private Methods
@@ -56,6 +59,8 @@ extension MainPresenter: MainViewOutput {
     
     func handleSelectingHeroCell(with index: Int) {
         print("Selected heroCell with index \(index)")
+        // собери DetailDataSource
+//        coordinator?.startDetailEvent(with: <#T##DetailDataSource#>)
     }
     
     // dataSource

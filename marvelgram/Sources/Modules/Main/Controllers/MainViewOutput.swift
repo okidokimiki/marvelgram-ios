@@ -8,7 +8,7 @@
 import Foundation
 
 protocol MainViewOutput {
-    init(view: MainViewInput, dataSource: MainDataSource)
+    init(view: MainViewInput, dataSource: MainDataSource, coordinator: HeroesListCoordinator)
     
     // Actions
     func handleDidAppearingView()
