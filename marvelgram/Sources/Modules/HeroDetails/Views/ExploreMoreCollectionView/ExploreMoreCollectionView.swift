@@ -36,7 +36,7 @@ final class ExploreMoreCollectionView: UICollectionView {
         dataSource = self
         backgroundColor = .none
         showsHorizontalScrollIndicator = false
-        register(ExploreMoreCollectionViewCell.self, forCellWithReuseIdentifier: Constants.ReuseId.explMoreCell)
+        register(ExploreMoreCollectionViewCell.self)
     }
 }
 
@@ -48,17 +48,14 @@ extension ExploreMoreCollectionView: UICollectionViewDelegate {
 // MARK: - UICollectionViewDataSource
 
 extension ExploreMoreCollectionView: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView,
-                        numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let cellsCount = Constants.countOfCellsInSection
         
         return cellsCount
     }
     
-    func collectionView(_ collectionView: UICollectionView,
-                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let reuseIdentifier = Constants.ReuseId.explMoreCell
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueCell(cellType: ExploreMoreCollectionViewCell.self, for: indexPath)
         
         return cell
     }
@@ -67,17 +64,13 @@ extension ExploreMoreCollectionView: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegateFlowLayout
 
 extension ExploreMoreCollectionView: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let cellSize = CGSize(width: bounds.height, height: bounds.height)
         
         return cellSize
     }
     
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         let cellSpacing = Constants.FlowLayout.spacing
         
         return cellSpacing
@@ -89,10 +82,6 @@ extension ExploreMoreCollectionView: UICollectionViewDelegateFlowLayout {
 private extension ExploreMoreCollectionView {
     enum Constants {
         static let countOfCellsInSection = 10
-        
-        enum ReuseId {
-            static let explMoreCell = ExploreMoreCollectionViewCell.cellID
-        }
         
         enum FlowLayout {
             static let spacing: CGFloat = 15

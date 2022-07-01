@@ -8,10 +8,6 @@
 import UIKit
 
 final class ExploreMoreCollectionViewCell: UICollectionViewCell {
-    // MARK: - Public Properties
-    
-    static let cellID = String(describing: ExploreMoreCollectionViewCell.self)
-    
     // MARK: - Initilization
     
     override init(frame: CGRect) {

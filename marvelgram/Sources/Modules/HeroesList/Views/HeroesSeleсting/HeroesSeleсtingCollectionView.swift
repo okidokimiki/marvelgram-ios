@@ -42,7 +42,7 @@ final class HeroesSeleсtingCollectionView: UICollectionView {
         showsVerticalScrollIndicator = false
         showsHorizontalScrollIndicator = false
         backgroundColor = Palette.GlobalColor.backgroundPrimary
-        register(HeroSeleсtingCollectionViewCell.self, forCellWithReuseIdentifier: Constants.ReuseId.heroCell)
+        register(HeroSeleсtingCollectionViewCell.self)
     }
 }
 
@@ -66,28 +66,23 @@ extension HeroesSeleсtingCollectionView: UICollectionViewDelegate {
 // MARK: - UICollectionViewDataSource
 
 extension HeroesSeleсtingCollectionView: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView,
-                        numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let cellsCount = dataDelegate?.heroesSeleсtingCollectionViewCellsCount(self) else { return 0 }
         
         return cellsCount
     }
     
-    func collectionView(_ collectionView: UICollectionView,
-                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let reuseIdentifier = Constants.ReuseId.heroCell
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let heroCell = collectionView.dequeueCell(cellType: HeroSeleсtingCollectionViewCell.self, for: indexPath)
         
-        return cell
+        return heroCell
     }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
 
 extension HeroesSeleсtingCollectionView: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let paddingSpace = Constants.FlowLayout.minimumCellSpacing * CGFloat(Constants.countOfCellsPerRow - 1)
         let availableWidth = collectionView.bounds.width - paddingSpace
         let widthPerCell = availableWidth / CGFloat(Constants.countOfCellsPerRow)
@@ -96,17 +91,13 @@ extension HeroesSeleсtingCollectionView: UICollectionViewDelegateFlowLayout {
         return cellSize
     }
     
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         let sectionSpacing = Constants.FlowLayout.minimumSectionSpacing
         
         return sectionSpacing
     }
     
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         let cellSpacing = Constants.FlowLayout.minimumCellSpacing
         
         return cellSpacing
@@ -118,10 +109,6 @@ extension HeroesSeleсtingCollectionView: UICollectionViewDelegateFlowLayout {
 private extension HeroesSeleсtingCollectionView {
     enum Constants {
         static let countOfCellsPerRow = 3
-        
-        enum ReuseId {
-            static let heroCell = HeroSeleсtingCollectionViewCell.cellID
-        }
         
         enum FlowLayout {
             static let minimumSectionSpacing: CGFloat = 1

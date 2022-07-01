@@ -8,10 +8,6 @@
 import UIKit
 
 final class HeroSeleсtingCollectionViewCell: UICollectionViewCell {
-    // MARK: - Public Properties
-    
-    static let cellID = String(describing: HeroSeleсtingCollectionViewCell.self)
-    
     // MARK: - Private Properties
     
     private lazy var characterImageView: CharacterImageView = {

@@ -17,6 +17,8 @@
 		044018AD286F0BF500844035 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044018AB286F0BF500844035 /* Coordinator.swift */; };
 		044018AF286F3E9700844035 /* UIColor + hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044018AE286F3E9700844035 /* UIColor + hex.swift */; };
 		044018B1286F42A800844035 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044018B0286F42A800844035 /* Palette.swift */; };
+		044018B5286F9C3F00844035 /* ReuseIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044018B4286F9C3F00844035 /* ReuseIdentifiable.swift */; };
+		044018B7286F9F6C00844035 /* UICollectionView + reuseId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044018B6286F9F6C00844035 /* UICollectionView + reuseId.swift */; };
 		045C44B3286CA6360016084B /* HeroDetailsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C44B2286CA6360016084B /* HeroDetailsDataSource.swift */; };
 		045C44B6286CA7920016084B /* ExploreMoreCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C44B5286CA7920016084B /* ExploreMoreCellModel.swift */; };
 		045C44BB286CAB7A0016084B /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C44BA286CAB7A0016084B /* AppCoordinator.swift */; };
@@ -69,6 +71,8 @@
 		044018AB286F0BF500844035 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		044018AE286F3E9700844035 /* UIColor + hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + hex.swift"; sourceTree = "<group>"; };
 		044018B0286F42A800844035 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
+		044018B4286F9C3F00844035 /* ReuseIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseIdentifiable.swift; sourceTree = "<group>"; };
+		044018B6286F9F6C00844035 /* UICollectionView + reuseId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView + reuseId.swift"; sourceTree = "<group>"; };
 		045C44B2286CA6360016084B /* HeroDetailsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailsDataSource.swift; sourceTree = "<group>"; };
 		045C44B5286CA7920016084B /* ExploreMoreCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreMoreCellModel.swift; sourceTree = "<group>"; };
 		045C44BA286CAB7A0016084B /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
@@ -134,8 +138,9 @@
 		044018A9286F0BF500844035 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				044018AB286F0BF500844035 /* Coordinator.swift */,
+				044018B4286F9C3F00844035 /* ReuseIdentifiable.swift */,
 				044018AA286F0BF500844035 /* ModuleBuilder.swift */,
+				044018AB286F0BF500844035 /* Coordinator.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -180,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				04FE0A34284FC9C700839CBF /* App */,
+				04B430512869EA5800BD4904 /* Entity */,
 				04CFB6B82864EDE400A2FED7 /* Services */,
 				04FE0A39284FCA1B00839CBF /* Modules */,
 				04B430502869E74500BD4904 /* Enums */,
@@ -354,7 +360,6 @@
 		04CFB6B82864EDE400A2FED7 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				04B430512869EA5800BD4904 /* Entity */,
 				04B43072286B81E500BD4904 /* Cache */,
 				04B4306E286B81A100BD4904 /* Network */,
 				04B43071286B81BD00BD4904 /* Repository */,
@@ -409,8 +414,9 @@
 		04FE0A37284FC9F500839CBF /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				044018AE286F3E9700844035 /* UIColor + hex.swift */,
+				044018B6286F9F6C00844035 /* UICollectionView + reuseId.swift */,
 				04C5C1CD285152630096D272 /* UIImage + assets.swift */,
+				044018AE286F3E9700844035 /* UIColor + hex.swift */,
 				04B430582869F93400BD4904 /* UIView + tamic.swift */,
 			);
 			path = Extensions;
@@ -545,6 +551,7 @@
 				04FE0A33284FC99F00839CBF /* HeroesListModuleBuilder.swift in Sources */,
 				04C5C1B3284FF12D0096D272 /* ImageCache.swift in Sources */,
 				04FE0A21284FC90A00839CBF /* HeroesListViewController.swift in Sources */,
+				044018B5286F9C3F00844035 /* ReuseIdentifiable.swift in Sources */,
 				045C44BB286CAB7A0016084B /* AppCoordinator.swift in Sources */,
 				04FE0A1D284FC90A00839CBF /* AppDelegate.swift in Sources */,
 				04C5C1D1285168FA0096D272 /* HeroDetailsViewController.swift in Sources */,
@@ -570,6 +577,7 @@
 				04C5C1DC28516B750096D272 /* HeroDetailsViewOutput.swift in Sources */,
 				04C5C1B1284FEE090096D272 /* HeroSeleсtingCellModel.swift in Sources */,
 				04B4306D286B818900BD4904 /* HeroesNetworkable.swift in Sources */,
+				044018B7286F9F6C00844035 /* UICollectionView + reuseId.swift in Sources */,
 				04C5C1DE28516B9F0096D272 /* HeroDetailsViewInput.swift in Sources */,
 				04C5C1CE285152630096D272 /* UIImage + assets.swift in Sources */,
 				04FE0A3D284FCAAD00839CBF /* HeroesListView.swift in Sources */,
