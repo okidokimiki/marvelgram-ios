@@ -29,7 +29,7 @@
 		04B430542869EAA800BD4904 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B430532869EAA800BD4904 /* NetworkError.swift */; };
 		04B430562869EB9700BD4904 /* JSONResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B430552869EB9700BD4904 /* JSONResponse.swift */; };
 		04B430592869F93400BD4904 /* UIView + tamic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B430582869F93400BD4904 /* UIView + tamic.swift */; };
-		04B4306D286B818900BD4904 /* HeroesNetworkable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B4306C286B818900BD4904 /* HeroesNetworkable.swift */; };
+		04B4306D286B818900BD4904 /* Networkable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B4306C286B818900BD4904 /* Networkable.swift */; };
 		04B43070286B81AE00BD4904 /* HeroesRepositorieble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B4306F286B81AE00BD4904 /* HeroesRepositorieble.swift */; };
 		04C5C19F284FDA3D0096D272 /* HeroesListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C19E284FDA3D0096D272 /* HeroesListPresenter.swift */; };
 		04C5C1A1284FDA5D0096D272 /* HeroesListViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1A0284FDA5D0096D272 /* HeroesListViewOutput.swift */; };
@@ -82,7 +82,7 @@
 		04B430532869EAA800BD4904 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		04B430552869EB9700BD4904 /* JSONResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONResponse.swift; sourceTree = "<group>"; };
 		04B430582869F93400BD4904 /* UIView + tamic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + tamic.swift"; sourceTree = "<group>"; };
-		04B4306C286B818900BD4904 /* HeroesNetworkable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesNetworkable.swift; sourceTree = "<group>"; };
+		04B4306C286B818900BD4904 /* Networkable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networkable.swift; sourceTree = "<group>"; };
 		04B4306F286B81AE00BD4904 /* HeroesRepositorieble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesRepositorieble.swift; sourceTree = "<group>"; };
 		04C5C19E284FDA3D0096D272 /* HeroesListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesListPresenter.swift; sourceTree = "<group>"; };
 		04C5C1A0284FDA5D0096D272 /* HeroesListViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesListViewOutput.swift; sourceTree = "<group>"; };
@@ -261,7 +261,7 @@
 		04B4306E286B81A100BD4904 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				04B4306C286B818900BD4904 /* HeroesNetworkable.swift */,
+				04B4306C286B818900BD4904 /* Networkable.swift */,
 				04C5C1AA284FEC7A0096D272 /* NetworkService.swift */,
 			);
 			path = Network;
@@ -571,7 +571,7 @@
 				04C5C1BF285019980096D272 /* MarvelBarButtonItem.swift in Sources */,
 				04C5C1DC28516B750096D272 /* HeroDetailsViewOutput.swift in Sources */,
 				04C5C1B1284FEE090096D272 /* HeroSeleсtingCellModel.swift in Sources */,
-				04B4306D286B818900BD4904 /* HeroesNetworkable.swift in Sources */,
+				04B4306D286B818900BD4904 /* Networkable.swift in Sources */,
 				044018B7286F9F6C00844035 /* UICollectionView + reuseId.swift in Sources */,
 				04C5C1DE28516B9F0096D272 /* HeroDetailsViewInput.swift in Sources */,
 				04C5C1CE285152630096D272 /* UIImage + assets.swift in Sources */,

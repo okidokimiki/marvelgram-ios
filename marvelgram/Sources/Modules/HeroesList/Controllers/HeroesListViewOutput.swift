@@ -9,7 +9,10 @@ import Foundation
 
 protocol HeroesListViewOutput {
     // Initilization
-    init(view: HeroesListViewInput, dataSource: HeroesListDataSource, coordinator: HeroesListCoordinator)
+    init(view: HeroesListViewInput,
+         repository: HeroesRepository,
+         dataSource: HeroesListDataSource,
+         coordinator: HeroesListCoordinator)
     
     // Actions
     func handleDidAppearingView()

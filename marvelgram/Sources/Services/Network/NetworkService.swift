@@ -7,20 +7,14 @@
 
 import Foundation
 
-final class NetworkService {
-    // MARK: - Public Properties
-    
-    static let shared = NetworkService()
-    
+final class NetworkService: Networkable {
     // MARK: - Private Properties
     
     private let session = URLSession.shared
     private let decoder = JSONDecoder()
-}
-
-// MARK: - HeroesNetworkable
-
-extension NetworkService: HeroesNetworkable {
+    
+    // MARK: - Public Methods
+    
     func fetchConfig<T: Codable>(of type: T.Type, completion: @escaping JSONResponseHandler) {
         guard let heroesUrl = URL(string: Constants.JsonUrlStrings.upstartsMarvelgram) else {
             completion(.error(.invalidURL))

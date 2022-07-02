@@ -14,7 +14,7 @@ final class HeroesListPresenter {
     
     // MARK: - Private Properties
     
-    private let repository = HeroesRepository.shared
+    private let repository: HeroesRepository
     private var dataSource: HeroesListDataSource
     private var coordinator: HeroesListCoordinator?
     
@@ -22,10 +22,12 @@ final class HeroesListPresenter {
     
     required init(
         view: HeroesListViewInput,
+        repository: HeroesRepository,
         dataSource: HeroesListDataSource,
         coordinator: HeroesListCoordinator
     ) {
         self.view = view
+        self.repository = repository
         self.dataSource = dataSource
         self.coordinator = coordinator
     }

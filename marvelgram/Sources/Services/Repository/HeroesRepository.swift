@@ -7,25 +7,45 @@
 
 import UIKit
 
-final class HeroesRepository {
-    // MARK: - Public Properties
-    
-    static let shared = HeroesRepository()
-    
+final class HeroesRepository: HeroesRepositorieble {
     // MARK: - Private Properties
     
     private let fileManagerDirURLs = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)
     private let fileManager = FileManager.default
     private let decoder = JSONDecoder()
     
-    private let networkService = NetworkService.shared
+    private let networkService: Networkable
     private var heroes: [Hero] = []
     
     // MARK: - Initilization
     
-    private init() {
+    init(networkService: Networkable) {
+        self.networkService = networkService
         let destURL = getHeroesConfigDestURL()
         heroes = makeHeroes(from: destURL)
+    }
+    
+    // MARK: - Public Methods
+    
+    func getHeroes(completion: @escaping HeroConfigResponseHandler) {
+        networkService.fetchConfig(of: [Hero].self) { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let config):
+                guard let configUrl = config as? URL else { return }
+                let newHeroes = self.makeHeroes(from: configUrl)
+                
+                if newHeroes != self.heroes {
+                    self.saveFile(from: configUrl, to: Constants.folderName)
+                    self.heroes = newHeroes
+                }
+            case .error(let netError):
+                print(netError.localizedDescription)
+            }
+            
+            completion(self.heroes)
+        }
     }
         
     // MARK: - Private Methods
@@ -85,31 +105,6 @@ final class HeroesRepository {
             try fileManager.createDirectory(at: folderURL, withIntermediateDirectories: true)
         } catch {
             print(error.localizedDescription)
-        }
-    }
-}
-
-// MARK: - HeroesRepositorieble
-
-extension HeroesRepository: HeroesRepositorieble {
-    func getHeroes(completion: @escaping HeroConfigResponseHandler) {
-        networkService.fetchConfig(of: [Hero].self) { [weak self] result in
-            guard let self = self else { return }
-            
-            switch result {
-            case .success(let config):
-                guard let configUrl = config as? URL else { return }
-                let newHeroes = self.makeHeroes(from: configUrl)
-                
-                if newHeroes != self.heroes {
-                    self.saveFile(from: configUrl, to: Constants.folderName)
-                    self.heroes = newHeroes
-                }
-            case .error(let netError):
-                print(netError.localizedDescription)
-            }
-            
-            completion(self.heroes)
         }
     }
 }
