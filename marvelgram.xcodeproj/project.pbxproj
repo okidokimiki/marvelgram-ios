@@ -19,6 +19,7 @@
 		044018B1286F42A800844035 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044018B0286F42A800844035 /* Palette.swift */; };
 		044018B5286F9C3F00844035 /* ReuseIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044018B4286F9C3F00844035 /* ReuseIdentifiable.swift */; };
 		044018B7286F9F6C00844035 /* UICollectionView + reuseId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044018B6286F9F6C00844035 /* UICollectionView + reuseId.swift */; };
+		044018BE2870F3B400844035 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044018BD2870F3B400844035 /* ImageLoader.swift */; };
 		045C44B3286CA6360016084B /* HeroDetailsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C44B2286CA6360016084B /* HeroDetailsDataSource.swift */; };
 		045C44B6286CA7920016084B /* ExploreMoreCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C44B5286CA7920016084B /* ExploreMoreCellModel.swift */; };
 		045C44BB286CAB7A0016084B /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C44BA286CAB7A0016084B /* AppCoordinator.swift */; };
@@ -38,8 +39,6 @@
 		04C5C1AB284FEC7A0096D272 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1AA284FEC7A0096D272 /* NetworkService.swift */; };
 		04C5C1AE284FED200096D272 /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1AD284FED200096D272 /* Hero.swift */; };
 		04C5C1B1284FEE090096D272 /* HeroSeleсtingCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1B0284FEE090096D272 /* HeroSeleсtingCellModel.swift */; };
-		04C5C1B3284FF12D0096D272 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1B2284FF12D0096D272 /* ImageCache.swift */; };
-		04C5C1B5284FF16F0096D272 /* CharacterImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1B4284FF16F0096D272 /* CharacterImageView.swift */; };
 		04C5C1B8284FF77B0096D272 /* HeroesListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1B7284FF77B0096D272 /* HeroesListDataSource.swift */; };
 		04C5C1BB28500F5F0096D272 /* HeroesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1BA28500F5F0096D272 /* HeroesRepository.swift */; };
 		04C5C1BF285019980096D272 /* MarvelBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1BE285019980096D272 /* MarvelBarButtonItem.swift */; };
@@ -73,6 +72,7 @@
 		044018B0286F42A800844035 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		044018B4286F9C3F00844035 /* ReuseIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseIdentifiable.swift; sourceTree = "<group>"; };
 		044018B6286F9F6C00844035 /* UICollectionView + reuseId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView + reuseId.swift"; sourceTree = "<group>"; };
+		044018BD2870F3B400844035 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		045C44B2286CA6360016084B /* HeroDetailsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailsDataSource.swift; sourceTree = "<group>"; };
 		045C44B5286CA7920016084B /* ExploreMoreCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreMoreCellModel.swift; sourceTree = "<group>"; };
 		045C44BA286CAB7A0016084B /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
@@ -92,8 +92,6 @@
 		04C5C1AA284FEC7A0096D272 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		04C5C1AD284FED200096D272 /* Hero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
 		04C5C1B0284FEE090096D272 /* HeroSeleсtingCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HeroSeleсtingCellModel.swift"; sourceTree = "<group>"; };
-		04C5C1B2284FF12D0096D272 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
-		04C5C1B4284FF16F0096D272 /* CharacterImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterImageView.swift; sourceTree = "<group>"; };
 		04C5C1B7284FF77B0096D272 /* HeroesListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesListDataSource.swift; sourceTree = "<group>"; };
 		04C5C1BA28500F5F0096D272 /* HeroesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesRepository.swift; sourceTree = "<group>"; };
 		04C5C1BE285019980096D272 /* MarvelBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelBarButtonItem.swift; sourceTree = "<group>"; };
@@ -143,6 +141,14 @@
 				044018AB286F0BF500844035 /* Coordinator.swift */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		044018BC2870F37000844035 /* ReusebleViews */ = {
+			isa = PBXGroup;
+			children = (
+				044018BD2870F3B400844035 /* ImageLoader.swift */,
+			);
+			path = ReusebleViews;
 			sourceTree = "<group>";
 		};
 		045C44B4286CA63B0016084B /* DataSource */ = {
@@ -270,14 +276,6 @@
 			path = Repository;
 			sourceTree = "<group>";
 		};
-		04B43072286B81E500BD4904 /* Cache */ = {
-			isa = PBXGroup;
-			children = (
-				04C5C1B2284FF12D0096D272 /* ImageCache.swift */,
-			);
-			path = Cache;
-			sourceTree = "<group>";
-		};
 		04C5C19C284FD9E80096D272 /* HeroesList */ = {
 			isa = PBXGroup;
 			children = (
@@ -360,7 +358,6 @@
 		04CFB6B82864EDE400A2FED7 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				04B43072286B81E500BD4904 /* Cache */,
 				04B4306E286B81A100BD4904 /* Network */,
 				04B43071286B81BD00BD4904 /* Repository */,
 			);
@@ -371,7 +368,6 @@
 			isa = PBXGroup;
 			children = (
 				04C5C1A6284FDDCA0096D272 /* HeroSeleсtingCollectionViewCell.swift */,
-				04C5C1B4284FF16F0096D272 /* CharacterImageView.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -427,6 +423,7 @@
 			children = (
 				04C5C19C284FD9E80096D272 /* HeroesList */,
 				04C5C1CF2851688D0096D272 /* HeroDetails */,
+				044018BC2870F37000844035 /* ReusebleViews */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -549,7 +546,6 @@
 				04C5C1A5284FDD890096D272 /* HeroesSeleсtingCollectionView.swift in Sources */,
 				04643365286EF35C007EDCFD /* HeroDetailsCoordinator.swift in Sources */,
 				04FE0A33284FC99F00839CBF /* HeroesListModuleBuilder.swift in Sources */,
-				04C5C1B3284FF12D0096D272 /* ImageCache.swift in Sources */,
 				04FE0A21284FC90A00839CBF /* HeroesListViewController.swift in Sources */,
 				044018B5286F9C3F00844035 /* ReuseIdentifiable.swift in Sources */,
 				045C44BB286CAB7A0016084B /* AppCoordinator.swift in Sources */,
@@ -564,7 +560,6 @@
 				044018B1286F42A800844035 /* Palette.swift in Sources */,
 				04C5C1A7284FDDCA0096D272 /* HeroSeleсtingCollectionViewCell.swift in Sources */,
 				044018AD286F0BF500844035 /* Coordinator.swift in Sources */,
-				04C5C1B5284FF16F0096D272 /* CharacterImageView.swift in Sources */,
 				045C44B3286CA6360016084B /* HeroDetailsDataSource.swift in Sources */,
 				04B430562869EB9700BD4904 /* JSONResponse.swift in Sources */,
 				04060FD52859345300DF93F6 /* Localization.swift in Sources */,
@@ -582,6 +577,7 @@
 				04C5C1CE285152630096D272 /* UIImage + assets.swift in Sources */,
 				04FE0A3D284FCAAD00839CBF /* HeroesListView.swift in Sources */,
 				04C5C1BB28500F5F0096D272 /* HeroesRepository.swift in Sources */,
+				044018BE2870F3B400844035 /* ImageLoader.swift in Sources */,
 				04C5C1AB284FEC7A0096D272 /* NetworkService.swift in Sources */,
 				04C5C1DA28516B390096D272 /* HeroDetailsPresenter.swift in Sources */,
 				04060FDB28593BEC00DF93F6 /* ExploreMoreCollectionViewCell.swift in Sources */,
