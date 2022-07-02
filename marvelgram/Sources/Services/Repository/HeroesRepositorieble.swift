@@ -7,7 +7,7 @@
 
 import Foundation
 
-typealias HeroConfigResponseHandler = (([Hero]) -> Void)
+typealias HeroConfigResponseHandler = ([Hero]) -> Void
 
 protocol HeroesRepositorieble {
     func getHeroes(completion: @escaping HeroConfigResponseHandler)

@@ -10,8 +10,8 @@ import UIKit
 final class HeroSeleсtingCollectionViewCell: UICollectionViewCell {
     // MARK: - Private Properties
     
-    private lazy var characterImageView: CharacterImageView = {
-        return CharacterImageView(frame: .zero)
+    private lazy var characterImageView: ImageLoader = {
+        return ImageLoader(frame: .zero)
     }()
     
     // MARK: - Initilization
@@ -40,7 +40,7 @@ final class HeroSeleсtingCollectionViewCell: UICollectionViewCell {
     // MARK: - Public Methods
     
     func configure(with model: HeroSeleсtingCellModel) {
-        characterImageView.loadImageWith(urlString: model.url)
+        characterImageView.loadImage(from: model.url)
     }
     
     // MARK: - Layout

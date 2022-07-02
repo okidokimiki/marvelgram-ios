@@ -14,8 +14,8 @@ final class HeroDetailsView: UIView {
     
     // MARK: - Private Properties
     
-    private lazy var characterImageView: CharacterImageView = {
-        return CharacterImageView(frame: .zero)
+    private lazy var characterImageView: ImageLoader = {
+        return ImageLoader(frame: .zero)
     }()
     
     private lazy var descrpLabel: UILabel = {
