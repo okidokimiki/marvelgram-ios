@@ -93,7 +93,7 @@ final class HeroesRepository {
 
 extension HeroesRepository: HeroesRepositorieble {
     func getHeroes(completion: @escaping HeroConfigResponseHandler) {
-        networkService.fetchHeroesConfig { [weak self] result in
+        networkService.fetchConfig(of: [Hero].self) { [weak self] result in
             guard let self = self else { return }
             
             switch result {
