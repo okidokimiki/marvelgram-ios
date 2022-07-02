@@ -40,7 +40,7 @@ final class HeroSeleсtingCollectionViewCell: UICollectionViewCell {
     // MARK: - Public Methods
     
     func configure(with model: HeroSeleсtingCellModel) {
-        characterImageView.loadImageWith(urlString: model.url)
+        characterImageView.loadImage(from: model.url)
     }
     
     // MARK: - Layout

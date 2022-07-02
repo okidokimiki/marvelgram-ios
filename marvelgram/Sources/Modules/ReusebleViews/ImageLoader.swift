@@ -28,26 +28,24 @@ class ImageLoader: UIImageView {
     
     // MARK: - Public Methods
     
-    func loadImageWith(urlString: String) {
-        image = nil
+    func loadImage(from urlString: String) {
+        guard let url = URL(string: urlString) else { return }
+        lastUrlUsedToLoadImage = url
         
-        let imageFromCache = imageCache.object(forKey: urlString as NSString)
-        guard imageFromCache == nil else {
+        image = nil
+        if let imageFromCache = imageCache.object(forKey: urlString as NSString) {
             image = imageFromCache
             return
         }
-        
-        guard let url = URL(string: urlString) else { return }
-        lastUrlUsedToLoadImage = url
         
         resumeDataTask(with: url) { [weak self] result in
             guard let self = self else { return }
             
             switch result {
-            case .success(let image):
+            case .success(let downloadedImage):
                 DispatchQueue.main.async {
                     if url == self.lastUrlUsedToLoadImage {
-                        self.image = image
+                        self.image = downloadedImage
                     }
                 }
             case .failure(let error):
