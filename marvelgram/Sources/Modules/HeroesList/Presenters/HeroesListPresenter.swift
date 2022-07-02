@@ -16,7 +16,7 @@ final class HeroesListPresenter {
     
     private let repository: HeroesRepository
     private var dataSource: HeroesListDataSource
-    private var coordinator: HeroesListCoordinator?
+    private var coordinator: HeroesListCoordinator
     
     // MARK: - Initilization
     
@@ -63,7 +63,7 @@ extension HeroesListPresenter: HeroesListViewOutput {
         print("Selected heroCell with index \(index)")
         let model = self.getHeroCellModel(with: index)
         let dataSource = HeroDetailsDataSource(heroSeleсtingCellModel: model)
-        coordinator?.startHeroDetailsEvent(with: dataSource)
+        coordinator.startHeroDetailsEvent(with: dataSource)
     }
     
     // DataSource

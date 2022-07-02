@@ -8,7 +8,7 @@
 import UIKit
 
 final class HeroDetailsCoordinator: Coordinator {
-    let dataSource: HeroDetailsDataSource?
+    let dataSource: HeroDetailsDataSource
     
     // MARK: - Private Properties
     
@@ -17,7 +17,7 @@ final class HeroDetailsCoordinator: Coordinator {
     
     // MARK: - Initilization
     
-    init(navigationController: UINavigationController, dataSource: HeroDetailsDataSource?) {
+    init(navigationController: UINavigationController, dataSource: HeroDetailsDataSource) {
         self.navigationController = navigationController
         self.dataSource = dataSource
     }

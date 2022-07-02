@@ -15,7 +15,7 @@ final class HeroDetailsPresenter {
     // MARK: - Private Properties
     
     private var dataSource: HeroDetailsDataSource?
-    private var coordinator: HeroDetailsCoordinator?
+    private var coordinator: HeroDetailsCoordinator
     
     // MARK: - Initilization
     
