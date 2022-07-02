@@ -29,7 +29,7 @@ extension NetworkService: HeroesNetworkable {
         
         let downloadTask = session.downloadTask(with: heroesUrl) { urlOrNil, responseOrNil, _ in
             guard let fetchedConfigUrl = urlOrNil else {
-                completion(.error(.noData))
+                completion(.error(.dataIsNil))
                 return
             }
             
@@ -55,7 +55,7 @@ extension NetworkService: HeroesNetworkable {
         
         let task = session.dataTask(with: heroesUrl) { dataOrNil, responseOrNil, _ in
             guard let fetchedData = dataOrNil else {
-                completion(.error(.noData))
+                completion(.error(.dataIsNil))
                 return
             }
             

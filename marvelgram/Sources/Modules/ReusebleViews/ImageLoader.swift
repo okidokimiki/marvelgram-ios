@@ -1,17 +1,19 @@
 //
-//  CharacterImageView.swift
+//  ImageLoader.swift
 //  marvelgram
 //
-//  Created by Mikhail Chaus on 07.06.2022.
+//  Created by Mikhail Chaus on 02.07.2022.
 //
 
 import UIKit
 
-final class CharacterImageView: UIImageView {
+typealias DownloadImageResponseHandler = (Result<UIImage, NetworkError>) -> Void
+
+class ImageLoader: UIImageView {
     // MARK: - Private Properties
     
     private let session = URLSession.shared
-    private var imageCache = ImageCache.shared
+    private var imageCache = NSCache<NSString, UIImage>()
     private var lastImageURLStringUsedToLoadImage: String?
     
     // MARK: - Initialization
@@ -29,6 +31,7 @@ final class CharacterImageView: UIImageView {
     func loadImageWith(urlString: String) {
         image = nil
         lastImageURLStringUsedToLoadImage = urlString
+        
         let imageFromCache = imageCache.object(forKey: urlString as NSString)
         guard imageFromCache == nil else {
             image = imageFromCache
@@ -55,17 +58,15 @@ final class CharacterImageView: UIImageView {
     
     // MARK: - Private Methods
     
-    private func makeAndResumeDataTaskWith(url: URL, completion: @escaping (Result<UIImage, Error>) -> Void) {
-        let task = session.dataTask(with: url) { resumeDataOrNil, _, errorOrNil in
-            if let error = errorOrNil {
-                print("failed to load image with error: \(error.localizedDescription)")
+    private func makeAndResumeDataTaskWith(url: URL, completion: @escaping DownloadImageResponseHandler) {
+        let task = session.dataTask(with: url) { resumeDataOrNil, _, _ in
+            guard let taskImageData = resumeDataOrNil else {
+                completion(.failure(.dataIsNil))
+                return
             }
             
-            guard
-                let taskImageData = resumeDataOrNil,
-                let taskImage = UIImage(data: taskImageData)
-            else {
-                print("\(String(describing: CharacterImageView.self)) failed to load image from \(url)")
+            guard let taskImage = UIImage(data: taskImageData) else {
+                completion(.failure(.invalidData))
                 return
             }
             

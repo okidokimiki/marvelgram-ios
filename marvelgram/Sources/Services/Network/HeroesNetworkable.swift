@@ -7,7 +7,7 @@
 
 import Foundation
 
-typealias JSONResponseHandler = ((JSONResponse) -> Void)
+typealias JSONResponseHandler = (JSONResponse) -> Void
 
 protocol HeroesNetworkable {
     func fetchHeroes(completion: @escaping JSONResponseHandler)
