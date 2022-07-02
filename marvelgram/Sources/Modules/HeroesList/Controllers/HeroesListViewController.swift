@@ -26,7 +26,7 @@ final class HeroesListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+//        window?.safeAreaLayoutGuide.owningView?.backgroundColor = Palette.GlobalColor.backgroundPrimary
         setupNavController()
     }
     
@@ -40,6 +40,9 @@ final class HeroesListViewController: UIViewController {
     
     private func setupNavController() {
         navigationItem.leftBarButtonItem = marvelButton
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.barTintColor = Palette.GlobalColor.backgroundPrimary
+        navigationController?.navigationBar.backgroundColor = Palette.GlobalColor.backgroundPrimary
     }
 }
 
