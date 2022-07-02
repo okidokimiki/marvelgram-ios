@@ -10,6 +10,6 @@ import Foundation
 typealias JSONResponseHandler = (JSONResponse) -> Void
 
 protocol HeroesNetworkable {
-    func fetchHeroes(completion: @escaping JSONResponseHandler)
-    func fetchHeroesConfig(completion: @escaping JSONResponseHandler)
+    func fetch<T: Codable>(of type: T.Type, completion: @escaping JSONResponseHandler)
+    func fetchConfig<T: Codable>(of type: T.Type, completion: @escaping JSONResponseHandler)
 }

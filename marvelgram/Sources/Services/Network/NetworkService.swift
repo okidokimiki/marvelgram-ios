@@ -21,7 +21,7 @@ final class NetworkService {
 // MARK: - HeroesNetworkable
 
 extension NetworkService: HeroesNetworkable {
-    func fetchHeroesConfig(completion: @escaping JSONResponseHandler) {
+    func fetchConfig<T: Codable>(of type: T.Type, completion: @escaping JSONResponseHandler) {
         guard let heroesUrl = URL(string: Constants.JsonUrlStrings.upstartsMarvelgram) else {
             completion(.error(.invalidURL))
             return
@@ -47,7 +47,7 @@ extension NetworkService: HeroesNetworkable {
     }
     
     // Not used, but stored for my "tests"
-    func fetchHeroes(completion: @escaping JSONResponseHandler) {
+    func fetch<T: Codable>(of type: T.Type, completion: @escaping JSONResponseHandler) {
         guard let heroesUrl = URL(string: Constants.JsonUrlStrings.upstartsMarvelgram) else {
             completion(.error(.invalidURL))
             return
@@ -67,7 +67,7 @@ extension NetworkService: HeroesNetworkable {
             }
             
             do {
-                let decodedData = try self.decoder.decode([Hero].self, from: fetchedData)
+                let decodedData = try self.decoder.decode([T].self, from: fetchedData)
                 completion(.success(decodedData))
             } catch {
                 completion(.error(.decodingError))
