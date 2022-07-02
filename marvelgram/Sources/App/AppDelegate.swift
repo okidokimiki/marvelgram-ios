@@ -10,7 +10,14 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
+    var window: UIWindow?
+    var appCoordinator: AppCoordinator?
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+//        self.window?.safeAreaLayoutGuide.owningView?.backgroundColor = Palette.GlobalColor.backgroundPrimary // where should relocate
+        self.appCoordinator = AppCoordinator(window: window)
+        appCoordinator?.start()
         
         return true
     }

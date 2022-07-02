@@ -79,6 +79,10 @@ identifier_name:
     - x
     - y
     - z
+    - r
+    - g
+    - b
+    - a
 
 line_length:
   ignores_urls: true
