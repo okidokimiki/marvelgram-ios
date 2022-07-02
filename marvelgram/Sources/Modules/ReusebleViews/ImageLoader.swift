@@ -40,7 +40,7 @@ class ImageLoader: UIImageView {
         
         guard let url = URL(string: urlString) else { return }
         
-        makeAndResumeDataTaskWith(url: url) { [weak self] result in
+        resumeDataTask(with: url) { [weak self] result in
             guard let self = self else { return }
             
             switch result {
@@ -58,10 +58,17 @@ class ImageLoader: UIImageView {
     
     // MARK: - Private Methods
     
-    private func makeAndResumeDataTaskWith(url: URL, completion: @escaping DownloadImageResponseHandler) {
-        let task = session.dataTask(with: url) { resumeDataOrNil, _, _ in
+    private func resumeDataTask(with url: URL, completion: @escaping DownloadImageResponseHandler) {
+        let task = session.dataTask(with: url) { resumeDataOrNil, responseOrNil, _ in
             guard let taskImageData = resumeDataOrNil else {
                 completion(.failure(.dataIsNil))
+                return
+            }
+            
+            guard
+                let httpResponse = responseOrNil as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode)
+            else {
+                completion(.failure(.badResponse(responseOrNil)))
                 return
             }
             
