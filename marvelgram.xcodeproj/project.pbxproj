@@ -191,7 +191,6 @@
 			isa = PBXGroup;
 			children = (
 				04FE0A34284FC9C700839CBF /* App */,
-				04B430512869EA5800BD4904 /* Entity */,
 				04CFB6B82864EDE400A2FED7 /* Services */,
 				04FE0A39284FCA1B00839CBF /* Modules */,
 				04B430502869E74500BD4904 /* Enums */,
@@ -358,6 +357,7 @@
 		04CFB6B82864EDE400A2FED7 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				04B430512869EA5800BD4904 /* Entity */,
 				04B4306E286B81A100BD4904 /* Network */,
 				04B43071286B81BD00BD4904 /* Repository */,
 			);
