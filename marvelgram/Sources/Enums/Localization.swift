@@ -9,7 +9,7 @@ import Foundation
 
 enum Localization: String {
     case exploreMoreTitle = "exploreMore.title"
-    case descriptionErrorText = "descriptionError.text"
+    case descriptionText = "description.text"
     
     var localizedString: String {
         return NSLocalizedString(self.rawValue, comment: "")

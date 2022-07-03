@@ -50,13 +50,9 @@ final class HeroDetailsView: UIView {
     
     func updateUI(with model: HeroSeleсtingCellModel?) {
         guard let model = model else { return }
-        
-        descrpLabel.text = model.description
-        if model.description.isEmpty {
-            descrpLabel.text = Localization.descriptionErrorText.localizedString
-        }
-        
+                
         characterImageView.loadImage(from: model.url)
+        descrpLabel.text = model.description.isEmpty ? Localization.descriptionText.localizedString : model.description
     }
     
     // MARK: - Private Methods
