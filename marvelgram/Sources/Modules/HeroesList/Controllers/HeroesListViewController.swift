@@ -26,14 +26,14 @@ final class HeroesListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        window?.safeAreaLayoutGuide.owningView?.backgroundColor = Palette.GlobalColor.backgroundPrimary
+        
         setupNavController()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        presenter?.handleDidAppearingView()
+        presenter?.handleDidAppearingView() // fix it
     }
     
     // MARK: - Private Methods
@@ -67,9 +67,9 @@ extension HeroesListViewController: HeroesListViewUiDelegate {
 // MARK: - ViewInput
 
 extension HeroesListViewController: HeroesListViewInput {
-    func reloadHeroesCollectionView() {
+    func reloadHeroesSeleсtingCollectionView() {
         guard let heroesListView = view as? HeroesListView else { return }
-        heroesListView.reloadHeroesCollectionView()
+        heroesListView.reloadHeroesSeleсtingCollectionView()
     }
     
     func showActivityIndicator(_ show: Bool) {

@@ -14,7 +14,7 @@ final class HeroesListView: UIView {
     
     // MARK: - Private Properties
     
-    private lazy var heroesCollectionView: HeroesSeleсtingCollectionView = {
+    private lazy var heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView = {
         return HeroesListView.makeHeroesSeleсtingCollectionView(self, self)
     }()
     
@@ -37,8 +37,8 @@ final class HeroesListView: UIView {
     
     // MARK: - Public Methods
     
-    func reloadHeroesCollectionView() {
-        heroesCollectionView.reloadData()
+    func reloadHeroesSeleсtingCollectionView() {
+        heroesSeleсtingCollectionView.reloadData()
     }
     
     func showActivityIndicator(_ show: Bool) {
@@ -56,7 +56,7 @@ final class HeroesListView: UIView {
     }
     
     private func setupViews() {
-        setupView(heroesCollectionView)
+        setupView(heroesSeleсtingCollectionView)
         setupView(activityIndicatorView)
     }
     
@@ -84,10 +84,10 @@ final class HeroesListView: UIView {
     
     private func activateHeroesCollectionViewConstraints() {
         NSLayoutConstraint.activate([
-            heroesCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            heroesCollectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            heroesCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            heroesCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            heroesSeleсtingCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            heroesSeleсtingCollectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            heroesSeleсtingCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            heroesSeleсtingCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
     

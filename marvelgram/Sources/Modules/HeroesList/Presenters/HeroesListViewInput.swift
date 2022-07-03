@@ -8,6 +8,6 @@
 import Foundation
 
 protocol HeroesListViewInput: AnyObject {
-    func reloadHeroesCollectionView()
+    func reloadHeroesSeleсtingCollectionView()
     func showActivityIndicator(_ show: Bool)
 }

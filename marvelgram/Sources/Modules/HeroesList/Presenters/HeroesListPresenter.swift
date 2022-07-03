@@ -45,7 +45,7 @@ final class HeroesListPresenter {
             
             DispatchQueue.main.async {
                 self.view?.showActivityIndicator(false)
-                self.view?.reloadHeroesCollectionView()
+                self.view?.reloadHeroesSeleсtingCollectionView()
             }
         }
     }
