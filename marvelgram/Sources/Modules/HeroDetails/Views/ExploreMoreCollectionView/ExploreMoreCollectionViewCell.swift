@@ -23,6 +23,6 @@ final class ExploreMoreCollectionViewCell: UICollectionViewCell {
     // MARK: - Private Methods
     
     private func configure() {
-        backgroundColor = .white
+        backgroundColor = Palette.GlobalColor.white
     }
 }

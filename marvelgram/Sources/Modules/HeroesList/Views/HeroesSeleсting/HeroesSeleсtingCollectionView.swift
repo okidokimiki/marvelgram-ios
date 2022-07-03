@@ -39,9 +39,9 @@ final class HeroesSeleсtingCollectionView: UICollectionView {
     private func configure() {
         delegate = self
         dataSource = self
+        backgroundColor = .none
         showsVerticalScrollIndicator = false
         showsHorizontalScrollIndicator = false
-        backgroundColor = Palette.GlobalColor.backgroundPrimary
         register(HeroSeleсtingCollectionViewCell.self)
     }
 }

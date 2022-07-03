@@ -30,7 +30,7 @@ final class HeroSeleсtingCollectionViewCell: UICollectionViewCell {
     // MARK: - Private Methods
     
     private func configure() {
-        backgroundColor = Palette.GlobalColor.cellBackground
+        backgroundColor = Palette.HeroesList.cellBackground
     }
     
     private func setupViews() {
