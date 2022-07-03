@@ -33,6 +33,8 @@ final class ExploreMoreCollectionView: UICollectionView {
         configure()
     }
     
+    // MARK: - Private Methods
+    
     private func configure() {
         delegate = self
         dataSource = self

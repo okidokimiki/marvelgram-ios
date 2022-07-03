@@ -29,9 +29,19 @@ final class HeroDetailsPresenter {
     func fillDataSource(with data: HeroDetailsDataSource?) {
         dataSource = data
     }
+    
+    // MARK: - Private Methods
+    
+    private func updateUI() {
+        let model = dataSource?.heroSeleсtingCellModel
+        view?.updateUI(with: model)
+    }
 }
 
 // MARK: - DetailViewOutput
 
 extension HeroDetailsPresenter: HeroDetailsViewOutput {
+    func handleAppearingView() {
+        updateUI()
+    }
 }

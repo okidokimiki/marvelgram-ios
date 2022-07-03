@@ -46,6 +46,19 @@ final class HeroDetailsView: UIView {
         setupViews()
     }
     
+    // MARK: - Public Methods
+    
+    func updateUI(with model: HeroSeleсtingCellModel?) {
+        guard let model = model else { return }
+        
+        descrpLabel.text = model.description
+        if model.description.isEmpty {
+            descrpLabel.text = Localization.descriptionErrorText.localizedString
+        }
+        
+        characterImageView.loadImage(from: model.url)
+    }
+    
     // MARK: - Private Methods
     
     private func configure() {
@@ -64,7 +77,6 @@ final class HeroDetailsView: UIView {
     static func makeDescrpLabel() -> UILabel {
         let label = UILabel()
         label.font = FontLibrary.SFPro.regular14
-        label.text = Localization.spideySubtitle.localizedString
         label.textColor = Palette.GlobalColor.fontPrimary
         label.numberOfLines = Constants.descrpNumberOfLines
         
@@ -83,6 +95,7 @@ final class HeroDetailsView: UIView {
     static func makeExplMoreCollectionView(_ actionsDelegate: ExploreMoreCollectionViewActionsDelegate, _ dataSourceDelegate: ExploreMoreCollectionViewDataSourceDelegate) -> ExploreMoreCollectionView {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
+        layout.sectionInset = Constants.FlowLayout.baseInsets
         
         let collectionView = ExploreMoreCollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.actionDelegate = actionsDelegate
@@ -107,53 +120,45 @@ final class HeroDetailsView: UIView {
     }
     
     private func activateCharacterImageViewConstraints() {
+        let subview = characterImageView
         NSLayoutConstraint.activate([
-            characterImageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-            characterImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            characterImageView.heightAnchor.constraint(equalToConstant: bounds.width),
-            characterImageView.widthAnchor.constraint(equalToConstant: bounds.width)
+            subview.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            subview.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            subview.heightAnchor.constraint(equalToConstant: bounds.width),
+            subview.widthAnchor.constraint(equalToConstant: bounds.width)
         ])
     }
     
     private func activateDescrpLabelConstraints() {
+        let subview = descrpLabel
         NSLayoutConstraint.activate([
-            descrpLabel.leadingAnchor.constraint(
-                equalTo: leadingAnchor,
-                constant: Constants.AutoLayout.baseOffset),
-            descrpLabel.topAnchor.constraint(
-                equalTo: characterImageView.bottomAnchor,
-                constant: Constants.AutoLayout.baseOffset),
-            descrpLabel.trailingAnchor.constraint(
-                equalTo: trailingAnchor,
-                constant: -Constants.AutoLayout.baseOffset)
+            subview.leadingAnchor.constraint(equalTo: leadingAnchor,
+                                             constant: Constants.AutoLayout.baseOffset),
+            subview.topAnchor.constraint(equalTo: characterImageView.bottomAnchor,
+                                         constant: Constants.AutoLayout.baseOffset),
+            subview.trailingAnchor.constraint(equalTo: trailingAnchor,
+                                              constant: -Constants.AutoLayout.baseOffset)
         ])
     }
     
     private func activateExploreMoreLabelConstraints() {
+        let subview = explMoreLabel
         NSLayoutConstraint.activate([
-            explMoreLabel.leadingAnchor.constraint(
-                equalTo: leadingAnchor,
-                constant: Constants.AutoLayout.baseOffset),
-            explMoreLabel.topAnchor.constraint(
-                equalTo: descrpLabel.bottomAnchor,
-                constant: Constants.AutoLayout.explMoreLabelTopOffset)
+            subview.leadingAnchor.constraint(equalTo: leadingAnchor,
+                                             constant: Constants.AutoLayout.baseOffset),
+            subview.topAnchor.constraint(equalTo: descrpLabel.bottomAnchor,
+                                         constant: Constants.AutoLayout.explMoreLabelTopOffset)
         ])
     }
     
     private func activateExploreMoreCollectionViewConstraints() {
+        let subview = explMoreCollectionView
         NSLayoutConstraint.activate([
-            explMoreCollectionView.leadingAnchor.constraint(
-                equalTo: safeAreaLayoutGuide.leadingAnchor,
-                constant: Constants.AutoLayout.baseOffset),
-            explMoreCollectionView.topAnchor.constraint(
-                equalTo: explMoreLabel.bottomAnchor,
-                constant: Constants.AutoLayout.explMoreCollectionTopOffset),
-            explMoreCollectionView.trailingAnchor.constraint(
-                equalTo: safeAreaLayoutGuide.trailingAnchor,
-                constant: -Constants.AutoLayout.baseOffset),
-            explMoreCollectionView.bottomAnchor.constraint(
-                equalTo: safeAreaLayoutGuide.bottomAnchor,
-                constant: -Constants.AutoLayout.explMoreCollectionBottomOffset)
+            subview.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            subview.topAnchor.constraint(equalTo: explMoreLabel.bottomAnchor,
+                                         constant: Constants.AutoLayout.CollectionViewTopOffset),
+            subview.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            subview.heightAnchor.constraint(equalToConstant: Constants.AutoLayout.CollectionViewHeightValue)
         ])
     }
 }
@@ -179,8 +184,12 @@ private extension HeroDetailsView {
             
             static let explMoreLabelTopOffset: CGFloat = 30
             
-            static let explMoreCollectionTopOffset: CGFloat = 18
-            static let explMoreCollectionBottomOffset: CGFloat = 10
+            static let CollectionViewTopOffset: CGFloat = 18
+            static let CollectionViewHeightValue: CGFloat = 120
+        }
+        
+        enum FlowLayout {
+            static let baseInsets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         }
     }
 }

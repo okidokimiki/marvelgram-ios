@@ -23,6 +23,12 @@ final class HeroDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        presenter?.handleAppearingView()
+    }
 }
 
 // MARK: - DetailViewUiDelegate
@@ -33,4 +39,9 @@ extension HeroDetailsViewController: HeroDetailsViewUiDelegate {
 // MARK: - DetailViewInput
 
 extension HeroDetailsViewController: HeroDetailsViewInput {
+    func updateUI(with model: HeroSeleсtingCellModel?) {
+        guard let heroDetailsView = view as? HeroDetailsView else { return }
+        heroDetailsView.updateUI(with: model)
+    }
+    
 }

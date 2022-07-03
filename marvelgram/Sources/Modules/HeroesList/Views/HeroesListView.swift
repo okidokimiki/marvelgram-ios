@@ -86,18 +86,20 @@ final class HeroesListView: UIView {
     }
     
     private func activateHeroesCollectionViewConstraints() {
+        let subview = heroesSeleсtingCollectionView
         NSLayoutConstraint.activate([
-            heroesSeleсtingCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            heroesSeleсtingCollectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            heroesSeleсtingCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            heroesSeleсtingCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            subview.leadingAnchor.constraint(equalTo: leadingAnchor),
+            subview.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            subview.trailingAnchor.constraint(equalTo: trailingAnchor),
+            subview.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
     
     private func activateActivityIndicatorViewConstraint() {
+        let subview = activityIndicatorView
         NSLayoutConstraint.activate([
-            activityIndicatorView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            activityIndicatorView.centerYAnchor.constraint(equalTo: centerYAnchor)
+            subview.centerXAnchor.constraint(equalTo: centerXAnchor),
+            subview.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
 }

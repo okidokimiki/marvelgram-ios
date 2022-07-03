@@ -55,11 +55,12 @@ final class HeroSeleсtingCollectionViewCell: UICollectionViewCell {
     }
     
     private func activateHeroImageViewConstraints() {
+        let subview = characterImageView
         NSLayoutConstraint.activate([
-            characterImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            characterImageView.topAnchor.constraint(equalTo: topAnchor),
-            characterImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            characterImageView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            subview.leadingAnchor.constraint(equalTo: leadingAnchor),
+            subview.topAnchor.constraint(equalTo: topAnchor),
+            subview.trailingAnchor.constraint(equalTo: trailingAnchor),
+            subview.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 }
