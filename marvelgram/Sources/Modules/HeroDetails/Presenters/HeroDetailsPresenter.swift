@@ -41,6 +41,10 @@ final class HeroDetailsPresenter {
 // MARK: - DetailViewOutput
 
 extension HeroDetailsPresenter: HeroDetailsViewOutput {
+    func handleDidLayoutSubviews() {
+        view?.finishLayoutSubviews()
+    }
+    
     func handleAppearingView() {
         updateUI()
     }

@@ -12,4 +12,5 @@ protocol HeroDetailsViewOutput {
     init(view: HeroDetailsViewInput, coordinator: HeroDetailsCoordinator)
     
     func handleAppearingView()
+    func handleDidLayoutSubviews()
 }

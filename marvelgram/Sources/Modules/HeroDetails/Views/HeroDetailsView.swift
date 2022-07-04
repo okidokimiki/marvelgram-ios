@@ -55,6 +55,10 @@ final class HeroDetailsView: UIView {
         descrpLabel.text = model.description.isEmpty ? Localization.descriptionText.localizedString : model.description
     }
     
+    func finishLayoutSubviews() {
+        descrpLabel.sizeToFit()
+    }
+    
     // MARK: - Private Methods
     
     private func configure() {
@@ -74,12 +78,8 @@ final class HeroDetailsView: UIView {
         super.layoutSubviews()
         
         activateCharacterImageViewConstraints()
-        
-        descrpLabel.sizeToFit()
         activateDescrpLabelConstraints()
-        
         activateExploreMoreLabelConstraints()
-        
         activateExploreMoreCollectionViewConstraints()
     }
     

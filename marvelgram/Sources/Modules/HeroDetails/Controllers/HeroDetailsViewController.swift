@@ -39,6 +39,12 @@ final class HeroDetailsViewController: UIViewController {
         
         presenter?.handleAppearingView()
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        presenter?.handleDidLayoutSubviews()
+    }
 }
 
 // MARK: - DetailViewUiDelegate
@@ -53,4 +59,7 @@ extension HeroDetailsViewController: HeroDetailsViewInput {
         heroDetailsView.updateUI(with: model)
     }
     
+    func finishLayoutSubviews() {
+        heroDetailsView.finishLayoutSubviews()
+    }
 }
