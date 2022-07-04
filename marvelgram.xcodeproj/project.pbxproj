@@ -26,6 +26,8 @@
 		04643365286EF35C007EDCFD /* HeroDetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04643364286EF35C007EDCFD /* HeroDetailsCoordinator.swift */; };
 		04643368286F00D9007EDCFD /* ModuleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04643367286F00D9007EDCFD /* ModuleType.swift */; };
 		04968561284FD96E00C1F9A8 /* HeroesListViewUiDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04968560284FD96E00C1F9A8 /* HeroesListViewUiDelegate.swift */; };
+		04AA97AA2873847D007775C0 /* TopAlignedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AA97A92873847D007775C0 /* TopAlignedLabel.swift */; };
+		04AA97AC2873876B007775C0 /* UILabel + interlineSpacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AA97AB2873876B007775C0 /* UILabel + interlineSpacing.swift */; };
 		04B430542869EAA800BD4904 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B430532869EAA800BD4904 /* NetworkError.swift */; };
 		04B430562869EB9700BD4904 /* JSONResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B430552869EB9700BD4904 /* JSONResponse.swift */; };
 		04B430592869F93400BD4904 /* UIView + tamic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B430582869F93400BD4904 /* UIView + tamic.swift */; };
@@ -79,6 +81,8 @@
 		04643364286EF35C007EDCFD /* HeroDetailsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailsCoordinator.swift; sourceTree = "<group>"; };
 		04643367286F00D9007EDCFD /* ModuleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleType.swift; sourceTree = "<group>"; };
 		04968560284FD96E00C1F9A8 /* HeroesListViewUiDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesListViewUiDelegate.swift; sourceTree = "<group>"; };
+		04AA97A92873847D007775C0 /* TopAlignedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopAlignedLabel.swift; sourceTree = "<group>"; };
+		04AA97AB2873876B007775C0 /* UILabel + interlineSpacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + interlineSpacing.swift"; sourceTree = "<group>"; };
 		04B430532869EAA800BD4904 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		04B430552869EB9700BD4904 /* JSONResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONResponse.swift; sourceTree = "<group>"; };
 		04B430582869F93400BD4904 /* UIView + tamic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + tamic.swift"; sourceTree = "<group>"; };
@@ -147,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				044018BD2870F3B400844035 /* ImageLoader.swift */,
+				04AA97A92873847D007775C0 /* TopAlignedLabel.swift */,
 			);
 			path = ReusebleViews;
 			sourceTree = "<group>";
@@ -411,6 +416,7 @@
 			isa = PBXGroup;
 			children = (
 				044018B6286F9F6C00844035 /* UICollectionView + reuseId.swift */,
+				04AA97AB2873876B007775C0 /* UILabel + interlineSpacing.swift */,
 				04C5C1CD285152630096D272 /* UIImage + assets.swift */,
 				044018AE286F3E9700844035 /* UIColor + hex.swift */,
 				04B430582869F93400BD4904 /* UIView + tamic.swift */,
@@ -561,6 +567,7 @@
 				04C5C1A7284FDDCA0096D272 /* HeroSeleсtingCollectionViewCell.swift in Sources */,
 				044018AD286F0BF500844035 /* Coordinator.swift in Sources */,
 				045C44B3286CA6360016084B /* HeroDetailsDataSource.swift in Sources */,
+				04AA97AA2873847D007775C0 /* TopAlignedLabel.swift in Sources */,
 				04B430562869EB9700BD4904 /* JSONResponse.swift in Sources */,
 				04060FD52859345300DF93F6 /* Localization.swift in Sources */,
 				04643368286F00D9007EDCFD /* ModuleType.swift in Sources */,
@@ -578,6 +585,7 @@
 				04FE0A3D284FCAAD00839CBF /* HeroesListView.swift in Sources */,
 				04C5C1BB28500F5F0096D272 /* HeroesRepository.swift in Sources */,
 				044018BE2870F3B400844035 /* ImageLoader.swift in Sources */,
+				04AA97AC2873876B007775C0 /* UILabel + interlineSpacing.swift in Sources */,
 				04C5C1AB284FEC7A0096D272 /* NetworkService.swift in Sources */,
 				04C5C1DA28516B390096D272 /* HeroDetailsPresenter.swift in Sources */,
 				04060FDB28593BEC00DF93F6 /* ExploreMoreCollectionViewCell.swift in Sources */,

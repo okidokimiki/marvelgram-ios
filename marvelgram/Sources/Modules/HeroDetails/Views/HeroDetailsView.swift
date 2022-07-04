@@ -14,11 +14,15 @@ final class HeroDetailsView: UIView {
     
     // MARK: - Private Properties
     
+    private lazy var scrollView: UIScrollView = {
+        return HeroDetailsView.makeSrollView()
+    }()
+    
     private lazy var characterImageView: ImageLoader = {
         return ImageLoader(frame: .zero)
     }()
     
-    private lazy var descrpLabel: UILabel = {
+    private lazy var descrpLabel: TopAlignedLabel = {
         return HeroDetailsView.makeDescrpLabel()
     }()
     
@@ -37,6 +41,7 @@ final class HeroDetailsView: UIView {
         
         configure()
         setupViews()
+        setupAutoLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -44,6 +49,7 @@ final class HeroDetailsView: UIView {
         
         configure()
         setupViews()
+        setupAutoLayout()
     }
     
     // MARK: - Methods
@@ -56,7 +62,12 @@ final class HeroDetailsView: UIView {
     }
     
     func finishLayoutSubviews() {
-        descrpLabel.sizeToFit()
+        let contentRect: CGRect = scrollView.subviews.reduce(into: .zero) { rect, view in
+            rect = rect.union(view.frame)
+        }
+        scrollView.contentSize = contentRect.size
+        descrpLabel.addInterlineSpacing(spacingValue: Constants.descrpInterlineSpacing)
+        activateSubviewsWidthLayoutConstraint()
     }
     
     // MARK: - Private Methods
@@ -66,17 +77,15 @@ final class HeroDetailsView: UIView {
     }
     
     private func setupViews() {
-        setupView(characterImageView)
-        setupView(descrpLabel)
-        setupView(explMoreLabel)
-        setupView(explMoreCollectionView)
+        setupView(scrollView)
+        scrollView.setupView(characterImageView)
+        scrollView.setupView(descrpLabel)
+        scrollView.setupView(explMoreLabel)
+        scrollView.setupView(explMoreCollectionView)
     }
     
-    // MARK: - Override Methods
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
+    func setupAutoLayout() {
+        activateScrollViewConstraints()
         activateCharacterImageViewConstraints()
         activateDescrpLabelConstraints()
         activateExploreMoreLabelConstraints()
@@ -85,8 +94,15 @@ final class HeroDetailsView: UIView {
     
     // MARK: - Creating Subviews
     
-    static func makeDescrpLabel() -> UILabel {
-        let label = UILabel()
+    static func makeSrollView() -> UIScrollView {
+        let scroll = UIScrollView()
+        scroll.showsVerticalScrollIndicator = false
+        
+        return scroll
+    }
+    
+    static func makeDescrpLabel() -> TopAlignedLabel {
+        let label = TopAlignedLabel()
         label.font = FontLibrary.SFPro.regular14
         label.textColor = Palette.GlobalColor.fontPrimary
         label.numberOfLines = Constants.descrpNumberOfLines
@@ -115,27 +131,33 @@ final class HeroDetailsView: UIView {
         return collectionView
     }
     
-    // MARK: - Layout
+    // MARK: - AutoLayout
+    
+    private func activateScrollViewConstraints() {
+        let subview = scrollView
+        NSLayoutConstraint.activate([
+            subview.topAnchor.constraint(equalTo: topAnchor),
+            subview.leadingAnchor.constraint(equalTo: leadingAnchor),
+            subview.bottomAnchor.constraint(equalTo: bottomAnchor),
+            subview.trailingAnchor.constraint(equalTo: trailingAnchor)
+        ])
+    }
     
     private func activateCharacterImageViewConstraints() {
         let subview = characterImageView
         NSLayoutConstraint.activate([
-            subview.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            subview.centerXAnchor.constraint(equalTo: centerXAnchor),
-            subview.heightAnchor.constraint(equalToConstant: bounds.width),
-            subview.widthAnchor.constraint(equalToConstant: bounds.width)
+            subview.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            subview.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor)
         ])
     }
     
     private func activateDescrpLabelConstraints() {
         let subview = descrpLabel
         NSLayoutConstraint.activate([
-            subview.leadingAnchor.constraint(equalTo: leadingAnchor,
+            subview.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor,
                                              constant: Constants.AutoLayout.baseOffset),
             subview.topAnchor.constraint(equalTo: characterImageView.bottomAnchor,
                                          constant: Constants.AutoLayout.baseOffset),
-            subview.trailingAnchor.constraint(equalTo: trailingAnchor,
-                                              constant: -Constants.AutoLayout.baseOffset),
             subview.heightAnchor.constraint(greaterThanOrEqualToConstant: Constants.AutoLayout.descrpLabelHeightValue)
         ])
     }
@@ -143,21 +165,30 @@ final class HeroDetailsView: UIView {
     private func activateExploreMoreLabelConstraints() {
         let subview = explMoreLabel
         NSLayoutConstraint.activate([
-            subview.leadingAnchor.constraint(equalTo: leadingAnchor,
+            subview.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor,
                                              constant: Constants.AutoLayout.baseOffset),
-            subview.topAnchor.constraint(equalTo: descrpLabel.bottomAnchor,
-                                         constant: Constants.AutoLayout.explMoreLabelTopOffset)
+            subview.topAnchor.constraint(equalTo: descrpLabel.bottomAnchor)
         ])
     }
     
     private func activateExploreMoreCollectionViewConstraints() {
         let subview = explMoreCollectionView
         NSLayoutConstraint.activate([
-            subview.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            subview.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             subview.topAnchor.constraint(equalTo: explMoreLabel.bottomAnchor,
                                          constant: Constants.AutoLayout.CollectionViewTopOffset),
-            subview.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            subview.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             subview.heightAnchor.constraint(equalToConstant: Constants.AutoLayout.CollectionViewHeightValue)
+        ])
+    }
+    
+    private func activateSubviewsWidthLayoutConstraint() {
+        let width = scrollView.bounds.width
+        NSLayoutConstraint.activate([
+            characterImageView.heightAnchor.constraint(equalToConstant: width),
+            characterImageView.widthAnchor.constraint(equalToConstant: width),
+            explMoreCollectionView.widthAnchor.constraint(equalToConstant: width),
+            descrpLabel.widthAnchor.constraint(equalToConstant: width - Constants.AutoLayout.descrpLabelTrailingOffset)
         ])
     }
 }
@@ -177,10 +208,12 @@ extension HeroDetailsView: ExploreMoreCollectionViewDataSourceDelegate {
 private extension HeroDetailsView {
     enum Constants {
         static let descrpNumberOfLines = 0
+        static let descrpInterlineSpacing: CGFloat =  1.32
         
         enum AutoLayout {
             static let baseOffset: CGFloat = 16
             
+            static let descrpLabelTrailingOffset: CGFloat = 32
             static let descrpLabelHeightValue: CGFloat = 148
             
             static let explMoreLabelTopOffset: CGFloat = 30
