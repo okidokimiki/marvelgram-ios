@@ -12,6 +12,16 @@ final class HeroDetailsViewController: UIViewController {
     
     var presenter: HeroDetailsViewOutput?
     
+    // MARK: - Private Properties
+    
+    private var heroDetailsView: HeroDetailsView {
+        guard let castedView = view as? HeroDetailsView else {
+            fatalError("TypeCasting Error: presenterView must be \(HeroDetailsView.self)")
+        }
+        
+        return castedView
+    }
+    
     // MARK: - Lifecycle
     
     override func loadView() {
@@ -40,7 +50,6 @@ extension HeroDetailsViewController: HeroDetailsViewUiDelegate {
 
 extension HeroDetailsViewController: HeroDetailsViewInput {
     func updateUI(with model: HeroSeleсtingCellModel?) {
-        guard let heroDetailsView = view as? HeroDetailsView else { return }
         heroDetailsView.updateUI(with: model)
     }
     

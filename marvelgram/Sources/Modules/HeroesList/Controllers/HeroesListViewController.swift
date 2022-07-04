@@ -14,6 +14,14 @@ final class HeroesListViewController: UIViewController {
     
     // MARK: - Private Properties
     
+    private var heroesListView: HeroesListView {
+        guard let castedView = view as? HeroesListView else {
+            fatalError("TypeCasting Error: presenterView must be \(HeroesListView.self)")
+        }
+        
+        return castedView
+    }
+    
     private lazy var marvelButton = MarvelBarButtonItem()
     
     // MARK: - Lifecycle
@@ -68,12 +76,10 @@ extension HeroesListViewController: HeroesListViewUiDelegate {
 
 extension HeroesListViewController: HeroesListViewInput {
     func reloadHeroesSeleсtingCollectionView() {
-        guard let heroesListView = view as? HeroesListView else { return }
         heroesListView.reloadHeroesSeleсtingCollectionView()
     }
     
     func showActivityIndicator(_ show: Bool) {
-        guard let heroesListView = view as? HeroesListView else { return }
         heroesListView.showActivityIndicator(show)
     }
 }
