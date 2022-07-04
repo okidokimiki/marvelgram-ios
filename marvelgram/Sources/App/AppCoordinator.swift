@@ -21,7 +21,7 @@ final class AppCoordinator: Coordinator {
         self.navigationController = UINavigationController()
     }
     
-    // MARK: - Public Methods
+    // MARK: - Methods
     
     func start() {
         showHeroesListViewController()

@@ -19,7 +19,7 @@ final class HeroesListCoordinator: Coordinator {
         self.navigationController = navigationController
     }
     
-    // MARK: - Public Methods
+    // MARK: - Methods
     
     func start() {
         let heroesListVC = HeroesListModuleBuilder.createModule(with: .default, coordinator: self)

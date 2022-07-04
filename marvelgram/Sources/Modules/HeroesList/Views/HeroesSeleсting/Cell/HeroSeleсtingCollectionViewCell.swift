@@ -40,7 +40,7 @@ final class HeroSeleсtingCollectionViewCell: UICollectionViewCell {
         setupView(characterImageView)
     }
     
-    // MARK: - Public Methods
+    // MARK: - Methods
     
     func configure(with model: HeroSeleсtingCellModel) {
         characterImageView.loadImage(from: model.url)

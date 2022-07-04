@@ -26,7 +26,7 @@ class ImageLoader: UIImageView {
         super.init(coder: coder)
     }
     
-    // MARK: - Public Methods
+    // MARK: - Methods
     
     func loadImage(from urlString: String) {
         guard let url = URL(string: urlString) else { return }

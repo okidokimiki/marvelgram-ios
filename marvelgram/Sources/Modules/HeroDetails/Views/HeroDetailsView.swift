@@ -46,7 +46,7 @@ final class HeroDetailsView: UIView {
         setupViews()
     }
     
-    // MARK: - Public Methods
+    // MARK: - Methods
     
     func updateUI(with model: HeroSeleсtingCellModel?) {
         guard let model = model else { return }

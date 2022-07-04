@@ -25,7 +25,7 @@ final class HeroesRepository: HeroesRepositorieble {
         heroes = makeHeroes(from: destURL)
     }
     
-    // MARK: - Public Methods
+    // MARK: - Methods
     
     func getHeroes(completion: @escaping HeroConfigResponseHandler) {
         networkService.fetchConfig(of: [Hero].self) { [weak self] result in

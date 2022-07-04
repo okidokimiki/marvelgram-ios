@@ -11,7 +11,7 @@ extension UICollectionReusableView: ReuseIdentifiable {
 }
 
 extension UICollectionView {
-    // MARK: - Public Methods
+    // MARK: - Methods
     
     func dequeueCell<T: UICollectionViewCell>(cellType: T.Type, for indexPath: IndexPath) -> T {
         guard let cell = self.dequeueReusableCell(withReuseIdentifier: T.reuseIdentifier, for: indexPath) as? T else {

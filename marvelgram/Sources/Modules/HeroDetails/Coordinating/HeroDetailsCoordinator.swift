@@ -22,7 +22,7 @@ final class HeroDetailsCoordinator: Coordinator {
         self.dataSource = dataSource
     }
     
-    // MARK: - Public Methods
+    // MARK: - Methods
     
     func start() {
         let heroDetailsVC = HeroDetailsViewModuleBuilder.createModule(with: .heroDetails(dataSource), coordinator: self)

@@ -38,7 +38,7 @@ final class HeroesListView: UIView {
         setupViews()
     }
     
-    // MARK: - Public Methods
+    // MARK: - Methods
     
     func reloadHeroesSeleсtingCollectionView() {
         heroesSeleсtingCollectionView.reloadData()

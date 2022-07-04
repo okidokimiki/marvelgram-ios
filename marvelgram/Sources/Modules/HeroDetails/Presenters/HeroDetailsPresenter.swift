@@ -24,7 +24,7 @@ final class HeroDetailsPresenter {
         self.coordinator = coordinator
     }
     
-    // MARK: - Public Methods
+    // MARK: - Methods
     
     func fillDataSource(with data: HeroDetailsDataSource?) {
         dataSource = data

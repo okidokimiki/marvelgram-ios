@@ -8,6 +8,7 @@
 import Foundation
 
 enum Localization: String {
+    // HeroDetails
     case exploreMoreTitle = "exploreMore.title"
     case descriptionText = "description.text"
     

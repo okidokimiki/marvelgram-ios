@@ -13,7 +13,7 @@ final class NetworkService: Networkable {
     private let session = URLSession.shared
     private let decoder = JSONDecoder()
     
-    // MARK: - Public Methods
+    // MARK: - Methods
     
     func fetchConfig<T: Codable>(of type: T.Type, completion: @escaping JSONResponseHandler) {
         guard let heroesUrl = URL(string: Constants.JsonUrlStrings.upstartsMarvelgram) else {
