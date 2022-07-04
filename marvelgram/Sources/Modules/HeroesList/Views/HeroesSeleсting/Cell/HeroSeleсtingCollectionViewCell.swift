@@ -21,6 +21,7 @@ final class HeroSeleсtingCollectionViewCell: UICollectionViewCell {
         
         configure()
         setupViews()
+        setupAutoLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -28,6 +29,7 @@ final class HeroSeleсtingCollectionViewCell: UICollectionViewCell {
         
         configure()
         setupViews()
+        setupAutoLayout()
     }
     
     // MARK: - Methods
@@ -46,15 +48,11 @@ final class HeroSeleсtingCollectionViewCell: UICollectionViewCell {
         setupView(characterImageView)
     }
     
-    // MARK: - Override Methods
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
+    private func setupAutoLayout() {
         activateHeroImageViewConstraints()
     }
     
-    // MARK: - Layout
+    // MARK: - AutoLayout
     
     private func activateHeroImageViewConstraints() {
         let subview = characterImageView
