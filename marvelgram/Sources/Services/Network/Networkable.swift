@@ -9,7 +9,5 @@ import Foundation
 
 typealias JSONResponseHandler = (JSONResponse) -> Void
 
-protocol Networkable {
-    func fetch<T: Codable>(of type: T.Type, completion: @escaping JSONResponseHandler)
-    func fetchConfig<T: Codable>(of type: T.Type, completion: @escaping JSONResponseHandler)
+protocol Networkable: Fetchable {
 }

@@ -15,13 +15,13 @@ final class NetworkService: Networkable {
     
     // MARK: - Methods
     
-    func fetchConfig<T: Codable>(of type: T.Type, completion: @escaping JSONResponseHandler) {
-        guard let heroesUrl = URL(string: Constants.JsonUrlStrings.upstartsMarvelgram) else {
+    func fetchConfig<T: Codable>(with urlString: String, of type: T.Type, completion: @escaping JSONResponseHandler) {
+        guard let url = URL(string: urlString) else {
             completion(.error(.invalidURL))
             return
         }
         
-        let downloadTask = session.downloadTask(with: heroesUrl) { urlOrNil, responseOrNil, _ in
+        let downloadTask = session.downloadTask(with: url) { urlOrNil, responseOrNil, _ in
             guard let fetchedConfigUrl = urlOrNil else {
                 completion(.error(.dataIsNil))
                 return
@@ -41,13 +41,13 @@ final class NetworkService: Networkable {
     }
     
     // Not used, but stored for my "tests"
-    func fetch<T: Codable>(of type: T.Type, completion: @escaping JSONResponseHandler) {
-        guard let heroesUrl = URL(string: Constants.JsonUrlStrings.upstartsMarvelgram) else {
+    func fetch<T: Codable>(with urlString: String, of type: T.Type, completion: @escaping JSONResponseHandler) {
+        guard let url = URL(string: urlString) else {
             completion(.error(.invalidURL))
             return
         }
         
-        let task = session.dataTask(with: heroesUrl) { dataOrNil, responseOrNil, _ in
+        let task = session.dataTask(with: url) { dataOrNil, responseOrNil, _ in
             guard let fetchedData = dataOrNil else {
                 completion(.error(.dataIsNil))
                 return
@@ -69,16 +69,5 @@ final class NetworkService: Networkable {
         }
         
         task.resume()
-    }
-}
-
-// MARK: - Constants
-
-private extension NetworkService {
-    enum Constants {
-        
-        enum JsonUrlStrings {
-            static let upstartsMarvelgram = "https://static.upstarts.work/tests/marvelgram/klsZdDg50j2.json"
-        }
     }
 }

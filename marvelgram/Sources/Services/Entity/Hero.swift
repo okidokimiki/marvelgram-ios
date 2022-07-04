@@ -7,8 +7,6 @@
 
 import Foundation
 
-// MARK: - Hero
-
 struct Hero: Codable, Equatable {
     var id: Int
     let name: String
@@ -16,8 +14,6 @@ struct Hero: Codable, Equatable {
     let modified: String
     let thumbnail: Thumbnail
 }
-
-// MARK: - Thumbnail
 
 struct Thumbnail: Codable, Equatable {
     let path: String

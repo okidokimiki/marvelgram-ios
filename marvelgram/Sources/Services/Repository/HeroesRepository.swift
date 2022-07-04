@@ -28,7 +28,7 @@ final class HeroesRepository: HeroesRepositorieble {
     // MARK: - Methods
     
     func getHeroes(completion: @escaping HeroConfigResponseHandler) {
-        networkService.fetchConfig(of: [Hero].self) { [weak self] result in
+        networkService.fetchConfig(with: API.upstartsMarvelgram, of: [Hero].self) { [weak self] result in
             guard let self = self else { return }
             
             switch result {

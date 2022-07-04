@@ -28,6 +28,8 @@
 		04968561284FD96E00C1F9A8 /* HeroesListViewUiDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04968560284FD96E00C1F9A8 /* HeroesListViewUiDelegate.swift */; };
 		04AA97AA2873847D007775C0 /* TopAlignedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AA97A92873847D007775C0 /* TopAlignedLabel.swift */; };
 		04AA97AC2873876B007775C0 /* UILabel + interlineSpacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AA97AB2873876B007775C0 /* UILabel + interlineSpacing.swift */; };
+		04AA97AE287390AE007775C0 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AA97AD287390AE007775C0 /* API.swift */; };
+		04AA97B0287391E1007775C0 /* Fetchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AA97AF287391E1007775C0 /* Fetchable.swift */; };
 		04B430542869EAA800BD4904 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B430532869EAA800BD4904 /* NetworkError.swift */; };
 		04B430562869EB9700BD4904 /* JSONResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B430552869EB9700BD4904 /* JSONResponse.swift */; };
 		04B430592869F93400BD4904 /* UIView + tamic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B430582869F93400BD4904 /* UIView + tamic.swift */; };
@@ -83,6 +85,8 @@
 		04968560284FD96E00C1F9A8 /* HeroesListViewUiDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesListViewUiDelegate.swift; sourceTree = "<group>"; };
 		04AA97A92873847D007775C0 /* TopAlignedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopAlignedLabel.swift; sourceTree = "<group>"; };
 		04AA97AB2873876B007775C0 /* UILabel + interlineSpacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + interlineSpacing.swift"; sourceTree = "<group>"; };
+		04AA97AD287390AE007775C0 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		04AA97AF287391E1007775C0 /* Fetchable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fetchable.swift; sourceTree = "<group>"; };
 		04B430532869EAA800BD4904 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		04B430552869EB9700BD4904 /* JSONResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONResponse.swift; sourceTree = "<group>"; };
 		04B430582869F93400BD4904 /* UIView + tamic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + tamic.swift"; sourceTree = "<group>"; };
@@ -265,6 +269,8 @@
 		04B4306E286B81A100BD4904 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				04AA97AD287390AE007775C0 /* API.swift */,
+				04AA97AF287391E1007775C0 /* Fetchable.swift */,
 				04B4306C286B818900BD4904 /* Networkable.swift */,
 				04C5C1AA284FEC7A0096D272 /* NetworkService.swift */,
 			);
@@ -585,6 +591,7 @@
 				04FE0A3D284FCAAD00839CBF /* HeroesListView.swift in Sources */,
 				04C5C1BB28500F5F0096D272 /* HeroesRepository.swift in Sources */,
 				044018BE2870F3B400844035 /* ImageLoader.swift in Sources */,
+				04AA97B0287391E1007775C0 /* Fetchable.swift in Sources */,
 				04AA97AC2873876B007775C0 /* UILabel + interlineSpacing.swift in Sources */,
 				04C5C1AB284FEC7A0096D272 /* NetworkService.swift in Sources */,
 				04C5C1DA28516B390096D272 /* HeroDetailsPresenter.swift in Sources */,
@@ -595,6 +602,7 @@
 				04C5C1A1284FDA5D0096D272 /* HeroesListViewOutput.swift in Sources */,
 				04C5C19F284FDA3D0096D272 /* HeroesListPresenter.swift in Sources */,
 				04B43070286B81AE00BD4904 /* HeroesRepositorieble.swift in Sources */,
+				04AA97AE287390AE007775C0 /* API.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
