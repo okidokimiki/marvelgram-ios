@@ -107,8 +107,8 @@ final class HeroDetailsView: UIView {
         
         activateCharacterImageViewConstraints()
         
+        descrpLabel.sizeToFit()
         activateDescrpLabelConstraints()
-        _ = descrpLabel.sizeThatFits(bounds.size).height
         
         activateExploreMoreLabelConstraints()
         
@@ -133,7 +133,8 @@ final class HeroDetailsView: UIView {
             subview.topAnchor.constraint(equalTo: characterImageView.bottomAnchor,
                                          constant: Constants.AutoLayout.baseOffset),
             subview.trailingAnchor.constraint(equalTo: trailingAnchor,
-                                              constant: -Constants.AutoLayout.baseOffset)
+                                              constant: -Constants.AutoLayout.baseOffset),
+            subview.heightAnchor.constraint(greaterThanOrEqualToConstant: 148)
         ])
     }
     
