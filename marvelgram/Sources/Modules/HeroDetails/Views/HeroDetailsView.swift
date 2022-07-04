@@ -118,8 +118,8 @@ final class HeroDetailsView: UIView {
     private func activateCharacterImageViewConstraints() {
         let subview = characterImageView
         NSLayoutConstraint.activate([
-            subview.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             subview.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            subview.centerXAnchor.constraint(equalTo: centerXAnchor),
             subview.heightAnchor.constraint(equalToConstant: bounds.width),
             subview.widthAnchor.constraint(equalToConstant: bounds.width)
         ])
@@ -134,7 +134,7 @@ final class HeroDetailsView: UIView {
                                          constant: Constants.AutoLayout.baseOffset),
             subview.trailingAnchor.constraint(equalTo: trailingAnchor,
                                               constant: -Constants.AutoLayout.baseOffset),
-            subview.heightAnchor.constraint(greaterThanOrEqualToConstant: 148)
+            subview.heightAnchor.constraint(greaterThanOrEqualToConstant: Constants.AutoLayout.descrpLabelHeightValue)
         ])
     }
     
@@ -178,6 +178,8 @@ private extension HeroDetailsView {
         
         enum AutoLayout {
             static let baseOffset: CGFloat = 16
+            
+            static let descrpLabelHeightValue: CGFloat = 148
             
             static let explMoreLabelTopOffset: CGFloat = 30
             
