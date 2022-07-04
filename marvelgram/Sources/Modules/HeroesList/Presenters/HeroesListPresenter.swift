@@ -55,7 +55,7 @@ final class HeroesListPresenter {
 
 extension HeroesListPresenter: HeroesListViewOutput {
     // Actions
-    func handleDidAppearingView() {
+    func handleDidLoadView() {
         fetchHeroesAndReloadCollectionView()
     }
     

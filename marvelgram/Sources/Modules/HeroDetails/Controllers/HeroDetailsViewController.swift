@@ -30,10 +30,6 @@ final class HeroDetailsViewController: UIViewController {
         self.view = view
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         

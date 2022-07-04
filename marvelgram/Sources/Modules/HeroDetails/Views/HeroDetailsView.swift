@@ -66,7 +66,7 @@ final class HeroDetailsView: UIView {
             rect = rect.union(view.frame)
         }
         scrollView.contentSize = contentRect.size
-        descrpLabel.addInterlineSpacing(spacingValue: Constants.descrpInterlineSpacing)
+        descrpLabel.addInterlineSpacing(spacingValue: Constants.descrpLabelInterlineSpacing)
         activateSubviewsWidthLayoutConstraint()
     }
     
@@ -84,7 +84,7 @@ final class HeroDetailsView: UIView {
         scrollView.setupView(explMoreCollectionView)
     }
     
-    func setupAutoLayout() {
+    private func setupAutoLayout() {
         activateScrollViewConstraints()
         activateCharacterImageViewConstraints()
         activateDescrpLabelConstraints()
@@ -105,7 +105,7 @@ final class HeroDetailsView: UIView {
         let label = TopAlignedLabel()
         label.font = FontLibrary.SFPro.regular14
         label.textColor = Palette.GlobalColor.fontPrimary
-        label.numberOfLines = Constants.descrpNumberOfLines
+        label.numberOfLines = Constants.descrpLabelNumberOfLines
         
         return label
     }
@@ -176,9 +176,9 @@ final class HeroDetailsView: UIView {
         NSLayoutConstraint.activate([
             subview.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             subview.topAnchor.constraint(equalTo: explMoreLabel.bottomAnchor,
-                                         constant: Constants.AutoLayout.CollectionViewTopOffset),
+                                         constant: Constants.AutoLayout.explMoreCollectionViewTopOffset),
             subview.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            subview.heightAnchor.constraint(equalToConstant: Constants.AutoLayout.CollectionViewHeightValue)
+            subview.heightAnchor.constraint(equalToConstant: Constants.AutoLayout.explMoreCollectionViewHeightValue)
         ])
     }
     
@@ -207,8 +207,8 @@ extension HeroDetailsView: ExploreMoreCollectionViewDataSourceDelegate {
 
 private extension HeroDetailsView {
     enum Constants {
-        static let descrpNumberOfLines = 0
-        static let descrpInterlineSpacing: CGFloat =  1.32
+        static let descrpLabelNumberOfLines = 0
+        static let descrpLabelInterlineSpacing: CGFloat =  1.32
         
         enum AutoLayout {
             static let baseOffset: CGFloat = 16
@@ -218,8 +218,8 @@ private extension HeroDetailsView {
             
             static let explMoreLabelTopOffset: CGFloat = 30
             
-            static let CollectionViewTopOffset: CGFloat = 18
-            static let CollectionViewHeightValue: CGFloat = 120
+            static let explMoreCollectionViewTopOffset: CGFloat = 18
+            static let explMoreCollectionViewHeightValue: CGFloat = 120
         }
         
         enum FlowLayout {

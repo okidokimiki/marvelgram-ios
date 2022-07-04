@@ -29,6 +29,7 @@ final class HeroesListView: UIView {
         
         configure()
         setupViews()
+        setupAutoLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -36,6 +37,7 @@ final class HeroesListView: UIView {
         
         configure()
         setupViews()
+        setupAutoLayout()
     }
     
     // MARK: - Methods
@@ -63,11 +65,7 @@ final class HeroesListView: UIView {
         setupView(activityIndicatorView)
     }
     
-    // MARK: - Override Methods
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
+    private func setupAutoLayout() {
         activateHeroesCollectionViewConstraints()
         activateActivityIndicatorViewConstraint()
     }
@@ -85,7 +83,7 @@ final class HeroesListView: UIView {
         return collectionView
     }
     
-    // MARK: - Layout
+    // MARK: - AutoLayout
     
     private func activateHeroesCollectionViewConstraints() {
         let subview = heroesSeleсtingCollectionView

@@ -36,12 +36,7 @@ final class HeroesListViewController: UIViewController {
         super.viewDidLoad()
         
         setupNavController()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        presenter?.handleDidAppearingView() // fix it
+        presenter?.handleDidLoadView()
     }
     
     // MARK: - Private Methods

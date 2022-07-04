@@ -15,7 +15,7 @@ protocol HeroesListViewOutput {
          coordinator: HeroesListCoordinator)
     
     // Actions
-    func handleDidAppearingView()
+    func handleDidLoadView()
     func handleSelectingHeroCell(with index: Int)
     
     // DataSource
