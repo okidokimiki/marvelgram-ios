@@ -17,7 +17,7 @@ protocol HeroesSeleсtingCollectionViewDataSourceDelegate: AnyObject {
 }
 
 final class HeroesSeleсtingCollectionView: UICollectionView {
-    // MARK: - Public Properties
+    // MARK: - Properties
     
     weak var actionsDelegate: HeroesSeleсtingCollectionViewActionsDelegate?
     weak var dataDelegate: HeroesSeleсtingCollectionViewDataSourceDelegate?

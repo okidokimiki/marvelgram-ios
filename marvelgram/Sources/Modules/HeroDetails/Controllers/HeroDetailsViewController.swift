@@ -8,7 +8,7 @@
 import UIKit
 
 final class HeroDetailsViewController: UIViewController {
-    // MARK: - Public Properties
+    // MARK: - Properties
     
     var presenter: HeroDetailsViewOutput?
     

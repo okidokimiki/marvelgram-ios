@@ -8,7 +8,7 @@
 import UIKit
 
 final class HeroesListViewController: UIViewController {
-    // MARK: - Public Properties
+    // MARK: - Properties
     
     var presenter: HeroesListViewOutput?
     

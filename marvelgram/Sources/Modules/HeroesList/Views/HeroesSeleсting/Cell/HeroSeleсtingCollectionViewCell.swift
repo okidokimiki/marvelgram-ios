@@ -30,6 +30,12 @@ final class HeroSeleсtingCollectionViewCell: UICollectionViewCell {
         setupViews()
     }
     
+    // MARK: - Methods
+    
+    func configure(with model: HeroSeleсtingCellModel) {
+        characterImageView.loadImage(from: model.url)
+    }
+    
     // MARK: - Private Methods
     
     private func configure() {
@@ -40,19 +46,15 @@ final class HeroSeleсtingCollectionViewCell: UICollectionViewCell {
         setupView(characterImageView)
     }
     
-    // MARK: - Methods
-    
-    func configure(with model: HeroSeleсtingCellModel) {
-        characterImageView.loadImage(from: model.url)
-    }
-    
-    // MARK: - Layout
+    // MARK: - Override Methods
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
         activateHeroImageViewConstraints()
     }
+    
+    // MARK: - Layout
     
     private func activateHeroImageViewConstraints() {
         let subview = characterImageView

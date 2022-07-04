@@ -8,7 +8,7 @@
 import UIKit
 
 final class HeroDetailsView: UIView {
-    // MARK: - Public Properties
+    // MARK: - Properties
     
     weak var uiDelegate: HeroDetailsViewUiDelegate?
     
@@ -68,6 +68,21 @@ final class HeroDetailsView: UIView {
         setupView(explMoreCollectionView)
     }
     
+    // MARK: - Override Methods
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        activateCharacterImageViewConstraints()
+        
+        descrpLabel.sizeToFit()
+        activateDescrpLabelConstraints()
+        
+        activateExploreMoreLabelConstraints()
+        
+        activateExploreMoreCollectionViewConstraints()
+    }
+    
     // MARK: - Creating Subviews
     
     static func makeDescrpLabel() -> UILabel {
@@ -101,19 +116,6 @@ final class HeroDetailsView: UIView {
     }
     
     // MARK: - Layout
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        activateCharacterImageViewConstraints()
-        
-        descrpLabel.sizeToFit()
-        activateDescrpLabelConstraints()
-        
-        activateExploreMoreLabelConstraints()
-        
-        activateExploreMoreCollectionViewConstraints()
-    }
     
     private func activateCharacterImageViewConstraints() {
         let subview = characterImageView

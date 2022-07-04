@@ -8,7 +8,7 @@
 import UIKit
 
 final class HeroesListView: UIView {
-    // MARK: - Public Properties
+    // MARK: - Properties
     
     weak var uiDelegate: HeroesListViewUiDelegate?
     
@@ -63,6 +63,15 @@ final class HeroesListView: UIView {
         setupView(activityIndicatorView)
     }
     
+    // MARK: - Override Methods
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        activateHeroesCollectionViewConstraints()
+        activateActivityIndicatorViewConstraint()
+    }
+    
     // MARK: - Creating Subviews
     
     static func makeHeroesSeleсtingCollectionView(_ actionsDelegate: HeroesSeleсtingCollectionViewActionsDelegate, _ dataSourceDelegate: HeroesSeleсtingCollectionViewDataSourceDelegate) -> HeroesSeleсtingCollectionView {
@@ -77,13 +86,6 @@ final class HeroesListView: UIView {
     }
     
     // MARK: - Layout
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        activateHeroesCollectionViewConstraints()
-        activateActivityIndicatorViewConstraint()
-    }
     
     private func activateHeroesCollectionViewConstraints() {
         let subview = heroesSeleсtingCollectionView
