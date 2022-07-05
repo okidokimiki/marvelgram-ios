@@ -55,12 +55,12 @@ extension HeroesSeleсtingCollectionView: UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        guard let heroeSelсt = cell as? CharImageViewCell else {
+        guard let heroSelсtCell = cell as? CharImageViewCell else {
             fatalError("TypeCasting Error: cell must be \(CharImageViewCell.self)")
         }
 
         if let model = uiDelegate?.heroesSeleсtingCollectionView(self, getHeroSelсtCellModelWithIndex: indexPath.row) {
-            heroeSelсt.configure(with: model)
+            heroSelсtCell.configure(with: model)
         }
     }
 }
