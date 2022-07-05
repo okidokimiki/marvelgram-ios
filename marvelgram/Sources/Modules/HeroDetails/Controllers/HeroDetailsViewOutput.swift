@@ -11,6 +11,12 @@ protocol HeroDetailsViewOutput {
     // Initilization
     init(view: HeroDetailsViewInput, coordinator: HeroDetailsCoordinator)
     
+    // Actions
+    func handleDidLoadView()
     func handleAppearingView()
     func handleDidLayoutSubviews()
+    
+    // DataSource
+    func getOtherCharCellsCount() -> Int?
+    func getOtherCharCellModel(with index: Int) -> HeroSeleсtingCellModel?
 }

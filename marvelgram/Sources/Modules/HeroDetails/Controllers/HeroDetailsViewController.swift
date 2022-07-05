@@ -30,6 +30,12 @@ final class HeroDetailsViewController: UIViewController {
         self.view = view
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        presenter?.handleDidLoadView()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -46,11 +52,22 @@ final class HeroDetailsViewController: UIViewController {
 // MARK: - DetailViewUiDelegate
 
 extension HeroDetailsViewController: HeroDetailsViewUiDelegate {
+    func heroDetailsView(_ heroDetailsView: HeroDetailsView, getOtherCharCellModelWithIndex index: Int) -> HeroSeleсtingCellModel? {
+        return presenter?.getOtherCharCellModel(with: index)
+    }
+    
+    func heroDetailsView(_ heroDetailsView: HeroDetailsView, getCellsCountOf reuseIdentifier: String) -> Int? {
+        return presenter?.getOtherCharCellsCount()
+    }
 }
 
 // MARK: - DetailViewInput
 
 extension HeroDetailsViewController: HeroDetailsViewInput {
+    func reloadCollectionView() {
+        heroDetailsView.reloadCollectionView()
+    }
+    
     func updateUI(with model: HeroSeleсtingCellModel?) {
         heroDetailsView.updateUI(with: model)
     }

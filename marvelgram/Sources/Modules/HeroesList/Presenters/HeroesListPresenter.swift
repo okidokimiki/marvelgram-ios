@@ -60,8 +60,12 @@ extension HeroesListPresenter: HeroesListViewOutput {
     }
     
     func handleSelectingHeroCell(with index: Int) {
-        let model = self.getHeroCellModel(with: index)
-        let dataSource = HeroDetailsDataSource(heroSeleсtingCellModel: model)
+        guard let randHeroes = repository.getHeroesRandomly() else { return }
+        
+        let charModel = self.getHeroCellModel(with: index)
+        let randomCharModels = randHeroes.map { HeroSeleсtingCellModel(hero: $0) }
+        let dataSource = HeroDetailsDataSource(heroSeleсtingCellModel: charModel, otherCharCellModels: randomCharModels)
+        
         coordinator.startHeroDetailsEvent(with: dataSource)
     }
     

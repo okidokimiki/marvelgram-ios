@@ -1,5 +1,5 @@
 //
-//  ExploreMoreCollectionView.swift
+//  OtherCharactersCollectionView.swift
 //  marvelgram
 //
 //  Created by Mikhail Chaus on 14.06.2022.
@@ -7,17 +7,19 @@
 
 import UIKit
 
-protocol ExploreMoreCollectionViewActionsDelegate: AnyObject {
+protocol OtherCharactersCollectionViewActionsDelegate: AnyObject {
 }
 
-protocol ExploreMoreCollectionViewDataSourceDelegate: AnyObject {
+protocol OtherCharactersCollectionViewDataSourceDelegate: AnyObject {
+    func otherCharCollectionView(_ otherCharCollectionView: OtherCharactersCollectionView, getCellsCountOf reuseIdentifier: String) -> Int?
+    func otherCharCollectionView(_ otherCharCollectionView: OtherCharactersCollectionView, getOtherCharCellModelWithIndex index: Int) -> HeroSeleсtingCellModel?
 }
 
-final class ExploreMoreCollectionView: UICollectionView {
+final class OtherCharactersCollectionView: UICollectionView {
     // MARK: - Properties
     
-    weak var actionDelegate: ExploreMoreCollectionViewActionsDelegate?
-    weak var dataDelegate: ExploreMoreCollectionViewDataSourceDelegate?
+    weak var actionsDelegate: OtherCharactersCollectionViewActionsDelegate?
+    weak var dataSourceDelegate: OtherCharactersCollectionViewDataSourceDelegate?
     
     // MARK: - Initilization
     
@@ -40,26 +42,38 @@ final class ExploreMoreCollectionView: UICollectionView {
         dataSource = self
         backgroundColor = .none
         showsHorizontalScrollIndicator = false
-        register(ExploreMoreCollectionViewCell.self)
+        register(CharImageViewCell.self)
     }
 }
 
 // MARK: - UICollectionViewDelegate
 
-extension ExploreMoreCollectionView: UICollectionViewDelegate {
+extension OtherCharactersCollectionView: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard let otherCharCell = cell as? CharImageViewCell else {
+            fatalError("TypeCasting Error: cell must be \(CharImageViewCell.self)")
+        }
+        
+        if let model = dataSourceDelegate?.otherCharCollectionView(self, getOtherCharCellModelWithIndex: indexPath.row) {
+            otherCharCell.configure(with: model)
+        }
+    }
 }
 
 // MARK: - UICollectionViewDataSource
 
-extension ExploreMoreCollectionView: UICollectionViewDataSource {
+extension OtherCharactersCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let cellsCount = Constants.countOfCellsInSection
+        let otherCharCellId = CharImageViewCell.reuseIdentifier
+        guard let cellsCount = dataSourceDelegate?.otherCharCollectionView(self, getCellsCountOf: otherCharCellId) else {
+            return .zero
+        }
         
         return cellsCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueCell(cellType: ExploreMoreCollectionViewCell.self, for: indexPath)
+        let cell = collectionView.dequeueCell(cellType: CharImageViewCell.self, for: indexPath)
         
         return cell
     }
@@ -67,7 +81,7 @@ extension ExploreMoreCollectionView: UICollectionViewDataSource {
 
 // MARK: - UICollectionViewDelegateFlowLayout
 
-extension ExploreMoreCollectionView: UICollectionViewDelegateFlowLayout {
+extension OtherCharactersCollectionView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let cellSize = CGSize(width: bounds.height, height: bounds.height)
         
@@ -83,7 +97,7 @@ extension ExploreMoreCollectionView: UICollectionViewDelegateFlowLayout {
 
 // MARK: - Constants
 
-private extension ExploreMoreCollectionView {
+private extension OtherCharactersCollectionView {
     enum Constants {
         static let countOfCellsInSection = 10
         

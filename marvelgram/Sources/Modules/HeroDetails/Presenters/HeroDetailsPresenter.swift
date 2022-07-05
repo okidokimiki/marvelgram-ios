@@ -36,11 +36,29 @@ final class HeroDetailsPresenter {
         let model = dataSource?.heroSeleсtingCellModel
         view?.updateUI(with: model)
     }
+    
+    private func reloadCollectionView() {
+        DispatchQueue.main.async {
+            self.view?.reloadCollectionView()
+        }
+    }
 }
 
 // MARK: - DetailViewOutput
 
 extension HeroDetailsPresenter: HeroDetailsViewOutput {
+    func getOtherCharCellModel(with index: Int) -> HeroSeleсtingCellModel? {
+        return dataSource?.otherCharCellModels?[index]
+    }
+    
+    func getOtherCharCellsCount() -> Int? {
+        return dataSource?.otherCharCellModels?.count
+    }
+    
+    func handleDidLoadView() {
+        reloadCollectionView()
+    }
+    
     func handleDidLayoutSubviews() {
         view?.finishLayoutSubviews()
     }

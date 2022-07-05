@@ -9,5 +9,5 @@ import Foundation
 
 struct HeroDetailsDataSource {
     var heroSeleсtingCellModel: HeroSeleсtingCellModel?
-    var explMoreCellModels: [ExploreMoreCellModel] = []
+    var otherCharCellModels: [HeroSeleсtingCellModel]?
 }

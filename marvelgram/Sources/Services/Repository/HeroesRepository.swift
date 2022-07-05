@@ -47,6 +47,24 @@ final class HeroesRepository: HeroesRepositorieble {
             completion(self.heroes)
         }
     }
+    
+    func getHeroesRandomly(conunt: Int = Constants.countOfRandomHeroes) -> [Hero]? {
+        guard heroes.count != .zero else { return nil }
+        
+        var uniqueRandomNumbers: Set<Int> = []
+        var array: [Hero] = []
+
+        while uniqueRandomNumbers.count < conunt {
+            let value = Int.random(in: 0..<heroes.count)
+            uniqueRandomNumbers.insert(value)
+        }
+        
+        uniqueRandomNumbers.forEach { index in
+            array.append(heroes[index])
+        }
+        
+        return array
+    }
         
     // MARK: - Private Methods
     
@@ -113,6 +131,7 @@ final class HeroesRepository: HeroesRepositorieble {
 
 private extension HeroesRepository {
     enum Constants {
+        static let countOfRandomHeroes = 10
         static let folderName = "Heroes"
         static let fileName = "heroes"
         static let fileExtension = "json"

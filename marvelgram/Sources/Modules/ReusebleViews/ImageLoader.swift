@@ -20,10 +20,14 @@ class ImageLoader: UIImageView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        configure()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+        
+        configure()
     }
     
     // MARK: - Methods
@@ -55,6 +59,10 @@ class ImageLoader: UIImageView {
     }
     
     // MARK: - Private Methods
+    
+    private func configure() {
+        contentMode = .scaleToFill
+    }
     
     private func resumeDataTask(with url: URL, completion: @escaping DownloadImageResponseHandler) {
         let task = session.dataTask(with: url) { resumeDataOrNil, responseOrNil, _ in

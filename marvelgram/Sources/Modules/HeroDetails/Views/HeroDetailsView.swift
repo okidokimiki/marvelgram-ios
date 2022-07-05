@@ -30,7 +30,7 @@ final class HeroDetailsView: UIView {
         return HeroDetailsView.makeExplMoreLabel()
     }()
     
-    private lazy var explMoreCollectionView: ExploreMoreCollectionView = {
+    private lazy var explMoreCollectionView: OtherCharactersCollectionView = {
         return HeroDetailsView.makeExplMoreCollectionView(self, self)
     }()
     
@@ -56,7 +56,7 @@ final class HeroDetailsView: UIView {
     
     func updateUI(with model: HeroSeleсtingCellModel?) {
         guard let model = model else { return }
-                
+        
         characterImageView.loadImage(from: model.url)
         descrpLabel.text = model.description.isEmpty ? Localization.descriptionText.localizedString : model.description
     }
@@ -68,6 +68,10 @@ final class HeroDetailsView: UIView {
         scrollView.contentSize = contentRect.size
         descrpLabel.addInterlineSpacing(spacingValue: Constants.descrpLabelInterlineSpacing)
         activateSubviewsWidthLayoutConstraint()
+    }
+    
+    func reloadCollectionView() {
+        explMoreCollectionView.reloadData()
     }
     
     // MARK: - Private Methods
@@ -112,14 +116,14 @@ final class HeroDetailsView: UIView {
         return label
     }
     
-    static func makeExplMoreCollectionView(_ actionsDelegate: ExploreMoreCollectionViewActionsDelegate, _ dataSourceDelegate: ExploreMoreCollectionViewDataSourceDelegate) -> ExploreMoreCollectionView {
+    static func makeExplMoreCollectionView(_ actionsDelegate: OtherCharactersCollectionViewActionsDelegate, _ dataSourceDelegate: OtherCharactersCollectionViewDataSourceDelegate) -> OtherCharactersCollectionView {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.sectionInset = Constants.FlowLayout.baseInsets
         
-        let collectionView = ExploreMoreCollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.actionDelegate = actionsDelegate
-        collectionView.dataDelegate = dataSourceDelegate
+        let collectionView = OtherCharactersCollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.actionsDelegate = actionsDelegate
+        collectionView.dataSourceDelegate = dataSourceDelegate
         
         return collectionView
     }
@@ -129,10 +133,10 @@ final class HeroDetailsView: UIView {
     private func activateScrollViewConstraints() {
         let subview = scrollView
         NSLayoutConstraint.activate([
-            subview.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             subview.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-            subview.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
-            subview.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor)
+            subview.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            subview.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            subview.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
     
@@ -186,14 +190,20 @@ final class HeroDetailsView: UIView {
     }
 }
 
-// MARK: - ExploreMoreCollectionViewActionsDelegate
+// MARK: - OtherCharactersCollectionViewActionsDelegate
 
-extension HeroDetailsView: ExploreMoreCollectionViewActionsDelegate {
+extension HeroDetailsView: OtherCharactersCollectionViewActionsDelegate {
 }
 
-// MARK: - ExploreMoreCollectionViewDataSourceDelegate
+// MARK: - OtherCharactersCollectionViewDataSourceDelegate
 
-extension HeroDetailsView: ExploreMoreCollectionViewDataSourceDelegate {
+extension HeroDetailsView: OtherCharactersCollectionViewDataSourceDelegate {
+    func otherCharCollectionView(_ otherCharCollectionView: OtherCharactersCollectionView, getOtherCharCellModelWithIndex index: Int) -> HeroSeleсtingCellModel? {
+        return uiDelegate?.heroDetailsView(self, getOtherCharCellModelWithIndex: index)
+    }
+    func otherCharCollectionView(_ otherCharCollectionView: OtherCharactersCollectionView, getCellsCountOf reuseIdentifier: String) -> Int? {
+        return uiDelegate?.heroDetailsView(self, getCellsCountOf: reuseIdentifier)
+    }
 }
 
 // MARK: - Constants

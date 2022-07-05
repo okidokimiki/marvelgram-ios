@@ -44,7 +44,7 @@ final class HeroesSeleсtingCollectionView: UICollectionView {
         backgroundColor = .none
         showsVerticalScrollIndicator = false
         showsHorizontalScrollIndicator = false
-        register(HeroSeleсtingCollectionViewCell.self)
+        register(CharImageViewCell.self)
     }
 }
 
@@ -57,7 +57,7 @@ extension HeroesSeleсtingCollectionView: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         guard
-            let heroCell = cell as? HeroSeleсtingCollectionViewCell,
+            let heroCell = cell as? CharImageViewCell,
             let model = dataDelegate?.heroesSeleсtingCollectionView(self, getHeroCellModelWithIndex: indexPath.row)
         else { return }
         
@@ -69,13 +69,13 @@ extension HeroesSeleсtingCollectionView: UICollectionViewDelegate {
 
 extension HeroesSeleсtingCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let cellsCount = dataDelegate?.heroesSeleсtingCollectionViewCellsCount(self) else { return 0 }
+        guard let cellsCount = dataDelegate?.heroesSeleсtingCollectionViewCellsCount(self) else { return .zero }
         
         return cellsCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let heroCell = collectionView.dequeueCell(cellType: HeroSeleсtingCollectionViewCell.self, for: indexPath)
+        let heroCell = collectionView.dequeueCell(cellType: CharImageViewCell.self, for: indexPath)
         
         return heroCell
     }

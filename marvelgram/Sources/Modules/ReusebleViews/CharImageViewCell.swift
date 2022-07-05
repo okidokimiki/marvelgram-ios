@@ -1,13 +1,13 @@
 //
-//  HeroSeleсtingCollectionViewCell.swift
+//  CharImageViewCell.swift
 //  marvelgram
 //
-//  Created by Mikhail Chaus on 07.06.2022.
+//  Created by Mikhail Chaus on 05.07.2022.
 //
 
 import UIKit
 
-final class HeroSeleсtingCollectionViewCell: UICollectionViewCell {
+class CharImageViewCell: UICollectionViewCell {
     // MARK: - Private Properties
     
     private lazy var characterImageView: ImageLoader = {

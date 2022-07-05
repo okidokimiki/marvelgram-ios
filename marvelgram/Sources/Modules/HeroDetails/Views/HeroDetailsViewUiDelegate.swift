@@ -8,4 +8,7 @@
 import Foundation
 
 protocol HeroDetailsViewUiDelegate: AnyObject {
+    // DataSource
+    func heroDetailsView(_ heroDetailsView: HeroDetailsView, getCellsCountOf reuseIdentifier: String) -> Int?
+    func heroDetailsView(_ heroDetailsView: HeroDetailsView, getOtherCharCellModelWithIndex index: Int) -> HeroSeleсtingCellModel?
 }
