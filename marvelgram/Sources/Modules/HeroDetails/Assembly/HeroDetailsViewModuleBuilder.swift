@@ -11,7 +11,11 @@ final class HeroDetailsViewModuleBuilder: ModuleBuilder {
     static func createModule(with type: ModuleType, coordinator: Coordinator) -> UIViewController {
         guard let coordinator = coordinator as? HeroDetailsCoordinator else { return UIViewController() }
         let viewController = HeroDetailsViewController()
-        let presenter = HeroDetailsPresenter(view: viewController, coordinator: coordinator)
+        let networkService = NetworkService()
+        let repository = HeroesRepository(networkService: networkService)
+        let presenter = HeroDetailsPresenter(view: viewController,
+                                             repository: repository,
+                                             coordinator: coordinator)
         if case let .heroDetails(data) = type {
             presenter.fillDataSource(with: data)
         }

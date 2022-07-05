@@ -8,6 +8,9 @@
 import UIKit
 
 protocol OtherCharactersCollectionViewUiDelegate: AnyObject {
+    // Actions
+    func otherCharCollectionView(_ otherCharCollectionView: OtherCharactersCollectionView, didSelectCharWithIndex index: Int)
+    
     // DataSource
     func otherCharCollectionView(_ otherCharCollectionView: OtherCharactersCollectionView, getCellsCountOf reuseIdentifier: String) -> Int?
     func otherCharCollectionView(_ otherCharCollectionView: OtherCharactersCollectionView, getOtherCharCellModelWithIndex index: Int) -> HeroSeleсtingCellModel?
@@ -47,6 +50,10 @@ final class OtherCharactersCollectionView: UICollectionView {
 // MARK: - UICollectionViewDelegate
 
 extension OtherCharactersCollectionView: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        uiDelegate?.otherCharCollectionView(self, didSelectCharWithIndex: indexPath.row)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         guard let otherCharCell = cell as? CharImageViewCell else {
             fatalError("TypeCasting Error: cell must be \(CharImageViewCell.self)")

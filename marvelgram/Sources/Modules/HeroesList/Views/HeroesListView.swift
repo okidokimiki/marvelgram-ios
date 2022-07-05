@@ -9,7 +9,7 @@ import UIKit
 
 protocol HeroesListViewUiDelegate: AnyObject {
     // Actions
-    func heroesListView(_ heroesListView: HeroesListView, didSelectHeroWithIndex index: IndexPath)
+    func heroesListView(_ heroesListView: HeroesListView, didSelectHeroWithIndex index: Int)
     
     // DataSource
     func heroesListView(_ heroesListView: HeroesListView, getCellsCountOf reuseIdentifier: String) -> Int?
@@ -116,7 +116,7 @@ final class HeroesListView: UIView {
 
 extension HeroesListView: HeroesSeleсtingCollectionViewUiDelegate {
     // Actions
-    func heroesSeleсtingCollectionView(_ heroesCollectionView: HeroesSeleсtingCollectionView, didSelectHeroWithIndex index: IndexPath) {
+    func heroesSeleсtingCollectionView(_ heroesCollectionView: HeroesSeleсtingCollectionView, didSelectHeroWithIndex index: Int) {
         uiDelegate?.heroesListView(self, didSelectHeroWithIndex: index)
     }
     

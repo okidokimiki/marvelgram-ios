@@ -53,8 +53,8 @@ final class HeroesListViewController: UIViewController {
 
 extension HeroesListViewController: HeroesListViewUiDelegate {
     // Actions
-    func heroesListView(_ heroesListView: HeroesListView, didSelectHeroWithIndex index: IndexPath) {
-        presenter?.handleSelectingHeroCell(with: index.row)
+    func heroesListView(_ heroesListView: HeroesListView, didSelectHeroWithIndex index: Int) {
+        presenter?.handleSelectingHeroCell(with: index)
     }
     
     // DataSource

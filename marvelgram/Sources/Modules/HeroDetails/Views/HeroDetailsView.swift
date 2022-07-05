@@ -8,6 +8,9 @@
 import UIKit
 
 protocol HeroDetailsViewUiDelegate: AnyObject {
+    // Actions
+    func heroDetailsView(_ heroDetailsView: HeroDetailsView, didSelectCharWithIndex index: Int)
+    
     // DataSource
     func heroDetailsView(_ heroDetailsView: HeroDetailsView, getCellsCountOf reuseIdentifier: String) -> Int?
     func heroDetailsView(_ heroDetailsView: HeroDetailsView, getOtherCharCellModelWithIndex index: Int) -> HeroSeleсtingCellModel?
@@ -198,6 +201,11 @@ final class HeroDetailsView: UIView {
 // MARK: - OtherCharactersCollectionViewUiDelegate
 
 extension HeroDetailsView: OtherCharactersCollectionViewUiDelegate {
+    // Actions
+    func otherCharCollectionView(_ otherCharCollectionView: OtherCharactersCollectionView, didSelectCharWithIndex index: Int) {
+        uiDelegate?.heroDetailsView(self, didSelectCharWithIndex: index)
+    }
+    
     // DataSource
     func otherCharCollectionView(_ otherCharCollectionView: OtherCharactersCollectionView, getOtherCharCellModelWithIndex index: Int) -> HeroSeleсtingCellModel? {
         return uiDelegate?.heroDetailsView(self, getOtherCharCellModelWithIndex: index)
