@@ -47,9 +47,24 @@ final class HeroDetailsViewController: UIViewController {
         
         presenter?.handleDidLayoutSubviews()
     }
+    
+    // MARK: - Private Methods
+    
+    private func setupNavController(with model: HeroSeleсtingCellModel?) {
+        let navigation = UINavigationBar.appearance()
+        let navigationFont = FontLibrary.SFPro.regular17
+        let navigationFontColor = Palette.GlobalColor.fontPrimary
+        let attributes = [
+            NSAttributedString.Key.font: navigationFont,
+            NSAttributedString.Key.foregroundColor: navigationFontColor
+        ]
+        
+        navigation.titleTextAttributes = attributes
+        title = model?.name
+    }
 }
 
-// MARK: - DetailViewUiDelegate
+// MARK: - UiDelegate
 
 extension HeroDetailsViewController: HeroDetailsViewUiDelegate {
     func heroDetailsView(_ heroDetailsView: HeroDetailsView, getOtherCharCellModelWithIndex index: Int) -> HeroSeleсtingCellModel? {
@@ -69,6 +84,7 @@ extension HeroDetailsViewController: HeroDetailsViewInput {
     }
     
     func updateUI(with model: HeroSeleсtingCellModel?) {
+        setupNavController(with: model)
         heroDetailsView.updateUI(with: model)
     }
     
