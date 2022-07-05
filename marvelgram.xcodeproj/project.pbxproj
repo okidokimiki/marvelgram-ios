@@ -55,6 +55,7 @@
 		04C5C1DE28516B9F0096D272 /* HeroDetailsViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1DD28516B9F0096D272 /* HeroDetailsViewInput.swift */; };
 		04C5C1E128516C810096D272 /* HeroDetailsViewModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1E028516C810096D272 /* HeroDetailsViewModuleBuilder.swift */; };
 		04CFB6B72864ECAC00A2FED7 /* FontLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CFB6B62864ECAC00A2FED7 /* FontLibrary.swift */; };
+		04D4426A28742DA900E19DD1 /* VericalScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D4426928742DA900E19DD1 /* VericalScrollView.swift */; };
 		04FE0A1D284FC90A00839CBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FE0A1C284FC90A00839CBF /* AppDelegate.swift */; };
 		04FE0A21284FC90A00839CBF /* HeroesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FE0A20284FC90A00839CBF /* HeroesListViewController.swift */; };
 		04FE0A26284FC90B00839CBF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04FE0A25284FC90B00839CBF /* Images.xcassets */; };
@@ -112,6 +113,7 @@
 		04C5C1DD28516B9F0096D272 /* HeroDetailsViewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailsViewInput.swift; sourceTree = "<group>"; };
 		04C5C1E028516C810096D272 /* HeroDetailsViewModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailsViewModuleBuilder.swift; sourceTree = "<group>"; };
 		04CFB6B62864ECAC00A2FED7 /* FontLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontLibrary.swift; sourceTree = "<group>"; };
+		04D4426928742DA900E19DD1 /* VericalScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VericalScrollView.swift; sourceTree = "<group>"; };
 		04FE0A19284FC90A00839CBF /* marvelgram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = marvelgram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04FE0A1C284FC90A00839CBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04FE0A20284FC90A00839CBF /* HeroesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesListViewController.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 			children = (
 				044018BD2870F3B400844035 /* ImageLoader.swift */,
 				04AA97A92873847D007775C0 /* TopAlignedLabel.swift */,
+				04D4426928742DA900E19DD1 /* VericalScrollView.swift */,
 			);
 			path = ReusebleViews;
 			sourceTree = "<group>";
@@ -576,6 +579,7 @@
 				04AA97AA2873847D007775C0 /* TopAlignedLabel.swift in Sources */,
 				04B430562869EB9700BD4904 /* JSONResponse.swift in Sources */,
 				04060FD52859345300DF93F6 /* Localization.swift in Sources */,
+				04D4426A28742DA900E19DD1 /* VericalScrollView.swift in Sources */,
 				04643368286F00D9007EDCFD /* ModuleType.swift in Sources */,
 				04968561284FD96E00C1F9A8 /* HeroesListViewUiDelegate.swift in Sources */,
 				04CFB6B72864ECAC00A2FED7 /* FontLibrary.swift in Sources */,

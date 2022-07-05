@@ -14,8 +14,8 @@ final class HeroDetailsView: UIView {
     
     // MARK: - Private Properties
     
-    private lazy var scrollView: UIScrollView = {
-        return HeroDetailsView.makeSrollView()
+    private lazy var scrollView: VericalScrollView = {
+        return VericalScrollView()
     }()
     
     private lazy var characterImageView: ImageLoader = {
@@ -94,13 +94,6 @@ final class HeroDetailsView: UIView {
     
     // MARK: - Creating Subviews
     
-    static func makeSrollView() -> UIScrollView {
-        let scroll = UIScrollView()
-        scroll.showsVerticalScrollIndicator = false
-        
-        return scroll
-    }
-    
     static func makeDescrpLabel() -> TopAlignedLabel {
         let label = TopAlignedLabel()
         label.font = FontLibrary.SFPro.regular14
@@ -136,10 +129,10 @@ final class HeroDetailsView: UIView {
     private func activateScrollViewConstraints() {
         let subview = scrollView
         NSLayoutConstraint.activate([
-            subview.topAnchor.constraint(equalTo: topAnchor),
-            subview.leadingAnchor.constraint(equalTo: leadingAnchor),
-            subview.bottomAnchor.constraint(equalTo: bottomAnchor),
-            subview.trailingAnchor.constraint(equalTo: trailingAnchor)
+            subview.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            subview.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            subview.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            subview.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor)
         ])
     }
     
