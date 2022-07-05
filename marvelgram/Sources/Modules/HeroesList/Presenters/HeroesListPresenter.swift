@@ -8,7 +8,7 @@
 import Foundation
 
 final class HeroesListPresenter {
-    // MARK: - Public Properties
+    // MARK: - Properties
     
     weak var view: HeroesListViewInput?
     
