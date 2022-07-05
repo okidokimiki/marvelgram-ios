@@ -47,14 +47,7 @@ final class HeroDetailsPresenter {
 // MARK: - DetailViewOutput
 
 extension HeroDetailsPresenter: HeroDetailsViewOutput {
-    func getOtherCharCellModel(with index: Int) -> HeroSeleсtingCellModel? {
-        return dataSource?.otherCharCellModels?[index]
-    }
-    
-    func getOtherCharCellsCount() -> Int? {
-        return dataSource?.otherCharCellModels?.count
-    }
-    
+    // Actions
     func handleDidLoadView() {
         reloadCollectionView()
     }
@@ -65,5 +58,14 @@ extension HeroDetailsPresenter: HeroDetailsViewOutput {
     
     func handleAppearingView() {
         updateUI()
+    }
+    
+    // DataSource
+    func getOtherCharCellModel(with index: Int) -> HeroSeleсtingCellModel? {
+        return dataSource?.otherCharCellModels?[index]
+    }
+    
+    func getOtherCharCellsCount() -> Int? {
+        return dataSource?.otherCharCellModels?.count
     }
 }

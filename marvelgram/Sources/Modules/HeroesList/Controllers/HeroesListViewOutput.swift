@@ -19,6 +19,6 @@ protocol HeroesListViewOutput {
     func handleSelectingHeroCell(with index: Int)
     
     // DataSource
-    func getHeroCellModelsCount() -> Int?
-    func getHeroCellModel(with index: Int) -> HeroSeleсtingCellModel
+    func getHeroSelсtCellsCount() -> Int?
+    func getHeroSelсtCellModel(with index: Int) -> HeroSeleсtingCellModel
 }

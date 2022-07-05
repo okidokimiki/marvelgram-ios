@@ -115,11 +115,11 @@ extension HeroesListView: HeroesSeleсtingCollectionViewActionsDelegate {
 // MARK: - HeroesSeleсtingCollectionViewDataSourceDelegate
 
 extension HeroesListView: HeroesSeleсtingCollectionViewDataSourceDelegate {
-    func heroesSeleсtingCollectionView(_ heroesCollectionView: HeroesSeleсtingCollectionView, getHeroCellModelWithIndex index: Int) -> HeroSeleсtingCellModel? {
+    func heroesSeleсtingCollectionView(_ heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView, getHeroSelсtCellModelWithIndex index: Int) -> HeroSeleсtingCellModel? {
         return uiDelegate?.heroesListView(self, getHeroCellModelWithIndex: index)
     }
     
-    func heroesSeleсtingCollectionViewCellsCount(_ heroesCollectionView: HeroesSeleсtingCollectionView) -> Int? {
-        return uiDelegate?.heroesListViewCellsCount(self)
+    func heroesSeleсtingCollectionView(_ heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView, getCellsCountOf reuseIdentifier: String) -> Int? {
+        return uiDelegate?.heroesListView(self, getCellsCountOf: reuseIdentifier)
     }
 }

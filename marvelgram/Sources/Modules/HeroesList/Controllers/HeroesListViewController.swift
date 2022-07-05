@@ -58,12 +58,12 @@ extension HeroesListViewController: HeroesListViewUiDelegate {
     }
     
     // DataSource
-    func heroesListView(_ heroesListView: HeroesListView, getHeroCellModelWithIndex index: Int) -> HeroSeleсtingCellModel? {
-        return presenter?.getHeroCellModel(with: index)
+    func heroesListView(_ heroesListView: HeroesListView, getCellsCountOf reuseIdentifier: String) -> Int? {
+        return presenter?.getHeroSelсtCellsCount()
     }
     
-    func heroesListViewCellsCount(_ heroesListView: HeroesListView) -> Int? {
-        return presenter?.getHeroCellModelsCount()
+    func heroesListView(_ heroesListView: HeroesListView, getHeroCellModelWithIndex index: Int) -> HeroSeleсtingCellModel? {
+        return presenter?.getHeroSelсtCellModel(with: index)
     }
 }
 

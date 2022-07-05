@@ -62,7 +62,7 @@ extension HeroesListPresenter: HeroesListViewOutput {
     func handleSelectingHeroCell(with index: Int) {
         guard let randHeroes = repository.getHeroesRandomly() else { return }
         
-        let charModel = self.getHeroCellModel(with: index)
+        let charModel = self.getHeroSelсtCellModel(with: index)
         let randomCharModels = randHeroes.map { HeroSeleсtingCellModel(hero: $0) }
         let dataSource = HeroDetailsDataSource(heroSeleсtingCellModel: charModel, otherCharCellModels: randomCharModels)
         
@@ -70,11 +70,11 @@ extension HeroesListPresenter: HeroesListViewOutput {
     }
     
     // DataSource
-    func getHeroCellModelsCount() -> Int? {
+    func getHeroSelсtCellsCount() -> Int? {
         return dataSource.heroSeleсtingCellModels.count
     }
     
-    func getHeroCellModel(with index: Int) -> HeroSeleсtingCellModel {
+    func getHeroSelсtCellModel(with index: Int) -> HeroSeleсtingCellModel {
         return dataSource.heroSeleсtingCellModels[index]
     }
 }

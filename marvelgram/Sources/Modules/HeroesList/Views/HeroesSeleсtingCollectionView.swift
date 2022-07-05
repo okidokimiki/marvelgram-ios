@@ -12,8 +12,8 @@ protocol HeroesSeleсtingCollectionViewActionsDelegate: AnyObject {
 }
 
 protocol HeroesSeleсtingCollectionViewDataSourceDelegate: AnyObject {
-    func heroesSeleсtingCollectionView(_ heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView, getHeroCellModelWithIndex index: Int) -> HeroSeleсtingCellModel?
-    func heroesSeleсtingCollectionViewCellsCount(_ heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView) -> Int?
+    func heroesSeleсtingCollectionView(_ heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView, getCellsCountOf reuseIdentifier: String) -> Int?
+    func heroesSeleсtingCollectionView(_ heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView, getHeroSelсtCellModelWithIndex index: Int) -> HeroSeleсtingCellModel?
 }
 
 final class HeroesSeleсtingCollectionView: UICollectionView {
@@ -56,12 +56,13 @@ extension HeroesSeleсtingCollectionView: UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        guard
-            let heroCell = cell as? CharImageViewCell,
-            let model = dataDelegate?.heroesSeleсtingCollectionView(self, getHeroCellModelWithIndex: indexPath.row)
-        else { return }
-        
-        heroCell.configure(with: model)
+        guard let heroeSelсt = cell as? CharImageViewCell else {
+            fatalError("TypeCasting Error: cell must be \(CharImageViewCell.self)")
+        }
+
+        if let model = dataDelegate?.heroesSeleсtingCollectionView(self, getHeroSelсtCellModelWithIndex: indexPath.row) {
+            heroeSelсt.configure(with: model)
+        }
     }
 }
 
@@ -69,15 +70,19 @@ extension HeroesSeleсtingCollectionView: UICollectionViewDelegate {
 
 extension HeroesSeleсtingCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let cellsCount = dataDelegate?.heroesSeleсtingCollectionViewCellsCount(self) else { return .zero }
+        let heroSelсtCellId = CharImageViewCell.reuseIdentifier
+        
+        guard let cellsCount = dataDelegate?.heroesSeleсtingCollectionView(self, getCellsCountOf: heroSelсtCellId) else {
+            return .zero
+        }
         
         return cellsCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let heroCell = collectionView.dequeueCell(cellType: CharImageViewCell.self, for: indexPath)
+        let heroSelсtCell = collectionView.dequeueCell(cellType: CharImageViewCell.self, for: indexPath)
         
-        return heroCell
+        return heroSelсtCell
     }
 }
 
