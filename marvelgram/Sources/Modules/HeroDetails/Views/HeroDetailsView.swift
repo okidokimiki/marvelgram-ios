@@ -21,7 +21,7 @@ final class HeroDetailsView: UIView {
     // MARK: - Private Properties
     
     private lazy var scrollView: VericalScrollView = {
-        return VericalScrollView()
+        return VericalScrollView(frame: .zero)
     }()
     
     private lazy var characterImageView: ImageLoader = {
@@ -36,8 +36,8 @@ final class HeroDetailsView: UIView {
         return HeroDetailsView.makeExplMoreLabel()
     }()
     
-    private lazy var explMoreCollectionView: OtherCharactersCollectionView = {
-        return HeroDetailsView.makeExplMoreCollectionView(uiDelegate: self)
+    private lazy var otherCharCollectionView: OtherCharactersCollectionView = {
+        return HeroDetailsView.makeOtherCharCollectionView(uiDelegate: self)
     }()
     
     // MARK: - Initilization
@@ -77,7 +77,7 @@ final class HeroDetailsView: UIView {
     }
     
     func reloadCollectionView() {
-        explMoreCollectionView.reloadData()
+        otherCharCollectionView.reloadData()
     }
     
     // MARK: - Private Methods
@@ -91,7 +91,7 @@ final class HeroDetailsView: UIView {
         scrollView.setupView(characterImageView)
         scrollView.setupView(descrpLabel)
         scrollView.setupView(explMoreLabel)
-        scrollView.setupView(explMoreCollectionView)
+        scrollView.setupView(otherCharCollectionView)
     }
     
     private func setupAutoLayout() {
@@ -99,7 +99,7 @@ final class HeroDetailsView: UIView {
         activateCharacterImageViewConstraints()
         activateDescrpLabelConstraints()
         activateExploreMoreLabelConstraints()
-        activateExploreMoreCollectionViewConstraints()
+        activateOtherCharCollectionViewConstraints()
     }
     
     // MARK: - Creating Subviews
@@ -122,7 +122,7 @@ final class HeroDetailsView: UIView {
         return label
     }
     
-    static func makeExplMoreCollectionView(uiDelegate: OtherCharactersCollectionViewUiDelegate) -> OtherCharactersCollectionView {
+    static func makeOtherCharCollectionView(uiDelegate: OtherCharactersCollectionViewUiDelegate) -> OtherCharactersCollectionView {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.sectionInset = Constants.FlowLayout.baseInsets
@@ -173,14 +173,14 @@ final class HeroDetailsView: UIView {
         ])
     }
     
-    private func activateExploreMoreCollectionViewConstraints() {
-        let subview = explMoreCollectionView
+    private func activateOtherCharCollectionViewConstraints() {
+        let subview = otherCharCollectionView
         NSLayoutConstraint.activate([
             subview.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             subview.topAnchor.constraint(equalTo: explMoreLabel.bottomAnchor,
-                                         constant: Constants.AutoLayout.explMoreCollectionViewTopOffset),
+                                         constant: Constants.AutoLayout.otherCharCollectionViewTopOffset),
             subview.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            subview.heightAnchor.constraint(equalToConstant: Constants.AutoLayout.explMoreCollectionViewHeightValue)
+            subview.heightAnchor.constraint(equalToConstant: Constants.AutoLayout.otherCharCollectionViewHeightValue)
         ])
     }
     
@@ -189,7 +189,7 @@ final class HeroDetailsView: UIView {
         NSLayoutConstraint.activate([
             characterImageView.heightAnchor.constraint(equalToConstant: width),
             characterImageView.widthAnchor.constraint(equalToConstant: width),
-            explMoreCollectionView.widthAnchor.constraint(equalToConstant: width),
+            otherCharCollectionView.widthAnchor.constraint(equalToConstant: width),
             descrpLabel.widthAnchor.constraint(equalToConstant: width - Constants.AutoLayout.descrpLabelTrailingOffset)
         ])
     }
@@ -222,8 +222,8 @@ private extension HeroDetailsView {
             
             static let explMoreLabelTopOffset: CGFloat = 30
             
-            static let explMoreCollectionViewTopOffset: CGFloat = 18
-            static let explMoreCollectionViewHeightValue: CGFloat = 120
+            static let otherCharCollectionViewTopOffset: CGFloat = 18
+            static let otherCharCollectionViewHeightValue: CGFloat = 120
         }
         
         enum FlowLayout {

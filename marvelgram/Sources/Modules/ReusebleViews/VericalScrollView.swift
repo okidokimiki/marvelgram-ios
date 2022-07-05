@@ -36,6 +36,7 @@ class VericalScrollView: UIScrollView {
     // MARK: - Private Methods
     
     private func configure() {
+        bounces = false
         showsVerticalScrollIndicator = false
         showsHorizontalScrollIndicator = false
     }

@@ -38,6 +38,7 @@ final class HeroesSeleсtingCollectionView: UICollectionView {
     // MARK: - Private Methods
     
     private func configure() {
+        bounces = false
         delegate = self
         dataSource = self
         backgroundColor = .none
