@@ -8,12 +8,11 @@
 import UIKit
 
 final class HeroDetailsCoordinator: Coordinator {
-    let dataSource: HeroDetailsDataSource
-    
     // MARK: - Private Properties
     
     private(set) var childCoordinators: [Coordinator] = []
     private var navigationController: UINavigationController
+    private let dataSource: HeroDetailsDataSource
     
     // MARK: - Initilization
     
