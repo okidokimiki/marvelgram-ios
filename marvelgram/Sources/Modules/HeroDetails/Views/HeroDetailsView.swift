@@ -7,6 +7,12 @@
 
 import UIKit
 
+protocol HeroDetailsViewUiDelegate: AnyObject {
+    // DataSource
+    func heroDetailsView(_ heroDetailsView: HeroDetailsView, getCellsCountOf reuseIdentifier: String) -> Int?
+    func heroDetailsView(_ heroDetailsView: HeroDetailsView, getOtherCharCellModelWithIndex index: Int) -> HeroSeleсtingCellModel?
+}
+
 final class HeroDetailsView: UIView {
     // MARK: - Properties
     
@@ -31,7 +37,7 @@ final class HeroDetailsView: UIView {
     }()
     
     private lazy var explMoreCollectionView: OtherCharactersCollectionView = {
-        return HeroDetailsView.makeExplMoreCollectionView(self, self)
+        return HeroDetailsView.makeExplMoreCollectionView(uiDelegate: self)
     }()
     
     // MARK: - Initilization
@@ -116,14 +122,13 @@ final class HeroDetailsView: UIView {
         return label
     }
     
-    static func makeExplMoreCollectionView(_ actionsDelegate: OtherCharactersCollectionViewActionsDelegate, _ dataSourceDelegate: OtherCharactersCollectionViewDataSourceDelegate) -> OtherCharactersCollectionView {
+    static func makeExplMoreCollectionView(uiDelegate: OtherCharactersCollectionViewUiDelegate) -> OtherCharactersCollectionView {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.sectionInset = Constants.FlowLayout.baseInsets
         
         let collectionView = OtherCharactersCollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.actionsDelegate = actionsDelegate
-        collectionView.dataSourceDelegate = dataSourceDelegate
+        collectionView.uiDelegate = uiDelegate
         
         return collectionView
     }
@@ -190,14 +195,10 @@ final class HeroDetailsView: UIView {
     }
 }
 
-// MARK: - OtherCharactersCollectionViewActionsDelegate
+// MARK: - OtherCharactersCollectionViewUiDelegate
 
-extension HeroDetailsView: OtherCharactersCollectionViewActionsDelegate {
-}
-
-// MARK: - OtherCharactersCollectionViewDataSourceDelegate
-
-extension HeroDetailsView: OtherCharactersCollectionViewDataSourceDelegate {
+extension HeroDetailsView: OtherCharactersCollectionViewUiDelegate {
+    // DataSource
     func otherCharCollectionView(_ otherCharCollectionView: OtherCharactersCollectionView, getOtherCharCellModelWithIndex index: Int) -> HeroSeleсtingCellModel? {
         return uiDelegate?.heroDetailsView(self, getOtherCharCellModelWithIndex: index)
     }

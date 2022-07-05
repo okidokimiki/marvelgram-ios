@@ -7,6 +7,15 @@
 
 import UIKit
 
+protocol HeroesListViewUiDelegate: AnyObject {
+    // Actions
+    func heroesListView(_ heroesListView: HeroesListView, didSelectHeroWithIndex index: IndexPath)
+    
+    // DataSource
+    func heroesListView(_ heroesListView: HeroesListView, getCellsCountOf reuseIdentifier: String) -> Int?
+    func heroesListView(_ heroesListView: HeroesListView, getHeroCellModelWithIndex index: Int) -> HeroSeleсtingCellModel?
+}
+
 final class HeroesListView: UIView {
     // MARK: - Properties
     
@@ -15,7 +24,7 @@ final class HeroesListView: UIView {
     // MARK: - Private Properties
     
     private lazy var heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView = {
-        return HeroesListView.makeHeroesSeleсtingCollectionView(self, self)
+        return HeroesListView.makeHeroesSeleсtingCollectionView(uiDelegate: self)
     }()
     
     private lazy var activityIndicatorView: UIActivityIndicatorView = {
@@ -72,13 +81,12 @@ final class HeroesListView: UIView {
     
     // MARK: - Creating Subviews
     
-    static func makeHeroesSeleсtingCollectionView(_ actionsDelegate: HeroesSeleсtingCollectionViewActionsDelegate, _ dataSourceDelegate: HeroesSeleсtingCollectionViewDataSourceDelegate) -> HeroesSeleсtingCollectionView {
+    static func makeHeroesSeleсtingCollectionView(uiDelegate: HeroesSeleсtingCollectionViewUiDelegate) -> HeroesSeleсtingCollectionView {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         
         let collectionView = HeroesSeleсtingCollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.actionsDelegate = actionsDelegate
-        collectionView.dataDelegate = dataSourceDelegate
+        collectionView.uiDelegate = uiDelegate
         
         return collectionView
     }
@@ -104,17 +112,15 @@ final class HeroesListView: UIView {
     }
 }
 
-// MARK: - HeroesSeleсtingCollectionViewActionsDelegate
+// MARK: - HeroesSeleсtingCollectionViewUiDelegate
 
-extension HeroesListView: HeroesSeleсtingCollectionViewActionsDelegate {
+extension HeroesListView: HeroesSeleсtingCollectionViewUiDelegate {
+    // Actions
     func heroesSeleсtingCollectionView(_ heroesCollectionView: HeroesSeleсtingCollectionView, didSelectHeroWithIndex index: IndexPath) {
         uiDelegate?.heroesListView(self, didSelectHeroWithIndex: index)
     }
-}
-
-// MARK: - HeroesSeleсtingCollectionViewDataSourceDelegate
-
-extension HeroesListView: HeroesSeleсtingCollectionViewDataSourceDelegate {
+    
+    // DataSource
     func heroesSeleсtingCollectionView(_ heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView, getHeroSelсtCellModelWithIndex index: Int) -> HeroSeleсtingCellModel? {
         return uiDelegate?.heroesListView(self, getHeroCellModelWithIndex: index)
     }

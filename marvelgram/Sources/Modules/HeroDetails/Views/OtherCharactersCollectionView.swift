@@ -7,10 +7,8 @@
 
 import UIKit
 
-protocol OtherCharactersCollectionViewActionsDelegate: AnyObject {
-}
-
-protocol OtherCharactersCollectionViewDataSourceDelegate: AnyObject {
+protocol OtherCharactersCollectionViewUiDelegate: AnyObject {
+    // DataSource
     func otherCharCollectionView(_ otherCharCollectionView: OtherCharactersCollectionView, getCellsCountOf reuseIdentifier: String) -> Int?
     func otherCharCollectionView(_ otherCharCollectionView: OtherCharactersCollectionView, getOtherCharCellModelWithIndex index: Int) -> HeroSeleсtingCellModel?
 }
@@ -18,8 +16,7 @@ protocol OtherCharactersCollectionViewDataSourceDelegate: AnyObject {
 final class OtherCharactersCollectionView: UICollectionView {
     // MARK: - Properties
     
-    weak var actionsDelegate: OtherCharactersCollectionViewActionsDelegate?
-    weak var dataSourceDelegate: OtherCharactersCollectionViewDataSourceDelegate?
+    weak var uiDelegate: OtherCharactersCollectionViewUiDelegate?
     
     // MARK: - Initilization
     
@@ -54,7 +51,7 @@ extension OtherCharactersCollectionView: UICollectionViewDelegate {
             fatalError("TypeCasting Error: cell must be \(CharImageViewCell.self)")
         }
         
-        if let model = dataSourceDelegate?.otherCharCollectionView(self, getOtherCharCellModelWithIndex: indexPath.row) {
+        if let model = uiDelegate?.otherCharCollectionView(self, getOtherCharCellModelWithIndex: indexPath.row) {
             otherCharCell.configure(with: model)
         }
     }
@@ -65,7 +62,7 @@ extension OtherCharactersCollectionView: UICollectionViewDelegate {
 extension OtherCharactersCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let otherCharCellId = CharImageViewCell.reuseIdentifier
-        guard let cellsCount = dataSourceDelegate?.otherCharCollectionView(self, getCellsCountOf: otherCharCellId) else {
+        guard let cellsCount = uiDelegate?.otherCharCollectionView(self, getCellsCountOf: otherCharCellId) else {
             return .zero
         }
         

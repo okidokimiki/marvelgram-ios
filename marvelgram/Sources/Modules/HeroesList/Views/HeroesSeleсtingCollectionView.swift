@@ -7,11 +7,11 @@
 
 import UIKit
 
-protocol HeroesSeleсtingCollectionViewActionsDelegate: AnyObject {
+protocol HeroesSeleсtingCollectionViewUiDelegate: AnyObject {
+    // Actions
     func heroesSeleсtingCollectionView(_ heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView, didSelectHeroWithIndex index: IndexPath)
-}
-
-protocol HeroesSeleсtingCollectionViewDataSourceDelegate: AnyObject {
+    
+    // DataSource
     func heroesSeleсtingCollectionView(_ heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView, getCellsCountOf reuseIdentifier: String) -> Int?
     func heroesSeleсtingCollectionView(_ heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView, getHeroSelсtCellModelWithIndex index: Int) -> HeroSeleсtingCellModel?
 }
@@ -19,8 +19,7 @@ protocol HeroesSeleсtingCollectionViewDataSourceDelegate: AnyObject {
 final class HeroesSeleсtingCollectionView: UICollectionView {
     // MARK: - Properties
     
-    weak var actionsDelegate: HeroesSeleсtingCollectionViewActionsDelegate?
-    weak var dataDelegate: HeroesSeleсtingCollectionViewDataSourceDelegate?
+    weak var uiDelegate: HeroesSeleсtingCollectionViewUiDelegate?
     
     // MARK: - Initilization
     
@@ -52,7 +51,7 @@ final class HeroesSeleсtingCollectionView: UICollectionView {
 
 extension HeroesSeleсtingCollectionView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        actionsDelegate?.heroesSeleсtingCollectionView(self, didSelectHeroWithIndex: indexPath)
+        uiDelegate?.heroesSeleсtingCollectionView(self, didSelectHeroWithIndex: indexPath)
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
@@ -60,7 +59,7 @@ extension HeroesSeleсtingCollectionView: UICollectionViewDelegate {
             fatalError("TypeCasting Error: cell must be \(CharImageViewCell.self)")
         }
 
-        if let model = dataDelegate?.heroesSeleсtingCollectionView(self, getHeroSelсtCellModelWithIndex: indexPath.row) {
+        if let model = uiDelegate?.heroesSeleсtingCollectionView(self, getHeroSelсtCellModelWithIndex: indexPath.row) {
             heroeSelсt.configure(with: model)
         }
     }
@@ -72,7 +71,7 @@ extension HeroesSeleсtingCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let heroSelсtCellId = CharImageViewCell.reuseIdentifier
         
-        guard let cellsCount = dataDelegate?.heroesSeleсtingCollectionView(self, getCellsCountOf: heroSelсtCellId) else {
+        guard let cellsCount = uiDelegate?.heroesSeleсtingCollectionView(self, getCellsCountOf: heroSelсtCellId) else {
             return .zero
         }
         
