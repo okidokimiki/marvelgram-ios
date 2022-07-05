@@ -49,7 +49,7 @@ final class HeroesRepository: HeroesRepositorieble {
     }
     
     func getHeroesRandomly(conunt: Int = Constants.countOfRandomHeroes) -> [Hero]? {
-        guard heroes.count != .zero else { return nil }
+        guard heroes.count != .zero, conunt <= heroes.count else { return nil }
         
         var uniqueRandomNumbers: Set<Int> = []
         var array: [Hero] = []
