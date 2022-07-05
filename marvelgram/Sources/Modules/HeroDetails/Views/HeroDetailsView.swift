@@ -32,8 +32,8 @@ final class HeroDetailsView: UIView {
         return HeroDetailsView.makeDescrpLabel()
     }()
     
-    private lazy var explMoreLabel: UILabel = {
-        return HeroDetailsView.makeExplMoreLabel()
+    private lazy var exploreMoreLabel: UILabel = {
+        return HeroDetailsView.makeExploreMoreLabel()
     }()
     
     private lazy var otherCharCollectionView: OtherCharactersCollectionView = {
@@ -90,7 +90,7 @@ final class HeroDetailsView: UIView {
         setupView(scrollView)
         scrollView.setupView(characterImageView)
         scrollView.setupView(descrpLabel)
-        scrollView.setupView(explMoreLabel)
+        scrollView.setupView(exploreMoreLabel)
         scrollView.setupView(otherCharCollectionView)
     }
     
@@ -113,7 +113,7 @@ final class HeroDetailsView: UIView {
         return label
     }
     
-    static func makeExplMoreLabel() -> UILabel {
+    static func makeExploreMoreLabel() -> UILabel {
         let label = UILabel()
         label.font = FontLibrary.SFPro.bold34
         label.text = Localization.exploreMoreTitle.localizedString
@@ -165,7 +165,7 @@ final class HeroDetailsView: UIView {
     }
     
     private func activateExploreMoreLabelConstraints() {
-        let subview = explMoreLabel
+        let subview = exploreMoreLabel
         NSLayoutConstraint.activate([
             subview.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor,
                                              constant: Constants.AutoLayout.baseOffset),
@@ -177,7 +177,7 @@ final class HeroDetailsView: UIView {
         let subview = otherCharCollectionView
         NSLayoutConstraint.activate([
             subview.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            subview.topAnchor.constraint(equalTo: explMoreLabel.bottomAnchor,
+            subview.topAnchor.constraint(equalTo: exploreMoreLabel.bottomAnchor,
                                          constant: Constants.AutoLayout.otherCharCollectionViewTopOffset),
             subview.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             subview.heightAnchor.constraint(equalToConstant: Constants.AutoLayout.otherCharCollectionViewHeightValue)
@@ -219,8 +219,6 @@ private extension HeroDetailsView {
             
             static let descrpLabelTrailingOffset: CGFloat = 32
             static let descrpLabelHeightValue: CGFloat = 148
-            
-            static let explMoreLabelTopOffset: CGFloat = 30
             
             static let otherCharCollectionViewTopOffset: CGFloat = 18
             static let otherCharCollectionViewHeightValue: CGFloat = 120
