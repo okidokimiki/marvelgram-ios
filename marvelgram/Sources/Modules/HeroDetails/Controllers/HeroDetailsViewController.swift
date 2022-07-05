@@ -52,11 +52,9 @@ final class HeroDetailsViewController: UIViewController {
     
     private func setupNavController(with model: HeroSeleсtingCellModel?) {
         let navigation = UINavigationBar.appearance()
-        let navigationFont = FontLibrary.SFPro.regular17
-        let navigationFontColor = Palette.GlobalColor.fontPrimary
         let attributes = [
-            NSAttributedString.Key.font: navigationFont,
-            NSAttributedString.Key.foregroundColor: navigationFontColor
+            NSAttributedString.Key.font: FontLibrary.SFPro.regular17,
+            NSAttributedString.Key.foregroundColor: Palette.GlobalColor.fontPrimary
         ]
         
         navigation.titleTextAttributes = attributes
