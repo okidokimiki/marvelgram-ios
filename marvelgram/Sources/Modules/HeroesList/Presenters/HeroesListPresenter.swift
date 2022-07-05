@@ -8,7 +8,7 @@
 import Foundation
 
 final class HeroesListPresenter {
-    // MARK: - Public Properties
+    // MARK: - Properties
     
     weak var view: HeroesListViewInput?
     
@@ -55,23 +55,26 @@ final class HeroesListPresenter {
 
 extension HeroesListPresenter: HeroesListViewOutput {
     // Actions
-    func handleDidAppearingView() {
+    func handleDidLoadView() {
         fetchHeroesAndReloadCollectionView()
     }
     
     func handleSelectingHeroCell(with index: Int) {
-        print("Selected heroCell with index \(index)")
-        let model = self.getHeroCellModel(with: index)
-        let dataSource = HeroDetailsDataSource(heroSeleсtingCellModel: model)
+        guard let randHeroes = repository.getHeroesRandomly() else { return }
+        
+        let charModel = self.getHeroSelсtCellModel(with: index)
+        let randomCharModels = randHeroes.map { HeroSeleсtingCellModel(hero: $0) }
+        let dataSource = HeroDetailsDataSource(heroSeleсtingCellModel: charModel, otherCharCellModels: randomCharModels)
+        
         coordinator.startHeroDetailsEvent(with: dataSource)
     }
     
     // DataSource
-    func getHeroCellModelsCount() -> Int? {
+    func getHeroSelсtCellsCount() -> Int? {
         return dataSource.heroSeleсtingCellModels.count
     }
     
-    func getHeroCellModel(with index: Int) -> HeroSeleсtingCellModel {
+    func getHeroSelсtCellModel(with index: Int) -> HeroSeleсtingCellModel {
         return dataSource.heroSeleсtingCellModels[index]
     }
 }

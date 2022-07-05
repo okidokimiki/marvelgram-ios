@@ -7,15 +7,24 @@
 
 import UIKit
 
+protocol HeroesListViewUiDelegate: AnyObject {
+    // Actions
+    func heroesListView(_ heroesListView: HeroesListView, didSelectHeroWithIndex index: Int)
+    
+    // DataSource
+    func heroesListView(_ heroesListView: HeroesListView, getCellsCountOf reuseIdentifier: String) -> Int?
+    func heroesListView(_ heroesListView: HeroesListView, getHeroCellModelWithIndex index: Int) -> HeroSeleсtingCellModel?
+}
+
 final class HeroesListView: UIView {
-    // MARK: - Public Properties
+    // MARK: - Properties
     
     weak var uiDelegate: HeroesListViewUiDelegate?
     
     // MARK: - Private Properties
     
     private lazy var heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView = {
-        return HeroesListView.makeHeroesSeleсtingCollectionView(self, self)
+        return HeroesListView.makeHeroesSeleсtingCollectionView(uiDelegate: self)
     }()
     
     private lazy var activityIndicatorView: UIActivityIndicatorView = {
@@ -29,13 +38,18 @@ final class HeroesListView: UIView {
         
         configure()
         setupViews()
+        setupAutoLayout()
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
+        
+        configure()
+        setupViews()
+        setupAutoLayout()
     }
     
-    // MARK: - Public Methods
+    // MARK: - Methods
     
     func reloadHeroesSeleсtingCollectionView() {
         heroesSeleсtingCollectionView.reloadData()
@@ -60,61 +74,58 @@ final class HeroesListView: UIView {
         setupView(activityIndicatorView)
     }
     
-    // MARK: - Creating Subviews
-    
-    static func makeHeroesSeleсtingCollectionView(_ actionsDelegate: HeroesSeleсtingCollectionViewActionsDelegate, _ dataSourceDelegate: HeroesSeleсtingCollectionViewDataSourceDelegate) -> HeroesSeleсtingCollectionView {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        
-        let collectionView = HeroesSeleсtingCollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.actionsDelegate = actionsDelegate
-        collectionView.dataDelegate = dataSourceDelegate
-        
-        return collectionView
-    }
-    
-    // MARK: - Layout
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
+    private func setupAutoLayout() {
         activateHeroesCollectionViewConstraints()
         activateActivityIndicatorViewConstraint()
     }
     
+    // MARK: - Creating Subviews
+    
+    static func makeHeroesSeleсtingCollectionView(uiDelegate: HeroesSeleсtingCollectionViewUiDelegate) -> HeroesSeleсtingCollectionView {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        
+        let collectionView = HeroesSeleсtingCollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.uiDelegate = uiDelegate
+        
+        return collectionView
+    }
+    
+    // MARK: - AutoLayout
+    
     private func activateHeroesCollectionViewConstraints() {
+        let subview = heroesSeleсtingCollectionView
         NSLayoutConstraint.activate([
-            heroesSeleсtingCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            heroesSeleсtingCollectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            heroesSeleсtingCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            heroesSeleсtingCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            subview.leadingAnchor.constraint(equalTo: leadingAnchor),
+            subview.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            subview.trailingAnchor.constraint(equalTo: trailingAnchor),
+            subview.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
     
     private func activateActivityIndicatorViewConstraint() {
+        let subview = activityIndicatorView
         NSLayoutConstraint.activate([
-            activityIndicatorView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            activityIndicatorView.centerYAnchor.constraint(equalTo: centerYAnchor)
+            subview.centerXAnchor.constraint(equalTo: centerXAnchor),
+            subview.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
 }
 
-// MARK: - HeroesSeleсtingCollectionViewActionsDelegate
+// MARK: - HeroesSeleсtingCollectionViewUiDelegate
 
-extension HeroesListView: HeroesSeleсtingCollectionViewActionsDelegate {
-    func heroesSeleсtingCollectionView(_ heroesCollectionView: HeroesSeleсtingCollectionView, didSelectHeroWithIndex index: IndexPath) {
+extension HeroesListView: HeroesSeleсtingCollectionViewUiDelegate {
+    // Actions
+    func heroesSeleсtingCollectionView(_ heroesCollectionView: HeroesSeleсtingCollectionView, didSelectHeroWithIndex index: Int) {
         uiDelegate?.heroesListView(self, didSelectHeroWithIndex: index)
     }
-}
-
-// MARK: - HeroesSeleсtingCollectionViewDataSourceDelegate
-
-extension HeroesListView: HeroesSeleсtingCollectionViewDataSourceDelegate {
-    func heroesSeleсtingCollectionView(_ heroesCollectionView: HeroesSeleсtingCollectionView, getHeroCellModelWithIndex index: Int) -> HeroSeleсtingCellModel? {
+    
+    // DataSource
+    func heroesSeleсtingCollectionView(_ heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView, getHeroSelсtCellModelWithIndex index: Int) -> HeroSeleсtingCellModel? {
         return uiDelegate?.heroesListView(self, getHeroCellModelWithIndex: index)
     }
     
-    func heroesSeleсtingCollectionViewCellsCount(_ heroesCollectionView: HeroesSeleсtingCollectionView) -> Int? {
-        return uiDelegate?.heroesListViewCellsCount(self)
+    func heroesSeleсtingCollectionView(_ heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView, getCellsCountOf reuseIdentifier: String) -> Int? {
+        return uiDelegate?.heroesListView(self, getCellsCountOf: reuseIdentifier)
     }
 }

@@ -11,4 +11,5 @@ typealias HeroConfigResponseHandler = ([Hero]) -> Void
 
 protocol HeroesRepositorieble {
     func getHeroes(completion: @escaping HeroConfigResponseHandler)
+    func getHeroesRandomly(conunt: Int) -> [Hero]?
 }

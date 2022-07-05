@@ -8,11 +8,19 @@
 import UIKit
 
 final class HeroesListViewController: UIViewController {
-    // MARK: - Public Properties
+    // MARK: - Properties
     
     var presenter: HeroesListViewOutput?
     
     // MARK: - Private Properties
+    
+    private var heroesListView: HeroesListView {
+        guard let castedView = view as? HeroesListView else {
+            fatalError("TypeCasting Error: presenterView must be \(HeroesListView.self)")
+        }
+        
+        return castedView
+    }
     
     private lazy var marvelButton = MarvelBarButtonItem()
     
@@ -28,12 +36,7 @@ final class HeroesListViewController: UIViewController {
         super.viewDidLoad()
         
         setupNavController()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        presenter?.handleDidAppearingView() // fix it
+        presenter?.handleDidLoadView()
     }
     
     // MARK: - Private Methods
@@ -50,17 +53,17 @@ final class HeroesListViewController: UIViewController {
 
 extension HeroesListViewController: HeroesListViewUiDelegate {
     // Actions
-    func heroesListView(_ heroesListView: HeroesListView, didSelectHeroWithIndex index: IndexPath) {
-        presenter?.handleSelectingHeroCell(with: index.row)
+    func heroesListView(_ heroesListView: HeroesListView, didSelectHeroWithIndex index: Int) {
+        presenter?.handleSelectingHeroCell(with: index)
     }
     
     // DataSource
-    func heroesListView(_ heroesListView: HeroesListView, getHeroCellModelWithIndex index: Int) -> HeroSeleсtingCellModel? {
-        return presenter?.getHeroCellModel(with: index)
+    func heroesListView(_ heroesListView: HeroesListView, getCellsCountOf reuseIdentifier: String) -> Int? {
+        return presenter?.getHeroSelсtCellsCount()
     }
     
-    func heroesListViewCellsCount(_ heroesListView: HeroesListView) -> Int? {
-        return presenter?.getHeroCellModelsCount()
+    func heroesListView(_ heroesListView: HeroesListView, getHeroCellModelWithIndex index: Int) -> HeroSeleсtingCellModel? {
+        return presenter?.getHeroSelсtCellModel(with: index)
     }
 }
 
@@ -68,12 +71,10 @@ extension HeroesListViewController: HeroesListViewUiDelegate {
 
 extension HeroesListViewController: HeroesListViewInput {
     func reloadHeroesSeleсtingCollectionView() {
-        guard let heroesListView = view as? HeroesListView else { return }
         heroesListView.reloadHeroesSeleсtingCollectionView()
     }
     
     func showActivityIndicator(_ show: Bool) {
-        guard let heroesListView = view as? HeroesListView else { return }
         heroesListView.showActivityIndicator(show)
     }
 }

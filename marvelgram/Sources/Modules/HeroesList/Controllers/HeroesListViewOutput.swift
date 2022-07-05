@@ -15,10 +15,10 @@ protocol HeroesListViewOutput {
          coordinator: HeroesListCoordinator)
     
     // Actions
-    func handleDidAppearingView()
+    func handleDidLoadView()
     func handleSelectingHeroCell(with index: Int)
     
     // DataSource
-    func getHeroCellModelsCount() -> Int?
-    func getHeroCellModel(with index: Int) -> HeroSeleсtingCellModel
+    func getHeroSelсtCellsCount() -> Int?
+    func getHeroSelсtCellModel(with index: Int) -> HeroSeleсtingCellModel
 }

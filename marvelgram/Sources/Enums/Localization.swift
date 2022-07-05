@@ -8,8 +8,9 @@
 import Foundation
 
 enum Localization: String {
+    // HeroDetails
     case exploreMoreTitle = "exploreMore.title"
-    case spideySubtitle = "spidey.subtitle"
+    case descriptionText = "description.text"
     
     var localizedString: String {
         return NSLocalizedString(self.rawValue, comment: "")

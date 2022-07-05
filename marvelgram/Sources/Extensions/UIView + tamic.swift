@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIView {
-    // MARK: - Public Methods
+    // MARK: - Methods
     
     func setupView(_ view: UIView) {
         view.translatesAutoresizingMaskIntoConstraints = false

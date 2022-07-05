@@ -8,12 +8,11 @@
 import UIKit
 
 final class HeroDetailsCoordinator: Coordinator {
-    let dataSource: HeroDetailsDataSource
-    
     // MARK: - Private Properties
     
     private(set) var childCoordinators: [Coordinator] = []
     private var navigationController: UINavigationController
+    private let dataSource: HeroDetailsDataSource
     
     // MARK: - Initilization
     
@@ -22,7 +21,7 @@ final class HeroDetailsCoordinator: Coordinator {
         self.dataSource = dataSource
     }
     
-    // MARK: - Public Methods
+    // MARK: - Methods
     
     func start() {
         let heroDetailsVC = HeroDetailsViewModuleBuilder.createModule(with: .heroDetails(dataSource), coordinator: self)

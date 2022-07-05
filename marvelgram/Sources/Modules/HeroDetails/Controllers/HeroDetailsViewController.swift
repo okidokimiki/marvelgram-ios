@@ -8,9 +8,19 @@
 import UIKit
 
 final class HeroDetailsViewController: UIViewController {
-    // MARK: - Public Properties
+    // MARK: - Properties
     
     var presenter: HeroDetailsViewOutput?
+    
+    // MARK: - Private Properties
+    
+    private var heroDetailsView: HeroDetailsView {
+        guard let castedView = view as? HeroDetailsView else {
+            fatalError("TypeCasting Error: presenterView must be \(HeroDetailsView.self)")
+        }
+        
+        return castedView
+    }
     
     // MARK: - Lifecycle
     
@@ -22,15 +32,67 @@ final class HeroDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        presenter?.handleDidLoadView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        presenter?.handleAppearingView()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        presenter?.handleDidLayoutSubviews()
+    }
+    
+    // MARK: - Private Methods
+    
+    private func setupNavController(with model: HeroSeleсtingCellModel?) {
+        let navigation = UINavigationBar.appearance()
+        let attributes = [
+            NSAttributedString.Key.font: FontLibrary.SFPro.regular17,
+            NSAttributedString.Key.foregroundColor: Palette.GlobalColor.fontPrimary
+        ]
+        
+        navigation.titleTextAttributes = attributes
+        title = model?.name
     }
 }
 
-// MARK: - DetailViewUiDelegate
+// MARK: - UiDelegate
 
 extension HeroDetailsViewController: HeroDetailsViewUiDelegate {
+    // Actions
+    func heroDetailsView(_ heroDetailsView: HeroDetailsView, didSelectCharWithIndex index: Int) {
+        presenter?.handleSelectingCharCell(with: index)
+    }
+    
+    // DataSource
+    func heroDetailsView(_ heroDetailsView: HeroDetailsView, getOtherCharCellModelWithIndex index: Int) -> HeroSeleсtingCellModel? {
+        return presenter?.getOtherCharCellModel(with: index)
+    }
+    
+    func heroDetailsView(_ heroDetailsView: HeroDetailsView, getCellsCountOf reuseIdentifier: String) -> Int? {
+        return presenter?.getOtherCharCellsCount()
+    }
 }
 
 // MARK: - DetailViewInput
 
 extension HeroDetailsViewController: HeroDetailsViewInput {
+    func reloadCollectionView() {
+        heroDetailsView.reloadCollectionView()
+    }
+    
+    func updateUI(with model: HeroSeleсtingCellModel?) {
+        setupNavController(with: model)
+        heroDetailsView.updateUI(with: model)
+    }
+    
+    func finishLayoutSubviews() {
+        heroDetailsView.finishLayoutSubviews()
+    }
 }
