@@ -30,7 +30,7 @@ final class HeroesListViewController: UIViewController {
     
     override func loadView() {
         let view = HeroesListView()
-        search.resultDelegate = self
+        search.resultsDelegate = self
         view.uiDelegate = self
         setupNavController()
         self.view = view
@@ -47,7 +47,6 @@ final class HeroesListViewController: UIViewController {
     private func setupNavController() {
         // Search
         navigationItem.searchController = search
-        navigationItem.searchController?.hidesNavigationBarDuringPresentation = false
         navigationItem.hidesSearchBarWhenScrolling = false
         // Button
         navigationItem.leftBarButtonItem = MarvelBarButtonItem()
@@ -76,9 +75,13 @@ extension HeroesListViewController: HeroesListViewUiDelegate {
     }
 }
 
-// MARK: - CharSearchControllerResultsDelegate
+// MARK: - SearchDelegate
 
 extension HeroesListViewController: CharSearchControllerResultsDelegate {
+    func charSearchController(_ charSearchController: CharSearchController, didUpdateSearchResultsWithText text: String) {
+        // Actions
+        presenter?.handleUpdatingSearchResults(with: text)
+    }
 }
 
 // MARK: - ViewInput

@@ -17,6 +17,7 @@ protocol HeroesListViewOutput {
     // Actions
     func handleDidLoadView()
     func handleSelectingHeroCell(with index: Int)
+    func handleUpdatingSearchResults(with text: String)
     
     // DataSource
     func getHeroSelсtCellsCount() -> Int?

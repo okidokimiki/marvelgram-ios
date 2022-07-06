@@ -77,6 +77,10 @@ extension HeroesListPresenter: HeroesListViewOutput {
         coordinator.startHeroDetailsEvent(with: dataSource)
     }
     
+    func handleUpdatingSearchResults(with text: String) {
+        print("SearchBar did texted: \(text)")
+    }
+    
     // DataSource
     func getHeroSelсtCellsCount() -> Int? {
         return dataSource.heroSeleсtingCellModels.count

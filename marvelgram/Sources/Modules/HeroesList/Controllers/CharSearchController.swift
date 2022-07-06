@@ -8,10 +8,11 @@
 import UIKit
 
 protocol CharSearchControllerResultsDelegate: AnyObject {
+    func charSearchController(_ charSearchController: CharSearchController, didUpdateSearchResultsWithText text: String)
 }
 
 class CharSearchController: UISearchController {
-    weak var resultDelegate: CharSearchControllerResultsDelegate?
+    weak var resultsDelegate: CharSearchControllerResultsDelegate?
     
     // MARK: - Initilization
     
@@ -34,6 +35,8 @@ class CharSearchController: UISearchController {
         searchBar.placeholder = Localization.searchPlaceholderText.localizedString
         searchBar.spellCheckingType = .no
         searchBar.autocorrectionType = .no
+        hidesNavigationBarDuringPresentation = false
+//        definesPresentationContext = true // ?
     }
 }
 
@@ -41,5 +44,8 @@ class CharSearchController: UISearchController {
 
 extension CharSearchController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
+        guard let textSearch = searchController.searchBar.text else { return }
+        
+        resultsDelegate?.charSearchController(self, didUpdateSearchResultsWithText: textSearch)
     }
 }
