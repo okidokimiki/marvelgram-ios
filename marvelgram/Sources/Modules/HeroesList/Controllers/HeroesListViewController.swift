@@ -22,27 +22,31 @@ final class HeroesListViewController: UIViewController {
         return castedView
     }
     
-    private lazy var marvelButton = MarvelBarButtonItem()
-    
     // MARK: - Lifecycle
     
     override func loadView() {
         let view = HeroesListView()
         view.uiDelegate = self
+        setupNavController()
         self.view = view
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupNavController()
         presenter?.handleDidLoadView()
     }
     
     // MARK: - Private Methods
     
     private func setupNavController() {
-        navigationItem.leftBarButtonItem = marvelButton
+        // Search
+        navigationItem.searchController = CharSearchController(searchResultsController: nil)
+        navigationItem.searchController?.hidesNavigationBarDuringPresentation = false
+        navigationItem.hidesSearchBarWhenScrolling = false
+        // Button
+        navigationItem.leftBarButtonItem = MarvelBarButtonItem()
+        // NavigationController
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.navigationBar.barTintColor = Palette.GlobalColor.backgroundPrimary
         navigationController?.navigationBar.backgroundColor = Palette.GlobalColor.backgroundPrimary
