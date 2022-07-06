@@ -32,15 +32,15 @@ final class HeroDetailsView: UIView {
     }()
     
     private lazy var descrpLabel: TopAlignedLabel = {
-        return HeroDetailsView.makeDescrpLabel()
+        return makeDescrpLabel()
     }()
     
     private lazy var exploreMoreLabel: UILabel = {
-        return HeroDetailsView.makeExploreMoreLabel()
+        return makeExploreMoreLabel()
     }()
     
     private lazy var otherCharCollectionView: OtherCharactersCollectionView = {
-        return HeroDetailsView.makeOtherCharCollectionView(uiDelegate: self)
+        return makeOtherCharCollectionView(uiDelegate: self)
     }()
     
     // MARK: - Initilization
@@ -66,6 +66,7 @@ final class HeroDetailsView: UIView {
     func updateUI(with model: HeroSeleсtingCellModel?) {
         guard let model = model else { return }
         
+        otherCharCollectionView.reloadData()
         characterImageView.loadImage(from: model.url)
         descrpLabel.text = model.description.isEmpty ? Localization.descriptionText.localizedString : model.description
     }
@@ -77,10 +78,6 @@ final class HeroDetailsView: UIView {
         scrollView.contentSize = contentRect.size
         descrpLabel.addInterlineSpacing(spacingValue: Constants.descrpLabelInterlineSpacing)
         activateSubviewsWidthLayoutConstraint()
-    }
-    
-    func reloadCollectionView() {
-        otherCharCollectionView.reloadData()
     }
     
     // MARK: - Private Methods
@@ -107,7 +104,7 @@ final class HeroDetailsView: UIView {
     
     // MARK: - Creating Subviews
     
-    static func makeDescrpLabel() -> TopAlignedLabel {
+    private func makeDescrpLabel() -> TopAlignedLabel {
         let label = TopAlignedLabel()
         label.font = FontLibrary.SFPro.regular14
         label.textColor = Palette.GlobalColor.fontPrimary
@@ -116,7 +113,7 @@ final class HeroDetailsView: UIView {
         return label
     }
     
-    static func makeExploreMoreLabel() -> UILabel {
+    private func makeExploreMoreLabel() -> UILabel {
         let label = UILabel()
         label.font = FontLibrary.SFPro.bold34
         label.text = Localization.exploreMoreTitle.localizedString
@@ -125,7 +122,7 @@ final class HeroDetailsView: UIView {
         return label
     }
     
-    static func makeOtherCharCollectionView(uiDelegate: OtherCharactersCollectionViewUiDelegate) -> OtherCharactersCollectionView {
+    private func makeOtherCharCollectionView(uiDelegate: OtherCharactersCollectionViewUiDelegate) -> OtherCharactersCollectionView {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.sectionInset = Constants.FlowLayout.baseInsets

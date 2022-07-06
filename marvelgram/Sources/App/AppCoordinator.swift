@@ -25,6 +25,9 @@ final class AppCoordinator: Coordinator {
     
     func start() {
         showHeroesListViewController()
+        if #available(iOS 13.0, *) {
+            window?.overrideUserInterfaceStyle = .dark
+        }
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }

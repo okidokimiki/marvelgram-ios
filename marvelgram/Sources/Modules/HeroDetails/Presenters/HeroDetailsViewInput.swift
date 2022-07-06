@@ -10,5 +10,4 @@ import Foundation
 protocol HeroDetailsViewInput: AnyObject {
     func updateUI(with model: HeroSeleсtingCellModel?)
     func finishLayoutSubviews()
-    func reloadCollectionView()
 }
