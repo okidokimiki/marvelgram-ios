@@ -41,27 +41,14 @@ final class HeroDetailsPresenter {
         return heroes.map { HeroSeleсtingCellModel(hero: $0) }
     }
     
-    private func updateDataSource(with seleсtModel: HeroSeleсtingCellModel?, and otherCharModels: [HeroSeleсtingCellModel]?) {
-        dataSource?.heroSeleсtingCellModel = seleсtModel
+    private func updateDataSource(with seleсtCharModel: HeroSeleсtingCellModel?, and otherCharModels: [HeroSeleсtingCellModel]?) {
+        dataSource?.heroSeleсtingCellModel = seleсtCharModel
         dataSource?.otherCharCellModels = otherCharModels
     }
     
     private func updateUI() {
         let model = dataSource?.heroSeleсtingCellModel
         view?.updateUI(with: model)
-    }
-    
-    private func updateUI(with index: Int) {
-        guard
-            let selectedCharModel = dataSource?.otherCharCellModels?[index],
-            let randHeroes = repository.getHeroesRandomly()
-        else {
-            fatalError("DataSource Error: couldn`t guard data on HeroDetails Screen.")
-        }
-        let charCellModels = makeCharCellModels(from: randHeroes)
-        
-        updateDataSource(with: selectedCharModel, and: charCellModels)
-        updateUI()
     }
 }
 
@@ -78,7 +65,16 @@ extension HeroDetailsPresenter: HeroDetailsViewOutput {
     }
     
     func handleSelectingCharCell(with index: Int) {
-        updateUI(with: index)
+        guard
+            let selectedCharModel = dataSource?.otherCharCellModels?[index],
+            let randHeroes = repository.getHeroesRandomly()
+        else {
+            fatalError("DataSource Error: couldn`t guard data on HeroDetails Screen.")
+        }
+        let otherCharModels = makeCharCellModels(from: randHeroes)
+        
+        updateDataSource(with: selectedCharModel, and: otherCharModels)
+        updateUI()
     }
     
     // DataSource
