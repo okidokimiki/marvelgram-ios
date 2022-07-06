@@ -37,29 +37,30 @@ final class HeroDetailsPresenter {
     
     // MARK: - Private Methods
     
+    private func makeCharCellModels(from heroes: [Hero]) -> [HeroSeleсtingCellModel] {
+        return heroes.map { HeroSeleсtingCellModel(hero: $0) }
+    }
+    
+    private func updateDataSource(with seleсtModel: HeroSeleсtingCellModel?, and otherCharModels: [HeroSeleсtingCellModel]?) {
+        dataSource?.heroSeleсtingCellModel = seleсtModel
+        dataSource?.otherCharCellModels = otherCharModels
+    }
+    
     private func updateUI() {
         let model = dataSource?.heroSeleсtingCellModel
         view?.updateUI(with: model)
     }
     
-    private func reloadCollectionView() {
-        DispatchQueue.main.async {
-            self.view?.reloadCollectionView()
-        }
-    }
-    
-    private func updateUI(withSelectedChar index: Int) {
+    private func updateUI(with index: Int) {
         guard
-            let selectedChar = dataSource?.otherCharCellModels?[index],
+            let selectedCharModel = dataSource?.otherCharCellModels?[index],
             let randHeroes = repository.getHeroesRandomly()
         else {
             fatalError("DataSource Error: couldn`t guard data on HeroDetails Screen.")
         }
+        let charCellModels = makeCharCellModels(from: randHeroes)
         
-        dataSource?.heroSeleсtingCellModel = selectedChar
-        dataSource?.otherCharCellModels = randHeroes.map { HeroSeleсtingCellModel(hero: $0) }
-        
-        reloadCollectionView()
+        updateDataSource(with: selectedCharModel, and: charCellModels)
         updateUI()
     }
 }
@@ -68,10 +69,6 @@ final class HeroDetailsPresenter {
 
 extension HeroDetailsPresenter: HeroDetailsViewOutput {
     // Actions
-    func handleDidLoadView() {
-        reloadCollectionView()
-    }
-    
     func handleDidLayoutSubviews() {
         view?.finishLayoutSubviews()
     }
@@ -81,7 +78,7 @@ extension HeroDetailsPresenter: HeroDetailsViewOutput {
     }
     
     func handleSelectingCharCell(with index: Int) {
-        updateUI(withSelectedChar: index)
+        updateUI(with: index)
     }
     
     // DataSource

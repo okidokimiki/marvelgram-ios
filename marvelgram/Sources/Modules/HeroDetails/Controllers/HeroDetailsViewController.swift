@@ -29,13 +29,7 @@ final class HeroDetailsViewController: UIViewController {
         view.uiDelegate = self
         self.view = view
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
         
-        presenter?.handleDidLoadView()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -83,10 +77,6 @@ extension HeroDetailsViewController: HeroDetailsViewUiDelegate {
 // MARK: - DetailViewInput
 
 extension HeroDetailsViewController: HeroDetailsViewInput {
-    func reloadCollectionView() {
-        heroDetailsView.reloadCollectionView()
-    }
-    
     func updateUI(with model: HeroSeleсtingCellModel?) {
         setupNavController(with: model)
         heroDetailsView.updateUI(with: model)

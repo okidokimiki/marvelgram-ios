@@ -24,7 +24,7 @@ final class HeroesListView: UIView {
     // MARK: - Private Properties
     
     private lazy var heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView = {
-        return HeroesListView.makeHeroesSeleсtingCollectionView(uiDelegate: self)
+        return makeHeroesSeleсtingCollectionView(uiDelegate: self)
     }()
     
     private lazy var activityIndicatorView: UIActivityIndicatorView = {
@@ -81,7 +81,7 @@ final class HeroesListView: UIView {
     
     // MARK: - Creating Subviews
     
-    static func makeHeroesSeleсtingCollectionView(uiDelegate: HeroesSeleсtingCollectionViewUiDelegate) -> HeroesSeleсtingCollectionView {
+    private func makeHeroesSeleсtingCollectionView(uiDelegate: HeroesSeleсtingCollectionViewUiDelegate) -> HeroesSeleсtingCollectionView {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         
