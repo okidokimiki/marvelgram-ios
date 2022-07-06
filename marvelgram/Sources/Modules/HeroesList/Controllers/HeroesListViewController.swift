@@ -22,10 +22,15 @@ final class HeroesListViewController: UIViewController {
         return castedView
     }
     
+    private lazy var search: CharSearchController = {
+        return CharSearchController(searchResultsController: nil)
+    }()
+    
     // MARK: - Lifecycle
     
     override func loadView() {
         let view = HeroesListView()
+        search.resultDelegate = self
         view.uiDelegate = self
         setupNavController()
         self.view = view
@@ -41,7 +46,7 @@ final class HeroesListViewController: UIViewController {
     
     private func setupNavController() {
         // Search
-        navigationItem.searchController = CharSearchController(searchResultsController: nil)
+        navigationItem.searchController = search
         navigationItem.searchController?.hidesNavigationBarDuringPresentation = false
         navigationItem.hidesSearchBarWhenScrolling = false
         // Button
@@ -69,6 +74,11 @@ extension HeroesListViewController: HeroesListViewUiDelegate {
     func heroesListView(_ heroesListView: HeroesListView, getHeroCellModelWithIndex index: Int) -> HeroSeleсtingCellModel? {
         return presenter?.getHeroSelсtCellModel(with: index)
     }
+}
+
+// MARK: - CharSearchControllerResultsDelegate
+
+extension HeroesListViewController: CharSearchControllerResultsDelegate {
 }
 
 // MARK: - ViewInput
