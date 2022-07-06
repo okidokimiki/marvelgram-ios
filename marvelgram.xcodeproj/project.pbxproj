@@ -23,6 +23,7 @@
 		045C44BB286CAB7A0016084B /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C44BA286CAB7A0016084B /* AppCoordinator.swift */; };
 		04643365286EF35C007EDCFD /* HeroDetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04643364286EF35C007EDCFD /* HeroDetailsCoordinator.swift */; };
 		04643368286F00D9007EDCFD /* ModuleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04643367286F00D9007EDCFD /* ModuleType.swift */; };
+		0476F4F528758D1700C027EB /* BackBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0476F4F428758D1700C027EB /* BackBarButtonItem.swift */; };
 		04AA97AA2873847D007775C0 /* TopAlignedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AA97A92873847D007775C0 /* TopAlignedLabel.swift */; };
 		04AA97AC2873876B007775C0 /* UILabel + interlineSpacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AA97AB2873876B007775C0 /* UILabel + interlineSpacing.swift */; };
 		04AA97AE287390AE007775C0 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AA97AD287390AE007775C0 /* API.swift */; };
@@ -77,6 +78,7 @@
 		045C44BA286CAB7A0016084B /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		04643364286EF35C007EDCFD /* HeroDetailsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailsCoordinator.swift; sourceTree = "<group>"; };
 		04643367286F00D9007EDCFD /* ModuleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleType.swift; sourceTree = "<group>"; };
+		0476F4F428758D1700C027EB /* BackBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackBarButtonItem.swift; sourceTree = "<group>"; };
 		04AA97A92873847D007775C0 /* TopAlignedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopAlignedLabel.swift; sourceTree = "<group>"; };
 		04AA97AB2873876B007775C0 /* UILabel + interlineSpacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + interlineSpacing.swift"; sourceTree = "<group>"; };
 		04AA97AD287390AE007775C0 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
@@ -311,6 +313,7 @@
 			isa = PBXGroup;
 			children = (
 				04C5C1D2285169490096D272 /* HeroDetailsView.swift */,
+				0476F4F428758D1700C027EB /* BackBarButtonItem.swift */,
 				04060FD828593BBD00DF93F6 /* OtherCharactersCollectionView.swift */,
 			);
 			path = Views;
@@ -547,6 +550,7 @@
 				04D4426C2874723900E19DD1 /* CharImageViewCell.swift in Sources */,
 				04FE0A3D284FCAAD00839CBF /* HeroesListView.swift in Sources */,
 				04C5C1BB28500F5F0096D272 /* HeroesRepository.swift in Sources */,
+				0476F4F528758D1700C027EB /* BackBarButtonItem.swift in Sources */,
 				044018BE2870F3B400844035 /* ImageLoader.swift in Sources */,
 				04AA97B0287391E1007775C0 /* Fetchable.swift in Sources */,
 				04AA97AC2873876B007775C0 /* UILabel + interlineSpacing.swift in Sources */,
