@@ -9,5 +9,4 @@ import Foundation
 
 typealias JSONResponseHandler = (JSONResponse) -> Void
 
-protocol Networkable: Fetchable {
-}
+protocol Networkable: Fetchable { }
