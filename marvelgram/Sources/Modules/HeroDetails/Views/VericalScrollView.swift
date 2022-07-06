@@ -7,7 +7,7 @@
 
 import UIKit
 
-class VericalScrollView: UIScrollView {
+final class VericalScrollView: UIScrollView {
     // MARK: - Override Properties
     
     override var contentOffset: CGPoint {

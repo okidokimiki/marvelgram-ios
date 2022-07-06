@@ -153,8 +153,6 @@
 			isa = PBXGroup;
 			children = (
 				044018BD2870F3B400844035 /* ImageLoader.swift */,
-				04AA97A92873847D007775C0 /* TopAlignedLabel.swift */,
-				04D4426928742DA900E19DD1 /* VericalScrollView.swift */,
 				04D4426B2874723900E19DD1 /* CharImageViewCell.swift */,
 			);
 			path = ReusebleViews;
@@ -316,6 +314,8 @@
 			isa = PBXGroup;
 			children = (
 				04C5C1D2285169490096D272 /* HeroDetailsView.swift */,
+				04AA97A92873847D007775C0 /* TopAlignedLabel.swift */,
+				04D4426928742DA900E19DD1 /* VericalScrollView.swift */,
 				0476F4F428758D1700C027EB /* BackBarButtonItem.swift */,
 				04060FD828593BBD00DF93F6 /* OtherCharactersCollectionView.swift */,
 			);

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TopAlignedLabel: UILabel {
+final class TopAlignedLabel: UILabel {
     // MARK: - Initilization
     
     override init(frame: CGRect) {
