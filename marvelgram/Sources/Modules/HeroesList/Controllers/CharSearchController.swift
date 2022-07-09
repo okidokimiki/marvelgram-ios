@@ -45,6 +45,7 @@ class CharSearchController: UISearchController {
         searchBar.placeholder = Localization.searchPlaceholderText.localizedString
         searchBar.spellCheckingType = .no
         searchBar.autocorrectionType = .no
+        searchBar.keyboardAppearance = .dark
         hidesNavigationBarDuringPresentation = false
         definesPresentationContext = true
     }
