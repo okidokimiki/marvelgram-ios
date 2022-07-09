@@ -22,6 +22,10 @@ final class HeroDetailsViewController: UIViewController {
         return castedView
     }
     
+    private lazy var backButton: BackBarButtonItem = {
+        return BackBarButtonItem()
+    }()
+    
     // MARK: - Lifecycle
     
     override func loadView() {
@@ -46,7 +50,6 @@ final class HeroDetailsViewController: UIViewController {
     
     private func setupNavController(with model: HeroSeleсtingCellModel?) {
         let navigation = UINavigationBar.appearance()
-        let backButton = BackBarButtonItem()
         let attributes = [
             NSAttributedString.Key.font: FontLibrary.SFPro.regular17,
             NSAttributedString.Key.foregroundColor: Palette.GlobalColor.fontPrimary
