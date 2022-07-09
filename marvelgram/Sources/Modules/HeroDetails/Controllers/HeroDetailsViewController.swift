@@ -79,7 +79,7 @@ extension HeroDetailsViewController: HeroDetailsViewUiDelegate {
     }
 }
 
-// MARK: - DetailViewInput
+// MARK: - ViewInput
 
 extension HeroDetailsViewController: HeroDetailsViewInput {
     func updateUI(with model: HeroSeleсtingCellModel?) {

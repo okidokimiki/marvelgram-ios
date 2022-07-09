@@ -6,8 +6,13 @@
 //
 
 import Foundation
-// too much
-struct HeroDetailsDataSource { // class?
+
+final class HeroDetailsDataSource {
     var heroSeleсtingCellModel: HeroSeleсtingCellModel?
     var otherCharCellModels: [HeroSeleсtingCellModel]?
+    
+    init(heroSeleсtingCellModel: HeroSeleсtingCellModel?, otherCharCellModels: [HeroSeleсtingCellModel]?) {
+        self.heroSeleсtingCellModel = heroSeleсtingCellModel
+        self.otherCharCellModels = otherCharCellModels
+    }
 }

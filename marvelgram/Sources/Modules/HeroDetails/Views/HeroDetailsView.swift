@@ -195,7 +195,7 @@ final class HeroDetailsView: UIView {
     }
 }
 
-// MARK: - OtherCharactersCollectionViewUiDelegate
+// MARK: - UiDelegate
 
 extension HeroDetailsView: OtherCharactersCollectionViewUiDelegate {
     // Actions

@@ -118,7 +118,7 @@ final class HeroesListView: UIView {
     }
 }
 
-// MARK: - HeroesSeleсtingCollectionViewUiDelegate
+// MARK: - UiDelegate
 
 extension HeroesListView: HeroesSeleсtingCollectionViewUiDelegate {
     // Actions

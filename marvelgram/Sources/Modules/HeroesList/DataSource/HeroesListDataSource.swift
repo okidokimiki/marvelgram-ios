@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct HeroesListDataSource { // class?
+final class HeroesListDataSource {
     var heroSeleсtingCellModels: [HeroSeleсtingCellModel] = []
 }

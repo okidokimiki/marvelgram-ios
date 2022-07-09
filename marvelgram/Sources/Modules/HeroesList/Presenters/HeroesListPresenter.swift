@@ -78,8 +78,6 @@ extension HeroesListPresenter: HeroesListViewOutput {
     }
     
     func handleUpdatingSearchResults(with text: String) {
-        // поменять датасорс
-        // релоад коллекции
         for (index, hero) in dataSource.heroSeleсtingCellModels.enumerated() {
             let heroLowercased = hero.name.lowercased()
             let textLowercased = text.lowercased()
