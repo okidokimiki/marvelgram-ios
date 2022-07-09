@@ -59,7 +59,7 @@ final class HeroesListPresenter {
     }
 }
 
-// MARK: - MainViewOutput
+// MARK: - ViewOutput
 
 extension HeroesListPresenter: HeroesListViewOutput {
     // Actions

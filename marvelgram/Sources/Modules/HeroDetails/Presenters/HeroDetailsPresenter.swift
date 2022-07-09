@@ -52,7 +52,7 @@ final class HeroDetailsPresenter {
     }
 }
 
-// MARK: - DetailViewOutput
+// MARK: - ViewOutput
 
 extension HeroDetailsPresenter: HeroDetailsViewOutput {
     // Actions
