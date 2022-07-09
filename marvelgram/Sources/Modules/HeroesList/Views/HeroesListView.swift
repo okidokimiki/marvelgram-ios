@@ -62,6 +62,12 @@ final class HeroesListView: UIView {
             activityIndicatorView.stopAnimating()
         }
     }
+
+    func moveUpCell(with indexPath: IndexPath) {
+        heroesSeleсtingCollectionView.performBatchUpdates {
+            self.heroesSeleсtingCollectionView.moveItem(at: indexPath, to: .zero)
+        }
+    }
     
     // MARK: - Private Methods
     

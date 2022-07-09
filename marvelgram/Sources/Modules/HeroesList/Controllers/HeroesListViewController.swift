@@ -26,6 +26,10 @@ final class HeroesListViewController: UIViewController {
         return CharSearchController(searchResultsController: nil)
     }()
     
+    private lazy var navButton: MarvelBarButtonItem = {
+        return MarvelBarButtonItem()
+    }()
+    
     // MARK: - Lifecycle
     
     override func loadView() {
@@ -49,7 +53,7 @@ final class HeroesListViewController: UIViewController {
         navigationItem.searchController = search
         navigationItem.hidesSearchBarWhenScrolling = false
         // Button
-        navigationItem.leftBarButtonItem = MarvelBarButtonItem()
+        navigationItem.leftBarButtonItem = navButton
         // NavigationController
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.navigationBar.barTintColor = Palette.GlobalColor.backgroundPrimary
@@ -93,5 +97,9 @@ extension HeroesListViewController: HeroesListViewInput {
     
     func showActivityIndicator(_ show: Bool) {
         heroesListView.showActivityIndicator(show)
+    }
+    
+    func moveUpCell(with indexPath: IndexPath) {
+        heroesListView.moveUpCell(with: indexPath)
     }
 }

@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+// Equatable
 struct HeroSeleсtingCellModel {
     let id: Int
     let name: String

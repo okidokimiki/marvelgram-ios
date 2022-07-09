@@ -6,8 +6,8 @@
 //
 
 import Foundation
-
-struct HeroDetailsDataSource {
+// too much
+struct HeroDetailsDataSource { // class?
     var heroSeleсtingCellModel: HeroSeleсtingCellModel?
     var otherCharCellModels: [HeroSeleсtingCellModel]?
 }

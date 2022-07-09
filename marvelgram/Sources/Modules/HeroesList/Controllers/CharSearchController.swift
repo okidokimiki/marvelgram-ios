@@ -12,7 +12,17 @@ protocol CharSearchControllerResultsDelegate: AnyObject {
 }
 
 class CharSearchController: UISearchController {
+    // MARK: - Properties
+    
     weak var resultsDelegate: CharSearchControllerResultsDelegate?
+    
+    // MARK: - PrivateProperties
+    
+    private var searchBarIsntEmpty: Bool {
+        guard let text = searchBar.text else { return true }
+        
+        return !text.isEmpty
+    }
     
     // MARK: - Initilization
     
@@ -36,7 +46,7 @@ class CharSearchController: UISearchController {
         searchBar.spellCheckingType = .no
         searchBar.autocorrectionType = .no
         hidesNavigationBarDuringPresentation = false
-//        definesPresentationContext = true // ?
+        definesPresentationContext = true
     }
 }
 
@@ -46,6 +56,8 @@ extension CharSearchController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         guard let textSearch = searchController.searchBar.text else { return }
         
-        resultsDelegate?.charSearchController(self, didUpdateSearchResultsWithText: textSearch)
+        if searchBarIsntEmpty {
+            resultsDelegate?.charSearchController(self, didUpdateSearchResultsWithText: textSearch)
+        }
     }
 }

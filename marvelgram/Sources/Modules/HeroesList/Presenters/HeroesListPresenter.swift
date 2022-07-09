@@ -78,7 +78,22 @@ extension HeroesListPresenter: HeroesListViewOutput {
     }
     
     func handleUpdatingSearchResults(with text: String) {
-        print("SearchBar did texted: \(text)")
+        // поменять датасорс
+        // релоад коллекции
+        for (index, hero) in dataSource.heroSeleсtingCellModels.enumerated() {
+            let heroLowercased = hero.name.lowercased()
+            let textLowercased = text.lowercased()
+
+            if heroLowercased.contains(textLowercased) {
+                let detectedModel = dataSource.heroSeleсtingCellModels[index]
+                dataSource.heroSeleсtingCellModels.remove(at: index)
+                dataSource.heroSeleсtingCellModels.insert(detectedModel, at: .zero)
+
+                let indexPath = IndexPath(item: index, section: .zero)
+                view?.moveUpCell(with: indexPath)
+                return
+            }
+        }
     }
     
     // DataSource
