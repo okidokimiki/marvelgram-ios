@@ -12,6 +12,7 @@
 		04060FD52859345300DF93F6 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04060FD42859345300DF93F6 /* Localization.swift */; };
 		04060FD928593BBD00DF93F6 /* OtherCharactersCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04060FD828593BBD00DF93F6 /* OtherCharactersCollectionView.swift */; };
 		0416813728785B1D00685EE8 /* IndexPath + zero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0416813628785B1D00685EE8 /* IndexPath + zero.swift */; };
+		04168139287AD9CC00685EE8 /* NavBarButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04168138287AD9CC00685EE8 /* NavBarButtonType.swift */; };
 		041D6536286EECAC008E5BD6 /* HeroesListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041D6535286EECAC008E5BD6 /* HeroesListCoordinator.swift */; };
 		044018AC286F0BF500844035 /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044018AA286F0BF500844035 /* ModuleBuilder.swift */; };
 		044018AD286F0BF500844035 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044018AB286F0BF500844035 /* Coordinator.swift */; };
@@ -69,6 +70,7 @@
 		04060FD42859345300DF93F6 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		04060FD828593BBD00DF93F6 /* OtherCharactersCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherCharactersCollectionView.swift; sourceTree = "<group>"; };
 		0416813628785B1D00685EE8 /* IndexPath + zero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IndexPath + zero.swift"; sourceTree = "<group>"; };
+		04168138287AD9CC00685EE8 /* NavBarButtonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarButtonType.swift; sourceTree = "<group>"; };
 		041D6535286EECAC008E5BD6 /* HeroesListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesListCoordinator.swift; sourceTree = "<group>"; };
 		044018AA286F0BF500844035 /* ModuleBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModuleBuilder.swift; sourceTree = "<group>"; };
 		044018AB286F0BF500844035 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 				04643367286F00D9007EDCFD /* ModuleType.swift */,
 				04B430532869EAA800BD4904 /* NetworkError.swift */,
 				04B430552869EB9700BD4904 /* JSONResponse.swift */,
+				04168138287AD9CC00685EE8 /* NavBarButtonType.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -533,6 +536,7 @@
 				04C5C1D3285169490096D272 /* HeroDetailsView.swift in Sources */,
 				04B430592869F93400BD4904 /* UIView + tamic.swift in Sources */,
 				04C5C1A3284FDA630096D272 /* HeroesListViewInput.swift in Sources */,
+				04168139287AD9CC00685EE8 /* NavBarButtonType.swift in Sources */,
 				04C5C1AE284FED200096D272 /* Hero.swift in Sources */,
 				044018AC286F0BF500844035 /* ModuleBuilder.swift in Sources */,
 				044018B1286F42A800844035 /* Palette.swift in Sources */,

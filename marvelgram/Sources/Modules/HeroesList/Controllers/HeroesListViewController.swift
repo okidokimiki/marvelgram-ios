@@ -26,7 +26,7 @@ final class HeroesListViewController: UIViewController {
         return CharSearchController(searchResultsController: nil)
     }()
     
-    private lazy var navButton: MarvelBarButtonItem = {
+    private lazy var marvelNavBarButton: MarvelBarButtonItem = {
         return MarvelBarButtonItem()
     }()
     
@@ -34,6 +34,7 @@ final class HeroesListViewController: UIViewController {
     
     override func loadView() {
         let view = HeroesListView()
+        marvelNavBarButton.uiDelegate = self
         search.resultsDelegate = self
         view.uiDelegate = self
         setupNavController()
@@ -53,7 +54,7 @@ final class HeroesListViewController: UIViewController {
         navigationItem.searchController = search
         navigationItem.hidesSearchBarWhenScrolling = false
         // Button
-        navigationItem.leftBarButtonItem = navButton
+        navigationItem.leftBarButtonItem = marvelNavBarButton
         // NavigationController
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.navigationBar.barTintColor = Palette.GlobalColor.backgroundPrimary
@@ -85,6 +86,15 @@ extension HeroesListViewController: CharSearchControllerResultsDelegate {
     func charSearchController(_ charSearchController: CharSearchController, didUpdateSearchResultsWithText text: String) {
         // Actions
         presenter?.handleUpdatingSearchResults(with: text)
+    }
+}
+
+// MARK: - NavBarButtonDelegate
+
+extension HeroesListViewController: NavBarButtonItemUiDelegate {
+    func navBarButtonItem(_ navBarButtonItem: UIBarButtonItem, didTapNavBarButtonWithType type: NavBarButtonType) {
+        // Actions
+        presenter?.handleTappingNavBarButton(with: type)
     }
 }
 

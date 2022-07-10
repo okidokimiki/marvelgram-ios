@@ -94,6 +94,10 @@ extension HeroesListPresenter: HeroesListViewOutput {
         }
     }
     
+    func handleTappingNavBarButton(with type: NavBarButtonType) {
+        print("Did tap navBar button with type: \(type)")
+    }
+    
     // DataSource
     func getHeroSelсtCellsCount() -> Int? {
         return dataSource.heroSeleсtingCellModels.count

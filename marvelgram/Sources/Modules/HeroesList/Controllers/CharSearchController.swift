@@ -47,7 +47,6 @@ class CharSearchController: UISearchController {
         searchBar.autocorrectionType = .no
         searchBar.keyboardAppearance = .dark
         hidesNavigationBarDuringPresentation = false
-        definesPresentationContext = true
     }
 }
 

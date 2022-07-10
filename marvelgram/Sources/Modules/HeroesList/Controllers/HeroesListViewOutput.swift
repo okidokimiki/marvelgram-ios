@@ -18,6 +18,7 @@ protocol HeroesListViewOutput {
     func handleDidLoadView()
     func handleSelectingHeroCell(with index: Int)
     func handleUpdatingSearchResults(with text: String)
+    func handleTappingNavBarButton(with type: NavBarButtonType)
     
     // DataSource
     func getHeroSelсtCellsCount() -> Int?

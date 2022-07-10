@@ -5,8 +5,6 @@
 //  Created by Mikhail Chaus on 07.06.2022.
 //
 
-import Foundation
-
 struct HeroSeleсtingCellModel {
     let id: Int
     let name: String
