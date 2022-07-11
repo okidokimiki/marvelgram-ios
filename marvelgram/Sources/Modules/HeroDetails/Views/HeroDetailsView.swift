@@ -68,7 +68,7 @@ final class HeroDetailsView: UIView {
         
         otherCharCollectionView.reloadData()
         characterImageView.loadImage(from: model.url)
-        descrpLabel.text = model.description.isEmpty ? AppLocalize.descriptionText.localizedString : model.description
+        descrpLabel.text = model.description.isEmpty ? AppLocalize.HeroDetails.descriptionText : model.description
     }
     
     func finishLayoutSubviews() {
@@ -116,7 +116,7 @@ final class HeroDetailsView: UIView {
     private func makeExploreMoreLabel() -> UILabel {
         let label = UILabel()
         label.font = AppFont.SFPro.bold34
-        label.text = AppLocalize.exploreMoreTitle.localizedString
+        label.text = AppLocalize.HeroDetails.exploreMoreTitle
         label.textColor = AppColor.GlobalColor.font
         
         return label

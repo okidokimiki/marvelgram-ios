@@ -7,14 +7,14 @@
 
 import Foundation
 
-enum AppLocalize: String {
-    // HeroesList
-    case searchPlaceholderText = "searchPlaceholder.text"
-    // HeroDetails
-    case exploreMoreTitle = "exploreMore.title"
-    case descriptionText = "description.text"
+enum AppLocalize {
     
-    var localizedString: String {
-        return NSLocalizedString(self.rawValue, comment: "")
+    enum HeroesList {
+        static let searchPlaceholderText = NSLocalizedString("searchPlaceholder.text", comment: "")
+    }
+    
+    enum HeroDetails {
+        static let exploreMoreTitle = NSLocalizedString("exploreMore.title", comment: "")
+        static let descriptionText = NSLocalizedString("description.text", comment: "")
     }
 }
