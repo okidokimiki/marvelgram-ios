@@ -57,8 +57,8 @@ final class HeroesListViewController: UIViewController {
         navigationItem.leftBarButtonItem = marvelNavBarButton
         // NavigationController
         navigationController?.navigationBar.isTranslucent = true
-        navigationController?.navigationBar.barTintColor = Palette.GlobalColor.backgroundPrimary
-        navigationController?.navigationBar.backgroundColor = Palette.GlobalColor.backgroundPrimary
+        navigationController?.navigationBar.barTintColor = AppColor.GlobalColor.background
+        navigationController?.navigationBar.backgroundColor = AppColor.GlobalColor.background
     }
 }
 

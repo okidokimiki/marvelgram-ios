@@ -68,7 +68,7 @@ final class HeroDetailsView: UIView {
         
         otherCharCollectionView.reloadData()
         characterImageView.loadImage(from: model.url)
-        descrpLabel.text = model.description.isEmpty ? Localization.descriptionText.localizedString : model.description
+        descrpLabel.text = model.description.isEmpty ? AppLocalize.descriptionText.localizedString : model.description
     }
     
     func finishLayoutSubviews() {
@@ -83,7 +83,7 @@ final class HeroDetailsView: UIView {
     // MARK: - Private Methods
     
     private func configure() {
-        backgroundColor = Palette.GlobalColor.backgroundPrimary
+        backgroundColor = AppColor.GlobalColor.background
     }
     
     private func setupViews() {
@@ -106,8 +106,8 @@ final class HeroDetailsView: UIView {
     
     private func makeDescrpLabel() -> TopAlignedLabel {
         let label = TopAlignedLabel()
-        label.font = FontLibrary.SFPro.regular14
-        label.textColor = Palette.GlobalColor.fontPrimary
+        label.font = AppFont.SFPro.regular14
+        label.textColor = AppColor.GlobalColor.font
         label.numberOfLines = Constants.descrpLabelNumberOfLines
         
         return label
@@ -115,9 +115,9 @@ final class HeroDetailsView: UIView {
     
     private func makeExploreMoreLabel() -> UILabel {
         let label = UILabel()
-        label.font = FontLibrary.SFPro.bold34
-        label.text = Localization.exploreMoreTitle.localizedString
-        label.textColor = Palette.GlobalColor.fontPrimary
+        label.font = AppFont.SFPro.bold34
+        label.text = AppLocalize.exploreMoreTitle.localizedString
+        label.textColor = AppColor.GlobalColor.font
         
         return label
     }

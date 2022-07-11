@@ -72,7 +72,7 @@ final class HeroesListView: UIView {
     // MARK: - Private Methods
     
     private func configure() {
-        backgroundColor = Palette.GlobalColor.backgroundPrimary
+        backgroundColor = AppColor.GlobalColor.background
     }
     
     private func setupViews() {

@@ -42,7 +42,7 @@ class CharSearchController: UISearchController {
     
     private func configure() {
         searchResultsUpdater = self
-        searchBar.placeholder = Localization.searchPlaceholderText.localizedString
+        searchBar.placeholder = AppLocalize.searchPlaceholderText.localizedString
         searchBar.spellCheckingType = .no
         searchBar.autocorrectionType = .no
         searchBar.keyboardAppearance = .dark

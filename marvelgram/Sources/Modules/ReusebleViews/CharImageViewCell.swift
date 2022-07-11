@@ -41,7 +41,7 @@ class CharImageViewCell: UICollectionViewCell {
     // MARK: - Private Methods
     
     private func configure() {
-        backgroundColor = Palette.HeroesList.cellBackground
+        backgroundColor = AppColor.HeroesList.cellBackground
     }
     
     private func setupViews() {

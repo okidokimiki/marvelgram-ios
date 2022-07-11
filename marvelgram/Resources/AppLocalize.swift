@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Localization: String {
+enum AppLocalize: String {
     // HeroesList
     case searchPlaceholderText = "searchPlaceholder.text"
     // HeroDetails
