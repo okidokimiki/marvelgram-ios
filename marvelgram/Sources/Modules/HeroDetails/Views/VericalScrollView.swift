@@ -15,7 +15,7 @@ final class VericalScrollView: UIScrollView {
             return super.contentOffset
         }
         set {
-            super.contentOffset = CGPoint(x: 0, y: newValue.y)
+            super.contentOffset = CGPoint(x: .zero, y: newValue.y)
         }
     }
     
