@@ -36,6 +36,7 @@ final class HeroesListViewController: UIViewController {
         let view = HeroesListView()
         marvelNavBarButton.uiDelegate = self
         search.resultsDelegate = self
+        search.uiDelegate = self
         view.uiDelegate = self
         setupNavController()
         self.view = view
@@ -81,6 +82,17 @@ extension HeroesListViewController: HeroesListViewUiDelegate {
 }
 
 // MARK: - SearchDelegate
+
+extension HeroesListViewController: CharSearchControllerUiDelegate {
+    // Actions
+    func charSearchController(_ charSearchController: CharSearchController, didPresentSearchBarWithText text: String) {
+         presenter?.handlePresentingSearchBar(with: text)
+    }
+    
+    func charSearchController(_ charSearchController: CharSearchController, didDismissSearchBarWithText text: String) {
+         presenter?.handleDismissingSearchBar(with: text)
+    }
+}
 
 extension HeroesListViewController: CharSearchControllerResultsDelegate {
     func charSearchController(_ charSearchController: CharSearchController, didUpdateSearchResultsWithText text: String) {

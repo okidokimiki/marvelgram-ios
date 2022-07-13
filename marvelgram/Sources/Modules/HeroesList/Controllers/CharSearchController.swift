@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol CharSearchControllerUiDelegate: AnyObject {
+    func charSearchController(_ charSearchController: CharSearchController, didPresentSearchBarWithText text: String)
+    func charSearchController(_ charSearchController: CharSearchController, didDismissSearchBarWithText text: String)
+}
+
 protocol CharSearchControllerResultsDelegate: AnyObject {
     func charSearchController(_ charSearchController: CharSearchController, didUpdateSearchResultsWithText text: String)
 }
@@ -14,6 +19,7 @@ protocol CharSearchControllerResultsDelegate: AnyObject {
 class CharSearchController: UISearchController {
     // MARK: - Properties
     
+    weak var uiDelegate: CharSearchControllerUiDelegate?
     weak var resultsDelegate: CharSearchControllerResultsDelegate?
     
     // MARK: - PrivateProperties
@@ -41,12 +47,32 @@ class CharSearchController: UISearchController {
     // MARK: - Private Methods
     
     private func configure() {
+        // Delegate
+        delegate = self
         searchResultsUpdater = self
+        // SearchBar
         searchBar.placeholder = AppLocalize.HeroesList.searchPlaceholderText
         searchBar.spellCheckingType = .no
         searchBar.autocorrectionType = .no
         searchBar.keyboardAppearance = .dark
+        // NavigationBar
         hidesNavigationBarDuringPresentation = false
+    }
+}
+
+// MARK: - UISearchControllerDelegate
+
+extension CharSearchController: UISearchControllerDelegate {
+    func didPresentSearchController(_ searchController: UISearchController) {
+        guard let textSearch = searchController.searchBar.text else { return }
+        
+        uiDelegate?.charSearchController(self, didPresentSearchBarWithText: textSearch)
+    }
+    
+    func didDismissSearchController(_ searchController: UISearchController) {
+        guard let textSearch = searchController.searchBar.text else { return }
+        
+        uiDelegate?.charSearchController(self, didDismissSearchBarWithText: textSearch)
     }
 }
 

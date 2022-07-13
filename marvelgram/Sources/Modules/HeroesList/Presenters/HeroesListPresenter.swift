@@ -77,6 +77,14 @@ extension HeroesListPresenter: HeroesListViewOutput {
         coordinator.startHeroDetailsEvent(with: dataSource)
     }
     
+    func handlePresentingSearchBar(with text: String) {
+        print(#function, "\(text)")
+    }
+    
+    func handleDismissingSearchBar(with text: String) {
+        print(#function, "\(text)")
+    }
+    
     func handleUpdatingSearchResults(with text: String) {
         for (index, hero) in dataSource.heroSeleсtingCellModels.enumerated() {
             let heroLowercased = hero.name.lowercased()
