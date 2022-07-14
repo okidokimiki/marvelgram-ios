@@ -10,7 +10,7 @@ import UIKit
 extension UILabel {
     // MARK: - Methods
     
-    func addInterlineSpacing(spacingValue: CGFloat = 2) {
+    func addInterlineSpacing(spacingValue: CGFloat) {
         guard let textString = text else { return }
         
         let attributedString = NSMutableAttributedString(string: textString)
