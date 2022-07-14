@@ -84,7 +84,6 @@ extension HeroesListViewController: HeroesListViewUiDelegate {
 // MARK: - SearchDelegate
 
 extension HeroesListViewController: CharSearchControllerUiDelegate {
-    // Actions
     func charSearchController(_ charSearchController: CharSearchController, didPresentSearchBarWithText text: String) {
          presenter?.handlePresentingSearchBar(with: text)
     }
@@ -96,7 +95,6 @@ extension HeroesListViewController: CharSearchControllerUiDelegate {
 
 extension HeroesListViewController: CharSearchControllerResultsDelegate {
     func charSearchController(_ charSearchController: CharSearchController, didUpdateSearchResultsWithText text: String) {
-        // Actions
         presenter?.handleUpdatingSearchResults(with: text)
     }
 }
@@ -105,7 +103,6 @@ extension HeroesListViewController: CharSearchControllerResultsDelegate {
 
 extension HeroesListViewController: NavBarButtonItemUiDelegate {
     func navBarButtonItem(_ navBarButtonItem: UIBarButtonItem, didTapNavBarButtonWithType type: NavBarButtonType) {
-        // Actions
         presenter?.handleTappingNavBarButton(with: type)
     }
 }

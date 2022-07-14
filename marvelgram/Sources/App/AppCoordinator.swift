@@ -24,20 +24,21 @@ final class AppCoordinator: Coordinator {
     // MARK: - Methods
     
     func start() {
-        showHeroesListViewController()
+        configureWindow()
+        // HeroesList
+        let heroesListCoordinator = HeroesListCoordinator(navigationController: navigationController)
+        heroesListCoordinator.start()
+        
+        childCoordinators.append(heroesListCoordinator)
+    }
+    
+    // MARK: - Private Methods
+    
+    private func configureWindow() {
         if #available(iOS 13.0, *) {
             window?.overrideUserInterfaceStyle = .dark
         }
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
-    }
-    
-    // MARK: - Private Methods
-    
-    private func showHeroesListViewController() {
-        let heroesListCoordinator = HeroesListCoordinator(navigationController: navigationController)
-        heroesListCoordinator.start()
-        
-        childCoordinators.append(heroesListCoordinator)
     }
 }

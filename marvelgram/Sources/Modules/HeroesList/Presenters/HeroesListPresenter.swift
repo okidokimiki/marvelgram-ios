@@ -38,6 +38,7 @@ final class HeroesListPresenter {
         return heroes.map { HeroSeleсtingCellModel(hero: $0) }
     }
     
+    // Remake?
     private func makeDataSource(from seleсtModel: HeroSeleсtingCellModel?, and otherCharModels: [HeroSeleсtingCellModel]?) -> HeroDetailsDataSource {
         return HeroDetailsDataSource(heroSeleсtingCellModel: seleсtModel, otherCharCellModels: otherCharModels)
     }
