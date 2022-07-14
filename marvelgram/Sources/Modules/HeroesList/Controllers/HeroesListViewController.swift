@@ -33,13 +33,9 @@ final class HeroesListViewController: UIViewController {
     // MARK: - Lifecycle
     
     override func loadView() {
-        let view = HeroesListView()
-        marvelNavBarButton.uiDelegate = self
-        search.resultsDelegate = self
-        search.uiDelegate = self
-        view.uiDelegate = self
         setupNavController()
-        self.view = view
+        setupDelegates()
+        setupView()
     }
     
     override func viewDidLoad() {
@@ -49,7 +45,6 @@ final class HeroesListViewController: UIViewController {
     }
     
     // MARK: - Private Methods
-    
     private func setupNavController() {
         // Search
         navigationItem.searchController = search
@@ -60,6 +55,18 @@ final class HeroesListViewController: UIViewController {
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.navigationBar.barTintColor = AppColor.GlobalColor.background
         navigationController?.navigationBar.backgroundColor = AppColor.GlobalColor.background
+    }
+    
+    private func setupDelegates() {
+        marvelNavBarButton.uiDelegate = self
+        search.resultsDelegate = self
+        search.uiDelegate = self
+    }
+    
+    private func setupView() {
+        let view = HeroesListView()
+        view.uiDelegate = self
+        self.view = view
     }
 }
 

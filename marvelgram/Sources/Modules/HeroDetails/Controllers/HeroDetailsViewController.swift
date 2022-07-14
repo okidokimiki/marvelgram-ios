@@ -29,11 +29,9 @@ final class HeroDetailsViewController: UIViewController {
     // MARK: - Lifecycle
     
     override func loadView() {
-        let view = HeroDetailsView()
-        view.uiDelegate = self
-        self.view = view
+        setupView()
     }
-        
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -48,6 +46,12 @@ final class HeroDetailsViewController: UIViewController {
     
     // MARK: - Private Methods
     
+    private func setupView() {
+        let view = HeroDetailsView()
+        view.uiDelegate = self
+        self.view = view
+    }
+    
     private func setupNavController(with model: HeroSeleсtingCellModel?) {
         let navigation = UINavigationBar.appearance()
         let attributes = [
@@ -58,7 +62,7 @@ final class HeroDetailsViewController: UIViewController {
         title = model?.name
         navigation.titleTextAttributes = attributes
         navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
-}
+    }
 }
 
 // MARK: - UiDelegate
