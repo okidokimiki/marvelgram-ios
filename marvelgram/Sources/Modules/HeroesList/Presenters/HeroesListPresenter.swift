@@ -38,12 +38,15 @@ final class HeroesListPresenter {
         return heroes.map { HeroSeleсtingCellModel(hero: $0) }
     }
     
-    // Remake?
     private func makeDataSource(from seleсtModel: HeroSeleсtingCellModel?, and otherCharModels: [HeroSeleсtingCellModel]?) -> HeroDetailsDataSource {
         return HeroDetailsDataSource(heroSeleсtingCellModel: seleсtModel, otherCharCellModels: otherCharModels)
     }
-    
-    private func fetchHeroesAndReloadCollectionView() {
+}
+
+// MARK: - ViewOutput
+
+extension HeroesListPresenter: HeroesListViewOutput {
+    func handleDidLoadView() {
         view?.showActivityIndicator(true)
         
         repository.getHeroes { [weak self] heroes in
@@ -57,15 +60,6 @@ final class HeroesListPresenter {
                 self.view?.reloadHeroesSeleсtingCollectionView()
             }
         }
-    }
-}
-
-// MARK: - ViewOutput
-
-extension HeroesListPresenter: HeroesListViewOutput {
-    // Actions
-    func handleDidLoadView() {
-        fetchHeroesAndReloadCollectionView()
     }
     
     func handleSelectingHeroCell(with index: Int) {
@@ -90,12 +84,12 @@ extension HeroesListPresenter: HeroesListViewOutput {
         for (index, hero) in dataSource.heroSeleсtingCellModels.enumerated() {
             let heroLowercased = hero.name.lowercased()
             let textLowercased = text.lowercased()
-
+            
             if heroLowercased.contains(textLowercased) {
                 let detectedModel = dataSource.heroSeleсtingCellModels[index]
                 dataSource.heroSeleсtingCellModels.remove(at: index)
                 dataSource.heroSeleсtingCellModels.insert(detectedModel, at: .zero)
-
+                
                 let indexPath = IndexPath(item: index, section: .zero)
                 view?.moveUpCell(with: indexPath)
                 return
