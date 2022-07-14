@@ -12,22 +12,22 @@ typealias DownloadImageResponseHandler = (Result<UIImage, NetworkError>) -> Void
 class ImageLoader: UIImageView {
     // MARK: - Private Properties
     
-    private let mode: UIView.ContentMode
     private let session = URLSession.shared
     private var imageCache = NSCache<NSString, UIImage>()
     private var lastUrlUsedToLoadImage: URL?
     
     // MARK: - Initialization
     
-    init(frame: CGRect, contentMode: UIView.ContentMode = .scaleToFill) {
-        self.mode = contentMode
+    override init(frame: CGRect) {
         super.init(frame: frame)
 
         configure()
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
+        
+        configure()
     }
     
     // MARK: - Methods
@@ -61,7 +61,7 @@ class ImageLoader: UIImageView {
     // MARK: - Private Methods
     
     private func configure() {
-        contentMode = mode
+        contentMode = .scaleToFill
     }
     
     private func resumeDataTask(with url: URL, completion: @escaping DownloadImageResponseHandler) {
