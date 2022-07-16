@@ -45,12 +45,15 @@ final class HeroesListViewController: UIViewController {
     }
     
     // MARK: - Private Methods
+    
     private func setupNavController() {
         // Search
         navigationItem.searchController = search
         navigationItem.hidesSearchBarWhenScrolling = false
+        
         // Button
         navigationItem.leftBarButtonItem = marvelNavBarButton
+        
         // NavigationController
         /* These two lines solve such a problem: Navigation Bar changes its background color when scroll the view.
          
