@@ -22,7 +22,7 @@ final class HeroesListViewController: UIViewController {
         return castedView
     }
     
-    private lazy var search: CharSearchController = {
+    private lazy var charNavBarSearch: CharSearchController = {
         return CharSearchController(searchResultsController: nil)
     }()
     
@@ -48,7 +48,7 @@ final class HeroesListViewController: UIViewController {
     
     private func setupNavController() {
         // SearchBar
-        navigationItem.searchController = search
+        navigationItem.searchController = charNavBarSearch
         navigationItem.hidesSearchBarWhenScrolling = false
         
         // ButtonBar
@@ -65,8 +65,8 @@ final class HeroesListViewController: UIViewController {
     
     private func setupDelegates() {
         marvelNavBarButton.uiDelegate = self
-        search.resultsDelegate = self
-        search.uiDelegate = self
+        charNavBarSearch.resultsDelegate = self
+        charNavBarSearch.uiDelegate = self
     }
     
     private func setupView() {

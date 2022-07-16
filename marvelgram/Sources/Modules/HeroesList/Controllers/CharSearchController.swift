@@ -50,11 +50,13 @@ class CharSearchController: UISearchController {
         // Delegate
         delegate = self
         searchResultsUpdater = self
+        
         // SearchBar
         searchBar.placeholder = AppLocalize.HeroesList.searchPlaceholderText
         searchBar.spellCheckingType = .no
         searchBar.autocorrectionType = .no
         searchBar.keyboardAppearance = .dark
+        
         // NavigationBar
         hidesNavigationBarDuringPresentation = false
     }
