@@ -47,11 +47,11 @@ final class HeroesListViewController: UIViewController {
     // MARK: - Private Methods
     
     private func setupNavController() {
-        // Search
+        // SearchBar
         navigationItem.searchController = search
         navigationItem.hidesSearchBarWhenScrolling = false
         
-        // Button
+        // ButtonBar
         navigationItem.leftBarButtonItem = marvelNavBarButton
         
         // NavigationBar
