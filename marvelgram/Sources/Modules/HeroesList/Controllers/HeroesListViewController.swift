@@ -54,7 +54,7 @@ final class HeroesListViewController: UIViewController {
         // Button
         navigationItem.leftBarButtonItem = marvelNavBarButton
         
-        // NavigationController
+        // NavigationBar
         /* These two lines solve such a problem: Navigation Bar changes its background color when scroll the view.
          
          I understand that this is a rather bad decision, because of which new problems may "pop out" in the future.
