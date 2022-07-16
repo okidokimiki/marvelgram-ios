@@ -6,7 +6,11 @@
 //
 
 import UIKit
-
+/*
+ override func prepareForReuse() {
+    image = nil
+ }
+*/
 class CharImageViewCell: UICollectionViewCell {
     // MARK: - Private Properties
     
@@ -19,7 +23,6 @@ class CharImageViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        configure()
         setupViews()
         setupAutoLayout()
     }
@@ -27,7 +30,6 @@ class CharImageViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         
-        configure()
         setupViews()
         setupAutoLayout()
     }
@@ -39,10 +41,6 @@ class CharImageViewCell: UICollectionViewCell {
     }
     
     // MARK: - Private Methods
-    
-    private func configure() {
-        backgroundColor = AppColor.HeroesList.cellBackground
-    }
     
     private func setupViews() {
         setupView(characterImageView)

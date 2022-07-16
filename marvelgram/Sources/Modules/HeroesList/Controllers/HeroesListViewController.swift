@@ -52,9 +52,12 @@ final class HeroesListViewController: UIViewController {
         // Button
         navigationItem.leftBarButtonItem = marvelNavBarButton
         // NavigationController
-        navigationController?.navigationBar.isTranslucent = true
-        navigationController?.navigationBar.barTintColor = AppColor.GlobalColor.background
-        navigationController?.navigationBar.backgroundColor = AppColor.GlobalColor.background
+        /* These two lines solve such a problem: Navigation Bar changes its background color when scroll the view.
+         
+         I understand that this is a rather bad decision, because of which new problems may "pop out" in the future.
+         If you find a better solution, write to me :) */
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
     }
     
     private func setupDelegates() {

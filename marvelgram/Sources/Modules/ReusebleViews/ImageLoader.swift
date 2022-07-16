@@ -62,6 +62,7 @@ class ImageLoader: UIImageView {
     
     private func configure() {
         contentMode = .scaleToFill
+        backgroundColor = AppColor.HeroesList.cellBackground
     }
     
     private func resumeDataTask(with url: URL, completion: @escaping DownloadImageResponseHandler) {

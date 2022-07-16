@@ -53,14 +53,14 @@ final class HeroDetailsViewController: UIViewController {
     }
     
     private func setupNavController(with model: HeroSeleсtingCellModel?) {
-        let navigation = UINavigationBar.appearance()
+        let appearance = UINavigationBar.appearance()
         let attributes = [
             NSAttributedString.Key.font: AppFont.SFPro.regular17,
             NSAttributedString.Key.foregroundColor: AppColor.GlobalColor.font
         ]
         
         title = model?.name
-        navigation.titleTextAttributes = attributes
+        appearance.titleTextAttributes = attributes
         navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
     }
 }
