@@ -35,7 +35,7 @@ final class HeroDetailsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        presenter?.handleAppearingView()
+        presenter?.handleWillAppearingView()
     }
     
     override func viewDidLayoutSubviews() {
@@ -70,7 +70,7 @@ final class HeroDetailsViewController: UIViewController {
 extension HeroDetailsViewController: HeroDetailsViewUiDelegate {
     // Actions
     func heroDetailsView(_ heroDetailsView: HeroDetailsView, didSelectCharWithIndexPath indexPath: IndexPath) {
-        presenter?.handleSelectingCharCell(with: indexPath)
+        presenter?.handleDidSelectingCharCell(with: indexPath)
     }
     
     // DataSource

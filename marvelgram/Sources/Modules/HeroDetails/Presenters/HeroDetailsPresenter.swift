@@ -60,11 +60,11 @@ extension HeroDetailsPresenter: HeroDetailsViewOutput {
         view?.finishLayoutSubviews()
     }
     
-    func handleAppearingView() {
+    func handleWillAppearingView() {
         updateUI()
     }
         
-    func handleSelectingCharCell(with indexPath: IndexPath) {
+    func handleDidSelectingCharCell(with indexPath: IndexPath) {
         guard
             let selectedCharModel = dataSource?.otherCharCellModels?[indexPath.item],
             let randHeroes = repository.getHeroesRandomly()

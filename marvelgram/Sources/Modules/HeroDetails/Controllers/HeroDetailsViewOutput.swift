@@ -14,9 +14,9 @@ protocol HeroDetailsViewOutput {
          coordinator: HeroDetailsCoordinator)
     
     // Actions
-    func handleAppearingView()
+    func handleWillAppearingView()
     func handleDidLayoutSubviews()
-    func handleSelectingCharCell(with indexPath: IndexPath)
+    func handleDidSelectingCharCell(with indexPath: IndexPath)
     
     // DataSource
     func getOtherCharCellsCount() -> Int?
