@@ -101,6 +101,9 @@ extension HeroesListPresenter: HeroesListViewOutput {
         view?.setAlphaForEachVisibleCells(alpha: .clear)
     }
     
+    /**
+     - Bug: Until you enter the minimum amount of text you need, the first cell will not highlight (try typing IronMan to catch this bug).
+     */
     func handleUpdatingSearchResults(with text: String) {
         view?.setAlphaForEachVisibleCells(alpha: .muddy)
         
