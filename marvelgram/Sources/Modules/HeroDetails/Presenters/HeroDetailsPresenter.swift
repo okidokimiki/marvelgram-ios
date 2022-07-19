@@ -63,10 +63,10 @@ extension HeroDetailsPresenter: HeroDetailsViewOutput {
     func handleAppearingView() {
         updateUI()
     }
-    
-    func handleSelectingCharCell(with index: Int) {
+        
+    func handleSelectingCharCell(with indexPath: IndexPath) {
         guard
-            let selectedCharModel = dataSource?.otherCharCellModels?[index],
+            let selectedCharModel = dataSource?.otherCharCellModels?[indexPath.item],
             let randHeroes = repository.getHeroesRandomly()
         else {
             fatalError("DataSource Error: couldn`t guard data on HeroDetails Screen.")
@@ -78,8 +78,8 @@ extension HeroDetailsPresenter: HeroDetailsViewOutput {
     }
     
     // DataSource
-    func getOtherCharCellModel(with index: Int) -> HeroCellModel? {
-        return dataSource?.otherCharCellModels?[index]
+    func getOtherCharCellModel(with indexPath: IndexPath) -> HeroCellModel? {
+        return dataSource?.otherCharCellModels?[indexPath.item]
     }
     
     func getOtherCharCellsCount() -> Int? {

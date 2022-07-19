@@ -69,13 +69,13 @@ final class HeroDetailsViewController: UIViewController {
 
 extension HeroDetailsViewController: HeroDetailsViewUiDelegate {
     // Actions
-    func heroDetailsView(_ heroDetailsView: HeroDetailsView, didSelectCharWithIndex index: Int) {
-        presenter?.handleSelectingCharCell(with: index)
+    func heroDetailsView(_ heroDetailsView: HeroDetailsView, didSelectCharWithIndexPath indexPath: IndexPath) {
+        presenter?.handleSelectingCharCell(with: indexPath)
     }
     
     // DataSource
-    func heroDetailsView(_ heroDetailsView: HeroDetailsView, getOtherCharCellModelWithIndex index: Int) -> HeroCellModel? {
-        return presenter?.getOtherCharCellModel(with: index)
+    func heroDetailsView(_ heroDetailsView: HeroDetailsView, getOtherCharCellModelWithIndexPath indexPath: IndexPath) -> HeroCellModel? {
+        return presenter?.getOtherCharCellModel(with: indexPath)
     }
     
     func heroDetailsView(_ heroDetailsView: HeroDetailsView, getCellsCountOf reuseIdentifier: String) -> Int? {

@@ -9,11 +9,11 @@ import UIKit
 
 protocol OtherCharactersCollectionViewUiDelegate: AnyObject {
     // Actions
-    func otherCharCollectionView(_ otherCharCollectionView: OtherCharactersCollectionView, didSelectCharWithIndex index: Int)
+    func otherCharCollectionView(_ otherCharCollectionView: OtherCharactersCollectionView, didSelectCharWithIndexPath indexPath: IndexPath)
     
     // DataSource
     func otherCharCollectionView(_ otherCharCollectionView: OtherCharactersCollectionView, getCellsCountOf reuseIdentifier: String) -> Int?
-    func otherCharCollectionView(_ otherCharCollectionView: OtherCharactersCollectionView, getOtherCharCellModelWithIndex index: Int) -> HeroCellModel?
+    func otherCharCollectionView(_ otherCharCollectionView: OtherCharactersCollectionView, getOtherCharCellModelWithIndexPath indexPath: IndexPath) -> HeroCellModel?
 }
 
 final class OtherCharactersCollectionView: UICollectionView {
@@ -51,7 +51,7 @@ final class OtherCharactersCollectionView: UICollectionView {
 
 extension OtherCharactersCollectionView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        uiDelegate?.otherCharCollectionView(self, didSelectCharWithIndex: indexPath.row)
+        uiDelegate?.otherCharCollectionView(self, didSelectCharWithIndexPath: indexPath)
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
@@ -59,7 +59,7 @@ extension OtherCharactersCollectionView: UICollectionViewDelegate {
             fatalError("TypeCasting Error: cell must be \(CharImageViewCell.self)")
         }
         
-        if let model = uiDelegate?.otherCharCollectionView(self, getOtherCharCellModelWithIndex: indexPath.row) {
+        if let model = uiDelegate?.otherCharCollectionView(self, getOtherCharCellModelWithIndexPath: indexPath) {
             otherCharCell.configure(with: model)
         }
     }

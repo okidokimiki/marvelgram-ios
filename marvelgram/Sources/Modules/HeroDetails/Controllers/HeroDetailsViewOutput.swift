@@ -16,9 +16,9 @@ protocol HeroDetailsViewOutput {
     // Actions
     func handleAppearingView()
     func handleDidLayoutSubviews()
-    func handleSelectingCharCell(with index: Int)
+    func handleSelectingCharCell(with indexPath: IndexPath)
     
     // DataSource
     func getOtherCharCellsCount() -> Int?
-    func getOtherCharCellModel(with index: Int) -> HeroCellModel?
+    func getOtherCharCellModel(with indexPath: IndexPath) -> HeroCellModel?
 }

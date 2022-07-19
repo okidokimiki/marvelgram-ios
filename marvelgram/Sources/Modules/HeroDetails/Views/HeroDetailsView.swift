@@ -9,11 +9,11 @@ import UIKit
 
 protocol HeroDetailsViewUiDelegate: AnyObject {
     // Actions
-    func heroDetailsView(_ heroDetailsView: HeroDetailsView, didSelectCharWithIndex index: Int)
+    func heroDetailsView(_ heroDetailsView: HeroDetailsView, didSelectCharWithIndexPath indexPath: IndexPath)
     
     // DataSource
     func heroDetailsView(_ heroDetailsView: HeroDetailsView, getCellsCountOf reuseIdentifier: String) -> Int?
-    func heroDetailsView(_ heroDetailsView: HeroDetailsView, getOtherCharCellModelWithIndex index: Int) -> HeroCellModel?
+    func heroDetailsView(_ heroDetailsView: HeroDetailsView, getOtherCharCellModelWithIndexPath indexPath: IndexPath) -> HeroCellModel?
 }
 
 final class HeroDetailsView: UIView {
@@ -199,14 +199,15 @@ final class HeroDetailsView: UIView {
 
 extension HeroDetailsView: OtherCharactersCollectionViewUiDelegate {
     // Actions
-    func otherCharCollectionView(_ otherCharCollectionView: OtherCharactersCollectionView, didSelectCharWithIndex index: Int) {
-        uiDelegate?.heroDetailsView(self, didSelectCharWithIndex: index)
+    func otherCharCollectionView(_ otherCharCollectionView: OtherCharactersCollectionView, didSelectCharWithIndexPath indexPath: IndexPath) {
+        uiDelegate?.heroDetailsView(self, didSelectCharWithIndexPath: indexPath)
     }
     
     // DataSource
-    func otherCharCollectionView(_ otherCharCollectionView: OtherCharactersCollectionView, getOtherCharCellModelWithIndex index: Int) -> HeroCellModel? {
-        return uiDelegate?.heroDetailsView(self, getOtherCharCellModelWithIndex: index)
+    func otherCharCollectionView(_ otherCharCollectionView: OtherCharactersCollectionView, getOtherCharCellModelWithIndexPath indexPath: IndexPath) -> HeroCellModel? {
+        return uiDelegate?.heroDetailsView(self, getOtherCharCellModelWithIndexPath: indexPath)
     }
+    
     func otherCharCollectionView(_ otherCharCollectionView: OtherCharactersCollectionView, getCellsCountOf reuseIdentifier: String) -> Int? {
         return uiDelegate?.heroDetailsView(self, getCellsCountOf: reuseIdentifier)
     }
