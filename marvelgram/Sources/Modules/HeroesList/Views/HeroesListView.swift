@@ -127,7 +127,7 @@ extension HeroesListView: HeroesSeleсtingCollectionViewUiDelegate {
     }
     
     // DataSource
-    func heroesSeleсtingCollectionView(_ heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView, getHeroSelсtCellModelWithIndex index: Int) -> HeroSeleсtingCellModel? {
+    func heroesSeleсtingCollectionView(_ heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView, getHeroSeleсtCellModelWithIndex index: Int) -> HeroSeleсtingCellModel? {
         return uiDelegate?.heroesListView(self, getHeroCellModelWithIndex: index)
     }
     

@@ -86,11 +86,11 @@ extension HeroesListViewController: HeroesListViewUiDelegate {
     
     // DataSource
     func heroesListView(_ heroesListView: HeroesListView, getCellsCountOf reuseIdentifier: String) -> Int? {
-        return presenter?.getHeroSelсtCellsCount()
+        return presenter?.getHeroSeleсtCellsCount()
     }
     
     func heroesListView(_ heroesListView: HeroesListView, getHeroCellModelWithIndex index: Int) -> HeroSeleсtingCellModel? {
-        return presenter?.getHeroSelсtCellModel(with: index)
+        return presenter?.getHeroSeleсtCellModel(with: index)
     }
 }
 

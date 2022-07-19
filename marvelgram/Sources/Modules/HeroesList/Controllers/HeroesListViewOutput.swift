@@ -23,6 +23,6 @@ protocol HeroesListViewOutput {
     func handleTappingNavBarButton(with type: NavBarButtonType)
     
     // DataSource
-    func getHeroSelсtCellsCount() -> Int?
-    func getHeroSelсtCellModel(with index: Int) -> HeroSeleсtingCellModel
+    func getHeroSeleсtCellsCount() -> Int?
+    func getHeroSeleсtCellModel(with index: Int) -> HeroSeleсtingCellModel
 }

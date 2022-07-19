@@ -34,7 +34,7 @@ final class HeroesListPresenter {
     
     // MARK: - Private Methods
     
-    private func makeSelсtCellModels(from heroes: [Hero]) -> [HeroSeleсtingCellModel] {
+    private func makeSeleсtCellModels(from heroes: [Hero]) -> [HeroSeleсtingCellModel] {
         return heroes.map { HeroSeleсtingCellModel(hero: $0) }
     }
     
@@ -52,7 +52,7 @@ extension HeroesListPresenter: HeroesListViewOutput {
         repository.getHeroes { [weak self] heroes in
             guard let self = self else { return }
             
-            let models = self.makeSelсtCellModels(from: heroes)
+            let models = self.makeSeleсtCellModels(from: heroes)
             self.dataSource.heroSeleсtingCellModels = models
             
             DispatchQueue.main.async {
@@ -65,8 +65,8 @@ extension HeroesListPresenter: HeroesListViewOutput {
     func handleSelectingHeroCell(with index: Int) {
         guard let randHeroes = repository.getHeroesRandomly() else { return }
         
-        let charModel = self.getHeroSelсtCellModel(with: index)
-        let randomCharModels = makeSelсtCellModels(from: randHeroes)
+        let charModel = self.getHeroSeleсtCellModel(with: index)
+        let randomCharModels = makeSeleсtCellModels(from: randHeroes)
         let dataSource = makeDataSource(from: charModel, and: randomCharModels)
         
         coordinator.startHeroDetailsEvent(with: dataSource)
@@ -102,11 +102,11 @@ extension HeroesListPresenter: HeroesListViewOutput {
     }
     
     // DataSource
-    func getHeroSelсtCellsCount() -> Int? {
+    func getHeroSeleсtCellsCount() -> Int? {
         return dataSource.heroSeleсtingCellModels.count
     }
     
-    func getHeroSelсtCellModel(with index: Int) -> HeroSeleсtingCellModel {
+    func getHeroSeleсtCellModel(with index: Int) -> HeroSeleсtingCellModel {
         return dataSource.heroSeleсtingCellModels[index]
     }
 }
