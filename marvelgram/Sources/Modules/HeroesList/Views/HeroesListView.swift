@@ -10,10 +10,11 @@ import UIKit
 protocol HeroesListViewUiDelegate: AnyObject {
     // Actions
     func heroesListView(_ heroesListView: HeroesListView, didSelectHeroWithIndex index: Int)
+    func heroesListView(_ heroesListView: HeroesListView, willDisplayHeroWithIndex index: Int)
     
     // DataSource
     func heroesListView(_ heroesListView: HeroesListView, getCellsCountOf reuseIdentifier: String) -> Int?
-    func heroesListView(_ heroesListView: HeroesListView, getHeroCellModelWithIndex index: Int) -> HeroSeleсtingCellModel?
+    func heroesListView(_ heroesListView: HeroesListView, getHeroCellModelWithIndex index: Int) -> HeroCellModel?
 }
 
 final class HeroesListView: UIView {
@@ -64,9 +65,18 @@ final class HeroesListView: UIView {
     }
 
     func moveUpCell(with indexPath: IndexPath) {
+        print(#function) // FIXME: Delete
         heroesSeleсtingCollectionView.performBatchUpdates {
             self.heroesSeleсtingCollectionView.moveItem(at: indexPath, to: .zero)
         }
+    }
+    
+    func setAlphaForCell(with indexPath: IndexPath, alpha: HeroCellAlpha) {
+        heroesSeleсtingCollectionView.cellForItem(at: indexPath)?.alpha = CGFloat(alpha.value)
+    }
+    
+    func setAlphaForEachVisibleCells(alpha: HeroCellAlpha) {
+        heroesSeleсtingCollectionView.visibleCells.forEach { $0.alpha = CGFloat(alpha.value) }
     }
     
     // MARK: - Private Methods
@@ -126,8 +136,12 @@ extension HeroesListView: HeroesSeleсtingCollectionViewUiDelegate {
         uiDelegate?.heroesListView(self, didSelectHeroWithIndex: index)
     }
     
+    func heroesSeleсtingCollectionView(_ heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView, willDisplayHeroWithIndex index: Int) {
+        uiDelegate?.heroesListView(self, willDisplayHeroWithIndex: index)
+    }
+    
     // DataSource
-    func heroesSeleсtingCollectionView(_ heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView, getHeroSeleсtCellModelWithIndex index: Int) -> HeroSeleсtingCellModel? {
+    func heroesSeleсtingCollectionView(_ heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView, getHeroSeleсtCellModelWithIndex index: Int) -> HeroCellModel? {
         return uiDelegate?.heroesListView(self, getHeroCellModelWithIndex: index)
     }
     

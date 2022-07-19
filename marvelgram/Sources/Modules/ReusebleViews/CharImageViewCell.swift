@@ -38,7 +38,7 @@ class CharImageViewCell: UICollectionViewCell {
     
     // MARK: - Methods
     
-    func configure(with model: HeroSeleсtingCellModel) {
+    func configure(with model: HeroCellModel) {
         characterImageView.loadImage(from: model.url)
     }
     

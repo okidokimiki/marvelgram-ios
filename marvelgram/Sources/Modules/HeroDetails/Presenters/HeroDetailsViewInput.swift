@@ -8,6 +8,6 @@
 import Foundation
 
 protocol HeroDetailsViewInput: AnyObject {
-    func updateUI(with model: HeroSeleсtingCellModel?)
+    func updateUI(with model: HeroCellModel?)
     func finishLayoutSubviews()
 }

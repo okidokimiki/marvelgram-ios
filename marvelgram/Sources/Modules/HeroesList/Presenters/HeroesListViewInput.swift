@@ -11,4 +11,6 @@ protocol HeroesListViewInput: AnyObject {
     func reloadHeroesSeleсtingCollectionView()
     func showActivityIndicator(_ show: Bool)
     func moveUpCell(with indexPath: IndexPath)
+    func setAlphaForCell(with indexPath: IndexPath, alpha: HeroCellAlpha)
+    func setAlphaForEachVisibleCells(alpha: HeroCellAlpha)
 }

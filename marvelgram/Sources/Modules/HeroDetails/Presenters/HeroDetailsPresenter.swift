@@ -37,11 +37,11 @@ final class HeroDetailsPresenter {
     
     // MARK: - Private Methods
     
-    private func makeCharCellModels(from heroes: [Hero]) -> [HeroSeleсtingCellModel] {
-        return heroes.map { HeroSeleсtingCellModel(hero: $0) }
+    private func makeCharCellModels(from heroes: [Hero]) -> [HeroCellModel] {
+        return heroes.map { HeroCellModel(hero: $0) }
     }
     
-    private func updateDataSource(with seleсtCharModel: HeroSeleсtingCellModel?, and otherCharModels: [HeroSeleсtingCellModel]?) {
+    private func updateDataSource(with seleсtCharModel: HeroCellModel?, and otherCharModels: [HeroCellModel]?) {
         dataSource?.heroSeleсtingCellModel = seleсtCharModel
         dataSource?.otherCharCellModels = otherCharModels
     }
@@ -78,7 +78,7 @@ extension HeroDetailsPresenter: HeroDetailsViewOutput {
     }
     
     // DataSource
-    func getOtherCharCellModel(with index: Int) -> HeroSeleсtingCellModel? {
+    func getOtherCharCellModel(with index: Int) -> HeroCellModel? {
         return dataSource?.otherCharCellModels?[index]
     }
     

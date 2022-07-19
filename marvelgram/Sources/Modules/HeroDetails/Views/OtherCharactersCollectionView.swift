@@ -13,7 +13,7 @@ protocol OtherCharactersCollectionViewUiDelegate: AnyObject {
     
     // DataSource
     func otherCharCollectionView(_ otherCharCollectionView: OtherCharactersCollectionView, getCellsCountOf reuseIdentifier: String) -> Int?
-    func otherCharCollectionView(_ otherCharCollectionView: OtherCharactersCollectionView, getOtherCharCellModelWithIndex index: Int) -> HeroSeleсtingCellModel?
+    func otherCharCollectionView(_ otherCharCollectionView: OtherCharactersCollectionView, getOtherCharCellModelWithIndex index: Int) -> HeroCellModel?
 }
 
 final class OtherCharactersCollectionView: UICollectionView {

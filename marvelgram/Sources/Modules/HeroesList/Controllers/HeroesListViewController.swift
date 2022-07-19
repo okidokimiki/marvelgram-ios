@@ -81,7 +81,11 @@ final class HeroesListViewController: UIViewController {
 extension HeroesListViewController: HeroesListViewUiDelegate {
     // Actions
     func heroesListView(_ heroesListView: HeroesListView, didSelectHeroWithIndex index: Int) {
-        presenter?.handleSelectingHeroCell(with: index)
+        presenter?.handleDidSelectingHeroCell(with: index)
+    }
+    
+    func heroesListView(_ heroesListView: HeroesListView, willDisplayHeroWithIndex index: Int) {
+        presenter?.handleWillDisplayingHeroCell(with: index)
     }
     
     // DataSource
@@ -89,7 +93,7 @@ extension HeroesListViewController: HeroesListViewUiDelegate {
         return presenter?.getHeroSeleсtCellsCount()
     }
     
-    func heroesListView(_ heroesListView: HeroesListView, getHeroCellModelWithIndex index: Int) -> HeroSeleсtingCellModel? {
+    func heroesListView(_ heroesListView: HeroesListView, getHeroCellModelWithIndex index: Int) -> HeroCellModel? {
         return presenter?.getHeroSeleсtCellModel(with: index)
     }
 }
@@ -98,11 +102,11 @@ extension HeroesListViewController: HeroesListViewUiDelegate {
 
 extension HeroesListViewController: CharSearchControllerUiDelegate {
     func charSearchController(_ charSearchController: CharSearchController, didPresentSearchBarWithText text: String) {
-         presenter?.handlePresentingSearchBar(with: text)
+         presenter?.handleDidPresentingSearchBar(with: text)
     }
     
     func charSearchController(_ charSearchController: CharSearchController, didDismissSearchBarWithText text: String) {
-         presenter?.handleDismissingSearchBar(with: text)
+         presenter?.handleDidDismissingSearchBar(with: text)
     }
 }
 
@@ -133,5 +137,13 @@ extension HeroesListViewController: HeroesListViewInput {
     
     func moveUpCell(with indexPath: IndexPath) {
         heroesListView.moveUpCell(with: indexPath)
+    }
+    
+    func setAlphaForCell(with indexPath: IndexPath, alpha: HeroCellAlpha) {
+        heroesListView.setAlphaForCell(with: indexPath, alpha: alpha)
+    }
+    
+    func setAlphaForEachVisibleCells(alpha: HeroCellAlpha) {
+        heroesListView.setAlphaForEachVisibleCells(alpha: alpha)
     }
 }

@@ -10,10 +10,11 @@ import UIKit
 protocol HeroesSeleсtingCollectionViewUiDelegate: AnyObject {
     // Actions
     func heroesSeleсtingCollectionView(_ heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView, didSelectHeroWithIndex index: Int)
+    func heroesSeleсtingCollectionView(_ heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView, willDisplayHeroWithIndex index: Int)
     
     // DataSource
     func heroesSeleсtingCollectionView(_ heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView, getCellsCountOf reuseIdentifier: String) -> Int?
-    func heroesSeleсtingCollectionView(_ heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView, getHeroSeleсtCellModelWithIndex index: Int) -> HeroSeleсtingCellModel?
+    func heroesSeleсtingCollectionView(_ heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView, getHeroSeleсtCellModelWithIndex index: Int) -> HeroCellModel?
 }
 
 final class HeroesSeleсtingCollectionView: UICollectionView {
@@ -56,13 +57,7 @@ extension HeroesSeleсtingCollectionView: UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        guard let heroSeleсtCell = cell as? CharImageViewCell else {
-            fatalError("TypeCasting Error: cell must be \(CharImageViewCell.self)")
-        }
-
-        if let model = uiDelegate?.heroesSeleсtingCollectionView(self, getHeroSeleсtCellModelWithIndex: indexPath.row) {
-            heroSeleсtCell.configure(with: model)
-        }
+        uiDelegate?.heroesSeleсtingCollectionView(self, willDisplayHeroWithIndex: indexPath.row)
     }
 }
 
@@ -80,7 +75,13 @@ extension HeroesSeleсtingCollectionView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        // Cell
         let heroSeleсtCell = collectionView.dequeueCell(cellType: CharImageViewCell.self, for: indexPath)
+        
+        // Configure
+        if let model = uiDelegate?.heroesSeleсtingCollectionView(self, getHeroSeleсtCellModelWithIndex: indexPath.row) {
+            heroSeleсtCell.configure(with: model)
+        }
         
         return heroSeleсtCell
     }

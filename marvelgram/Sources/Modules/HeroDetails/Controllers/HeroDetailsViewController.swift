@@ -52,7 +52,7 @@ final class HeroDetailsViewController: UIViewController {
         self.view = view
     }
     
-    private func setupNavController(with model: HeroSeleсtingCellModel?) {
+    private func setupNavController(with model: HeroCellModel?) {
         let appearance = UINavigationBar.appearance()
         let attributes = [
             NSAttributedString.Key.font: AppFont.SFPro.regular17,
@@ -74,7 +74,7 @@ extension HeroDetailsViewController: HeroDetailsViewUiDelegate {
     }
     
     // DataSource
-    func heroDetailsView(_ heroDetailsView: HeroDetailsView, getOtherCharCellModelWithIndex index: Int) -> HeroSeleсtingCellModel? {
+    func heroDetailsView(_ heroDetailsView: HeroDetailsView, getOtherCharCellModelWithIndex index: Int) -> HeroCellModel? {
         return presenter?.getOtherCharCellModel(with: index)
     }
     
@@ -86,7 +86,7 @@ extension HeroDetailsViewController: HeroDetailsViewUiDelegate {
 // MARK: - ViewInput
 
 extension HeroDetailsViewController: HeroDetailsViewInput {
-    func updateUI(with model: HeroSeleсtingCellModel?) {
+    func updateUI(with model: HeroCellModel?) {
         setupNavController(with: model)
         heroDetailsView.updateUI(with: model)
     }

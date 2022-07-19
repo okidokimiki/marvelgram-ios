@@ -18,6 +18,9 @@ final class HeroesListPresenter {
     private var dataSource: HeroesListDataSource
     private var coordinator: HeroesListCoordinator
     
+    private var isSearchModeEnabled = false
+    private var lastIndexPathUsedToMoveUpCell = IndexPath(item: .max, section: .max)
+    
     // MARK: - Initilization
     
     required init(
@@ -34,11 +37,11 @@ final class HeroesListPresenter {
     
     // MARK: - Private Methods
     
-    private func makeSeleсtCellModels(from heroes: [Hero]) -> [HeroSeleсtingCellModel] {
-        return heroes.map { HeroSeleсtingCellModel(hero: $0) }
+    private func makeSeleсtCellModels(from heroes: [Hero]) -> [HeroCellModel] {
+        return heroes.map { HeroCellModel(hero: $0) }
     }
     
-    private func makeDataSource(from seleсtModel: HeroSeleсtingCellModel?, and otherCharModels: [HeroSeleсtingCellModel]?) -> HeroDetailsDataSource {
+    private func makeDataSource(from seleсtModel: HeroCellModel?, and otherCharModels: [HeroCellModel]?) -> HeroDetailsDataSource {
         return HeroDetailsDataSource(heroSeleсtingCellModel: seleсtModel, otherCharCellModels: otherCharModels)
     }
 }
@@ -53,7 +56,7 @@ extension HeroesListPresenter: HeroesListViewOutput {
             guard let self = self else { return }
             
             let models = self.makeSeleсtCellModels(from: heroes)
-            self.dataSource.heroSeleсtingCellModels = models
+            self.dataSource.heroCellModels = models
             
             DispatchQueue.main.async {
                 self.view?.showActivityIndicator(false)
@@ -62,7 +65,7 @@ extension HeroesListPresenter: HeroesListViewOutput {
         }
     }
     
-    func handleSelectingHeroCell(with index: Int) {
+    func handleDidSelectingHeroCell(with index: Int) {
         guard let randHeroes = repository.getHeroesRandomly() else { return }
         
         let charModel = self.getHeroSeleсtCellModel(with: index)
@@ -72,28 +75,59 @@ extension HeroesListPresenter: HeroesListViewOutput {
         coordinator.startHeroDetailsEvent(with: dataSource)
     }
     
-    func handlePresentingSearchBar(with text: String) {
-        print(#function, "\(text)")
+    func handleWillDisplayingHeroCell(with index: Int) {
+        if isSearchModeEnabled {
+            let indexPath = IndexPath(row: index, section: .zero)
+            
+            DispatchQueue.main.async {
+                guard let searchedIndexPath = self.dataSource.searchedHeroCellIndexPath else {
+                    self.view?.setAlphaForCell(with: indexPath, alpha: .muddy)
+                    return
+                }
+                
+                self.view?.setAlphaForCell(with: indexPath, alpha: searchedIndexPath == indexPath ? .clear : .muddy)
+            }
+        }
     }
     
-    func handleDismissingSearchBar(with text: String) {
-        print(#function, "\(text)")
+    func handleDidPresentingSearchBar(with text: String) {
+        isSearchModeEnabled = true
+        view?.setAlphaForEachVisibleCells(alpha: .muddy)
+        
+        if let searchedIndexPath = dataSource.searchedHeroCellIndexPath {
+            view?.setAlphaForCell(with: searchedIndexPath, alpha: .clear)
+        }
+    }
+    
+    func handleDidDismissingSearchBar(with text: String) {
+        isSearchModeEnabled = false
+        view?.setAlphaForEachVisibleCells(alpha: .clear)
     }
     
     func handleUpdatingSearchResults(with text: String) {
-        for (index, hero) in dataSource.heroSeleсtingCellModels.enumerated() {
-            let heroLowercased = hero.name.lowercased()
-            let textLowercased = text.lowercased()
-            
-            if heroLowercased.contains(textLowercased) {
-                let detectedModel = dataSource.heroSeleсtingCellModels[index]
-                dataSource.heroSeleсtingCellModels.remove(at: index)
-                dataSource.heroSeleсtingCellModels.insert(detectedModel, at: .zero)
-                
-                let indexPath = IndexPath(item: index, section: .zero)
-                view?.moveUpCell(with: indexPath)
-                return
+        view?.setAlphaForEachVisibleCells(alpha: .muddy)
+        
+        if text.isNotEmpty {
+            if let searchedIndexPath = dataSource.searchedHeroCellIndexPath {
+                view?.setAlphaForCell(with: searchedIndexPath, alpha: .clear)
             }
+            
+            for (index, hero) in dataSource.heroCellModels.enumerated() {
+                let heroLowercased = hero.name.lowercased()
+                let textLowercased = text.lowercased()
+                
+                if heroLowercased.contains(textLowercased) {
+                    let indexPath = IndexPath(item: index, section: .zero)
+                    let detectedModel = dataSource.heroCellModels[index]
+                    dataSource.heroCellModels.remove(at: index)
+                    dataSource.heroCellModels.insert(detectedModel, at: .zero)
+                    dataSource.searchedHeroCellIndexPath = .zero
+                    
+                    view?.moveUpCell(with: indexPath)
+                    return
+                }
+            }
+            
         }
     }
     
@@ -103,10 +137,10 @@ extension HeroesListPresenter: HeroesListViewOutput {
     
     // DataSource
     func getHeroSeleсtCellsCount() -> Int? {
-        return dataSource.heroSeleсtingCellModels.count
+        return dataSource.heroCellModels.count
     }
     
-    func getHeroSeleсtCellModel(with index: Int) -> HeroSeleсtingCellModel {
-        return dataSource.heroSeleсtingCellModels[index]
+    func getHeroSeleсtCellModel(with index: Int) -> HeroCellModel {
+        return dataSource.heroCellModels[index]
     }
 }

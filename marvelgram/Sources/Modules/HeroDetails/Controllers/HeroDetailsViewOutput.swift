@@ -20,5 +20,5 @@ protocol HeroDetailsViewOutput {
     
     // DataSource
     func getOtherCharCellsCount() -> Int?
-    func getOtherCharCellModel(with index: Int) -> HeroSeleсtingCellModel?
+    func getOtherCharCellModel(with index: Int) -> HeroCellModel?
 }

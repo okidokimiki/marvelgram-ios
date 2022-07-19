@@ -1,11 +1,13 @@
 //
-//  HeroSeleсtingCellModel.swift
+//  HeroCellModel.swift
 //  marvelgram
 //
 //  Created by Mikhail Chaus on 07.06.2022.
 //
 
-struct HeroSeleсtingCellModel {
+import Foundation
+
+struct HeroCellModel {
     let id: Int
     let name: String
     let description: String

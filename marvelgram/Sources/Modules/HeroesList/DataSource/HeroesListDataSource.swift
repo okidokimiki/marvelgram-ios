@@ -5,6 +5,9 @@
 //  Created by Mikhail Chaus on 07.06.2022.
 //
 
+import Foundation
+
 final class HeroesListDataSource {
-    var heroSeleсtingCellModels: [HeroSeleсtingCellModel] = []
+    var heroCellModels: [HeroCellModel] = []
+    var searchedHeroCellIndexPath: IndexPath?
 }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		040215652886F7670099102A /* Collection + isNotEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040215642886F7670099102A /* Collection + isNotEmpty.swift */; };
+		0402156928875C420099102A /* HeroCellAlpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0402156828875C420099102A /* HeroCellAlpha.swift */; };
 		04060FCA2859077C00DF93F6 /* SF-Pro.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04060FC92859077C00DF93F6 /* SF-Pro.ttf */; };
 		04060FD12859343C00DF93F6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 04060FD32859343C00DF93F6 /* Localizable.strings */; };
 		04060FD52859345300DF93F6 /* AppLocalize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04060FD42859345300DF93F6 /* AppLocalize.swift */; };
@@ -42,7 +44,7 @@
 		04C5C1A5284FDD890096D272 /* HeroesSeleсtingCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1A4284FDD890096D272 /* HeroesSeleсtingCollectionView.swift */; };
 		04C5C1AB284FEC7A0096D272 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1AA284FEC7A0096D272 /* NetworkService.swift */; };
 		04C5C1AE284FED200096D272 /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1AD284FED200096D272 /* Hero.swift */; };
-		04C5C1B1284FEE090096D272 /* HeroSeleсtingCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1B0284FEE090096D272 /* HeroSeleсtingCellModel.swift */; };
+		04C5C1B1284FEE090096D272 /* HeroCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1B0284FEE090096D272 /* HeroCellModel.swift */; };
 		04C5C1B8284FF77B0096D272 /* HeroesListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1B7284FF77B0096D272 /* HeroesListDataSource.swift */; };
 		04C5C1BB28500F5F0096D272 /* HeroesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1BA28500F5F0096D272 /* HeroesRepository.swift */; };
 		04C5C1BF285019980096D272 /* MarvelBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5C1BE285019980096D272 /* MarvelBarButtonItem.swift */; };
@@ -65,6 +67,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		040215642886F7670099102A /* Collection + isNotEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection + isNotEmpty.swift"; sourceTree = "<group>"; };
+		0402156828875C420099102A /* HeroCellAlpha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroCellAlpha.swift; sourceTree = "<group>"; };
 		04060FC92859077C00DF93F6 /* SF-Pro.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro.ttf"; sourceTree = "<group>"; };
 		04060FD22859343C00DF93F6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		04060FD42859345300DF93F6 /* AppLocalize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLocalize.swift; sourceTree = "<group>"; };
@@ -100,7 +104,7 @@
 		04C5C1A4284FDD890096D272 /* HeroesSeleсtingCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HeroesSeleсtingCollectionView.swift"; sourceTree = "<group>"; };
 		04C5C1AA284FEC7A0096D272 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		04C5C1AD284FED200096D272 /* Hero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
-		04C5C1B0284FEE090096D272 /* HeroSeleсtingCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HeroSeleсtingCellModel.swift"; sourceTree = "<group>"; };
+		04C5C1B0284FEE090096D272 /* HeroCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroCellModel.swift; sourceTree = "<group>"; };
 		04C5C1B7284FF77B0096D272 /* HeroesListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesListDataSource.swift; sourceTree = "<group>"; };
 		04C5C1BA28500F5F0096D272 /* HeroesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesRepository.swift; sourceTree = "<group>"; };
 		04C5C1BE285019980096D272 /* MarvelBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelBarButtonItem.swift; sourceTree = "<group>"; };
@@ -135,6 +139,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		040215662886F79D0099102A /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				044018B6286F9F6C00844035 /* UICollectionView + reuseId.swift */,
+				04AA97AB2873876B007775C0 /* UILabel + interlineSpacing.swift */,
+				04C5C1CD285152630096D272 /* UIImage + assets.swift */,
+				04B430582869F93400BD4904 /* UIView + tamic.swift */,
+				044018AE286F3E9700844035 /* UIColor + hex.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		040215672886F7C10099102A /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				040215642886F7670099102A /* Collection + isNotEmpty.swift */,
+				0416813628785B1D00685EE8 /* IndexPath + zero.swift */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
 		041D6537286EECC1008E5BD6 /* Coordinating */ = {
 			isa = PBXGroup;
 			children = (
@@ -210,6 +235,7 @@
 			children = (
 				04643367286F00D9007EDCFD /* ModuleType.swift */,
 				04B430532869EAA800BD4904 /* NetworkError.swift */,
+				0402156828875C420099102A /* HeroCellAlpha.swift */,
 				04B430552869EB9700BD4904 /* JSONResponse.swift */,
 				04168138287AD9CC00685EE8 /* NavBarButtonType.swift */,
 			);
@@ -288,7 +314,7 @@
 		04C5C1AF284FEDD90096D272 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				04C5C1B0284FEE090096D272 /* HeroSeleсtingCellModel.swift */,
+				04C5C1B0284FEE090096D272 /* HeroCellModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -392,12 +418,8 @@
 		04FE0A37284FC9F500839CBF /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				044018B6286F9F6C00844035 /* UICollectionView + reuseId.swift */,
-				04AA97AB2873876B007775C0 /* UILabel + interlineSpacing.swift */,
-				04C5C1CD285152630096D272 /* UIImage + assets.swift */,
-				0416813628785B1D00685EE8 /* IndexPath + zero.swift */,
-				04B430582869F93400BD4904 /* UIView + tamic.swift */,
-				044018AE286F3E9700844035 /* UIColor + hex.swift */,
+				040215662886F79D0099102A /* UIKit */,
+				040215672886F7C10099102A /* Foundation */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -535,6 +557,7 @@
 				04C5C1D1285168FA0096D272 /* HeroDetailsViewController.swift in Sources */,
 				04C5C1D3285169490096D272 /* HeroDetailsView.swift in Sources */,
 				04B430592869F93400BD4904 /* UIView + tamic.swift in Sources */,
+				040215652886F7670099102A /* Collection + isNotEmpty.swift in Sources */,
 				04C5C1A3284FDA630096D272 /* HeroesListViewInput.swift in Sources */,
 				04168139287AD9CC00685EE8 /* NavBarButtonType.swift in Sources */,
 				04C5C1AE284FED200096D272 /* Hero.swift in Sources */,
@@ -552,7 +575,7 @@
 				04B430542869EAA800BD4904 /* NetworkError.swift in Sources */,
 				04C5C1BF285019980096D272 /* MarvelBarButtonItem.swift in Sources */,
 				04C5C1DC28516B750096D272 /* HeroDetailsViewOutput.swift in Sources */,
-				04C5C1B1284FEE090096D272 /* HeroSeleсtingCellModel.swift in Sources */,
+				04C5C1B1284FEE090096D272 /* HeroCellModel.swift in Sources */,
 				04B4306D286B818900BD4904 /* Networkable.swift in Sources */,
 				044018B7286F9F6C00844035 /* UICollectionView + reuseId.swift in Sources */,
 				04C5C1DE28516B9F0096D272 /* HeroDetailsViewInput.swift in Sources */,
@@ -575,6 +598,7 @@
 				04C5C19F284FDA3D0096D272 /* HeroesListPresenter.swift in Sources */,
 				04B43070286B81AE00BD4904 /* HeroesRepositorieble.swift in Sources */,
 				04AA97AE287390AE007775C0 /* API.swift in Sources */,
+				0402156928875C420099102A /* HeroCellAlpha.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

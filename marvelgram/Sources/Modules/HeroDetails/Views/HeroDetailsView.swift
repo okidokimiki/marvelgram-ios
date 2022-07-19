@@ -13,7 +13,7 @@ protocol HeroDetailsViewUiDelegate: AnyObject {
     
     // DataSource
     func heroDetailsView(_ heroDetailsView: HeroDetailsView, getCellsCountOf reuseIdentifier: String) -> Int?
-    func heroDetailsView(_ heroDetailsView: HeroDetailsView, getOtherCharCellModelWithIndex index: Int) -> HeroSeleсtingCellModel?
+    func heroDetailsView(_ heroDetailsView: HeroDetailsView, getOtherCharCellModelWithIndex index: Int) -> HeroCellModel?
 }
 
 final class HeroDetailsView: UIView {
@@ -63,7 +63,7 @@ final class HeroDetailsView: UIView {
     
     // MARK: - Methods
     
-    func updateUI(with model: HeroSeleсtingCellModel?) {
+    func updateUI(with model: HeroCellModel?) {
         guard let model = model else { return }
         
         otherCharCollectionView.reloadData()
@@ -204,7 +204,7 @@ extension HeroDetailsView: OtherCharactersCollectionViewUiDelegate {
     }
     
     // DataSource
-    func otherCharCollectionView(_ otherCharCollectionView: OtherCharactersCollectionView, getOtherCharCellModelWithIndex index: Int) -> HeroSeleсtingCellModel? {
+    func otherCharCollectionView(_ otherCharCollectionView: OtherCharactersCollectionView, getOtherCharCellModelWithIndex index: Int) -> HeroCellModel? {
         return uiDelegate?.heroDetailsView(self, getOtherCharCellModelWithIndex: index)
     }
     func otherCharCollectionView(_ otherCharCollectionView: OtherCharactersCollectionView, getCellsCountOf reuseIdentifier: String) -> Int? {

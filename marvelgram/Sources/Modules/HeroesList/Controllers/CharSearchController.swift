@@ -22,14 +22,6 @@ class CharSearchController: UISearchController {
     weak var uiDelegate: CharSearchControllerUiDelegate?
     weak var resultsDelegate: CharSearchControllerResultsDelegate?
     
-    // MARK: - PrivateProperties
-    
-    private var searchBarIsntEmpty: Bool {
-        guard let text = searchBar.text else { return true }
-        
-        return !text.isEmpty
-    }
-    
     // MARK: - Initilization
     
     override init(searchResultsController: UIViewController?) {
@@ -84,8 +76,6 @@ extension CharSearchController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         guard let textSearch = searchController.searchBar.text else { return }
         
-        if searchBarIsntEmpty {
-            resultsDelegate?.charSearchController(self, didUpdateSearchResultsWithText: textSearch)
-        }
+        resultsDelegate?.charSearchController(self, didUpdateSearchResultsWithText: textSearch)
     }
 }

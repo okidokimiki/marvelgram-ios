@@ -5,11 +5,13 @@
 //  Created by Mikhail Chaus on 29.06.2022.
 //
 
+import Foundation
+
 final class HeroDetailsDataSource {
-    var heroSeleсtingCellModel: HeroSeleсtingCellModel?
-    var otherCharCellModels: [HeroSeleсtingCellModel]?
+    var heroSeleсtingCellModel: HeroCellModel?
+    var otherCharCellModels: [HeroCellModel]?
     
-    init(heroSeleсtingCellModel: HeroSeleсtingCellModel?, otherCharCellModels: [HeroSeleсtingCellModel]?) {
+    init(heroSeleсtingCellModel: HeroCellModel?, otherCharCellModels: [HeroCellModel]?) {
         self.heroSeleсtingCellModel = heroSeleсtingCellModel
         self.otherCharCellModels = otherCharCellModels
     }
