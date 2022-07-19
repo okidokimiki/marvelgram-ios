@@ -8,13 +8,11 @@
 import Foundation
 
 struct HeroCellModel {
-    let id: Int
     let name: String
     let description: String
     let url: String
     
     init(hero: Hero) {
-        self.id = hero.id
         self.name = hero.name
         self.description = hero.description
         self.url = hero.thumbnail.path + "." + hero.thumbnail.`extension`
