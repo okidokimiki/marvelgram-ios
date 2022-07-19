@@ -7,12 +7,6 @@
 
 import UIKit
 
-// FIXME: try prepare cell`s image
-/*
- override func prepareForReuse() {
-    image = nil
- }
-*/
 class CharImageViewCell: UICollectionViewCell {
     // MARK: - Private Properties
     
@@ -35,12 +29,18 @@ class CharImageViewCell: UICollectionViewCell {
         setupViews()
         setupAutoLayout()
     }
+    // MARK: - Override Methods
+    
+    override func prepareForReuse() {
+        characterImageView.image = nil
+    }
     
     // MARK: - Methods
     
     func configure(with model: HeroCellModel) {
         characterImageView.loadImage(from: model.url)
     }
+    
     
     // MARK: - Private Methods
     
