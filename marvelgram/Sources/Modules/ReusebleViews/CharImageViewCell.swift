@@ -29,6 +29,7 @@ class CharImageViewCell: UICollectionViewCell {
         setupViews()
         setupAutoLayout()
     }
+    
     // MARK: - Override Methods
     
     override func prepareForReuse() {
