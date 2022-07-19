@@ -65,20 +65,18 @@ extension HeroesListPresenter: HeroesListViewOutput {
         }
     }
     
-    func handleDidSelectingHeroCell(with index: Int) {
+    func handleDidSelectingHeroCell(with indexPath: IndexPath) {
         guard let randHeroes = repository.getHeroesRandomly() else { return }
         
-        let charModel = self.getHeroSeleсtCellModel(with: index)
+        let charModel = self.getHeroSeleсtCellModel(with: indexPath)
         let randomCharModels = makeSeleсtCellModels(from: randHeroes)
         let dataSource = makeDataSource(from: charModel, and: randomCharModels)
         
         coordinator.startHeroDetailsEvent(with: dataSource)
     }
     
-    func handleWillDisplayingHeroCell(with index: Int) {
+    func handleWillDisplayingHeroCell(with indexPath: IndexPath) {
         if isSearchModeEnabled {
-            let indexPath = IndexPath(row: index, section: .zero)
-            
             DispatchQueue.main.async {
                 guard let searchedIndexPath = self.dataSource.searchedHeroCellIndexPath else {
                     self.view?.setAlphaForCell(with: indexPath, alpha: .muddy)
@@ -140,7 +138,7 @@ extension HeroesListPresenter: HeroesListViewOutput {
         return dataSource.heroCellModels.count
     }
     
-    func getHeroSeleсtCellModel(with index: Int) -> HeroCellModel {
-        return dataSource.heroCellModels[index]
+    func getHeroSeleсtCellModel(with indexPath: IndexPath) -> HeroCellModel {
+        return dataSource.heroCellModels[indexPath.item]
     }
 }

@@ -80,12 +80,12 @@ final class HeroesListViewController: UIViewController {
 
 extension HeroesListViewController: HeroesListViewUiDelegate {
     // Actions
-    func heroesListView(_ heroesListView: HeroesListView, didSelectHeroWithIndex index: Int) {
-        presenter?.handleDidSelectingHeroCell(with: index)
+    func heroesListView(_ heroesListView: HeroesListView, didSelectHeroWithIndexPath indexPath: IndexPath) {
+        presenter?.handleDidSelectingHeroCell(with: indexPath)
     }
     
-    func heroesListView(_ heroesListView: HeroesListView, willDisplayHeroWithIndex index: Int) {
-        presenter?.handleWillDisplayingHeroCell(with: index)
+    func heroesListView(_ heroesListView: HeroesListView, willDisplayHeroWithIndexPath indexPath: IndexPath) {
+        presenter?.handleWillDisplayingHeroCell(with: indexPath)
     }
     
     // DataSource
@@ -93,8 +93,8 @@ extension HeroesListViewController: HeroesListViewUiDelegate {
         return presenter?.getHeroSeleсtCellsCount()
     }
     
-    func heroesListView(_ heroesListView: HeroesListView, getHeroCellModelWithIndex index: Int) -> HeroCellModel? {
-        return presenter?.getHeroSeleсtCellModel(with: index)
+    func heroesListView(_ heroesListView: HeroesListView, getHeroCellModelWithIndexPath indexPath: IndexPath) -> HeroCellModel? {
+        return presenter?.getHeroSeleсtCellModel(with: indexPath)
     }
 }
 

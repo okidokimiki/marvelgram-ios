@@ -9,12 +9,12 @@ import UIKit
 
 protocol HeroesSeleсtingCollectionViewUiDelegate: AnyObject {
     // Actions
-    func heroesSeleсtingCollectionView(_ heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView, didSelectHeroWithIndex index: Int)
-    func heroesSeleсtingCollectionView(_ heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView, willDisplayHeroWithIndex index: Int)
+    func heroesSeleсtingCollectionView(_ heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView, didSelectHeroWithIndexPath indexPath: IndexPath)
+    func heroesSeleсtingCollectionView(_ heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView, willDisplayHeroWithIndexPath indexPath: IndexPath)
     
     // DataSource
     func heroesSeleсtingCollectionView(_ heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView, getCellsCountOf reuseIdentifier: String) -> Int?
-    func heroesSeleсtingCollectionView(_ heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView, getHeroSeleсtCellModelWithIndex index: Int) -> HeroCellModel?
+    func heroesSeleсtingCollectionView(_ heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView, getHeroSeleсtCellModelWithIndexPath indexPath: IndexPath) -> HeroCellModel?
 }
 
 final class HeroesSeleсtingCollectionView: UICollectionView {
@@ -53,11 +53,11 @@ final class HeroesSeleсtingCollectionView: UICollectionView {
 
 extension HeroesSeleсtingCollectionView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        uiDelegate?.heroesSeleсtingCollectionView(self, didSelectHeroWithIndex: indexPath.row)
+        uiDelegate?.heroesSeleсtingCollectionView(self, didSelectHeroWithIndexPath: indexPath)
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        uiDelegate?.heroesSeleсtingCollectionView(self, willDisplayHeroWithIndex: indexPath.row)
+        uiDelegate?.heroesSeleсtingCollectionView(self, willDisplayHeroWithIndexPath: indexPath)
     }
 }
 
@@ -79,7 +79,7 @@ extension HeroesSeleсtingCollectionView: UICollectionViewDataSource {
         let heroSeleсtCell = collectionView.dequeueCell(cellType: CharImageViewCell.self, for: indexPath)
         
         // Configure
-        if let model = uiDelegate?.heroesSeleсtingCollectionView(self, getHeroSeleсtCellModelWithIndex: indexPath.row) {
+        if let model = uiDelegate?.heroesSeleсtingCollectionView(self, getHeroSeleсtCellModelWithIndexPath: indexPath) {
             heroSeleсtCell.configure(with: model)
         }
         

@@ -9,12 +9,12 @@ import UIKit
 
 protocol HeroesListViewUiDelegate: AnyObject {
     // Actions
-    func heroesListView(_ heroesListView: HeroesListView, didSelectHeroWithIndex index: Int)
-    func heroesListView(_ heroesListView: HeroesListView, willDisplayHeroWithIndex index: Int)
+    func heroesListView(_ heroesListView: HeroesListView, didSelectHeroWithIndexPath indexPath: IndexPath)
+    func heroesListView(_ heroesListView: HeroesListView, willDisplayHeroWithIndexPath indexPath: IndexPath)
     
     // DataSource
     func heroesListView(_ heroesListView: HeroesListView, getCellsCountOf reuseIdentifier: String) -> Int?
-    func heroesListView(_ heroesListView: HeroesListView, getHeroCellModelWithIndex index: Int) -> HeroCellModel?
+    func heroesListView(_ heroesListView: HeroesListView, getHeroCellModelWithIndexPath indexPath: IndexPath) -> HeroCellModel?
 }
 
 final class HeroesListView: UIView {
@@ -132,17 +132,17 @@ final class HeroesListView: UIView {
 
 extension HeroesListView: HeroesSeleсtingCollectionViewUiDelegate {
     // Actions
-    func heroesSeleсtingCollectionView(_ heroesCollectionView: HeroesSeleсtingCollectionView, didSelectHeroWithIndex index: Int) {
-        uiDelegate?.heroesListView(self, didSelectHeroWithIndex: index)
+    func heroesSeleсtingCollectionView(_ heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView, didSelectHeroWithIndexPath indexPath: IndexPath) {
+        uiDelegate?.heroesListView(self, didSelectHeroWithIndexPath: indexPath)
     }
     
-    func heroesSeleсtingCollectionView(_ heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView, willDisplayHeroWithIndex index: Int) {
-        uiDelegate?.heroesListView(self, willDisplayHeroWithIndex: index)
+    func heroesSeleсtingCollectionView(_ heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView, willDisplayHeroWithIndexPath indexPath: IndexPath) {
+        uiDelegate?.heroesListView(self, willDisplayHeroWithIndexPath: indexPath)
     }
     
     // DataSource
-    func heroesSeleсtingCollectionView(_ heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView, getHeroSeleсtCellModelWithIndex index: Int) -> HeroCellModel? {
-        return uiDelegate?.heroesListView(self, getHeroCellModelWithIndex: index)
+    func heroesSeleсtingCollectionView(_ heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView, getHeroSeleсtCellModelWithIndexPath indexPath: IndexPath) -> HeroCellModel? {
+        return uiDelegate?.heroesListView(self, getHeroCellModelWithIndexPath: indexPath)
     }
     
     func heroesSeleсtingCollectionView(_ heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView, getCellsCountOf reuseIdentifier: String) -> Int? {
