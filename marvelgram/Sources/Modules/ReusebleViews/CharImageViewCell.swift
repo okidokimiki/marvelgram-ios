@@ -6,6 +6,8 @@
 //
 
 import UIKit
+
+// FIXME: try prepare cell`s image
 /*
  override func prepareForReuse() {
     image = nil
