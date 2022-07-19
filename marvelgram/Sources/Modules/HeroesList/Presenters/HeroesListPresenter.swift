@@ -19,7 +19,6 @@ final class HeroesListPresenter {
     private var coordinator: HeroesListCoordinator
     
     private var isSearchModeEnabled = false
-    private var lastIndexPathUsedToMoveUpCell = IndexPath(item: .max, section: .max)
     
     // MARK: - Initilization
     
@@ -115,13 +114,12 @@ extension HeroesListPresenter: HeroesListViewOutput {
                 let textLowercased = text.lowercased()
                 
                 if heroLowercased.contains(textLowercased) {
-                    let indexPath = IndexPath(item: index, section: .zero)
                     let detectedModel = dataSource.heroCellModels[index]
                     dataSource.heroCellModels.remove(at: index)
                     dataSource.heroCellModels.insert(detectedModel, at: .zero)
                     dataSource.searchedHeroCellIndexPath = .zero
                     
-                    view?.moveUpCell(with: indexPath)
+                    view?.moveUpCell(with: IndexPath(item: index, section: .zero))
                     return
                 }
             }
