@@ -125,7 +125,8 @@ extension HeroesListPresenter: HeroesListViewOutput {
                     return
                 }
             }
-            
+        } else {
+            dataSource.searchedHeroCellIndexPath = .none
         }
     }
     
