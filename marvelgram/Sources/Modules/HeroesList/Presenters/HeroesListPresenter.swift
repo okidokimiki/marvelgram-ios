@@ -37,12 +37,8 @@ final class HeroesListPresenter {
     
     // MARK: - Private Methods
     
-    private func makeSeleсtCellModels(from heroes: [Hero]) -> [HeroCellModel] {
+    private func convertToCellModel(from heroes: [Hero]) -> [HeroCellModel] {
         return heroes.map { HeroCellModel(hero: $0) }
-    }
-    
-    private func makeDataSource(from seleсtModel: HeroCellModel?, and otherCharModels: [HeroCellModel]?) -> HeroDetailsDataSource {
-        return HeroDetailsDataSource(heroSeleсtingCellModel: seleсtModel, otherCharCellModels: otherCharModels)
     }
 }
 
@@ -55,7 +51,7 @@ extension HeroesListPresenter: HeroesListViewOutput {
         repository.getHeroes { [weak self] heroes in
             guard let self = self else { return }
             
-            let models = self.makeSeleсtCellModels(from: heroes)
+            let models = self.convertToCellModel(from: heroes)
             self.dataSource.heroCellModels = models
             
             DispatchQueue.main.async {
@@ -69,8 +65,8 @@ extension HeroesListPresenter: HeroesListViewOutput {
         guard let randHeroes = repository.getHeroesRandomly() else { return }
         
         let charModel = self.getHeroSeleсtCellModel(with: indexPath)
-        let randomCharModels = makeSeleсtCellModels(from: randHeroes)
-        let dataSource = makeDataSource(from: charModel, and: randomCharModels)
+        let randomCharModels = convertToCellModel(from: randHeroes)
+        let dataSource = HeroDetailsDataSource(heroSeleсtingCellModel: charModel, otherCharCellModels: randomCharModels)
         
         coordinator.startHeroDetailsEvent(with: dataSource)
     }
