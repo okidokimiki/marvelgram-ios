@@ -10,7 +10,14 @@ import Foundation
 final class NetworkService: Networkable {
     // MARK: - Private Properties
     
-    private let session = URLSession.shared
+    private let session: URLSession = {
+        let config: URLSessionConfiguration = .default
+        config.waitsForConnectivity = true
+        config.timeoutIntervalForRequest = 30
+        
+        return URLSession(configuration: config)
+    }()
+    
     private let decoder = JSONDecoder()
     
     // MARK: - Methods
