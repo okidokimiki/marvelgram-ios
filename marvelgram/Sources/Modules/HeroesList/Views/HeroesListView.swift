@@ -11,6 +11,7 @@ protocol HeroesListViewUiDelegate: AnyObject {
     // Actions
     func heroesListView(_ heroesListView: HeroesListView, didSelectHeroWithIndexPath indexPath: IndexPath)
     func heroesListView(_ heroesListView: HeroesListView, willDisplayHeroWithIndexPath indexPath: IndexPath)
+    func heroesListView(_ heroesListView: HeroesListView, didMoveUpHeroWithAnimationResult result: Bool)
     
     // DataSource
     func heroesListView(_ heroesListView: HeroesListView, getCellsCountOf reuseIdentifier: String) -> Int?
@@ -67,12 +68,8 @@ final class HeroesListView: UIView {
     func moveUpCell(with indexPath: IndexPath) {
         heroesSeleсtingCollectionView.performBatchUpdates {
             self.heroesSeleсtingCollectionView.moveItem(at: indexPath, to: .zero)
-        } completion: { _ in
-            // moveUpCellAnimationDidFinish
-            DispatchQueue.main.async {
-                self.setAlphaForEachVisibleCells(alpha: .muddy)
-                self.setAlphaForCell(with: .zero, alpha: .clear)
-            }
+        } completion: { result in
+            self.uiDelegate?.heroesListView(self, didMoveUpHeroWithAnimationResult: result)
         }
     }
     

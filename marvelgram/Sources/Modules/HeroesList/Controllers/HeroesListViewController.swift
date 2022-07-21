@@ -88,6 +88,10 @@ extension HeroesListViewController: HeroesListViewUiDelegate {
         presenter?.handleWillDisplayingHeroCell(with: indexPath)
     }
     
+    func heroesListView(_ heroesListView: HeroesListView, didMoveUpHeroWithAnimationResult result: Bool) {
+        presenter?.handleDidShowingAnimationHeroCell(with: result)
+    }
+    
     // DataSource
     func heroesListView(_ heroesListView: HeroesListView, getCellsCountOf reuseIdentifier: String) -> Int? {
         return presenter?.getHeroSeleсtCellsCount()

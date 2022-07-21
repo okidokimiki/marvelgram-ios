@@ -18,6 +18,7 @@ protocol HeroesListViewOutput {
     func handleDidLoadView()
     func handleDidSelectingHeroCell(with indexPath: IndexPath)
     func handleWillDisplayingHeroCell(with indexPath: IndexPath)
+    func handleDidShowingAnimationHeroCell(with result: Bool)
     func handleDidPresentingSearchBar(with text: String)
     func handleDidDismissingSearchBar(with text: String)
     func handleUpdatingSearchResults(with text: String)

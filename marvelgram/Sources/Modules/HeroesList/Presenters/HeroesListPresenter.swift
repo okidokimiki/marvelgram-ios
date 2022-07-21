@@ -89,6 +89,15 @@ extension HeroesListPresenter: HeroesListViewOutput {
         }
     }
     
+    func handleDidShowingAnimationHeroCell(with result: Bool) {
+        if result {
+            DispatchQueue.main.async {
+                self.view?.setAlphaForEachVisibleCells(alpha: .muddy)
+                self.view?.setAlphaForCell(with: .zero, alpha: .clear)
+            }
+        }
+    }
+    
     func handleDidPresentingSearchBar(with text: String) {
         isSearchModeEnabled = true
         view?.setAlphaForEachVisibleCells(alpha: .muddy)
