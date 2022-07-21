@@ -76,14 +76,12 @@ extension HeroesListPresenter: HeroesListViewOutput {
     
     func handleWillDisplayingHeroCell(with indexPath: IndexPath) {
         if isSearchModeEnabled {
-            DispatchQueue.main.async {
-                guard let searchedIndexPath = self.dataSource.searchedHeroCellIndexPath else {
-                    self.view?.setAlphaForCell(with: indexPath, alpha: .muddy)
-                    return
-                }
-                
-                self.view?.setAlphaForCell(with: indexPath, alpha: searchedIndexPath == indexPath ? .clear : .muddy)
+            guard let searchedIndexPath = dataSource.searchedHeroCellIndexPath else {
+                view?.setAlphaForCell(with: indexPath, alpha: .muddy)
+                return
             }
+            
+            view?.setAlphaForCell(with: indexPath, alpha: searchedIndexPath == indexPath ? .clear : .muddy)
         }
     }
     
