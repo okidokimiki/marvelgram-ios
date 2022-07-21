@@ -112,7 +112,7 @@ extension HeroesListPresenter: HeroesListViewOutput {
         view?.setAlphaForEachVisibleCells(alpha: .clear)
     }
     
-    /** - Bug: Need add a checking on «-» and «space». */
+    /** - Bug: Need add a checking on «-» and «space». **/
     func handleUpdatingSearchResults(with text: String) {
         isFoundHero = false
         view?.setAlphaForEachVisibleCells(alpha: .muddy)
