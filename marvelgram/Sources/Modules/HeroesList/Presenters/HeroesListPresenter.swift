@@ -19,6 +19,7 @@ final class HeroesListPresenter {
     private var coordinator: HeroesListCoordinator
     
     private var isSearchModeEnabled = false
+    private var isFoundHero = false
     
     // MARK: - Initilization
     
@@ -76,12 +77,15 @@ extension HeroesListPresenter: HeroesListViewOutput {
     
     func handleWillDisplayingHeroCell(with indexPath: IndexPath) {
         if isSearchModeEnabled {
-            guard let searchedIndexPath = dataSource.searchedHeroCellIndexPath else {
-                view?.setAlphaForCell(with: indexPath, alpha: .muddy)
-                return
+            var alphaMode: HeroCellAlpha {
+                return isFoundHero && indexPath == .zero ? .clear : .muddy
             }
             
-            view?.setAlphaForCell(with: indexPath, alpha: searchedIndexPath == indexPath ? .clear : .muddy)
+            /* If DSC not used, then when scrolling up, cell may not have time to prepare */
+            DispatchQueue.main.async {
+                self.view?.setAlphaForCell(with: indexPath, alpha: alphaMode)
+            }
+            
         }
     }
     
@@ -89,8 +93,8 @@ extension HeroesListPresenter: HeroesListViewOutput {
         isSearchModeEnabled = true
         view?.setAlphaForEachVisibleCells(alpha: .muddy)
         
-        if let searchedIndexPath = dataSource.searchedHeroCellIndexPath {
-            view?.setAlphaForCell(with: searchedIndexPath, alpha: .clear)
+        if isFoundHero {
+            view?.setAlphaForCell(with: .zero, alpha: .clear)
         }
     }
     
@@ -99,11 +103,9 @@ extension HeroesListPresenter: HeroesListViewOutput {
         view?.setAlphaForEachVisibleCells(alpha: .clear)
     }
     
-    /**
-     - Bug: Until you enter the minimum amount of text you need, the first cell will not highlight (try typing IronMan to catch this bug).
-     */
+    /** - Bug: Need add a checking on «-» and «space». */
     func handleUpdatingSearchResults(with text: String) {
-        dataSource.searchedHeroCellIndexPath = text.isNotEmpty ? .zero : .none
+        isFoundHero = false
         view?.setAlphaForEachVisibleCells(alpha: .muddy)
         
         if text.isNotEmpty {
@@ -112,17 +114,20 @@ extension HeroesListPresenter: HeroesListViewOutput {
                 let textLowercased = text.lowercased()
                 
                 if heroLowercased.contains(textLowercased) {
+                    isFoundHero = true
+                    
                     let detectedModel = dataSource.heroCellModels[index]
+                    guard dataSource.heroCellModels.first != detectedModel else {
+                        view?.setAlphaForCell(with: .zero, alpha: .clear)
+                        return
+                    }
+                    
                     dataSource.heroCellModels.remove(at: index)
                     dataSource.heroCellModels.insert(detectedModel, at: .zero)
                     
                     view?.moveUpCell(with: IndexPath(item: index, section: .zero))
                     return
                 }
-            }
-            
-            if let searchedIndexPath = dataSource.searchedHeroCellIndexPath {
-                view?.setAlphaForCell(with: searchedIndexPath, alpha: .clear)
             }
         }
     }

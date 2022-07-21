@@ -14,6 +14,7 @@ class ImageLoader: UIImageView {
     
     private let session = URLSession.shared
     private var imageCache = NSCache<NSString, UIImage>()
+    private var lastUrlUsedToLoadImage: URL?
     
     // MARK: - Initialization
     
@@ -33,6 +34,7 @@ class ImageLoader: UIImageView {
     
     func loadImage(from urlString: String) {
         guard let url = URL(string: urlString) else { return }
+        lastUrlUsedToLoadImage = url
 
         if let imageFromCache = imageCache.object(forKey: urlString as NSString) {
             image = imageFromCache
@@ -45,7 +47,9 @@ class ImageLoader: UIImageView {
             switch result {
             case .success(let downloadedImage):
                 DispatchQueue.main.async {
-                    self.image = downloadedImage
+                    if url == self.lastUrlUsedToLoadImage {
+                        self.image = downloadedImage
+                    }
                 }
             case .failure(let error):
                 print(error.localizedDescription)

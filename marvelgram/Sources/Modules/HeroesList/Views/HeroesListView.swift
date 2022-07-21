@@ -67,6 +67,12 @@ final class HeroesListView: UIView {
     func moveUpCell(with indexPath: IndexPath) {
         heroesSeleсtingCollectionView.performBatchUpdates {
             self.heroesSeleсtingCollectionView.moveItem(at: indexPath, to: .zero)
+        } completion: { _ in
+            // moveUpCellAnimationDidFinish
+            DispatchQueue.main.async {
+                self.setAlphaForEachVisibleCells(alpha: .muddy)
+                self.setAlphaForCell(with: .zero, alpha: .clear)
+            }
         }
     }
     

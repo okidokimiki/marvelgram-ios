@@ -9,5 +9,4 @@ import Foundation
 
 final class HeroesListDataSource {
     var heroCellModels: [HeroCellModel] = []
-    var searchedHeroCellIndexPath: IndexPath?
 }
