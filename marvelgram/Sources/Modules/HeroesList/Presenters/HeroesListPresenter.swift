@@ -103,13 +103,10 @@ extension HeroesListPresenter: HeroesListViewOutput {
      - Bug: Until you enter the minimum amount of text you need, the first cell will not highlight (try typing IronMan to catch this bug).
      */
     func handleUpdatingSearchResults(with text: String) {
+        dataSource.searchedHeroCellIndexPath = text.isNotEmpty ? .zero : .none
         view?.setAlphaForEachVisibleCells(alpha: .muddy)
         
         if text.isNotEmpty {
-            if let searchedIndexPath = dataSource.searchedHeroCellIndexPath {
-                view?.setAlphaForCell(with: searchedIndexPath, alpha: .clear)
-            }
-            
             for (index, hero) in dataSource.heroCellModels.enumerated() {
                 let heroLowercased = hero.name.lowercased()
                 let textLowercased = text.lowercased()
@@ -118,14 +115,15 @@ extension HeroesListPresenter: HeroesListViewOutput {
                     let detectedModel = dataSource.heroCellModels[index]
                     dataSource.heroCellModels.remove(at: index)
                     dataSource.heroCellModels.insert(detectedModel, at: .zero)
-                    dataSource.searchedHeroCellIndexPath = .zero
                     
                     view?.moveUpCell(with: IndexPath(item: index, section: .zero))
                     return
                 }
             }
-        } else {
-            dataSource.searchedHeroCellIndexPath = .none
+            
+            if let searchedIndexPath = dataSource.searchedHeroCellIndexPath {
+                view?.setAlphaForCell(with: searchedIndexPath, alpha: .clear)
+            }
         }
     }
     
