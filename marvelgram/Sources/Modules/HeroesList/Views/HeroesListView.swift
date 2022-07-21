@@ -52,7 +52,7 @@ final class HeroesListView: UIView {
     
     // MARK: - Methods
     
-    func reloadHeroesSeleсtingCollectionView() {
+    func reloadCollectionView() {
         heroesSeleсtingCollectionView.reloadData()
     }
     
@@ -65,7 +65,6 @@ final class HeroesListView: UIView {
     }
 
     func moveUpCell(with indexPath: IndexPath) {
-        print(#function) // FIXME: Delete
         heroesSeleсtingCollectionView.performBatchUpdates {
             self.heroesSeleсtingCollectionView.moveItem(at: indexPath, to: .zero)
         }

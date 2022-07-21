@@ -59,7 +59,7 @@ extension HeroesListPresenter: HeroesListViewOutput {
             
             DispatchQueue.main.async {
                 self.view?.showActivityIndicator(false)
-                self.view?.reloadHeroesSeleсtingCollectionView()
+                self.view?.reloadCollectionView()
             }
         }
     }

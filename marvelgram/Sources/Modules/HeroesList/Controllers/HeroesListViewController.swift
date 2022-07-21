@@ -127,8 +127,8 @@ extension HeroesListViewController: NavBarButtonItemUiDelegate {
 // MARK: - ViewInput
 
 extension HeroesListViewController: HeroesListViewInput {
-    func reloadHeroesSeleсtingCollectionView() {
-        heroesListView.reloadHeroesSeleсtingCollectionView()
+    func reloadCollectionView() {
+        heroesListView.reloadCollectionView()
     }
     
     func showActivityIndicator(_ show: Bool) {
