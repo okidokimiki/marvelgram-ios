@@ -113,9 +113,7 @@ final class HeroesListView: UIView {
     // MARK: - Creating Subviews
     
     private func makeHeroesSeleсtingCollectionView(uiDelegate: HeroesSeleсtingCollectionViewUiDelegate) -> HeroesSeleсtingCollectionView {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        
+        let layout = DefaultGridFlowLayout()
         let collectionView = HeroesSeleсtingCollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.uiDelegate = uiDelegate
         
