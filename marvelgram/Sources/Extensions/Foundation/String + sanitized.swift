@@ -8,6 +8,8 @@
 import Foundation
 
 extension String {
+    // MARK: - Methods
+    
     func sanitized(with removable: [String]) -> String {
         var sanitizedString = self.trimmingCharacters(in: .whitespacesAndNewlines)
         removable.forEach { sanitizedString = sanitizedString.replacingOccurrences(of: $0, with: "") }
