@@ -81,6 +81,19 @@ final class HeroesListView: UIView {
         heroesSeleсtingCollectionView.visibleCells.forEach { $0.alpha = CGFloat(alpha.value) }
     }
     
+    func scrollCollectionView(to direction: ScrollDirection) {
+        var contentOffset: CGPoint = .zero
+        
+        switch direction {
+        case .top:
+            contentOffset = .init(x: 0, y: heroesSeleсtingCollectionView.contentInset.top)
+        case .bottom:
+            contentOffset = .init(x: 0, y: heroesSeleсtingCollectionView.bottomOffset)
+        }
+
+        heroesSeleсtingCollectionView.setContentOffset(contentOffset, animated: true)
+    }
+    
     // MARK: - Private Methods
     
     private func configure() {

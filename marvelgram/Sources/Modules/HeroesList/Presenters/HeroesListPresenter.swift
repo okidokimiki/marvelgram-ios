@@ -120,6 +120,7 @@ extension HeroesListPresenter: HeroesListViewOutput {
                 
                 if heroLowercased.contains(textLowercased) {
                     isFoundHero = true
+                    view?.scrollCollectionView(to: .top)
                     
                     let detectedModel = dataSource.heroCellModels[index]
                     guard dataSource.heroCellModels.first != detectedModel else {

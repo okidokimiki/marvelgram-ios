@@ -150,4 +150,8 @@ extension HeroesListViewController: HeroesListViewInput {
     func setAlphaForEachVisibleCells(alpha: HeroCellAlpha) {
         heroesListView.setAlphaForEachVisibleCells(alpha: alpha)
     }
+    
+    func scrollCollectionView(to direction: ScrollDirection) {
+        heroesListView.scrollCollectionView(to: direction)
+    }
 }

@@ -27,6 +27,7 @@
 		045C44BB286CAB7A0016084B /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C44BA286CAB7A0016084B /* AppCoordinator.swift */; };
 		04643365286EF35C007EDCFD /* HeroDetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04643364286EF35C007EDCFD /* HeroDetailsCoordinator.swift */; };
 		04643368286F00D9007EDCFD /* ModuleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04643367286F00D9007EDCFD /* ModuleType.swift */; };
+		047633D4288A939A003DC450 /* ScrollDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047633D3288A939A003DC450 /* ScrollDirection.swift */; };
 		0476F4F528758D1700C027EB /* BackBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0476F4F428758D1700C027EB /* BackBarButtonItem.swift */; };
 		0476F4FB2875C87A00C027EB /* CharSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0476F4FA2875C87A00C027EB /* CharSearchController.swift */; };
 		04AA97AA2873847D007775C0 /* TopAlignedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AA97A92873847D007775C0 /* TopAlignedLabel.swift */; };
@@ -87,6 +88,7 @@
 		045C44BA286CAB7A0016084B /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		04643364286EF35C007EDCFD /* HeroDetailsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailsCoordinator.swift; sourceTree = "<group>"; };
 		04643367286F00D9007EDCFD /* ModuleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleType.swift; sourceTree = "<group>"; };
+		047633D3288A939A003DC450 /* ScrollDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollDirection.swift; sourceTree = "<group>"; };
 		0476F4F428758D1700C027EB /* BackBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackBarButtonItem.swift; sourceTree = "<group>"; };
 		0476F4FA2875C87A00C027EB /* CharSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharSearchController.swift; sourceTree = "<group>"; };
 		04AA97A92873847D007775C0 /* TopAlignedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopAlignedLabel.swift; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 				04643367286F00D9007EDCFD /* ModuleType.swift */,
 				04B430532869EAA800BD4904 /* NetworkError.swift */,
 				0402156828875C420099102A /* HeroCellAlpha.swift */,
+				047633D3288A939A003DC450 /* ScrollDirection.swift */,
 				04B430552869EB9700BD4904 /* JSONResponse.swift */,
 				04168138287AD9CC00685EE8 /* NavBarButtonType.swift */,
 			);
@@ -548,6 +551,7 @@
 			files = (
 				04C5C1E128516C810096D272 /* HeroDetailsViewModuleBuilder.swift in Sources */,
 				04C5C1A5284FDD890096D272 /* HeroesSeleсtingCollectionView.swift in Sources */,
+				047633D4288A939A003DC450 /* ScrollDirection.swift in Sources */,
 				04643365286EF35C007EDCFD /* HeroDetailsCoordinator.swift in Sources */,
 				04FE0A33284FC99F00839CBF /* HeroesListModuleBuilder.swift in Sources */,
 				04FE0A21284FC90A00839CBF /* HeroesListViewController.swift in Sources */,

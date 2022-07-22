@@ -22,6 +22,10 @@ final class HeroesSeleсtingCollectionView: UICollectionView {
     
     weak var uiDelegate: HeroesSeleсtingCollectionViewUiDelegate?
     
+    var bottomOffset: CGFloat {
+        return contentSize.height - bounds.size.height + contentInset.bottom
+    }
+    
     // MARK: - Initilization
     
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {

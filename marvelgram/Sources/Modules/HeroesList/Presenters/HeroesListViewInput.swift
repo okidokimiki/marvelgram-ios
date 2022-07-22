@@ -13,4 +13,5 @@ protocol HeroesListViewInput: AnyObject {
     func moveUpCell(with indexPath: IndexPath)
     func setAlphaForCell(with indexPath: IndexPath, alpha: HeroCellAlpha)
     func setAlphaForEachVisibleCells(alpha: HeroCellAlpha)
+    func scrollCollectionView(to direction: ScrollDirection)
 }
