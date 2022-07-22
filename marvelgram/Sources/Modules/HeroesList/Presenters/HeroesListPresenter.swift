@@ -108,15 +108,14 @@ extension HeroesListPresenter: HeroesListViewOutput {
         view?.setAlphaForEachVisibleCells(alpha: .clear)
     }
     
-    /** - Bug: Need add a checking on «-» and «space». **/
     func handleUpdatingSearchResults(with text: String) {
         isFoundHero = false
         view?.setAlphaForEachVisibleCells(alpha: .muddy)
         
         if text.isNotEmpty {
             for (index, hero) in dataSource.heroCellModels.enumerated() {
-                let heroLowercased = hero.name.lowercased()
-                let textLowercased = text.lowercased()
+                let heroLowercased = hero.name.sanitized(with: ["-"])
+                let textLowercased = text.sanitized(with: ["-"])
                 
                 if heroLowercased.contains(textLowercased) {
                     isFoundHero = true

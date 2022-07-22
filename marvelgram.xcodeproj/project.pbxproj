@@ -28,6 +28,7 @@
 		04643365286EF35C007EDCFD /* HeroDetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04643364286EF35C007EDCFD /* HeroDetailsCoordinator.swift */; };
 		04643368286F00D9007EDCFD /* ModuleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04643367286F00D9007EDCFD /* ModuleType.swift */; };
 		047633D4288A939A003DC450 /* ScrollDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047633D3288A939A003DC450 /* ScrollDirection.swift */; };
+		047633D6288A9A82003DC450 /* String + sanitized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047633D5288A9A82003DC450 /* String + sanitized.swift */; };
 		0476F4F528758D1700C027EB /* BackBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0476F4F428758D1700C027EB /* BackBarButtonItem.swift */; };
 		0476F4FB2875C87A00C027EB /* CharSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0476F4FA2875C87A00C027EB /* CharSearchController.swift */; };
 		04AA97AA2873847D007775C0 /* TopAlignedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AA97A92873847D007775C0 /* TopAlignedLabel.swift */; };
@@ -89,6 +90,7 @@
 		04643364286EF35C007EDCFD /* HeroDetailsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailsCoordinator.swift; sourceTree = "<group>"; };
 		04643367286F00D9007EDCFD /* ModuleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleType.swift; sourceTree = "<group>"; };
 		047633D3288A939A003DC450 /* ScrollDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollDirection.swift; sourceTree = "<group>"; };
+		047633D5288A9A82003DC450 /* String + sanitized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + sanitized.swift"; sourceTree = "<group>"; };
 		0476F4F428758D1700C027EB /* BackBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackBarButtonItem.swift; sourceTree = "<group>"; };
 		0476F4FA2875C87A00C027EB /* CharSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharSearchController.swift; sourceTree = "<group>"; };
 		04AA97A92873847D007775C0 /* TopAlignedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopAlignedLabel.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				040215642886F7670099102A /* Collection + isNotEmpty.swift */,
+				047633D5288A9A82003DC450 /* String + sanitized.swift */,
 				0416813628785B1D00685EE8 /* IndexPath + zero.swift */,
 			);
 			path = Foundation;
@@ -602,6 +605,7 @@
 				04C5C19F284FDA3D0096D272 /* HeroesListPresenter.swift in Sources */,
 				04B43070286B81AE00BD4904 /* HeroesRepositorieble.swift in Sources */,
 				04AA97AE287390AE007775C0 /* API.swift in Sources */,
+				047633D6288A9A82003DC450 /* String + sanitized.swift in Sources */,
 				0402156928875C420099102A /* HeroCellAlpha.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
