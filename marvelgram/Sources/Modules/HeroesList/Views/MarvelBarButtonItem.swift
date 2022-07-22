@@ -7,7 +7,15 @@
 
 import UIKit
 
+protocol NavBarButtonItemUiDelegate: AnyObject {
+    func navBarButtonItem(_ navBarButtonItem: UIBarButtonItem, didTapNavBarButtonWithType type: NavBarButtonType)
+}
+
 final class MarvelBarButtonItem: UIBarButtonItem {
+    // MARK: - Properties
+    
+    weak var uiDelegate: NavBarButtonItemUiDelegate?
+    
     // MARK: - Initilization
     
     override init() {
@@ -26,10 +34,10 @@ final class MarvelBarButtonItem: UIBarButtonItem {
     
     private func configure() {
         image = UIImage(assets: .marvellogo)
-        tintColor = Palette.GlobalColor.fontPrimary
+        tintColor = AppColor.GlobalColor.font
         style = .plain
         target = self
-        action = #selector(didTapMarvelButton(sender:))
+        action = #selector(didTapMarvelButton)
     }
 }
 
@@ -37,7 +45,7 @@ final class MarvelBarButtonItem: UIBarButtonItem {
 
 @objc
 private extension MarvelBarButtonItem {
-    func didTapMarvelButton(sender: UIBarButtonItem) {
-        print("didTapMarvelButton")
+    func didTapMarvelButton() {
+        uiDelegate?.navBarButtonItem(self, didTapNavBarButtonWithType: .marvel)
     }
 }

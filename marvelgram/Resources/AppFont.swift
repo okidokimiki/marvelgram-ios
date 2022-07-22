@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum FontLibrary {
+enum AppFont {
     
     enum SFPro {
         static let bold34 = UIFont(name: "SFPro-Bold", size: 34)!

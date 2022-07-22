@@ -26,6 +26,6 @@ class BackBarButtonItem: UIBarButtonItem {
     
     private func configure() {
         title = .none
-        tintColor = Palette.GlobalColor.fontPrimary
+        tintColor = AppColor.GlobalColor.font
     }
 }

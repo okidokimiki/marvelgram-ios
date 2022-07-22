@@ -37,11 +37,11 @@ final class HeroDetailsPresenter {
     
     // MARK: - Private Methods
     
-    private func makeCharCellModels(from heroes: [Hero]) -> [HeroSeleсtingCellModel] {
-        return heroes.map { HeroSeleсtingCellModel(hero: $0) }
+    private func makeCharCellModels(from heroes: [Hero]) -> [HeroCellModel] {
+        return heroes.map { HeroCellModel(hero: $0) }
     }
     
-    private func updateDataSource(with seleсtCharModel: HeroSeleсtingCellModel?, and otherCharModels: [HeroSeleсtingCellModel]?) {
+    private func updateDataSource(with seleсtCharModel: HeroCellModel?, and otherCharModels: [HeroCellModel]?) {
         dataSource?.heroSeleсtingCellModel = seleсtCharModel
         dataSource?.otherCharCellModels = otherCharModels
     }
@@ -52,7 +52,7 @@ final class HeroDetailsPresenter {
     }
 }
 
-// MARK: - DetailViewOutput
+// MARK: - ViewOutput
 
 extension HeroDetailsPresenter: HeroDetailsViewOutput {
     // Actions
@@ -60,13 +60,13 @@ extension HeroDetailsPresenter: HeroDetailsViewOutput {
         view?.finishLayoutSubviews()
     }
     
-    func handleAppearingView() {
+    func handleWillAppearingView() {
         updateUI()
     }
-    
-    func handleSelectingCharCell(with index: Int) {
+        
+    func handleDidSelectingCharCell(with indexPath: IndexPath) {
         guard
-            let selectedCharModel = dataSource?.otherCharCellModels?[index],
+            let selectedCharModel = dataSource?.otherCharCellModels?[indexPath.item],
             let randHeroes = repository.getHeroesRandomly()
         else {
             fatalError("DataSource Error: couldn`t guard data on HeroDetails Screen.")
@@ -78,8 +78,8 @@ extension HeroDetailsPresenter: HeroDetailsViewOutput {
     }
     
     // DataSource
-    func getOtherCharCellModel(with index: Int) -> HeroSeleсtingCellModel? {
-        return dataSource?.otherCharCellModels?[index]
+    func getOtherCharCellModel(with indexPath: IndexPath) -> HeroCellModel? {
+        return dataSource?.otherCharCellModels?[indexPath.item]
     }
     
     func getOtherCharCellsCount() -> Int? {

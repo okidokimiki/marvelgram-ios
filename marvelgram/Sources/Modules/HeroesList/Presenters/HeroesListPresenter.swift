@@ -18,6 +18,9 @@ final class HeroesListPresenter {
     private var dataSource: HeroesListDataSource
     private var coordinator: HeroesListCoordinator
     
+    private var isSearchModeEnabled = false
+    private var isFoundHero = false
+    
     // MARK: - Initilization
     
     required init(
@@ -34,55 +37,116 @@ final class HeroesListPresenter {
     
     // MARK: - Private Methods
     
-    private func makeSelсtCellModels(from heroes: [Hero]) -> [HeroSeleсtingCellModel] {
-        return heroes.map { HeroSeleсtingCellModel(hero: $0) }
+    private func convertToCellModel(from heroes: [Hero]) -> [HeroCellModel] {
+        return heroes.map { HeroCellModel(hero: $0) }
     }
-    
-    private func makeDataSource(from seleсtModel: HeroSeleсtingCellModel?, and otherCharModels: [HeroSeleсtingCellModel]?) -> HeroDetailsDataSource {
-        return HeroDetailsDataSource(heroSeleсtingCellModel: seleсtModel, otherCharCellModels: otherCharModels)
-    }
-    
-    private func fetchHeroesAndReloadCollectionView() {
+}
+
+// MARK: - ViewOutput
+
+extension HeroesListPresenter: HeroesListViewOutput {
+    func handleDidLoadView() {
         view?.showActivityIndicator(true)
         
         repository.getHeroes { [weak self] heroes in
             guard let self = self else { return }
             
-            let models = self.makeSelсtCellModels(from: heroes)
-            self.dataSource.heroSeleсtingCellModels = models
+            let models = self.convertToCellModel(from: heroes)
+            self.dataSource.heroCellModels = models
             
             DispatchQueue.main.async {
                 self.view?.showActivityIndicator(false)
-                self.view?.reloadHeroesSeleсtingCollectionView()
+                self.view?.reloadCollectionView()
             }
         }
     }
-}
-
-// MARK: - MainViewOutput
-
-extension HeroesListPresenter: HeroesListViewOutput {
-    // Actions
-    func handleDidLoadView() {
-        fetchHeroesAndReloadCollectionView()
-    }
     
-    func handleSelectingHeroCell(with index: Int) {
+    func handleDidSelectingHeroCell(with indexPath: IndexPath) {
         guard let randHeroes = repository.getHeroesRandomly() else { return }
         
-        let charModel = self.getHeroSelсtCellModel(with: index)
-        let randomCharModels = makeSelсtCellModels(from: randHeroes)
-        let dataSource = makeDataSource(from: charModel, and: randomCharModels)
+        let charModel = self.getHeroSeleсtCellModel(with: indexPath)
+        let randomCharModels = convertToCellModel(from: randHeroes)
+        let dataSource = HeroDetailsDataSource(heroSeleсtingCellModel: charModel, otherCharCellModels: randomCharModels)
         
         coordinator.startHeroDetailsEvent(with: dataSource)
     }
     
-    // DataSource
-    func getHeroSelсtCellsCount() -> Int? {
-        return dataSource.heroSeleсtingCellModels.count
+    func handleWillDisplayingHeroCell(with indexPath: IndexPath) {
+        if isSearchModeEnabled {
+            var alphaMode: HeroCellAlpha {
+                return isFoundHero && indexPath == .zero ? .clear : .muddy
+            }
+            
+            /* If DSC not used, then when scrolling up, cell may not have time to prepare */
+            DispatchQueue.main.async {
+                self.view?.setAlphaForCell(with: indexPath, alpha: alphaMode)
+            }
+            
+        }
     }
     
-    func getHeroSelсtCellModel(with index: Int) -> HeroSeleсtingCellModel {
-        return dataSource.heroSeleсtingCellModels[index]
+    func handleDidShowingAnimationHeroCell(with result: Bool) {
+        if result {
+            DispatchQueue.main.async {
+                self.view?.setAlphaForEachVisibleCells(alpha: .muddy)
+                self.view?.setAlphaForCell(with: .zero, alpha: .clear)
+            }
+        }
+    }
+    
+    func handleDidPresentingSearchBar(with text: String) {
+        isSearchModeEnabled = true
+        view?.setAlphaForEachVisibleCells(alpha: .muddy)
+        
+        if isFoundHero {
+            view?.setAlphaForCell(with: .zero, alpha: .clear)
+        }
+    }
+    
+    func handleDidDismissingSearchBar(with text: String) {
+        isSearchModeEnabled = false
+        view?.setAlphaForEachVisibleCells(alpha: .clear)
+    }
+    
+    func handleUpdatingSearchResults(with text: String) {
+        isFoundHero = false
+        view?.setAlphaForEachVisibleCells(alpha: .muddy)
+        
+        if text.isNotEmpty {
+            for (index, hero) in dataSource.heroCellModels.enumerated() {
+                let heroLowercased = hero.name.sanitized(with: ["-"])
+                let textLowercased = text.sanitized(with: ["-"])
+                
+                if heroLowercased.contains(textLowercased) {
+                    isFoundHero = true
+                    view?.scrollCollectionView(to: .top)
+                    
+                    let detectedModel = dataSource.heroCellModels[index]
+                    guard dataSource.heroCellModels.first != detectedModel else {
+                        view?.setAlphaForCell(with: .zero, alpha: .clear)
+                        return
+                    }
+                    
+                    dataSource.heroCellModels.remove(at: index)
+                    dataSource.heroCellModels.insert(detectedModel, at: .zero)
+                    
+                    view?.moveUpCell(with: IndexPath(item: index, section: .zero))
+                    return
+                }
+            }
+        }
+    }
+    
+    func handleTappingNavBarButton(with type: NavBarButtonType) {
+        print("Did tap navBar button with type: \(type)")
+    }
+    
+    // DataSource
+    func getHeroSeleсtCellsCount() -> Int? {
+        return dataSource.heroCellModels.count
+    }
+    
+    func getHeroSeleсtCellModel(with indexPath: IndexPath) -> HeroCellModel {
+        return dataSource.heroCellModels[indexPath.item]
     }
 }

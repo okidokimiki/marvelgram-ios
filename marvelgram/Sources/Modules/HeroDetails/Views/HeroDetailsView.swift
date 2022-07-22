@@ -9,11 +9,11 @@ import UIKit
 
 protocol HeroDetailsViewUiDelegate: AnyObject {
     // Actions
-    func heroDetailsView(_ heroDetailsView: HeroDetailsView, didSelectCharWithIndex index: Int)
+    func heroDetailsView(_ heroDetailsView: HeroDetailsView, didSelectCharWithIndexPath indexPath: IndexPath)
     
     // DataSource
     func heroDetailsView(_ heroDetailsView: HeroDetailsView, getCellsCountOf reuseIdentifier: String) -> Int?
-    func heroDetailsView(_ heroDetailsView: HeroDetailsView, getOtherCharCellModelWithIndex index: Int) -> HeroSeleсtingCellModel?
+    func heroDetailsView(_ heroDetailsView: HeroDetailsView, getOtherCharCellModelWithIndexPath indexPath: IndexPath) -> HeroCellModel?
 }
 
 final class HeroDetailsView: UIView {
@@ -63,12 +63,12 @@ final class HeroDetailsView: UIView {
     
     // MARK: - Methods
     
-    func updateUI(with model: HeroSeleсtingCellModel?) {
+    func updateUI(with model: HeroCellModel?) {
         guard let model = model else { return }
         
         otherCharCollectionView.reloadData()
         characterImageView.loadImage(from: model.url)
-        descrpLabel.text = model.description.isEmpty ? Localization.descriptionText.localizedString : model.description
+        descrpLabel.text = model.description.isEmpty ? AppLocalize.HeroDetails.descriptionText : model.description
     }
     
     func finishLayoutSubviews() {
@@ -83,7 +83,7 @@ final class HeroDetailsView: UIView {
     // MARK: - Private Methods
     
     private func configure() {
-        backgroundColor = Palette.GlobalColor.backgroundPrimary
+        backgroundColor = AppColor.GlobalColor.background
     }
     
     private func setupViews() {
@@ -106,8 +106,8 @@ final class HeroDetailsView: UIView {
     
     private func makeDescrpLabel() -> TopAlignedLabel {
         let label = TopAlignedLabel()
-        label.font = FontLibrary.SFPro.regular14
-        label.textColor = Palette.GlobalColor.fontPrimary
+        label.font = AppFont.SFPro.regular14
+        label.textColor = AppColor.GlobalColor.font
         label.numberOfLines = Constants.descrpLabelNumberOfLines
         
         return label
@@ -115,9 +115,9 @@ final class HeroDetailsView: UIView {
     
     private func makeExploreMoreLabel() -> UILabel {
         let label = UILabel()
-        label.font = FontLibrary.SFPro.bold34
-        label.text = Localization.exploreMoreTitle.localizedString
-        label.textColor = Palette.GlobalColor.fontPrimary
+        label.font = AppFont.SFPro.bold34
+        label.text = AppLocalize.HeroDetails.exploreMoreTitle
+        label.textColor = AppColor.GlobalColor.font
         
         return label
     }
@@ -195,18 +195,19 @@ final class HeroDetailsView: UIView {
     }
 }
 
-// MARK: - OtherCharactersCollectionViewUiDelegate
+// MARK: - UiDelegate
 
 extension HeroDetailsView: OtherCharactersCollectionViewUiDelegate {
     // Actions
-    func otherCharCollectionView(_ otherCharCollectionView: OtherCharactersCollectionView, didSelectCharWithIndex index: Int) {
-        uiDelegate?.heroDetailsView(self, didSelectCharWithIndex: index)
+    func otherCharCollectionView(_ otherCharCollectionView: OtherCharactersCollectionView, didSelectCharWithIndexPath indexPath: IndexPath) {
+        uiDelegate?.heroDetailsView(self, didSelectCharWithIndexPath: indexPath)
     }
     
     // DataSource
-    func otherCharCollectionView(_ otherCharCollectionView: OtherCharactersCollectionView, getOtherCharCellModelWithIndex index: Int) -> HeroSeleсtingCellModel? {
-        return uiDelegate?.heroDetailsView(self, getOtherCharCellModelWithIndex: index)
+    func otherCharCollectionView(_ otherCharCollectionView: OtherCharactersCollectionView, getOtherCharCellModelWithIndexPath indexPath: IndexPath) -> HeroCellModel? {
+        return uiDelegate?.heroDetailsView(self, getOtherCharCellModelWithIndexPath: indexPath)
     }
+    
     func otherCharCollectionView(_ otherCharCollectionView: OtherCharactersCollectionView, getCellsCountOf reuseIdentifier: String) -> Int? {
         return uiDelegate?.heroDetailsView(self, getCellsCountOf: reuseIdentifier)
     }

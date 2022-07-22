@@ -22,18 +22,20 @@ final class HeroDetailsViewController: UIViewController {
         return castedView
     }
     
+    private lazy var backButton: BackBarButtonItem = {
+        return BackBarButtonItem()
+    }()
+    
     // MARK: - Lifecycle
     
     override func loadView() {
-        let view = HeroDetailsView()
-        view.uiDelegate = self
-        self.view = view
+        setupView()
     }
-        
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        presenter?.handleAppearingView()
+        presenter?.handleWillAppearingView()
     }
     
     override func viewDidLayoutSubviews() {
@@ -44,31 +46,36 @@ final class HeroDetailsViewController: UIViewController {
     
     // MARK: - Private Methods
     
-    private func setupNavController(with model: HeroSeleсtingCellModel?) {
-        let navigation = UINavigationBar.appearance()
-        let backButton = BackBarButtonItem()
+    private func setupView() {
+        let view = HeroDetailsView()
+        view.uiDelegate = self
+        self.view = view
+    }
+    
+    private func setupNavController(with model: HeroCellModel?) {
+        let appearance = UINavigationBar.appearance()
         let attributes = [
-            NSAttributedString.Key.font: FontLibrary.SFPro.regular17,
-            NSAttributedString.Key.foregroundColor: Palette.GlobalColor.fontPrimary
+            NSAttributedString.Key.font: AppFont.SFPro.regular17,
+            NSAttributedString.Key.foregroundColor: AppColor.GlobalColor.font
         ]
         
         title = model?.name
-        navigation.titleTextAttributes = attributes
+        appearance.titleTextAttributes = attributes
         navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
-}
+    }
 }
 
 // MARK: - UiDelegate
 
 extension HeroDetailsViewController: HeroDetailsViewUiDelegate {
     // Actions
-    func heroDetailsView(_ heroDetailsView: HeroDetailsView, didSelectCharWithIndex index: Int) {
-        presenter?.handleSelectingCharCell(with: index)
+    func heroDetailsView(_ heroDetailsView: HeroDetailsView, didSelectCharWithIndexPath indexPath: IndexPath) {
+        presenter?.handleDidSelectingCharCell(with: indexPath)
     }
     
     // DataSource
-    func heroDetailsView(_ heroDetailsView: HeroDetailsView, getOtherCharCellModelWithIndex index: Int) -> HeroSeleсtingCellModel? {
-        return presenter?.getOtherCharCellModel(with: index)
+    func heroDetailsView(_ heroDetailsView: HeroDetailsView, getOtherCharCellModelWithIndexPath indexPath: IndexPath) -> HeroCellModel? {
+        return presenter?.getOtherCharCellModel(with: indexPath)
     }
     
     func heroDetailsView(_ heroDetailsView: HeroDetailsView, getCellsCountOf reuseIdentifier: String) -> Int? {
@@ -76,10 +83,10 @@ extension HeroDetailsViewController: HeroDetailsViewUiDelegate {
     }
 }
 
-// MARK: - DetailViewInput
+// MARK: - ViewInput
 
 extension HeroDetailsViewController: HeroDetailsViewInput {
-    func updateUI(with model: HeroSeleсtingCellModel?) {
+    func updateUI(with model: HeroCellModel?) {
         setupNavController(with: model)
         heroDetailsView.updateUI(with: model)
     }

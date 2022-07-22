@@ -19,7 +19,6 @@ class CharImageViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        configure()
         setupViews()
         setupAutoLayout()
     }
@@ -27,22 +26,24 @@ class CharImageViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         
-        configure()
         setupViews()
         setupAutoLayout()
     }
     
+    // MARK: - Override Methods
+    
+    override func prepareForReuse() {
+        characterImageView.image = nil
+    }
+    
     // MARK: - Methods
     
-    func configure(with model: HeroSeleсtingCellModel) {
+    func configure(with model: HeroCellModel) {
         characterImageView.loadImage(from: model.url)
     }
     
-    // MARK: - Private Methods
     
-    private func configure() {
-        backgroundColor = Palette.HeroesList.cellBackground
-    }
+    // MARK: - Private Methods
     
     private func setupViews() {
         setupView(characterImageView)

@@ -33,11 +33,11 @@ final class HeroesRepository: HeroesRepositorieble {
             
             switch result {
             case .success(let config):
-                guard let configUrl = config as? URL else { return }
-                let newHeroes = self.makeHeroes(from: configUrl)
+                guard let configURL = config as? URL else { return }
+                let newHeroes = self.makeHeroes(from: configURL)
                 
                 if newHeroes != self.heroes {
-                    self.saveFile(from: configUrl, to: Constants.folderName)
+                    self.saveFile(from: configURL, to: Constants.folderName)
                     self.heroes = newHeroes
                 }
             case .error(let netError):
@@ -59,9 +59,7 @@ final class HeroesRepository: HeroesRepositorieble {
             uniqueRandomNumbers.insert(value)
         }
         
-        uniqueRandomNumbers.forEach { index in
-            array.append(heroes[index])
-        }
+        uniqueRandomNumbers.forEach { array.append(heroes[$0]) }
         
         return array
     }

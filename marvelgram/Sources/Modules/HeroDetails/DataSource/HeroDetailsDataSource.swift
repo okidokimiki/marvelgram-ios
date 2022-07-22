@@ -7,7 +7,12 @@
 
 import Foundation
 
-struct HeroDetailsDataSource {
-    var heroSeleсtingCellModel: HeroSeleсtingCellModel?
-    var otherCharCellModels: [HeroSeleсtingCellModel]?
+final class HeroDetailsDataSource {
+    var heroSeleсtingCellModel: HeroCellModel?
+    var otherCharCellModels: [HeroCellModel]?
+    
+    init(heroSeleсtingCellModel: HeroCellModel?, otherCharCellModels: [HeroCellModel]?) {
+        self.heroSeleсtingCellModel = heroSeleсtingCellModel
+        self.otherCharCellModels = otherCharCellModels
+    }
 }

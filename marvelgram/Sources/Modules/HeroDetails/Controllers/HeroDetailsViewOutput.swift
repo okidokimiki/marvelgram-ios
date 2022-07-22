@@ -14,11 +14,11 @@ protocol HeroDetailsViewOutput {
          coordinator: HeroDetailsCoordinator)
     
     // Actions
-    func handleAppearingView()
+    func handleWillAppearingView()
     func handleDidLayoutSubviews()
-    func handleSelectingCharCell(with index: Int)
+    func handleDidSelectingCharCell(with indexPath: IndexPath)
     
     // DataSource
     func getOtherCharCellsCount() -> Int?
-    func getOtherCharCellModel(with index: Int) -> HeroSeleсtingCellModel?
+    func getOtherCharCellModel(with indexPath: IndexPath) -> HeroCellModel?
 }

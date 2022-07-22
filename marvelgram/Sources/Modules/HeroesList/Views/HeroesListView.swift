@@ -9,11 +9,13 @@ import UIKit
 
 protocol HeroesListViewUiDelegate: AnyObject {
     // Actions
-    func heroesListView(_ heroesListView: HeroesListView, didSelectHeroWithIndex index: Int)
+    func heroesListView(_ heroesListView: HeroesListView, didSelectHeroWithIndexPath indexPath: IndexPath)
+    func heroesListView(_ heroesListView: HeroesListView, willDisplayHeroWithIndexPath indexPath: IndexPath)
+    func heroesListView(_ heroesListView: HeroesListView, didMoveUpHeroWithAnimationResult result: Bool)
     
     // DataSource
     func heroesListView(_ heroesListView: HeroesListView, getCellsCountOf reuseIdentifier: String) -> Int?
-    func heroesListView(_ heroesListView: HeroesListView, getHeroCellModelWithIndex index: Int) -> HeroSeleсtingCellModel?
+    func heroesListView(_ heroesListView: HeroesListView, getHeroCellModelWithIndexPath indexPath: IndexPath) -> HeroCellModel?
 }
 
 final class HeroesListView: UIView {
@@ -51,7 +53,7 @@ final class HeroesListView: UIView {
     
     // MARK: - Methods
     
-    func reloadHeroesSeleсtingCollectionView() {
+    func reloadCollectionView() {
         heroesSeleсtingCollectionView.reloadData()
     }
     
@@ -62,11 +64,40 @@ final class HeroesListView: UIView {
             activityIndicatorView.stopAnimating()
         }
     }
+
+    func moveUpCell(with indexPath: IndexPath) {
+        heroesSeleсtingCollectionView.performBatchUpdates {
+            self.heroesSeleсtingCollectionView.moveItem(at: indexPath, to: .zero)
+        } completion: { result in
+            self.uiDelegate?.heroesListView(self, didMoveUpHeroWithAnimationResult: result)
+        }
+    }
+    
+    func setAlphaForCell(with indexPath: IndexPath, alpha: HeroCellAlpha) {
+        heroesSeleсtingCollectionView.cellForItem(at: indexPath)?.alpha = CGFloat(alpha.value)
+    }
+    
+    func setAlphaForEachVisibleCells(alpha: HeroCellAlpha) {
+        heroesSeleсtingCollectionView.visibleCells.forEach { $0.alpha = CGFloat(alpha.value) }
+    }
+    
+    func scrollCollectionView(to direction: ScrollDirection) {
+        var contentOffset: CGPoint = .zero
+        
+        switch direction {
+        case .top:
+            contentOffset = .init(x: 0, y: heroesSeleсtingCollectionView.contentInset.top)
+        case .bottom:
+            contentOffset = .init(x: 0, y: heroesSeleсtingCollectionView.bottomOffset)
+        }
+
+        heroesSeleсtingCollectionView.setContentOffset(contentOffset, animated: true)
+    }
     
     // MARK: - Private Methods
     
     private func configure() {
-        backgroundColor = Palette.GlobalColor.backgroundPrimary
+        backgroundColor = AppColor.GlobalColor.background
     }
     
     private func setupViews() {
@@ -112,17 +143,21 @@ final class HeroesListView: UIView {
     }
 }
 
-// MARK: - HeroesSeleсtingCollectionViewUiDelegate
+// MARK: - UiDelegate
 
 extension HeroesListView: HeroesSeleсtingCollectionViewUiDelegate {
     // Actions
-    func heroesSeleсtingCollectionView(_ heroesCollectionView: HeroesSeleсtingCollectionView, didSelectHeroWithIndex index: Int) {
-        uiDelegate?.heroesListView(self, didSelectHeroWithIndex: index)
+    func heroesSeleсtingCollectionView(_ heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView, didSelectHeroWithIndexPath indexPath: IndexPath) {
+        uiDelegate?.heroesListView(self, didSelectHeroWithIndexPath: indexPath)
+    }
+    
+    func heroesSeleсtingCollectionView(_ heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView, willDisplayHeroWithIndexPath indexPath: IndexPath) {
+        uiDelegate?.heroesListView(self, willDisplayHeroWithIndexPath: indexPath)
     }
     
     // DataSource
-    func heroesSeleсtingCollectionView(_ heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView, getHeroSelсtCellModelWithIndex index: Int) -> HeroSeleсtingCellModel? {
-        return uiDelegate?.heroesListView(self, getHeroCellModelWithIndex: index)
+    func heroesSeleсtingCollectionView(_ heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView, getHeroSeleсtCellModelWithIndexPath indexPath: IndexPath) -> HeroCellModel? {
+        return uiDelegate?.heroesListView(self, getHeroCellModelWithIndexPath: indexPath)
     }
     
     func heroesSeleсtingCollectionView(_ heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView, getCellsCountOf reuseIdentifier: String) -> Int? {

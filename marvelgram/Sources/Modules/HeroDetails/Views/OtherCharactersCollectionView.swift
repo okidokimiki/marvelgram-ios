@@ -9,11 +9,11 @@ import UIKit
 
 protocol OtherCharactersCollectionViewUiDelegate: AnyObject {
     // Actions
-    func otherCharCollectionView(_ otherCharCollectionView: OtherCharactersCollectionView, didSelectCharWithIndex index: Int)
+    func otherCharCollectionView(_ otherCharCollectionView: OtherCharactersCollectionView, didSelectCharWithIndexPath indexPath: IndexPath)
     
     // DataSource
     func otherCharCollectionView(_ otherCharCollectionView: OtherCharactersCollectionView, getCellsCountOf reuseIdentifier: String) -> Int?
-    func otherCharCollectionView(_ otherCharCollectionView: OtherCharactersCollectionView, getOtherCharCellModelWithIndex index: Int) -> HeroSeleсtingCellModel?
+    func otherCharCollectionView(_ otherCharCollectionView: OtherCharactersCollectionView, getOtherCharCellModelWithIndexPath indexPath: IndexPath) -> HeroCellModel?
 }
 
 final class OtherCharactersCollectionView: UICollectionView {
@@ -51,17 +51,7 @@ final class OtherCharactersCollectionView: UICollectionView {
 
 extension OtherCharactersCollectionView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        uiDelegate?.otherCharCollectionView(self, didSelectCharWithIndex: indexPath.row)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        guard let otherCharCell = cell as? CharImageViewCell else {
-            fatalError("TypeCasting Error: cell must be \(CharImageViewCell.self)")
-        }
-        
-        if let model = uiDelegate?.otherCharCollectionView(self, getOtherCharCellModelWithIndex: indexPath.row) {
-            otherCharCell.configure(with: model)
-        }
+        uiDelegate?.otherCharCollectionView(self, didSelectCharWithIndexPath: indexPath)
     }
 }
 
@@ -78,9 +68,15 @@ extension OtherCharactersCollectionView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueCell(cellType: CharImageViewCell.self, for: indexPath)
+        // Cell
+        let otherCharCell = collectionView.dequeueCell(cellType: CharImageViewCell.self, for: indexPath)
         
-        return cell
+        // Configure
+        if let model = uiDelegate?.otherCharCollectionView(self, getOtherCharCellModelWithIndexPath: indexPath) {
+            otherCharCell.configure(with: model)
+        }
+        
+        return otherCharCell
     }
 }
 

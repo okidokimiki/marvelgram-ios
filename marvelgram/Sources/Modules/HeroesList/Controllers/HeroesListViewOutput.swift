@@ -16,9 +16,15 @@ protocol HeroesListViewOutput {
     
     // Actions
     func handleDidLoadView()
-    func handleSelectingHeroCell(with index: Int)
+    func handleDidSelectingHeroCell(with indexPath: IndexPath)
+    func handleWillDisplayingHeroCell(with indexPath: IndexPath)
+    func handleDidShowingAnimationHeroCell(with result: Bool)
+    func handleDidPresentingSearchBar(with text: String)
+    func handleDidDismissingSearchBar(with text: String)
+    func handleUpdatingSearchResults(with text: String)
+    func handleTappingNavBarButton(with type: NavBarButtonType)
     
     // DataSource
-    func getHeroSelсtCellsCount() -> Int?
-    func getHeroSelсtCellModel(with index: Int) -> HeroSeleсtingCellModel
+    func getHeroSeleсtCellsCount() -> Int?
+    func getHeroSeleсtCellModel(with indexPath: IndexPath) -> HeroCellModel
 }

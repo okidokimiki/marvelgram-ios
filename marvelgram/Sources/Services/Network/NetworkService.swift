@@ -10,7 +10,14 @@ import Foundation
 final class NetworkService: Networkable {
     // MARK: - Private Properties
     
-    private let session = URLSession.shared
+    private let session: URLSession = {
+        let config: URLSessionConfiguration = .default
+        config.waitsForConnectivity = true
+        config.timeoutIntervalForRequest = 30
+        
+        return URLSession(configuration: config)
+    }()
+    
     private let decoder = JSONDecoder()
     
     // MARK: - Methods
@@ -38,36 +45,5 @@ final class NetworkService: Networkable {
         }
         
         downloadTask.resume()
-    }
-    
-    // Not used, but stored for my "tests"
-    func fetch<T: Codable>(with urlString: String, of type: T.Type, completion: @escaping JSONResponseHandler) {
-        guard let url = URL(string: urlString) else {
-            completion(.error(.invalidURL))
-            return
-        }
-        
-        let task = session.dataTask(with: url) { dataOrNil, responseOrNil, _ in
-            guard let fetchedData = dataOrNil else {
-                completion(.error(.dataIsNil))
-                return
-            }
-            
-            guard
-                let httpResponse = responseOrNil as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode)
-            else {
-                completion(.error(.badResponse(responseOrNil)))
-                return
-            }
-            
-            do {
-                let decodedData = try self.decoder.decode([T].self, from: fetchedData)
-                completion(.success(decodedData))
-            } catch {
-                completion(.error(.decodingError))
-            }
-        }
-        
-        task.resume()
     }
 }
