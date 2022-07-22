@@ -86,9 +86,9 @@ final class HeroesListView: UIView {
         
         switch direction {
         case .top:
-            contentOffset = .init(x: 0, y: heroesSeleсtingCollectionView.contentInset.top)
+            contentOffset = .init(x: .zero, y: heroesSeleсtingCollectionView.contentInset.top)
         case .bottom:
-            contentOffset = .init(x: 0, y: heroesSeleсtingCollectionView.bottomOffset)
+            contentOffset = .init(x: .zero, y: heroesSeleсtingCollectionView.bottomOffset)
         }
 
         heroesSeleсtingCollectionView.setContentOffset(contentOffset, animated: true)
