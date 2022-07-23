@@ -42,7 +42,6 @@ class CharImageViewCell: UICollectionViewCell {
         characterImageView.loadImage(from: model.url)
     }
     
-    
     // MARK: - Private Methods
     
     private func setupViews() {

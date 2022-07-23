@@ -16,6 +16,8 @@
 		0416813728785B1D00685EE8 /* IndexPath + zero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0416813628785B1D00685EE8 /* IndexPath + zero.swift */; };
 		04168139287AD9CC00685EE8 /* NavBarButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04168138287AD9CC00685EE8 /* NavBarButtonType.swift */; };
 		041D6536286EECAC008E5BD6 /* HeroesListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041D6535286EECAC008E5BD6 /* HeroesListCoordinator.swift */; };
+		043B91E2288C81E400143EBD /* CGRect + dividedComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043B91E1288C81E400143EBD /* CGRect + dividedComponent.swift */; };
+		043B91E4288C925300143EBD /* CGSize + square.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043B91E3288C925300143EBD /* CGSize + square.swift */; };
 		044018AC286F0BF500844035 /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044018AA286F0BF500844035 /* ModuleBuilder.swift */; };
 		044018AD286F0BF500844035 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044018AB286F0BF500844035 /* Coordinator.swift */; };
 		044018AF286F3E9700844035 /* UIColor + hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044018AE286F3E9700844035 /* UIColor + hex.swift */; };
@@ -80,6 +82,8 @@
 		0416813628785B1D00685EE8 /* IndexPath + zero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IndexPath + zero.swift"; sourceTree = "<group>"; };
 		04168138287AD9CC00685EE8 /* NavBarButtonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarButtonType.swift; sourceTree = "<group>"; };
 		041D6535286EECAC008E5BD6 /* HeroesListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesListCoordinator.swift; sourceTree = "<group>"; };
+		043B91E1288C81E400143EBD /* CGRect + dividedComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect + dividedComponent.swift"; sourceTree = "<group>"; };
+		043B91E3288C925300143EBD /* CGSize + square.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize + square.swift"; sourceTree = "<group>"; };
 		044018AA286F0BF500844035 /* ModuleBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModuleBuilder.swift; sourceTree = "<group>"; };
 		044018AB286F0BF500844035 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		044018AE286F3E9700844035 /* UIColor + hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + hex.swift"; sourceTree = "<group>"; };
@@ -175,6 +179,15 @@
 				041D6535286EECAC008E5BD6 /* HeroesListCoordinator.swift */,
 			);
 			path = Coordinating;
+			sourceTree = "<group>";
+		};
+		043B91E7288CA72100143EBD /* Core Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				043B91E3288C925300143EBD /* CGSize + square.swift */,
+				043B91E1288C81E400143EBD /* CGRect + dividedComponent.swift */,
+			);
+			path = "Core Graphics";
 			sourceTree = "<group>";
 		};
 		044018A9286F0BF500844035 /* Supporting Files */ = {
@@ -438,6 +451,7 @@
 			isa = PBXGroup;
 			children = (
 				040215662886F79D0099102A /* UIKit */,
+				043B91E7288CA72100143EBD /* Core Graphics */,
 				040215672886F7C10099102A /* Foundation */,
 			);
 			path = Extensions;
@@ -569,6 +583,7 @@
 				04C5C1E128516C810096D272 /* HeroDetailsViewModuleBuilder.swift in Sources */,
 				04C5C1A5284FDD890096D272 /* HeroesSeleсtingCollectionView.swift in Sources */,
 				047633D4288A939A003DC450 /* ScrollDirection.swift in Sources */,
+				043B91E2288C81E400143EBD /* CGRect + dividedComponent.swift in Sources */,
 				04643365286EF35C007EDCFD /* HeroDetailsCoordinator.swift in Sources */,
 				04FE0A33284FC99F00839CBF /* HeroesListModuleBuilder.swift in Sources */,
 				04FE0A21284FC90A00839CBF /* HeroesListViewController.swift in Sources */,
@@ -620,6 +635,7 @@
 				04C5C1A1284FDA5D0096D272 /* HeroesListViewOutput.swift in Sources */,
 				04C5C19F284FDA3D0096D272 /* HeroesListPresenter.swift in Sources */,
 				04B43070286B81AE00BD4904 /* HeroesRepositorieble.swift in Sources */,
+				043B91E4288C925300143EBD /* CGSize + square.swift in Sources */,
 				04AA97AE287390AE007775C0 /* API.swift in Sources */,
 				047633D6288A9A82003DC450 /* String + sanitized.swift in Sources */,
 				0402156928875C420099102A /* HeroCellAlpha.swift in Sources */,
