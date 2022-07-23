@@ -155,7 +155,7 @@ final class InstaGridFlowLayout: UICollectionViewFlowLayout {
     
     // MARK: - Private Methods
     
-    func binSearch(_ rect: CGRect, start: Int, end: Int) -> Int? {
+    private func binSearch(_ rect: CGRect, start: Int, end: Int) -> Int? {
         if end < start { return nil }
         
         let mid = (start + end) / 2
