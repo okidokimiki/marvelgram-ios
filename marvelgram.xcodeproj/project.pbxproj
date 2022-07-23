@@ -184,8 +184,8 @@
 		043B91E7288CA72100143EBD /* Core Graphics */ = {
 			isa = PBXGroup;
 			children = (
-				043B91E3288C925300143EBD /* CGSize + square.swift */,
 				043B91E1288C81E400143EBD /* CGRect + dividedComponent.swift */,
+				043B91E3288C925300143EBD /* CGSize + square.swift */,
 			);
 			path = "Core Graphics";
 			sourceTree = "<group>";
