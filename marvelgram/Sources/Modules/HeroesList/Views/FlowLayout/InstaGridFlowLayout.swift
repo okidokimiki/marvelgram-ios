@@ -86,7 +86,7 @@ final class InstaGridFlowLayout: UICollectionViewFlowLayout {
                 let verticalSlices = horizontalSlices.second.dividedIntegral(fraction: 0.5, from: .minYEdge)
                 segmentRects = [horizontalSlices.first, verticalSlices.first, verticalSlices.second]
             case .tripleOneThird:
-                let size = segmentFrame.width / 3.0 - 1
+                let size = segmentFrame.width / 3.0 - 1.0
                 let square = CGSize.square(with: size)
                 let rect1 = CGRect(origin: CGPoint(x: segmentFrame.width - size, y: lastFrame.maxY + 1), size: square)
                 let rect2 = CGRect(origin: CGPoint(x: rect1.minX - 1 - size, y: lastFrame.maxY + 1), size: square)
@@ -138,7 +138,7 @@ final class InstaGridFlowLayout: UICollectionViewFlowLayout {
         var attributesArray: [UICollectionViewLayoutAttributes] = []
         
         guard let lastIndex = cachedAttributes.indices.last,
-              let firstMatchIndex = binSearch(rect, start: 0, end: lastIndex) else { return attributesArray }
+              let firstMatchIndex = binSearch(rect, start: .zero, end: lastIndex) else { return attributesArray }
         
         for attributes in cachedAttributes[..<firstMatchIndex].reversed() {
             guard attributes.frame.maxY >= rect.minY else { break }
