@@ -10,7 +10,7 @@
  https://developer.apple.com/documentation/uikit/views_and_controls/collection_views/layouts/customizing_collection_view_layouts
  
  They don`t consider the option with three equal cells in a row (look at cells by number №3, 4, 5 and 9, 10, 11).
- So I found a solution analogous little bit corrected it:
+ So, I found a similar solution and fixed it a bit:
  
          Layout                Segments             Mosaic`s parts
  ╔═════════════╦══════╗ +--------------------+ +----------------------+
