@@ -86,9 +86,9 @@ final class HeroesListView: UIView {
         
         switch direction {
         case .top:
-            contentOffset = .init(x: 0, y: heroesSeleсtingCollectionView.contentInset.top)
+            contentOffset = .init(x: .zero, y: heroesSeleсtingCollectionView.contentInset.top)
         case .bottom:
-            contentOffset = .init(x: 0, y: heroesSeleсtingCollectionView.bottomOffset)
+            contentOffset = .init(x: .zero, y: heroesSeleсtingCollectionView.bottomOffset)
         }
 
         heroesSeleсtingCollectionView.setContentOffset(contentOffset, animated: true)
@@ -113,8 +113,7 @@ final class HeroesListView: UIView {
     // MARK: - Creating Subviews
     
     private func makeHeroesSeleсtingCollectionView(uiDelegate: HeroesSeleсtingCollectionViewUiDelegate) -> HeroesSeleсtingCollectionView {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
+        let layout = InstaGridFlowLayout()
         
         let collectionView = HeroesSeleсtingCollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.uiDelegate = uiDelegate
