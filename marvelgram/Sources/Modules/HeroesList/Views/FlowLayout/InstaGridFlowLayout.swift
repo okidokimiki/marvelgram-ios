@@ -49,7 +49,7 @@ final class InstaGridFlowLayout: UICollectionViewFlowLayout {
     // MARK: - Private Properties
     
     private var cachedAttributes: [UICollectionViewLayoutAttributes] = []
-    private var contentBounds: CGRect = .zero
+    private var contentBounds = CGRect()
     private var isHalfMosaic = Bool()
     
     // MARK: - Override Properties
