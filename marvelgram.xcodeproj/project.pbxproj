@@ -34,6 +34,12 @@
 		04BA1D9F28954AE400585726 /* HeroDetailsViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA1D9E28954AE400585726 /* HeroDetailsViewOutput.swift */; };
 		04BA1DA128954B0200585726 /* HeroDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA1DA028954B0200585726 /* HeroDetailsViewController.swift */; };
 		04BA1DA328954B2600585726 /* HeroDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA1DA228954B2600585726 /* HeroDetailsView.swift */; };
+		04BA1DAA2895564F00585726 /* HeroesSeleсtingCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA1DA92895564F00585726 /* HeroesSeleсtingCollectionView.swift */; };
+		04BA1DAE2895567E00585726 /* HeroImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA1DAD2895567E00585726 /* HeroImageViewCell.swift */; };
+		04BA1DB02895573400585726 /* UICollectionView+ReuseId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA1DAF2895573400585726 /* UICollectionView+ReuseId.swift */; };
+		04BA1DB22895574E00585726 /* ReuseIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA1DB12895574E00585726 /* ReuseIdentifiable.swift */; };
+		04BA1DB528955AAD00585726 /* DefaultGridFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA1DB428955AAD00585726 /* DefaultGridFlowLayout.swift */; };
+		04BA1DB828955B5E00585726 /* MarvelBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA1DB728955B5E00585726 /* MarvelBarButtonItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +72,12 @@
 		04BA1D9E28954AE400585726 /* HeroDetailsViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailsViewOutput.swift; sourceTree = "<group>"; };
 		04BA1DA028954B0200585726 /* HeroDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailsViewController.swift; sourceTree = "<group>"; };
 		04BA1DA228954B2600585726 /* HeroDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailsView.swift; sourceTree = "<group>"; };
+		04BA1DA92895564F00585726 /* HeroesSeleсtingCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HeroesSeleсtingCollectionView.swift"; sourceTree = "<group>"; };
+		04BA1DAD2895567E00585726 /* HeroImageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroImageViewCell.swift; sourceTree = "<group>"; };
+		04BA1DAF2895573400585726 /* UICollectionView+ReuseId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+ReuseId.swift"; sourceTree = "<group>"; };
+		04BA1DB12895574E00585726 /* ReuseIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseIdentifiable.swift; sourceTree = "<group>"; };
+		04BA1DB428955AAD00585726 /* DefaultGridFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultGridFlowLayout.swift; sourceTree = "<group>"; };
+		04BA1DB728955B5E00585726 /* MarvelBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelBarButtonItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +141,7 @@
 		04BA1D8A289549A600585726 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				04BA1DB12895574E00585726 /* ReuseIdentifiable.swift */,
 				04BA1D682895440500585726 /* ModuleBuilder.swift */,
 				04BA1D64289543DE00585726 /* Coordinator.swift */,
 			);
@@ -171,6 +184,7 @@
 		04BA1D8E289549DF00585726 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				04BA1DAF2895573400585726 /* UICollectionView+ReuseId.swift */,
 				04BA1D822895465E00585726 /* UIImage+Assets.swift */,
 				04BA1D78289545AD00585726 /* UIColor+Hex.swift */,
 			);
@@ -182,6 +196,7 @@
 			children = (
 				04BA1D892895499A00585726 /* HeroesList */,
 				04BA1D9028954A0800585726 /* HeroDetails */,
+				04BA1DB3289557EE00585726 /* ReusebleViews */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -226,8 +241,8 @@
 		04BA1D9428954A3100585726 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				04BA1D6A2895443E00585726 /* HeroesListViewController.swift */,
 				04BA1D84289548AF00585726 /* HeroesListViewOutput.swift */,
+				04BA1D6A2895443E00585726 /* HeroesListViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -236,6 +251,8 @@
 			isa = PBXGroup;
 			children = (
 				04BA1D6C2895446900585726 /* HeroesListView.swift */,
+				04BA1DB928955B7B00585726 /* Subviews */,
+				04BA1DB628955B4F00585726 /* FlowLayout */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -280,6 +297,31 @@
 				04BA1DA228954B2600585726 /* HeroDetailsView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		04BA1DB3289557EE00585726 /* ReusebleViews */ = {
+			isa = PBXGroup;
+			children = (
+				04BA1DAD2895567E00585726 /* HeroImageViewCell.swift */,
+			);
+			path = ReusebleViews;
+			sourceTree = "<group>";
+		};
+		04BA1DB628955B4F00585726 /* FlowLayout */ = {
+			isa = PBXGroup;
+			children = (
+				04BA1DB428955AAD00585726 /* DefaultGridFlowLayout.swift */,
+			);
+			path = FlowLayout;
+			sourceTree = "<group>";
+		};
+		04BA1DB928955B7B00585726 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				04BA1DB728955B5E00585726 /* MarvelBarButtonItem.swift */,
+				04BA1DA92895564F00585726 /* HeroesSeleсtingCollectionView.swift */,
+			);
+			path = Subviews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -379,7 +421,9 @@
 				04BA1DA328954B2600585726 /* HeroDetailsView.swift in Sources */,
 				04BA1D65289543DE00585726 /* Coordinator.swift in Sources */,
 				04BA1D712895456800585726 /* AppColor.swift in Sources */,
+				04BA1DB528955AAD00585726 /* DefaultGridFlowLayout.swift in Sources */,
 				04BA1D67289543F700585726 /* HeroesListModuleBuilder.swift in Sources */,
+				04BA1DB02895573400585726 /* UICollectionView+ReuseId.swift in Sources */,
 				04BA1D9728954A6900585726 /* HeroDetailsViewModuleBuilder.swift in Sources */,
 				04BA1D63289543BE00585726 /* HeroesListCoordinator.swift in Sources */,
 				04BA1D752895457C00585726 /* AppFont.swift in Sources */,
@@ -388,17 +432,21 @@
 				04BA1D6B2895443E00585726 /* HeroesListViewController.swift in Sources */,
 				04BA1D9928954A8300585726 /* HeroDetailsCoordinator.swift in Sources */,
 				04BA1D772895458B00585726 /* AppLocalize.swift in Sources */,
+				04BA1DB828955B5E00585726 /* MarvelBarButtonItem.swift in Sources */,
 				04BA1D79289545AD00585726 /* UIColor+Hex.swift in Sources */,
 				04BA1D6F2895448A00585726 /* HeroesListViewInput.swift in Sources */,
 				04BA1D9D28954ABA00585726 /* HeroDetailsPresenter.swift in Sources */,
 				04BA1D9B28954AAE00585726 /* HeroDetailsViewInput.swift in Sources */,
 				04BA1DA128954B0200585726 /* HeroDetailsViewController.swift in Sources */,
 				04755ED0289542DC00F45BE0 /* AppDelegate.swift in Sources */,
+				04BA1DAE2895567E00585726 /* HeroImageViewCell.swift in Sources */,
 				04BA1D832895465E00585726 /* UIImage+Assets.swift in Sources */,
 				04BA1D692895440500585726 /* ModuleBuilder.swift in Sources */,
+				04BA1DB22895574E00585726 /* ReuseIdentifiable.swift in Sources */,
 				04BA1D87289548E100585726 /* HeroesListPresenter.swift in Sources */,
 				04BA1D9F28954AE400585726 /* HeroDetailsViewOutput.swift in Sources */,
 				04BA1D85289548AF00585726 /* HeroesListViewOutput.swift in Sources */,
+				04BA1DAA2895564F00585726 /* HeroesSeleсtingCollectionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
