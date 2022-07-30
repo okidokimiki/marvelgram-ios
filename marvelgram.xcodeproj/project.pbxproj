@@ -40,6 +40,10 @@
 		04BA1DB22895574E00585726 /* ReuseIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA1DB12895574E00585726 /* ReuseIdentifiable.swift */; };
 		04BA1DB528955AAD00585726 /* DefaultGridFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA1DB428955AAD00585726 /* DefaultGridFlowLayout.swift */; };
 		04BA1DB828955B5E00585726 /* MarvelBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA1DB728955B5E00585726 /* MarvelBarButtonItem.swift */; };
+		04BA1DBB289560C500585726 /* TopAlignedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA1DBA289560C500585726 /* TopAlignedLabel.swift */; };
+		04BA1DBE289560F700585726 /* OtherHeroesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA1DBD289560F700585726 /* OtherHeroesCollectionView.swift */; };
+		04BA1DC02895637600585726 /* BackBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA1DBF2895637600585726 /* BackBarButtonItem.swift */; };
+		04BA1DC22895643900585726 /* UILabel+InterlineSpacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA1DC12895643900585726 /* UILabel+InterlineSpacing.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +82,10 @@
 		04BA1DB12895574E00585726 /* ReuseIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseIdentifiable.swift; sourceTree = "<group>"; };
 		04BA1DB428955AAD00585726 /* DefaultGridFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultGridFlowLayout.swift; sourceTree = "<group>"; };
 		04BA1DB728955B5E00585726 /* MarvelBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelBarButtonItem.swift; sourceTree = "<group>"; };
+		04BA1DBA289560C500585726 /* TopAlignedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopAlignedLabel.swift; sourceTree = "<group>"; };
+		04BA1DBD289560F700585726 /* OtherHeroesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherHeroesCollectionView.swift; sourceTree = "<group>"; };
+		04BA1DBF2895637600585726 /* BackBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackBarButtonItem.swift; sourceTree = "<group>"; };
+		04BA1DC12895643900585726 /* UILabel+InterlineSpacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+InterlineSpacing.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				04BA1DAF2895573400585726 /* UICollectionView+ReuseId.swift */,
+				04BA1DC12895643900585726 /* UILabel+InterlineSpacing.swift */,
 				04BA1D822895465E00585726 /* UIImage+Assets.swift */,
 				04BA1D78289545AD00585726 /* UIColor+Hex.swift */,
 			);
@@ -295,6 +304,7 @@
 			isa = PBXGroup;
 			children = (
 				04BA1DA228954B2600585726 /* HeroDetailsView.swift */,
+				04BA1DBC289560D100585726 /* Subviews */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -320,6 +330,16 @@
 			children = (
 				04BA1DB728955B5E00585726 /* MarvelBarButtonItem.swift */,
 				04BA1DA92895564F00585726 /* HeroesSeleсtingCollectionView.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
+		04BA1DBC289560D100585726 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				04BA1DBA289560C500585726 /* TopAlignedLabel.swift */,
+				04BA1DBF2895637600585726 /* BackBarButtonItem.swift */,
+				04BA1DBD289560F700585726 /* OtherHeroesCollectionView.swift */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
@@ -419,7 +439,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				04BA1DA328954B2600585726 /* HeroDetailsView.swift in Sources */,
+				04BA1DBB289560C500585726 /* TopAlignedLabel.swift in Sources */,
 				04BA1D65289543DE00585726 /* Coordinator.swift in Sources */,
+				04BA1DC02895637600585726 /* BackBarButtonItem.swift in Sources */,
 				04BA1D712895456800585726 /* AppColor.swift in Sources */,
 				04BA1DB528955AAD00585726 /* DefaultGridFlowLayout.swift in Sources */,
 				04BA1D67289543F700585726 /* HeroesListModuleBuilder.swift in Sources */,
@@ -430,9 +452,11 @@
 				04BA1D61289543AD00585726 /* AppCoordinator.swift in Sources */,
 				04BA1D6D2895446900585726 /* HeroesListView.swift in Sources */,
 				04BA1D6B2895443E00585726 /* HeroesListViewController.swift in Sources */,
+				04BA1DBE289560F700585726 /* OtherHeroesCollectionView.swift in Sources */,
 				04BA1D9928954A8300585726 /* HeroDetailsCoordinator.swift in Sources */,
 				04BA1D772895458B00585726 /* AppLocalize.swift in Sources */,
 				04BA1DB828955B5E00585726 /* MarvelBarButtonItem.swift in Sources */,
+				04BA1DC22895643900585726 /* UILabel+InterlineSpacing.swift in Sources */,
 				04BA1D79289545AD00585726 /* UIColor+Hex.swift in Sources */,
 				04BA1D6F2895448A00585726 /* HeroesListViewInput.swift in Sources */,
 				04BA1D9D28954ABA00585726 /* HeroDetailsPresenter.swift in Sources */,

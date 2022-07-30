@@ -31,18 +31,18 @@ final class HeroesListView: UIView {
     }
     
     // MARK: - Creating Subviews
-
+    
     private func makeHeroesSeleсtingCollectionView(
         _ actionDelegate: HeroesSeleсtingCollectionViewActionDelegate,
         _ dataSourceDelegate: HeroesSeleсtingCollectionViewDataSourceDelegate) -> HeroesSeleсtingCollectionView {
-        let layout = DefaultGridFlowLayout()
-        
-        let collectionView = HeroesSeleсtingCollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.actionDelegate = actionDelegate
-        collectionView.dataSourceDelegate = dataSourceDelegate
-        
-        return collectionView
-    }
+            let layout = DefaultGridFlowLayout()
+            
+            let collectionView = HeroesSeleсtingCollectionView(frame: .zero, collectionViewLayout: layout)
+            collectionView.actionDelegate = actionDelegate
+            collectionView.dataSourceDelegate = dataSourceDelegate
+            
+            return collectionView
+        }
     
     // MARK: - AutoLayout
     
