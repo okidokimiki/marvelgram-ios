@@ -17,4 +17,7 @@ final class HeroesListPresenter {
 // MARK: - ViewOutput
 
 extension HeroesListPresenter: HeroesListViewOutput {
+    func handleTappingNavBarButton(with type: NavBarButtonType) {
+        print("did tap NavBarButton with type: \(type)")
+    }
 }

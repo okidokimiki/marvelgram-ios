@@ -12,6 +12,24 @@ final class HeroesListViewController: UIViewController {
         return castedView
     }
     
+    private let marvelNavBarButton: MarvelBarButtonItem = {
+        MarvelBarButtonItem()
+    }()
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nil, bundle: nil)
+        
+        marvelNavBarButton.delegate = self
+        navigationItem.leftBarButtonItem = marvelNavBarButton
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        
+        marvelNavBarButton.delegate = self
+        navigationItem.leftBarButtonItem = marvelNavBarButton
+    }
+    
     override func loadView() {
         let view = HeroesListView()
         view.uiDelegate = self
@@ -22,6 +40,14 @@ final class HeroesListViewController: UIViewController {
 // MARK: - UiDelegate
 
 extension HeroesListViewController: HeroesListViewUiDelegate {
+}
+
+// MARK: - NavBarButtonDelegate
+
+extension HeroesListViewController: NavBarButtonItemDelegate {
+    func navBarButtonItem(_ navBarButtonItem: UIBarButtonItem, didTapNavBarButtonWithType type: NavBarButtonType) {
+        presenter?.handleTappingNavBarButton(with: type)
+    }
 }
 
 // MARK: - ViewInput
