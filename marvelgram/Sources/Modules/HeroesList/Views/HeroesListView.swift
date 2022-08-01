@@ -47,6 +47,25 @@ final class HeroesListView: UIView {
         heroesSeleсtingCollectionView.reloadData()
     }
     
+    func scrollCollectionView(to direction: ScrollDirection) {
+        var contentOffset: CGPoint = .zero
+        
+        switch direction {
+        case .top:
+            contentOffset = .init(x: .zero, y: heroesSeleсtingCollectionView.contentInset.top)
+        case .bottom:
+            contentOffset = .init(x: .zero, y: heroesSeleсtingCollectionView.bottomOffset)
+        }
+
+        heroesSeleсtingCollectionView.setContentOffset(contentOffset, animated: true)
+    }
+    
+    func moveUpCell(with indexPath: IndexPath) {
+        heroesSeleсtingCollectionView.performBatchUpdates {
+            self.heroesSeleсtingCollectionView.moveItem(at: indexPath, to: .zero)
+        }
+    }
+    
     private func setupUI() {
         addSubviews()
         setupAutoLayout()

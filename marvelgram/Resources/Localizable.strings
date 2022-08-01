@@ -1,3 +1,6 @@
+// HeroesList
+"searchPlaceholder.text" = "Search";
+
 // HeroDetails
 "exploreMore.title" = "Explore more";
 "description.text" = "Sorry No Results Found!";

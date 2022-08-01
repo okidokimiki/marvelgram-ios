@@ -7,6 +7,8 @@ final class HeroesListPresenter {
     private let repository: HeroesRepository
     private let coordinator: HeroesListCoordinator
     
+    private var isSearchModeEnabled = false
+    
     required init(
         view: HeroesListViewInput,
         dataSource: HeroesListDataSource,
@@ -59,6 +61,33 @@ extension HeroesListPresenter: HeroesListViewOutput {
     
     func handleTappingNavBarButton(with type: NavBarButtonType) {
         print("did tap NavBarButton with type: \(type)")
+    }
+    
+    func handleDidPresentingSearchBar(with text: String) {
+        isSearchModeEnabled = true
+    }
+    
+    func handleDidDismissingSearchBar(with text: String) {
+        isSearchModeEnabled = false
+    }
+    
+    func handleUpdatingSearchResults(with text: String) {
+        guard !text.isEmpty else { return }
+        for (index, hero) in dataSource.heroCellModels.enumerated() {
+            let heroLowercased = hero.name.replacingOccurrences(with: ["-"])
+            let textLowercased = text.replacingOccurrences(with: ["-"])
+            
+            if heroLowercased.contains(textLowercased) {
+                view?.scrollCollectionView(to: .top)
+                
+                let detectedModel = dataSource.heroCellModels[index]
+                dataSource.heroCellModels.remove(at: index)
+                dataSource.heroCellModels.insert(detectedModel, at: .zero)
+                
+                view?.moveUpCell(with: IndexPath(item: index, section: .zero))
+                return
+            }
+        }
     }
     
     // - DataSource
