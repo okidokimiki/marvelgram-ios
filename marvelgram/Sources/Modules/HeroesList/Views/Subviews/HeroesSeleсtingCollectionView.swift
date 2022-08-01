@@ -2,6 +2,7 @@ import UIKit
 
 protocol HeroesSeleсtingCollectionViewActionDelegate: AnyObject {
     func heroesSeleсtingCollectionView(_ heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView, didSelectHeroWith indexPath: IndexPath)
+    func heroesSeleсtingCollectionView(_ heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView, willDisplayHeroWith indexPath: IndexPath)
 }
 
 protocol HeroesSeleсtingCollectionViewDataSourceDelegate: AnyObject {
@@ -52,6 +53,10 @@ final class HeroesSeleсtingCollectionView: UICollectionView {
 extension HeroesSeleсtingCollectionView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         actionDelegate?.heroesSeleсtingCollectionView(self, didSelectHeroWith: indexPath)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        actionDelegate?.heroesSeleсtingCollectionView(self, willDisplayHeroWith: indexPath)
     }
 }
 

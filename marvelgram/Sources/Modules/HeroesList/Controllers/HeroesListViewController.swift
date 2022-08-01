@@ -70,6 +70,14 @@ extension HeroesListViewController: HeroesListViewUiDelegate {
         presenter?.handleDidSelectingHeroCell(with: indexPath)
     }
     
+    func heroesListView(_ heroesListView: HeroesListView, didMoveUpHeroWithAnimationResult result: Bool) {
+        presenter?.handleDidMovingUpAnimationHeroCell(with: result)
+    }
+    
+    func heroesListView(_ heroesListView: HeroesListView, willDisplayHeroWithIndexPath indexPath: IndexPath) {
+        presenter?.handleWillDisplayingHeroCell(with: indexPath)
+    }
+    
     // - DataSource
     func heroesListView(_ heroesListView: HeroesListView, getCellsCountOf reuseIdentifier: String) -> Int? {
         presenter?.getHeroCellsCount()
@@ -123,5 +131,13 @@ extension HeroesListViewController: HeroesListViewInput {
     
     func moveUpCell(with indexPath: IndexPath) {
         heroesListView.moveUpCell(with: indexPath)
+    }
+    
+    func setAlphaForEachVisibleCells(alpha: HeroCellAlpha) {
+        heroesListView.setAlphaForEachVisibleCells(alpha: alpha)
+    }
+    
+    func setAlphaForCell(with indexPath: IndexPath, alpha: HeroCellAlpha) {
+        heroesListView.setAlphaForCell(with: indexPath, alpha: alpha)
     }
 }
