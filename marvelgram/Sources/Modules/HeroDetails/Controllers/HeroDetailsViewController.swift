@@ -16,22 +16,22 @@ final class HeroDetailsViewController: UIViewController {
         BackBarButtonItem()
     }()
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nil, bundle: nil)
-        
-        setupNavController()
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        
-        setupNavController()
-    }
-    
     override func loadView() {
         let view = HeroDetailsView()
         view.uiDelegate = self
         self.view = view
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        presenter?.handleWillAppearingView()
     }
     
     override func viewDidLayoutSubviews() {
@@ -40,30 +40,45 @@ final class HeroDetailsViewController: UIViewController {
         presenter?.handleDidLayoutSubviews()
     }
     
-    private func setupNavController() {
+    private func setupNavController(with model: HeroCellModel?) {
         let appearance = UINavigationBar.appearance()
         let attributes = [
             NSAttributedString.Key.font: AppFont.SFPro.regular17,
             NSAttributedString.Key.foregroundColor: AppColor.GlobalColor.font
         ]
-        
-        // Title
-        title = "Title"
+
+        // - Title
+        title = model?.name
         appearance.titleTextAttributes = attributes
-        
-        // NavigationBar
-        navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
     }
 }
 
 // MARK: - UiDelegate
 
 extension HeroDetailsViewController: HeroDetailsViewUiDelegate {
+    // Actions
+    func heroDetailsView(_ heroDetailsView: HeroDetailsView, didSelectHeroCellWith indexPath: IndexPath) {
+        presenter?.handleDidSelectingHeroCell(with: indexPath)
+    }
+    
+    // DataSource
+    func heroDetailsView(_ heroDetailsView: HeroDetailsView, getOtherHeroCellModelWith indexPath: IndexPath) -> HeroCellModel? {
+        presenter?.getOtherHeroCellModel(with: indexPath)
+    }
+    
+    func heroDetailsView(_ heroDetailsView: HeroDetailsView, getCellsCountOf reuseIdentifier: String) -> Int? {
+        presenter?.getOtherHeroCellsCount()
+    }
 }
 
 // MARK: - ViewInput
 
 extension HeroDetailsViewController: HeroDetailsViewInput {
+    func updateUI(with model: HeroCellModel?) {
+        setupNavController(with: model)
+        heroDetailsView.updateUI(with: model)
+    }
+    
     func finishLayoutSubviews() {
         heroDetailsView.finishLayoutSubviews()
     }

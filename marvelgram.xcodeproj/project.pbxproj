@@ -55,6 +55,7 @@
 		04BA1DDB289808B200585726 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA1DDA289808B200585726 /* ImageLoader.swift */; };
 		04BA1DDD289808CC00585726 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA1DDC289808CC00585726 /* ImageCache.swift */; };
 		04BA1DE028985EF900585726 /* HeroesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA1DDF28985EF900585726 /* HeroesRepository.swift */; };
+		04BA1DE6289869E600585726 /* HeroDetailsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA1DE5289869E600585726 /* HeroDetailsDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -108,6 +109,7 @@
 		04BA1DDA289808B200585726 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		04BA1DDC289808CC00585726 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		04BA1DDF28985EF900585726 /* HeroesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesRepository.swift; sourceTree = "<group>"; };
+		04BA1DE5289869E600585726 /* HeroDetailsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailsDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				04BA1DA428954B7A00585726 /* Assembly */,
+				04BA1DE728986A1300585726 /* DataSource */,
 				04BA1DA528954B7E00585726 /* Coordinating */,
 				04BA1DA628954B8800585726 /* Presenters */,
 				04BA1DA728954B9000585726 /* Controllers */,
@@ -434,6 +437,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		04BA1DE728986A1300585726 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				04BA1DE5289869E600585726 /* HeroDetailsDataSource.swift */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -543,6 +554,7 @@
 				04BA1D61289543AD00585726 /* AppCoordinator.swift in Sources */,
 				04BA1D6D2895446900585726 /* HeroesListView.swift in Sources */,
 				04BA1DDB289808B200585726 /* ImageLoader.swift in Sources */,
+				04BA1DE6289869E600585726 /* HeroDetailsDataSource.swift in Sources */,
 				04BA1D6B2895443E00585726 /* HeroesListViewController.swift in Sources */,
 				04BA1DBE289560F700585726 /* OtherHeroesCollectionView.swift in Sources */,
 				04BA1DCD2895848600585726 /* NetworkError.swift in Sources */,

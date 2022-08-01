@@ -1,7 +1,10 @@
 import UIKit
 
 protocol HeroesListViewUiDelegate: AnyObject {
-    // DataSource
+    // - Actions
+    func heroesListView(_ heroesListView: HeroesListView, didSelectHeroWithIndexPath indexPath: IndexPath)
+    
+    // - DataSource
     func heroesListView(_ heroesListView: HeroesListView, getCellsCountOf reuseIdentifier: String) -> Int?
     func heroesListView(_ heroesListView: HeroesListView, getHeroCellModelWithIndexPath indexPath: IndexPath) -> HeroCellModel?
 }
@@ -97,6 +100,9 @@ final class HeroesListView: UIView {
 // MARK: - ActionDelegate
 
 extension HeroesListView: HeroesSeleсtingCollectionViewActionDelegate {
+    func heroesSeleсtingCollectionView(_ heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView, didSelectHeroWith indexPath: IndexPath) {
+        uiDelegate?.heroesListView(self, didSelectHeroWithIndexPath: indexPath)
+    }
 }
 
 // MARK: - DataSourceDelegate

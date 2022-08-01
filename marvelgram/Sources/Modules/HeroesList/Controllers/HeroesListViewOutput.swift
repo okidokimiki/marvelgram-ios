@@ -9,9 +9,10 @@ protocol HeroesListViewOutput {
     
     // - Actions
     func handleDidLoadView()
+    func handleDidSelectingHeroCell(with indexPath: IndexPath)
     func handleTappingNavBarButton(with type: NavBarButtonType)
     
-    // - Actions
+    // - DataSource
     func getHeroCellsCount() -> Int?
     func getHeroCellModel(with indexPath: IndexPath) -> HeroCellModel?
 }
