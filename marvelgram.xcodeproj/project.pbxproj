@@ -56,6 +56,9 @@
 		04BA1DDD289808CC00585726 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA1DDC289808CC00585726 /* ImageCache.swift */; };
 		04BA1DE028985EF900585726 /* HeroesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA1DDF28985EF900585726 /* HeroesRepository.swift */; };
 		04BA1DE6289869E600585726 /* HeroDetailsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA1DE5289869E600585726 /* HeroDetailsDataSource.swift */; };
+		04BA1DE92898867A00585726 /* HeroSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA1DE82898867A00585726 /* HeroSearchController.swift */; };
+		04BA1DEB2898887100585726 /* String+ReplacingOccurrences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA1DEA2898887100585726 /* String+ReplacingOccurrences.swift */; };
+		04BA1DEE2898888600585726 /* IndexPath+Zero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA1DED2898888600585726 /* IndexPath+Zero.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -110,6 +113,9 @@
 		04BA1DDC289808CC00585726 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		04BA1DDF28985EF900585726 /* HeroesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesRepository.swift; sourceTree = "<group>"; };
 		04BA1DE5289869E600585726 /* HeroDetailsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailsDataSource.swift; sourceTree = "<group>"; };
+		04BA1DE82898867A00585726 /* HeroSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroSearchController.swift; sourceTree = "<group>"; };
+		04BA1DEA2898887100585726 /* String+ReplacingOccurrences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+ReplacingOccurrences.swift"; sourceTree = "<group>"; };
+		04BA1DED2898888600585726 /* IndexPath+Zero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IndexPath+Zero.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				04BA1D8E289549DF00585726 /* UIKit */,
+				04BA1DEC2898887600585726 /* Foundation */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -279,6 +286,7 @@
 			children = (
 				04BA1D84289548AF00585726 /* HeroesListViewOutput.swift */,
 				04BA1D6A2895443E00585726 /* HeroesListViewController.swift */,
+				04BA1DE82898867A00585726 /* HeroSearchController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -445,6 +453,15 @@
 			path = DataSource;
 			sourceTree = "<group>";
 		};
+		04BA1DEC2898887600585726 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				04BA1DEA2898887100585726 /* String+ReplacingOccurrences.swift */,
+				04BA1DED2898888600585726 /* IndexPath+Zero.swift */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -544,6 +561,7 @@
 				04BA1D65289543DE00585726 /* Coordinator.swift in Sources */,
 				04BA1DC02895637600585726 /* BackBarButtonItem.swift in Sources */,
 				04BA1D712895456800585726 /* AppColor.swift in Sources */,
+				04BA1DE92898867A00585726 /* HeroSearchController.swift in Sources */,
 				04BA1DB528955AAD00585726 /* DefaultGridFlowLayout.swift in Sources */,
 				04BA1D67289543F700585726 /* HeroesListModuleBuilder.swift in Sources */,
 				04BA1DB02895573400585726 /* UICollectionView+ReuseId.swift in Sources */,
@@ -553,6 +571,7 @@
 				04BA1D752895457C00585726 /* AppFont.swift in Sources */,
 				04BA1D61289543AD00585726 /* AppCoordinator.swift in Sources */,
 				04BA1D6D2895446900585726 /* HeroesListView.swift in Sources */,
+				04BA1DEE2898888600585726 /* IndexPath+Zero.swift in Sources */,
 				04BA1DDB289808B200585726 /* ImageLoader.swift in Sources */,
 				04BA1DE6289869E600585726 /* HeroDetailsDataSource.swift in Sources */,
 				04BA1D6B2895443E00585726 /* HeroesListViewController.swift in Sources */,
@@ -561,6 +580,7 @@
 				04BA1D9928954A8300585726 /* HeroDetailsCoordinator.swift in Sources */,
 				04BA1D772895458B00585726 /* AppLocalize.swift in Sources */,
 				04BA1DC42895841D00585726 /* Hero.swift in Sources */,
+				04BA1DEB2898887100585726 /* String+ReplacingOccurrences.swift in Sources */,
 				04BA1DB828955B5E00585726 /* MarvelBarButtonItem.swift in Sources */,
 				04BA1DC22895643900585726 /* UILabel+InterlineSpacing.swift in Sources */,
 				04BA1D79289545AD00585726 /* UIColor+Hex.swift in Sources */,
