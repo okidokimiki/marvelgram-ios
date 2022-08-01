@@ -1,6 +1,9 @@
 import UIKit
 
 protocol HeroesListViewUiDelegate: AnyObject {
+    // DataSource
+    func heroesListView(_ heroesListView: HeroesListView, getCellsCountOf reuseIdentifier: String) -> Int?
+    func heroesListView(_ heroesListView: HeroesListView, getHeroCellModelWithIndexPath indexPath: IndexPath) -> HeroCellModel?
 }
 
 final class HeroesListView: UIView {
@@ -9,6 +12,10 @@ final class HeroesListView: UIView {
     
     private lazy var heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView = {
         makeHeroesSeleсtingCollectionView(self, self)
+    }()
+    
+    private let launchActivityIndicatorView: UIActivityIndicatorView = {
+        RemovebleActivityIndicatorView(frame: .zero)
     }()
     
     override init(frame: CGRect) {
@@ -25,9 +32,31 @@ final class HeroesListView: UIView {
         setupUI()
     }
     
+    func showlaunchActivityIndicator(_ show: Bool) {
+        if show {
+            launchActivityIndicatorView.startAnimating()
+        } else {
+            launchActivityIndicatorView.stopAnimating()
+        }
+    }
+    
+    func reloadCollectionView() {
+        heroesSeleсtingCollectionView.reloadData()
+    }
+    
     private func setupUI() {
+        addSubviews()
+        setupAutoLayout()
+    }
+    
+    private func addSubviews() {
         addSubview(heroesSeleсtingCollectionView)
+        addSubview(launchActivityIndicatorView)
+    }
+    
+    private func setupAutoLayout() {
         activateHeroesCollectionViewConstraints()
+        activateLaunchActivityIndicatorViewConstraint()
     }
     
     // MARK: - Creating Subviews
@@ -55,6 +84,14 @@ final class HeroesListView: UIView {
             subview.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
+    
+    private func activateLaunchActivityIndicatorViewConstraint() {
+        let subview = launchActivityIndicatorView
+        NSLayoutConstraint.activate([
+            subview.centerXAnchor.constraint(equalTo: centerXAnchor),
+            subview.centerYAnchor.constraint(equalTo: centerYAnchor)
+        ])
+    }
 }
 
 // MARK: - ActionDelegate
@@ -65,4 +102,11 @@ extension HeroesListView: HeroesSeleсtingCollectionViewActionDelegate {
 // MARK: - DataSourceDelegate
 
 extension HeroesListView: HeroesSeleсtingCollectionViewDataSourceDelegate {
+    func heroesSeleсtingCollectionView(_ heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView, getCellsCountOf reuseIdentifier: String) -> Int? {
+        uiDelegate?.heroesListView(self, getCellsCountOf: reuseIdentifier)
+    }
+    
+    func heroesSeleсtingCollectionView(_ heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView, getHeroCellModelWith indexPath: IndexPath) -> HeroCellModel? {
+        uiDelegate?.heroesListView(self, getHeroCellModelWithIndexPath: indexPath)
+    }
 }

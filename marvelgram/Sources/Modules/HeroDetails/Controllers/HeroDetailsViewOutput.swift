@@ -1,10 +1,8 @@
-import Foundation
-
 protocol HeroDetailsViewOutput {
-    // Initilization
+    // - Initilization
     init(view: HeroDetailsViewInput,
          coordinator: HeroDetailsCoordinator)
     
-    // Actions
+    // - Actions
     func handleDidLayoutSubviews()
 }

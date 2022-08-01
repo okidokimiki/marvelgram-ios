@@ -64,7 +64,6 @@ extension HeroDetailsViewController: HeroDetailsViewUiDelegate {
 // MARK: - ViewInput
 
 extension HeroDetailsViewController: HeroDetailsViewInput {
-    // Actions
     func finishLayoutSubviews() {
         heroDetailsView.finishLayoutSubviews()
     }

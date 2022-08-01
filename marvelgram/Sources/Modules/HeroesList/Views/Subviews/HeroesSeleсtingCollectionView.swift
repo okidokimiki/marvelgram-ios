@@ -4,6 +4,8 @@ protocol HeroesSeleсtingCollectionViewActionDelegate: AnyObject {
 }
 
 protocol HeroesSeleсtingCollectionViewDataSourceDelegate: AnyObject {
+    func heroesSeleсtingCollectionView(_ heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView, getCellsCountOf reuseIdentifier: String) -> Int?
+    func heroesSeleсtingCollectionView(_ heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView, getHeroCellModelWith indexPath: IndexPath) -> HeroCellModel?
 }
 
 final class HeroesSeleсtingCollectionView: UICollectionView {
@@ -38,12 +40,6 @@ final class HeroesSeleсtingCollectionView: UICollectionView {
         showsVerticalScrollIndicator = false
         translatesAutoresizingMaskIntoConstraints = false
     }
-    
-    // MARK: - Constants
-    
-    enum Constants {
-        static let countOfHeroCells: Int = 50
-    }
 }
 
 // MARK: - UICollectionViewDelegate
@@ -55,12 +51,21 @@ extension HeroesSeleсtingCollectionView: UICollectionViewDelegate {
 
 extension HeroesSeleсtingCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        let heroCellId = HeroImageViewCell.reuseIdentifier
         
-        return Constants.countOfHeroCells
+        guard let count = dataSourceDelegate?.heroesSeleсtingCollectionView(self, getCellsCountOf: heroCellId) else {
+            return .zero
+        }
+        
+        return count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let heroCell = collectionView.dequeueCell(cellType: HeroImageViewCell.self, for: indexPath)
+        
+        if let model = dataSourceDelegate?.heroesSeleсtingCollectionView(self, getHeroCellModelWith: indexPath) {
+            heroCell.render(with: model.url)
+        }
         
         return heroCell
     }

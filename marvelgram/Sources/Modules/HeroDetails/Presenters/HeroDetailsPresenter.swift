@@ -1,9 +1,7 @@
-import Foundation
-
 final class HeroDetailsPresenter {
     
     weak var view: HeroDetailsViewInput?
-    private var coordinator: HeroDetailsCoordinator
+    private let coordinator: HeroDetailsCoordinator
     
     required init(
         view: HeroDetailsViewInput,
@@ -17,7 +15,7 @@ final class HeroDetailsPresenter {
 // MARK: - ViewOutput
 
 extension HeroDetailsPresenter: HeroDetailsViewOutput {
-    // Actions
+    // - Actions
     func handleDidLayoutSubviews() {
         view?.finishLayoutSubviews()
     }

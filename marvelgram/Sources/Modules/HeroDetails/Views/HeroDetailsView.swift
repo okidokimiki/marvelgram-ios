@@ -11,8 +11,8 @@ final class HeroDetailsView: UIView {
         makeScrollView()
     }()
     
-    private lazy var profileImageView: UIImageView = {
-        makeProfileImageView()
+    private lazy var profileImageView: ImageLoader = {
+        ImageLoader(frame: .zero)
     }()
     
     private lazy var descrpLabel: TopAlignedLabel = {
@@ -81,14 +81,6 @@ final class HeroDetailsView: UIView {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         
         return scrollView
-    }
-    
-    private func makeProfileImageView() -> UIImageView {
-        let imageView = UIImageView()
-        imageView.backgroundColor = AppColor.GlobalColor.cellBackground
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        
-        return imageView
     }
     
     private func makeDescrpLabel() -> TopAlignedLabel {

@@ -1,12 +1,19 @@
 import Foundation
 
 protocol HeroesListViewOutput {
-    // Initilization
+    // - Initilization
     init(view: HeroesListViewInput,
+         dataSource: HeroesListDataSource,
+         repository: HeroesRepository,
          coordinator: HeroesListCoordinator)
     
-    // Actions
+    // - Actions
+    func handleDidLoadView()
     func handleTappingNavBarButton(with type: NavBarButtonType)
+    
+    // - Actions
+    func getHeroCellsCount() -> Int?
+    func getHeroCellModel(with indexPath: IndexPath) -> HeroCellModel?
 }
 
 enum NavBarButtonType {
