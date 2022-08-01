@@ -10,7 +10,15 @@ final class HeroesListCoordinator: Coordinator {
     }
     
     func start() {
-        let heroesListVC = HeroesListModuleBuilder.createModule(coordinator: self)
+        let heroesListVC = HeroesListModuleBuilder.createModule(with: .default, coordinator: self)
         navigationController.setViewControllers([heroesListVC], animated: true)
+    }
+    
+    func startHeroDetailsEvent(with dataSource: HeroDetailsDataSource) {
+        let heroDetailsCoordinator = HeroDetailsCoordinator(navigationController: navigationController,
+                                                            dataSource: dataSource)
+        heroDetailsCoordinator.start()
+        
+        childCoordinators.append(heroDetailsCoordinator)
     }
 }
