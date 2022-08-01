@@ -49,6 +49,22 @@ final class HeroesRepository {
         }
     }
     
+    func getHeroesRandomly(count: Int = Constants.countOfRandomHeroes) -> [Hero]? {
+        guard !heroes.isEmpty, count <= heroes.count else { return nil }
+        
+        var uniqueRandomNumbers: Set<Int> = []
+        var array: [Hero] = []
+
+        while uniqueRandomNumbers.count < count {
+            let value = Int.random(in: 0..<heroes.count)
+            uniqueRandomNumbers.insert(value)
+        }
+        
+        uniqueRandomNumbers.forEach { array.append(heroes[$0]) }
+        
+        return array
+    }
+    
     private func readHeroes(from url: URL?) -> [Hero] {
         guard let destURL = url, fileManager.fileExists(atPath: destURL.path) else { return heroes }
         
@@ -101,6 +117,7 @@ final class HeroesRepository {
     // MARK: - Constants
     
     enum Constants {
+        static let countOfRandomHeroes = 10
         static let folderName = "Marvelgram"
         static let fileName = "heroes"
         static let fileExtension = "json"

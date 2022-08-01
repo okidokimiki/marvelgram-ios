@@ -1,9 +1,12 @@
 import UIKit
 
 protocol OtherHeroesCollectionViewActionDelegate: AnyObject {
+    func otherHeroesCollectionView(_ otherHeroesCollectionView: OtherHeroesCollectionView, didSelectHeroCellWithIndexPath indexPath: IndexPath)
 }
 
 protocol OtherHeroesCollectionViewDataSourceDelegate: AnyObject {
+    func otherHeroesCollectionView(_ otherHeroesCollectionView: OtherHeroesCollectionView, getCellsCountOf reuseIdentifier: String) -> Int?
+    func otherHeroesCollectionView(_ otherHeroesCollectionView: OtherHeroesCollectionView, getOtherHeroCellModelWithIndexPath indexPath: IndexPath) -> HeroCellModel?
 }
 
 final class OtherHeroesCollectionView: UICollectionView {
@@ -53,18 +56,29 @@ final class OtherHeroesCollectionView: UICollectionView {
 // MARK: - UICollectionViewDelegate
 
 extension OtherHeroesCollectionView: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        actionDelegate?.otherHeroesCollectionView(self, didSelectHeroCellWithIndexPath: indexPath)
+    }
 }
 
 // MARK: - UICollectionViewDataSource
 
 extension OtherHeroesCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        let otherHeroCellId = HeroImageViewCell.reuseIdentifier
+        guard let count = dataSourceDelegate?.otherHeroesCollectionView(self, getCellsCountOf: otherHeroCellId) else {
+            return .zero
+        }
         
-        return Constants.countOfOtherCells
+        return count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let otherHeroCell = collectionView.dequeueCell(cellType: HeroImageViewCell.self, for: indexPath)
+        
+        if let model = dataSourceDelegate?.otherHeroesCollectionView(self, getOtherHeroCellModelWithIndexPath: indexPath) {
+            otherHeroCell.render(with: model.url)
+        }
         
         return otherHeroCell
     }

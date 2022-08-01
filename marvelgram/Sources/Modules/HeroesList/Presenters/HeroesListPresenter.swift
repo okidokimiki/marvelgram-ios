@@ -44,6 +44,19 @@ extension HeroesListPresenter: HeroesListViewOutput {
         }
     }
     
+    func handleDidSelectingHeroCell(with indexPath: IndexPath) {
+        guard let randHeroes = repository.getHeroesRandomly() else { return }
+        
+        var dataSource: HeroDetailsDataSource {
+            let heroCellModel = getHeroCellModel(with: indexPath)
+            let randomHeroModels = convertToCellModel(from: randHeroes)
+            
+            return .init(selectedHeroCellModel: heroCellModel, otherHeroCellModels: randomHeroModels)
+        }
+        
+        coordinator.startHeroDetailsEvent(with: dataSource)
+    }
+    
     func handleTappingNavBarButton(with type: NavBarButtonType) {
         print("did tap NavBarButton with type: \(type)")
     }

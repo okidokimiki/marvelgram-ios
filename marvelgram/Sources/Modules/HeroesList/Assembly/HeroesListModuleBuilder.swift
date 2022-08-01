@@ -1,7 +1,7 @@
 import UIKit
 
 final class HeroesListModuleBuilder: ModuleBuilder {
-    static func createModule(coordinator: Coordinator) -> UIViewController {
+    static func createModule(with type: ModuleType, coordinator: Coordinator) -> UIViewController {
         guard let coordinator = coordinator as? HeroesListCoordinator else { return UIViewController() }
         let viewController = HeroesListViewController()
         let dataSource = HeroesListDataSource()

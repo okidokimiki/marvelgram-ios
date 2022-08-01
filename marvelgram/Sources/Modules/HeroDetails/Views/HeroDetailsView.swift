@@ -1,6 +1,12 @@
 import UIKit
 
 protocol HeroDetailsViewUiDelegate: AnyObject {
+    // Actions
+    func heroDetailsView(_ heroDetailsView: HeroDetailsView, didSelectHeroCellWith indexPath: IndexPath)
+    
+    // DataSource
+    func heroDetailsView(_ heroDetailsView: HeroDetailsView, getCellsCountOf reuseIdentifier: String) -> Int?
+    func heroDetailsView(_ heroDetailsView: HeroDetailsView, getOtherHeroCellModelWith indexPath: IndexPath) -> HeroCellModel?
 }
 
 final class HeroDetailsView: UIView {
@@ -41,6 +47,23 @@ final class HeroDetailsView: UIView {
         setupUI()
     }
     
+    func finishLayoutSubviews() {
+        let contentRect: CGRect = scrollView.subviews.reduce(into: .zero) { rect, view in
+            rect = rect.union(view.frame)
+        }
+        scrollView.contentSize = contentRect.size
+        descrpLabel.addInterlineSpacing(spacingValue: Constants.descrpLabelInterlineSpacing)
+        activateSubviewsWidthLayoutConstraint()
+    }
+    
+    func updateUI(with model: HeroCellModel?) {
+        guard let model = model else { return }
+        
+        otherHeroesCollectionView.reloadData()
+        profileImageView.loadImage(from: model.url)
+        descrpLabel.text = model.description.isEmpty ? AppLocalize.HeroDetails.descriptionText : model.description
+    }
+    
     private func setupUI() {
         addSubviews()
         setupAutoLayout()
@@ -60,15 +83,6 @@ final class HeroDetailsView: UIView {
         activateDescrpLabelConstraints()
         activateExploreMoreLabelConstraints()
         activateOtherHeroesCollectionViewConstraints()
-    }
-    
-    func finishLayoutSubviews() {
-        let contentRect: CGRect = scrollView.subviews.reduce(into: .zero) { rect, view in
-            rect = rect.union(view.frame)
-        }
-        scrollView.contentSize = contentRect.size
-        descrpLabel.addInterlineSpacing(spacingValue: Constants.descrpLabelInterlineSpacing)
-        activateSubviewsWidthLayoutConstraint()
     }
     
     // MARK: - Creating Subviews
@@ -203,9 +217,19 @@ final class HeroDetailsView: UIView {
 // MARK: - ActionDelegate
 
 extension HeroDetailsView: OtherHeroesCollectionViewActionDelegate {
+    func otherHeroesCollectionView(_ otherHeroesCollectionView: OtherHeroesCollectionView, didSelectHeroCellWithIndexPath indexPath: IndexPath) {
+        uiDelegate?.heroDetailsView(self, didSelectHeroCellWith: indexPath)
+    }
 }
 
 // MARK: - DataSourceDelegate
 
 extension HeroDetailsView: OtherHeroesCollectionViewDataSourceDelegate {
+    func otherHeroesCollectionView(_ otherHeroesCollectionView: OtherHeroesCollectionView, getCellsCountOf reuseIdentifier: String) -> Int? {
+        uiDelegate?.heroDetailsView(self, getCellsCountOf: reuseIdentifier)
+    }
+    
+    func otherHeroesCollectionView(_ otherHeroesCollectionView: OtherHeroesCollectionView, getOtherHeroCellModelWithIndexPath indexPath: IndexPath) -> HeroCellModel? {
+        uiDelegate?.heroDetailsView(self, getOtherHeroCellModelWith: indexPath)
+    }
 }

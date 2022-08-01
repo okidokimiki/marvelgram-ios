@@ -46,7 +46,12 @@ final class HeroesListViewController: UIViewController {
 // MARK: - UiDelegate
 
 extension HeroesListViewController: HeroesListViewUiDelegate {
-    // DataSource
+    // - Actions
+    func heroesListView(_ heroesListView: HeroesListView, didSelectHeroWithIndexPath indexPath: IndexPath) {
+        presenter?.handleDidSelectingHeroCell(with: indexPath)
+    }
+    
+    // - DataSource
     func heroesListView(_ heroesListView: HeroesListView, getCellsCountOf reuseIdentifier: String) -> Int? {
         presenter?.getHeroCellsCount()
     }
