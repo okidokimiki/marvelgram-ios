@@ -5,10 +5,10 @@ final class HeroesListModuleBuilder: ModuleBuilder {
         guard let coordinator = coordinator as? HeroesListCoordinator else { return UIViewController() }
         let viewController = HeroesListViewController()
         let dataSource = HeroesListDataSource()
-        let networker = NetworkService()
+        let repository = HeroesRepository(networkService: NetworkService())
         let presenter = HeroesListPresenter(view: viewController,
                                             dataSource: dataSource,
-                                            networker: networker,
+                                            repository: repository,
                                             coordinator: coordinator)
         viewController.presenter = presenter
         

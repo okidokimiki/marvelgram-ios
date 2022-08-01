@@ -15,7 +15,7 @@ final class HeroDetailsPresenter {
 // MARK: - ViewOutput
 
 extension HeroDetailsPresenter: HeroDetailsViewOutput {
-    // Actions
+    // - Actions
     func handleDidLayoutSubviews() {
         view?.finishLayoutSubviews()
     }

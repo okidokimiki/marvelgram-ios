@@ -4,18 +4,18 @@ final class HeroesListPresenter {
     
     weak var view: HeroesListViewInput?
     private let dataSource: HeroesListDataSource
-    private let networker: NetworkService
+    private let repository: HeroesRepository
     private let coordinator: HeroesListCoordinator
     
     required init(
         view: HeroesListViewInput,
         dataSource: HeroesListDataSource,
-        networker: NetworkService,
+        repository: HeroesRepository,
         coordinator: HeroesListCoordinator
     ) {
         self.view = view
         self.dataSource = dataSource
-        self.networker = networker
+        self.repository = repository
         self.coordinator = coordinator
     }
     
@@ -27,24 +27,19 @@ final class HeroesListPresenter {
 // MARK: - ViewOutput
 
 extension HeroesListPresenter: HeroesListViewOutput {
+    // - Actions
     func handleDidLoadView() {
         view?.showLaunchActivityIndicator(true)
         
-        networker.fetch(with: API.upstartsMarvelgram, of: [Hero].self) { [weak self] result in
+        repository.getHeroes { [weak self] heroes in
             guard let self = self else { return }
             
-            switch result {
-            case .success(let fetchedData):
-                guard let heroes = fetchedData as? [Hero] else { return }
-                let models = self.convertToCellModel(from: heroes)
-                self.dataSource.heroCellModels = models
-                
-                DispatchQueue.main.async {
-                    self.view?.showLaunchActivityIndicator(false)
-                    self.view?.reloadCollectionView()
-                }
-            case .failure(let netError):
-                print(netError.localizedDescription)
+            let models = self.convertToCellModel(from: heroes)
+            self.dataSource.heroCellModels = models
+            
+            DispatchQueue.main.async {
+                self.view?.showLaunchActivityIndicator(false)
+                self.view?.reloadCollectionView()
             }
         }
     }
@@ -53,6 +48,7 @@ extension HeroesListPresenter: HeroesListViewOutput {
         print("did tap NavBarButton with type: \(type)")
     }
     
+    // - DataSource
     func getHeroCellsCount() -> Int? {
         dataSource.heroCellModels.count
     }

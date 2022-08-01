@@ -54,6 +54,7 @@
 		04BA1DD72898040800585726 /* RemovebleActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA1DD62898040800585726 /* RemovebleActivityIndicatorView.swift */; };
 		04BA1DDB289808B200585726 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA1DDA289808B200585726 /* ImageLoader.swift */; };
 		04BA1DDD289808CC00585726 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA1DDC289808CC00585726 /* ImageCache.swift */; };
+		04BA1DE028985EF900585726 /* HeroesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA1DDF28985EF900585726 /* HeroesRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,6 +107,7 @@
 		04BA1DD62898040800585726 /* RemovebleActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemovebleActivityIndicatorView.swift; sourceTree = "<group>"; };
 		04BA1DDA289808B200585726 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		04BA1DDC289808CC00585726 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		04BA1DDF28985EF900585726 /* HeroesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -382,6 +384,7 @@
 				04BA1DC52895844000585726 /* Entity */,
 				04BA1DDE289808D500585726 /* Cache */,
 				04BA1DC92895846900585726 /* Network */,
+				04BA1DE128985EFC00585726 /* Repository */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -397,19 +400,11 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		04BA1DD42898019800585726 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				04BA1DD22898018000585726 /* HeroCellModel.swift */,
-			);
-			name = Models;
-			sourceTree = "<group>";
-		};
 		04BA1DD5289801A400585726 /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
 				04BA1DD02898016E00585726 /* HeroesListDataSource.swift */,
-				04BA1DD42898019800585726 /* Models */,
+				04BA1DE4289865C100585726 /* Models */,
 			);
 			name = DataSource;
 			path = Models;
@@ -421,6 +416,22 @@
 				04BA1DDC289808CC00585726 /* ImageCache.swift */,
 			);
 			path = Cache;
+			sourceTree = "<group>";
+		};
+		04BA1DE128985EFC00585726 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				04BA1DDF28985EF900585726 /* HeroesRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		04BA1DE4289865C100585726 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				04BA1DD22898018000585726 /* HeroCellModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -552,6 +563,7 @@
 				04BA1DAE2895567E00585726 /* HeroImageViewCell.swift in Sources */,
 				04BA1D832895465E00585726 /* UIImage+Assets.swift in Sources */,
 				04BA1D692895440500585726 /* ModuleBuilder.swift in Sources */,
+				04BA1DE028985EF900585726 /* HeroesRepository.swift in Sources */,
 				04BA1DB22895574E00585726 /* ReuseIdentifiable.swift in Sources */,
 				04BA1D87289548E100585726 /* HeroesListPresenter.swift in Sources */,
 				04BA1D9F28954AE400585726 /* HeroDetailsViewOutput.swift in Sources */,

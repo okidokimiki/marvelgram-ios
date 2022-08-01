@@ -1,4 +1,4 @@
-struct Hero: Codable {
+struct Hero: Codable, Equatable {
     var id: Int
     let name: String
     let description: String
@@ -6,7 +6,7 @@ struct Hero: Codable {
     let thumbnail: Thumbnail
 }
 
-struct Thumbnail: Codable {
+struct Thumbnail: Codable, Equatable {
     let path: String
     let `extension`: String
 }
