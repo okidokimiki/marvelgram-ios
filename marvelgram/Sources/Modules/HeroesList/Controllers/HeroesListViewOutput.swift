@@ -9,13 +9,14 @@ protocol HeroesListViewOutput {
     
     // - Actions
     func handleDidLoadView()
+    func handleWillDisplayingHeroCell(with indexPath: IndexPath)
     func handleDidSelectingHeroCell(with indexPath: IndexPath)
     func handleTappingNavBarButton(with type: NavBarButtonType)
     func handleDidPresentingSearchBar(with text: String)
     func handleDidDismissingSearchBar(with text: String)
     func handleUpdatingSearchResults(with text: String)
     func handleDidMovingUpAnimationHeroCell(with result: Bool)
-    func handleWillDisplayingHeroCell(with indexPath: IndexPath)
+    func handleDidChangingFlowLayoutAnimation(with result: Bool)
     
     // - DataSource
     func getHeroCellsCount() -> Int?

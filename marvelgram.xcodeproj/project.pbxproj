@@ -59,6 +59,9 @@
 		04BA1DE92898867A00585726 /* HeroSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA1DE82898867A00585726 /* HeroSearchController.swift */; };
 		04BA1DEB2898887100585726 /* String+ReplacingOccurrences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA1DEA2898887100585726 /* String+ReplacingOccurrences.swift */; };
 		04BA1DEE2898888600585726 /* IndexPath+Zero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA1DED2898888600585726 /* IndexPath+Zero.swift */; };
+		04BA1DF02898910800585726 /* InstaGridFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA1DEF2898910800585726 /* InstaGridFlowLayout.swift */; };
+		04BA1DF22898912900585726 /* CGSize+Side.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA1DF12898912900585726 /* CGSize+Side.swift */; };
+		04BA1DF52898914200585726 /* CGRect+DividedIntegral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA1DF42898914200585726 /* CGRect+DividedIntegral.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -116,6 +119,9 @@
 		04BA1DE82898867A00585726 /* HeroSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroSearchController.swift; sourceTree = "<group>"; };
 		04BA1DEA2898887100585726 /* String+ReplacingOccurrences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+ReplacingOccurrences.swift"; sourceTree = "<group>"; };
 		04BA1DED2898888600585726 /* IndexPath+Zero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IndexPath+Zero.swift"; sourceTree = "<group>"; };
+		04BA1DEF2898910800585726 /* InstaGridFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstaGridFlowLayout.swift; sourceTree = "<group>"; };
+		04BA1DF12898912900585726 /* CGSize+Side.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+Side.swift"; sourceTree = "<group>"; };
+		04BA1DF42898914200585726 /* CGRect+DividedIntegral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+DividedIntegral.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +224,7 @@
 			children = (
 				04BA1D8E289549DF00585726 /* UIKit */,
 				04BA1DEC2898887600585726 /* Foundation */,
+				04BA1DF32898913300585726 /* Core Graphics */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -358,6 +365,7 @@
 			isa = PBXGroup;
 			children = (
 				04BA1DB428955AAD00585726 /* DefaultGridFlowLayout.swift */,
+				04BA1DEF2898910800585726 /* InstaGridFlowLayout.swift */,
 			);
 			path = FlowLayout;
 			sourceTree = "<group>";
@@ -460,6 +468,15 @@
 				04BA1DED2898888600585726 /* IndexPath+Zero.swift */,
 			);
 			path = Foundation;
+			sourceTree = "<group>";
+		};
+		04BA1DF32898913300585726 /* Core Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				04BA1DF12898912900585726 /* CGSize+Side.swift */,
+				04BA1DF42898914200585726 /* CGRect+DividedIntegral.swift */,
+			);
+			path = "Core Graphics";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -588,6 +605,7 @@
 				04BA1D9D28954ABA00585726 /* HeroDetailsPresenter.swift in Sources */,
 				04BA1D9B28954AAE00585726 /* HeroDetailsViewInput.swift in Sources */,
 				04BA1DA128954B0200585726 /* HeroDetailsViewController.swift in Sources */,
+				04BA1DF02898910800585726 /* InstaGridFlowLayout.swift in Sources */,
 				04BA1DD12898016E00585726 /* HeroesListDataSource.swift in Sources */,
 				04755ED0289542DC00F45BE0 /* AppDelegate.swift in Sources */,
 				04BA1DD32898018000585726 /* HeroCellModel.swift in Sources */,
@@ -595,6 +613,7 @@
 				04BA1DAE2895567E00585726 /* HeroImageViewCell.swift in Sources */,
 				04BA1D832895465E00585726 /* UIImage+Assets.swift in Sources */,
 				04BA1D692895440500585726 /* ModuleBuilder.swift in Sources */,
+				04BA1DF52898914200585726 /* CGRect+DividedIntegral.swift in Sources */,
 				04BA1DE028985EF900585726 /* HeroesRepository.swift in Sources */,
 				04BA1DB22895574E00585726 /* ReuseIdentifiable.swift in Sources */,
 				04BA1D87289548E100585726 /* HeroesListPresenter.swift in Sources */,
@@ -602,6 +621,7 @@
 				04BA1DCF289584A400585726 /* NetworkService.swift in Sources */,
 				04BA1D85289548AF00585726 /* HeroesListViewOutput.swift in Sources */,
 				04BA1DAA2895564F00585726 /* HeroesSeleсtingCollectionView.swift in Sources */,
+				04BA1DF22898912900585726 /* CGSize+Side.swift in Sources */,
 				04BA1DC82895845B00585726 /* API.swift in Sources */,
 				04BA1DDD289808CC00585726 /* ImageCache.swift in Sources */,
 			);

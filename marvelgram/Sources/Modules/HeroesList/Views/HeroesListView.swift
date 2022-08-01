@@ -5,6 +5,7 @@ protocol HeroesListViewUiDelegate: AnyObject {
     func heroesListView(_ heroesListView: HeroesListView, didSelectHeroWithIndexPath indexPath: IndexPath)
     func heroesListView(_ heroesListView: HeroesListView, didMoveUpHeroWithAnimationResult result: Bool)
     func heroesListView(_ heroesListView: HeroesListView, willDisplayHeroWithIndexPath indexPath: IndexPath)
+    func heroesListView(_ heroesListView: HeroesListView, didChangeLayoutWithAnimationResult result: Bool)
     
     // - DataSource
     func heroesListView(_ heroesListView: HeroesListView, getCellsCountOf reuseIdentifier: String) -> Int?
@@ -78,6 +79,20 @@ final class HeroesListView: UIView {
         heroesSeleсtingCollectionView.visibleCells.forEach { $0.alpha = CGFloat(alpha.value) }
     }
     
+    func updateFlowLayout(with type: FlowLayoutType) {
+        var flowLayout: UICollectionViewFlowLayout
+        switch type {
+        case .grid:
+            flowLayout = DefaultGridFlowLayout()
+        case .insta:
+            flowLayout = InstaGridFlowLayout()
+        }
+        
+        heroesSeleсtingCollectionView.setCollectionViewLayout(flowLayout, animated: true) { result in
+            self.uiDelegate?.heroesListView(self, didChangeLayoutWithAnimationResult: result)
+        }
+    }
+    
     private func setupUI() {
         addSubviews()
         setupAutoLayout()
@@ -98,7 +113,7 @@ final class HeroesListView: UIView {
     private func makeHeroesSeleсtingCollectionView(
         _ actionDelegate: HeroesSeleсtingCollectionViewActionDelegate,
         _ dataSourceDelegate: HeroesSeleсtingCollectionViewDataSourceDelegate) -> HeroesSeleсtingCollectionView {
-            let layout = DefaultGridFlowLayout()
+            let layout = InstaGridFlowLayout()
             
             let collectionView = HeroesSeleсtingCollectionView(frame: .zero, collectionViewLayout: layout)
             collectionView.actionDelegate = actionDelegate
