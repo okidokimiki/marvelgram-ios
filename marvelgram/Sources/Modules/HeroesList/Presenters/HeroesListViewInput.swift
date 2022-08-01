@@ -7,6 +7,7 @@ protocol HeroesListViewInput: AnyObject {
     func moveUpCell(with indexPath: IndexPath)
     func setAlphaForEachVisibleCells(alpha: HeroCellAlpha)
     func setAlphaForCell(with indexPath: IndexPath, alpha: HeroCellAlpha)
+    func updateFlowLayout(with type: FlowLayoutType)
 }
 
 enum ScrollDirection {
@@ -19,4 +20,11 @@ enum HeroCellAlpha: Double {
     case muddy = 0.3
     
     var value: Double { rawValue }
+}
+
+enum FlowLayoutType {
+    /// DefaultGrid
+    case grid
+    /// InstaGrid
+    case insta
 }

@@ -7,6 +7,7 @@ final class HeroesListPresenter {
     private let repository: HeroesRepository
     private let coordinator: HeroesListCoordinator
     
+    private var displayType: FlowLayoutType = .insta
     private var isSearchModeEnabled = false
     private var isFoundHero = false
     
@@ -47,6 +48,18 @@ extension HeroesListPresenter: HeroesListViewOutput {
         }
     }
     
+    func handleWillDisplayingHeroCell(with indexPath: IndexPath) {
+        guard isSearchModeEnabled else { return }
+        
+        var alphaMode: HeroCellAlpha {
+            isFoundHero && indexPath == .zero ? .clear : .muddy
+        }
+        
+        DispatchQueue.main.async {
+            self.view?.setAlphaForCell(with: indexPath, alpha: alphaMode)
+        }
+    }
+    
     func handleDidSelectingHeroCell(with indexPath: IndexPath) {
         guard let randHeroes = repository.getHeroesRandomly() else { return }
         
@@ -61,7 +74,21 @@ extension HeroesListPresenter: HeroesListViewOutput {
     }
     
     func handleTappingNavBarButton(with type: NavBarButtonType) {
-        print("did tap NavBarButton with type: \(type)")
+        displayType = displayType == .insta ? .grid : .insta
+        view?.updateFlowLayout(with: displayType)
+    }
+    
+    func handleDidChangingFlowLayoutAnimation(with result: Bool) {
+        if result && isSearchModeEnabled && isFoundHero {
+            DispatchQueue.main.async {
+                self.view?.setAlphaForEachVisibleCells(alpha: .muddy)
+                self.view?.setAlphaForCell(with: .zero, alpha: .clear)
+            }
+        } else if result && isSearchModeEnabled {
+            DispatchQueue.main.async {
+                self.view?.setAlphaForEachVisibleCells(alpha: .muddy)
+            }
+        }
     }
     
     func handleDidPresentingSearchBar(with text: String) {
@@ -110,18 +137,6 @@ extension HeroesListPresenter: HeroesListViewOutput {
         DispatchQueue.main.async {
             self.view?.setAlphaForEachVisibleCells(alpha: .muddy)
             self.view?.setAlphaForCell(with: .zero, alpha: .clear)
-        }
-    }
-    
-    func handleWillDisplayingHeroCell(with indexPath: IndexPath) {
-        guard isSearchModeEnabled else { return }
-        
-        var alphaMode: HeroCellAlpha {
-            isFoundHero && indexPath == .zero ? .clear : .muddy
-        }
-        
-        DispatchQueue.main.async {
-            self.view?.setAlphaForCell(with: indexPath, alpha: alphaMode)
         }
     }
     

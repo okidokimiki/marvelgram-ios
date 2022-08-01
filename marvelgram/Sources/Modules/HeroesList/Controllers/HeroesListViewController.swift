@@ -66,6 +66,10 @@ final class HeroesListViewController: UIViewController {
 
 extension HeroesListViewController: HeroesListViewUiDelegate {
     // - Actions
+    func heroesListView(_ heroesListView: HeroesListView, willDisplayHeroWithIndexPath indexPath: IndexPath) {
+        presenter?.handleWillDisplayingHeroCell(with: indexPath)
+    }
+    
     func heroesListView(_ heroesListView: HeroesListView, didSelectHeroWithIndexPath indexPath: IndexPath) {
         presenter?.handleDidSelectingHeroCell(with: indexPath)
     }
@@ -74,8 +78,8 @@ extension HeroesListViewController: HeroesListViewUiDelegate {
         presenter?.handleDidMovingUpAnimationHeroCell(with: result)
     }
     
-    func heroesListView(_ heroesListView: HeroesListView, willDisplayHeroWithIndexPath indexPath: IndexPath) {
-        presenter?.handleWillDisplayingHeroCell(with: indexPath)
+    func heroesListView(_ heroesListView: HeroesListView, didChangeLayoutWithAnimationResult result: Bool) {
+        presenter?.handleDidChangingFlowLayoutAnimation(with: result)
     }
     
     // - DataSource
@@ -139,5 +143,9 @@ extension HeroesListViewController: HeroesListViewInput {
     
     func setAlphaForCell(with indexPath: IndexPath, alpha: HeroCellAlpha) {
         heroesListView.setAlphaForCell(with: indexPath, alpha: alpha)
+    }
+    
+    func updateFlowLayout(with type: FlowLayoutType) {
+        heroesListView.updateFlowLayout(with: type)
     }
 }
