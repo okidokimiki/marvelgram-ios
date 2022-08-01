@@ -5,6 +5,7 @@ protocol HeroesListViewUiDelegate: AnyObject {
     func heroesListView(_ heroesListView: HeroesListView, didSelectHeroWithIndexPath indexPath: IndexPath)
     func heroesListView(_ heroesListView: HeroesListView, didMoveUpHeroWithAnimationResult result: Bool)
     func heroesListView(_ heroesListView: HeroesListView, willDisplayHeroWithIndexPath indexPath: IndexPath)
+    func heroesListView(_ heroesListView: HeroesListView, didChangeLayoutWithAnimationResult result: Bool)
     
     // - DataSource
     func heroesListView(_ heroesListView: HeroesListView, getCellsCountOf reuseIdentifier: String) -> Int?
@@ -76,6 +77,20 @@ final class HeroesListView: UIView {
     
     func setAlphaForEachVisibleCells(alpha: HeroCellAlpha) {
         heroesSeleсtingCollectionView.visibleCells.forEach { $0.alpha = CGFloat(alpha.value) }
+    }
+    
+    func updateFlowLayout(with type: FlowLayoutType) {
+        var flowLayout: UICollectionViewFlowLayout
+        switch type {
+        case .grid:
+            flowLayout = DefaultGridFlowLayout()
+        case .insta:
+            flowLayout = InstaGridFlowLayout()
+        }
+        
+        heroesSeleсtingCollectionView.setCollectionViewLayout(flowLayout, animated: true) { result in
+            self.uiDelegate?.heroesListView(self, didChangeLayoutWithAnimationResult: result)
+        }
     }
     
     private func setupUI() {
