@@ -1,9 +1,7 @@
-import Foundation
-
 final class HeroDetailsPresenter {
     
     weak var view: HeroDetailsViewInput?
-    private var coordinator: HeroDetailsCoordinator
+    private let coordinator: HeroDetailsCoordinator
     
     required init(
         view: HeroDetailsViewInput,

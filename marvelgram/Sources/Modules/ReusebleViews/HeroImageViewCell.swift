@@ -2,8 +2,8 @@ import UIKit
 
 final class HeroImageViewCell: UICollectionViewCell {
     
-    private lazy var heroImageView: UIImageView = {
-        makeHeroImageView()
+    private lazy var heroImageView: ImageLoader = {
+        ImageLoader(frame: .zero)
     }()
     
     override init(frame: CGRect) {
@@ -18,19 +18,17 @@ final class HeroImageViewCell: UICollectionViewCell {
         setupUI()
     }
     
+    override func prepareForReuse() {
+        heroImageView.image = nil
+    }
+    
     private func setupUI() {
         addSubview(heroImageView)
         activateHeroImageViewConstraints()
     }
     
-    // MARK: - Creating Subviews
-    
-    private func makeHeroImageView() -> UIImageView {
-        let imageView = UIImageView()
-        imageView.backgroundColor = AppColor.GlobalColor.cellBackground
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        
-        return imageView
+    func render(with urlString: String) {
+        heroImageView.loadImage(from: urlString)
     }
     
     // MARK: - AutoLayout

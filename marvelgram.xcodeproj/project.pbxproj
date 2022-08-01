@@ -44,6 +44,16 @@
 		04BA1DBE289560F700585726 /* OtherHeroesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA1DBD289560F700585726 /* OtherHeroesCollectionView.swift */; };
 		04BA1DC02895637600585726 /* BackBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA1DBF2895637600585726 /* BackBarButtonItem.swift */; };
 		04BA1DC22895643900585726 /* UILabel+InterlineSpacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA1DC12895643900585726 /* UILabel+InterlineSpacing.swift */; };
+		04BA1DC42895841D00585726 /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA1DC32895841D00585726 /* Hero.swift */; };
+		04BA1DC82895845B00585726 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA1DC72895845B00585726 /* API.swift */; };
+		04BA1DCB2895847A00585726 /* Networkable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA1DCA2895847A00585726 /* Networkable.swift */; };
+		04BA1DCD2895848600585726 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA1DCC2895848600585726 /* NetworkError.swift */; };
+		04BA1DCF289584A400585726 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA1DCE289584A400585726 /* NetworkService.swift */; };
+		04BA1DD12898016E00585726 /* HeroesListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA1DD02898016E00585726 /* HeroesListDataSource.swift */; };
+		04BA1DD32898018000585726 /* HeroCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA1DD22898018000585726 /* HeroCellModel.swift */; };
+		04BA1DD72898040800585726 /* RemovebleActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA1DD62898040800585726 /* RemovebleActivityIndicatorView.swift */; };
+		04BA1DDB289808B200585726 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA1DDA289808B200585726 /* ImageLoader.swift */; };
+		04BA1DDD289808CC00585726 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA1DDC289808CC00585726 /* ImageCache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +96,16 @@
 		04BA1DBD289560F700585726 /* OtherHeroesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherHeroesCollectionView.swift; sourceTree = "<group>"; };
 		04BA1DBF2895637600585726 /* BackBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackBarButtonItem.swift; sourceTree = "<group>"; };
 		04BA1DC12895643900585726 /* UILabel+InterlineSpacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+InterlineSpacing.swift"; sourceTree = "<group>"; };
+		04BA1DC32895841D00585726 /* Hero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
+		04BA1DC72895845B00585726 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		04BA1DCA2895847A00585726 /* Networkable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networkable.swift; sourceTree = "<group>"; };
+		04BA1DCC2895848600585726 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		04BA1DCE289584A400585726 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		04BA1DD02898016E00585726 /* HeroesListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesListDataSource.swift; sourceTree = "<group>"; };
+		04BA1DD22898018000585726 /* HeroCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroCellModel.swift; sourceTree = "<group>"; };
+		04BA1DD62898040800585726 /* RemovebleActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemovebleActivityIndicatorView.swift; sourceTree = "<group>"; };
+		04BA1DDA289808B200585726 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		04BA1DDC289808CC00585726 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				04BA1D9128954A1500585726 /* Assembly */,
+				04BA1DD5289801A400585726 /* DataSource */,
 				04BA1D9228954A1C00585726 /* Coordinating */,
 				04BA1D9328954A2300585726 /* Presenters */,
 				04BA1D9428954A3100585726 /* Controllers */,
@@ -174,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				04BA1D882895498D00585726 /* App */,
+				04BA1DC62895844700585726 /* Services */,
 				04BA1D8F289549FA00585726 /* Modules */,
 				04BA1D8A289549A600585726 /* Supporting Files */,
 				04BA1D8D289549DA00585726 /* Extensions */,
@@ -312,7 +334,9 @@
 		04BA1DB3289557EE00585726 /* ReusebleViews */ = {
 			isa = PBXGroup;
 			children = (
+				04BA1DDA289808B200585726 /* ImageLoader.swift */,
 				04BA1DAD2895567E00585726 /* HeroImageViewCell.swift */,
+				04BA1DD62898040800585726 /* RemovebleActivityIndicatorView.swift */,
 			);
 			path = ReusebleViews;
 			sourceTree = "<group>";
@@ -342,6 +366,61 @@
 				04BA1DBD289560F700585726 /* OtherHeroesCollectionView.swift */,
 			);
 			path = Subviews;
+			sourceTree = "<group>";
+		};
+		04BA1DC52895844000585726 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				04BA1DC32895841D00585726 /* Hero.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		04BA1DC62895844700585726 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				04BA1DC52895844000585726 /* Entity */,
+				04BA1DDE289808D500585726 /* Cache */,
+				04BA1DC92895846900585726 /* Network */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		04BA1DC92895846900585726 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				04BA1DCE289584A400585726 /* NetworkService.swift */,
+				04BA1DCC2895848600585726 /* NetworkError.swift */,
+				04BA1DCA2895847A00585726 /* Networkable.swift */,
+				04BA1DC72895845B00585726 /* API.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		04BA1DD42898019800585726 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				04BA1DD22898018000585726 /* HeroCellModel.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		04BA1DD5289801A400585726 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				04BA1DD02898016E00585726 /* HeroesListDataSource.swift */,
+				04BA1DD42898019800585726 /* Models */,
+			);
+			name = DataSource;
+			path = Models;
+			sourceTree = "<group>";
+		};
+		04BA1DDE289808D500585726 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				04BA1DDC289808CC00585726 /* ImageCache.swift */,
+			);
+			path = Cache;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -448,13 +527,17 @@
 				04BA1DB02895573400585726 /* UICollectionView+ReuseId.swift in Sources */,
 				04BA1D9728954A6900585726 /* HeroDetailsViewModuleBuilder.swift in Sources */,
 				04BA1D63289543BE00585726 /* HeroesListCoordinator.swift in Sources */,
+				04BA1DCB2895847A00585726 /* Networkable.swift in Sources */,
 				04BA1D752895457C00585726 /* AppFont.swift in Sources */,
 				04BA1D61289543AD00585726 /* AppCoordinator.swift in Sources */,
 				04BA1D6D2895446900585726 /* HeroesListView.swift in Sources */,
+				04BA1DDB289808B200585726 /* ImageLoader.swift in Sources */,
 				04BA1D6B2895443E00585726 /* HeroesListViewController.swift in Sources */,
 				04BA1DBE289560F700585726 /* OtherHeroesCollectionView.swift in Sources */,
+				04BA1DCD2895848600585726 /* NetworkError.swift in Sources */,
 				04BA1D9928954A8300585726 /* HeroDetailsCoordinator.swift in Sources */,
 				04BA1D772895458B00585726 /* AppLocalize.swift in Sources */,
+				04BA1DC42895841D00585726 /* Hero.swift in Sources */,
 				04BA1DB828955B5E00585726 /* MarvelBarButtonItem.swift in Sources */,
 				04BA1DC22895643900585726 /* UILabel+InterlineSpacing.swift in Sources */,
 				04BA1D79289545AD00585726 /* UIColor+Hex.swift in Sources */,
@@ -462,15 +545,21 @@
 				04BA1D9D28954ABA00585726 /* HeroDetailsPresenter.swift in Sources */,
 				04BA1D9B28954AAE00585726 /* HeroDetailsViewInput.swift in Sources */,
 				04BA1DA128954B0200585726 /* HeroDetailsViewController.swift in Sources */,
+				04BA1DD12898016E00585726 /* HeroesListDataSource.swift in Sources */,
 				04755ED0289542DC00F45BE0 /* AppDelegate.swift in Sources */,
+				04BA1DD32898018000585726 /* HeroCellModel.swift in Sources */,
+				04BA1DD72898040800585726 /* RemovebleActivityIndicatorView.swift in Sources */,
 				04BA1DAE2895567E00585726 /* HeroImageViewCell.swift in Sources */,
 				04BA1D832895465E00585726 /* UIImage+Assets.swift in Sources */,
 				04BA1D692895440500585726 /* ModuleBuilder.swift in Sources */,
 				04BA1DB22895574E00585726 /* ReuseIdentifiable.swift in Sources */,
 				04BA1D87289548E100585726 /* HeroesListPresenter.swift in Sources */,
 				04BA1D9F28954AE400585726 /* HeroDetailsViewOutput.swift in Sources */,
+				04BA1DCF289584A400585726 /* NetworkService.swift in Sources */,
 				04BA1D85289548AF00585726 /* HeroesListViewOutput.swift in Sources */,
 				04BA1DAA2895564F00585726 /* HeroesSeleсtingCollectionView.swift in Sources */,
+				04BA1DC82895845B00585726 /* API.swift in Sources */,
+				04BA1DDD289808CC00585726 /* ImageCache.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
