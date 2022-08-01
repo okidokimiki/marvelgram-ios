@@ -3,6 +3,8 @@ import UIKit
 protocol HeroesListViewUiDelegate: AnyObject {
     // - Actions
     func heroesListView(_ heroesListView: HeroesListView, didSelectHeroWithIndexPath indexPath: IndexPath)
+    func heroesListView(_ heroesListView: HeroesListView, didMoveUpHeroWithAnimationResult result: Bool)
+    func heroesListView(_ heroesListView: HeroesListView, willDisplayHeroWithIndexPath indexPath: IndexPath)
     
     // - DataSource
     func heroesListView(_ heroesListView: HeroesListView, getCellsCountOf reuseIdentifier: String) -> Int?
@@ -63,7 +65,17 @@ final class HeroesListView: UIView {
     func moveUpCell(with indexPath: IndexPath) {
         heroesSeleсtingCollectionView.performBatchUpdates {
             self.heroesSeleсtingCollectionView.moveItem(at: indexPath, to: .zero)
+        } completion: { result in
+            self.uiDelegate?.heroesListView(self, didMoveUpHeroWithAnimationResult: result)
         }
+    }
+    
+    func setAlphaForCell(with indexPath: IndexPath, alpha: HeroCellAlpha) {
+        heroesSeleсtingCollectionView.cellForItem(at: indexPath)?.alpha = CGFloat(alpha.value)
+    }
+    
+    func setAlphaForEachVisibleCells(alpha: HeroCellAlpha) {
+        heroesSeleсtingCollectionView.visibleCells.forEach { $0.alpha = CGFloat(alpha.value) }
     }
     
     private func setupUI() {
@@ -121,6 +133,10 @@ final class HeroesListView: UIView {
 extension HeroesListView: HeroesSeleсtingCollectionViewActionDelegate {
     func heroesSeleсtingCollectionView(_ heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView, didSelectHeroWith indexPath: IndexPath) {
         uiDelegate?.heroesListView(self, didSelectHeroWithIndexPath: indexPath)
+    }
+    
+    func heroesSeleсtingCollectionView(_ heroesSeleсtingCollectionView: HeroesSeleсtingCollectionView, willDisplayHeroWith indexPath: IndexPath) {
+        uiDelegate?.heroesListView(self, willDisplayHeroWithIndexPath: indexPath)
     }
 }
 

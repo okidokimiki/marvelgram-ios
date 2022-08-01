@@ -14,6 +14,8 @@ protocol HeroesListViewOutput {
     func handleDidPresentingSearchBar(with text: String)
     func handleDidDismissingSearchBar(with text: String)
     func handleUpdatingSearchResults(with text: String)
+    func handleDidMovingUpAnimationHeroCell(with result: Bool)
+    func handleWillDisplayingHeroCell(with indexPath: IndexPath)
     
     // - DataSource
     func getHeroCellsCount() -> Int?
