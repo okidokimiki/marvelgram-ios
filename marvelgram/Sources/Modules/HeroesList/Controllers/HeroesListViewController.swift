@@ -12,6 +12,10 @@ final class HeroesListViewController: UIViewController {
         return castedView
     }
     
+    private let heroNavBarSearch: HeroSearchController = {
+        HeroSearchController(searchResultsController: nil)
+    }()
+    
     private let marvelNavBarButton: MarvelBarButtonItem = {
         MarvelBarButtonItem()
     }()
@@ -19,15 +23,15 @@ final class HeroesListViewController: UIViewController {
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nil, bundle: nil)
         
-        marvelNavBarButton.delegate = self
-        navigationItem.leftBarButtonItem = marvelNavBarButton
+        setupDelegates()
+        setupNavController()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         
-        marvelNavBarButton.delegate = self
-        navigationItem.leftBarButtonItem = marvelNavBarButton
+        setupDelegates()
+        setupNavController()
     }
     
     override func loadView() {
@@ -40,6 +44,21 @@ final class HeroesListViewController: UIViewController {
         super.viewDidLoad()
         
         presenter?.handleDidLoadView()
+    }
+    
+    private func setupDelegates() {
+        heroNavBarSearch.resultsDelegate = self
+        heroNavBarSearch.actionDelegate = self
+        marvelNavBarButton.delegate = self
+    }
+    
+    private func setupNavController() {
+        // SearchBar
+        navigationItem.searchController = heroNavBarSearch
+        navigationItem.hidesSearchBarWhenScrolling = false
+        
+        // ButtonBar
+        navigationItem.leftBarButtonItem = marvelNavBarButton
     }
 }
 
@@ -61,6 +80,24 @@ extension HeroesListViewController: HeroesListViewUiDelegate {
     }
 }
 
+// MARK: - SearchDelegate
+
+extension HeroesListViewController: HeroSearchControllerActionDelegate {
+    func heroSearchController(_ heroSearchController: HeroSearchController, didPresentSearchBarWithText text: String) {
+         presenter?.handleDidPresentingSearchBar(with: text)
+    }
+    
+    func heroSearchController(_ heroSearchController: HeroSearchController, didDismissSearchBarWithText text: String) {
+         presenter?.handleDidDismissingSearchBar(with: text)
+    }
+}
+
+extension HeroesListViewController: HeroSearchControllerResultsDelegate {
+    func heroSearchController(_ heroSearchController: HeroSearchController, didUpdateSearchResultsWithText text: String) {
+        presenter?.handleUpdatingSearchResults(with: text)
+    }
+}
+
 // MARK: - NavBarButtonDelegate
 
 extension HeroesListViewController: NavBarButtonItemDelegate {
@@ -78,5 +115,13 @@ extension HeroesListViewController: HeroesListViewInput {
     
     func showLaunchActivityIndicator(_ show: Bool) {
         heroesListView.showlaunchActivityIndicator(show)
+    }
+    
+    func scrollCollectionView(to direction: ScrollDirection) {
+        heroesListView.scrollCollectionView(to: direction)
+    }
+    
+    func moveUpCell(with indexPath: IndexPath) {
+        heroesListView.moveUpCell(with: indexPath)
     }
 }
