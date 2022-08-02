@@ -56,12 +56,12 @@ final class HeroDetailsViewController: UIViewController {
 // MARK: - UiDelegate
 
 extension HeroDetailsViewController: HeroDetailsViewUiDelegate {
-    // Actions
+    // - Actions
     func heroDetailsView(_ heroDetailsView: HeroDetailsView, didSelectHeroCellWith indexPath: IndexPath) {
         presenter?.handleDidSelectingHeroCell(with: indexPath)
     }
     
-    // DataSource
+    // - DataSource
     func heroDetailsView(_ heroDetailsView: HeroDetailsView, getOtherHeroCellModelWith indexPath: IndexPath) -> HeroCellModel? {
         presenter?.getOtherHeroCellModel(with: indexPath)
     }
