@@ -1,10 +1,10 @@
 import UIKit
 
 protocol HeroDetailsViewUiDelegate: AnyObject {
-    // Actions
+    // - Actions
     func heroDetailsView(_ heroDetailsView: HeroDetailsView, didSelectHeroCellWith indexPath: IndexPath)
     
-    // DataSource
+    // - DataSource
     func heroDetailsView(_ heroDetailsView: HeroDetailsView, getCellsCountOf reuseIdentifier: String) -> Int?
     func heroDetailsView(_ heroDetailsView: HeroDetailsView, getOtherHeroCellModelWith indexPath: IndexPath) -> HeroCellModel?
 }

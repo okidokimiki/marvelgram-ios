@@ -41,6 +41,7 @@ final class ImageLoader: UIImageView {
     
     func loadImage(from urlString: String) {
         guard let url = URL(string: urlString) else { return }
+        
         imageLoaderActivityIndicatorView.startAnimating()
         lastUrlUsedToLoadImage = url
         
@@ -71,16 +72,14 @@ final class ImageLoader: UIImageView {
      But for asynchronous image downloading I don't know how to do it better */
     
     private func resumeDataTask(with url: URL, completion: @escaping DownloadImageResponseHandler) {
-        let task = session.dataTask(with: url) { resumeDataOrNil, responseOrNil, _ in
-            guard let taskImageData = resumeDataOrNil else {
+        let task = session.dataTask(with: url) { resumeData, response, _ in
+            guard let taskImageData = resumeData else {
                 completion(.failure(.dataIsNil))
                 return
             }
             
-            guard
-                let httpResponse = responseOrNil as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode)
-            else {
-                completion(.failure(.badResponse(responseOrNil)))
+            guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
+                completion(.failure(.badResponse(response)))
                 return
             }
             
