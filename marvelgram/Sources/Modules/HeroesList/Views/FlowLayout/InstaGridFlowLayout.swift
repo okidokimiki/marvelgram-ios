@@ -7,7 +7,7 @@
  
  :
  
-      InstaGrid                Segments             Mosaic`s parts
+        InstaGrid               Segments             Mosaic`s parts
  ╔═════════════╦══════╗ +--------------------+ +----------------------+
  ║             ║   1  ║ |                    | |                      |
  ║             ║      ║ |                    | |                      |
@@ -52,7 +52,7 @@ final class InstaGridFlowLayout: UICollectionViewFlowLayout {
     override func prepare() {
         super.prepare()
         
-        // Preparation
+        // - Preparation
         guard let collectionView = collectionView else { return }
         let cvItemsCount = collectionView.numberOfItems(inSection: .zero)
         let cvWidth = collectionView.bounds.size.width
@@ -68,7 +68,7 @@ final class InstaGridFlowLayout: UICollectionViewFlowLayout {
             var segmentRects: [CGRect] = []
             let segmentFrame = CGRect(x: 0.0, y: lastFrame.maxY + 1.0, width: cvWidth, height: (2.0 / 3.0) * cvWidth)
             
-            // Layout
+            // - Layout
             switch nextSegment {
             case .twoThirdsOneThird:
                 let horizontalSlices = segmentFrame.dividedIntegral(fraction: (2.0 / 3.0), from: .minXEdge)
@@ -100,7 +100,7 @@ final class InstaGridFlowLayout: UICollectionViewFlowLayout {
                 lastFrame = rect
             }
             
-            // Switching
+            // - Switching
             switch nextSegment {
             case .twoThirdsOneThird:
                 nextSegment = .tripleOneThird
