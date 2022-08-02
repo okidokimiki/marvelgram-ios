@@ -49,14 +49,12 @@ Marvelgram app - is a gallery of Marvel comics characters.
 
 - Q: Isn't the project too simple for a VIPER-like architecture? Why didn't you use classic MVC?
 - A: I wanted to train in architecture, and MVP seemed the easiest of all. As for the Coordinator pattern, it's the same story. I don't like to build next UIViewController in the same controller (violation of SOLID, code duplication)
- 
- 
- 
+
+---
 - Q: Why replace **self.view** in `func loadView()` some kind of **view**?
 - A: As for me UIViewController first of all control flow of screen (lol). My consciousness has changed this video by Paul Hudson. Therefore, by doing so, I unload it
- 
- 
- 
+
+---
 - Q: Why didn't I use Image Download frameworks ([SDWebImage](https://github.com/SDWebImage/SDWebImage), [AlamofireImage](https://github.com/Alamofire/AlamofireImage), etc...) ?
 - A: I wanted to practice downloading and caching images on my own without pods
 
