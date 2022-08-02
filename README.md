@@ -52,7 +52,7 @@ Marvelgram app - is a gallery of Marvel comics characters.
 
 ---
 - Q: Why replace **self.view** in `func loadView()` some kind of **view**?
-- A: As for me UIViewController first of all control flow of screen (lol). My consciousness has changed this video by Paul Hudson. Therefore, by doing so, I unload it
+- A: As for me UIViewController first of all control flow of screen (lol). My consciousness has changed [this video](https://www.youtube.com/watch?v=7HgbcTqxoN4&t=631s) by Paul Hudson. Therefore, by doing so, I unload it
 
 ---
 - Q: Why didn't I use Image Download frameworks ([SDWebImage](https://github.com/SDWebImage/SDWebImage), [AlamofireImage](https://github.com/Alamofire/AlamofireImage), etc...) ?
